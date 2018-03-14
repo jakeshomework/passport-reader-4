@@ -91,7 +91,7 @@ export const buildDisplayContent = originalContent => {
   // ******** DEFINE BOOK ARRAY FROM BOOK STRING *************** //
   // =========================================================== //
 
-  let bookArray = bookDisplayString.split(/(<.*?>{1})/g).filter(function(item) {
+  let bookArray = bookDisplayString.split(/(<.*?>{1})/g).filter(item => {
     return item !== "";
   });
 
@@ -101,23 +101,34 @@ export const buildDisplayContent = originalContent => {
 
   let bodyIndex = bookArray.findIndex(isBody);
 
-  let bookDisplay = []; // EMPTY ARRAY TO PUSH PROCESSED ELEMENTS TO
-  let prId = 0; // INITIAL PR-# ID
+  let bookDisplay = {}; // EMPTY OBJECT TO PUSH PROCESSED ELEMENTS TO
+  let elementId = 0;
 
   // ===== REFINE BOOK ARRAY WITH CUSTOM PROPERTIES ===== //
 
-  bookArray.forEach(item => {});
-
   for (var i = 0; i < bookArray.length; i++) {
     if (i > bodyIndex && bookArray[i][0] !== "<") {
-      // ===== add <span id="*"> to all text elements ===== //
       let textString = bookArray[i];
-      let splitText = textString.split(/\s/g);
 
-      console.log({ splitText });
-
-      bookDisplay.push(`<span id="pr-${prId}">${bookArray[i]}</span>`);
-      prId++;
+      // ===== add <span id="*"> to all text / space elements ===== //
+      let splitText = textString
+        .split(/(\s)/g)
+        .filter(item => {
+          return item !== "";
+        })
+        //   ***   SCENERIO 1/4   ***   //
+        .map(item => {
+          let tempObj = {
+            id: `emc-${elementId}`,
+            type: item === " " || item === "	" ? "space" : "text",
+            content: item,
+            display: `<span id=emc-${elementId}>${item}</span>`,
+            classes: []
+          };
+          bookDisplay[`emc-${elementId}`] = tempObj;
+          elementId++;
+          return tempObj;
+        });
     } else if (bookArray[i][1] === "a" && bookArray[i][2] === " ") {
       // ===== change 'href' to 'id' on all links ===== //
       let tempATag = bookArray[i]
@@ -129,15 +140,33 @@ export const buildDisplayContent = originalContent => {
         //console.log(splitATagArray);
         splitATagArray.splice(3, 0, 'class="aside-tag"');
         let newTempATag = splitATagArray.join("");
-        bookDisplay.push(newTempATag);
-      } else bookDisplay.push(tempATag);
+
+        //   ***   SCENERIO 2/4   ***   //
+        bookDisplay[`emc-${elementId}`] = {
+          id: `emc-${elementId}`,
+          type: "aside",
+          display: newTempATag
+        };
+        elementId++;
+      } else {
+        //   ***   SCENERIO 3/4   ***   //
+        bookDisplay[`emc-${elementId}`] = {
+          id: `emc-${elementId}`,
+          type: "tag-a",
+          display: tempATag
+        };
+        elementId++;
+      }
     } else {
-      // else if ()
-      // { // ===== check for image tags -- add id -- add to imageArray ===== //
-      //
-      // }
+      //   ***   SCENERIO 4/4   ***   //
       // ===== DEFAULT - for standard tag elements ===== //
-      bookDisplay.push(bookArray[i]);
+
+      bookDisplay[`emc-${elementId}`] = {
+        id: `emc-${elementId}`,
+        type: "tag",
+        display: bookArray[i]
+      };
+      elementId++;
     }
   }
 
