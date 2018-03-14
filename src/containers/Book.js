@@ -1,4 +1,4 @@
-import React, { Component } from "react"; 
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 /* ----- COMPONENT IMPORTS ----- */
 import BookDisplay from "../components/BookDisplay";
@@ -13,39 +13,44 @@ import GlossaryTooltip from "../components/GlossaryTooltip";
 /*---Book displays contents and processes highlights to be passed to Book component---*/
 
 class Book extends Component {
+  state = {
+    selection: {},
+    gallery: { open: false, position: 0, images: [] }
+  };
 
-	state = {
-        selection: {},
-        gallery: { open: false, position: 0, images: [] }
-      }
+  /*---On select, open Tooltip, highlight content - save search details to state.---*/
+  handleSelect = () => {};
+  /*---Update highlights array using ADD_HIGHLIGHT api.---*/
+  saveAnnotation = () => {};
+  /*---Update highlights array using UPDATE_HIGHLIGHT api.---*/
+  updateHighlight = () => {};
+  /*---Open ImageGallery with image information.---*/
+  openGallery = () => {};
+  /*---Add one to gallery position.---*/
+  handleNext = () => {};
+  /*---Subtract one from gallery position---*/
+  handleBack = () => {};
 
-	/*---On select, open Tooltip, highlight content - save search details to state.---*/
-	handleSelect = () => {}
-	/*---Update highlights array using ADD_HIGHLIGHT api.---*/
-	saveAnnotation = () => {}
-	/*---Update highlights array using UPDATE_HIGHLIGHT api.---*/
-	updateHighlight = () => {}
-	/*---Open ImageGallery with image information.---*/
-	openGallery = () => {}
-	/*---Add one to gallery position.---*/
-	handleNext = () => {}
-	/*---Subtract one from gallery position---*/
-	handleBack = () => {}
-	
-	render() { 
-		const {} = this.props
-		return (
-			<div>Book
-			<BookDisplay display="array" highlights="array" addHighlight="func" updateHighlight="func" deleteHighlight="func" /> 
-			<ImageGallery gallery="object" /> 
-			<HighlightTooltip open="string" /> 
-			<GlossaryTooltip selection="object" />
-			</div>
-		)
-	}
+  render() {
+    const {} = this.props;
+    return (
+      <div>
+        Book
+        <BookDisplay
+          display="array"
+          highlights="array"
+          addHighlight="func"
+          updateHighlight="func"
+          deleteHighlight="func"
+        />
+        <ImageGallery gallery="object" />
+        <HighlightTooltip open="string" />
+        <GlossaryTooltip selection="object" />
+      </div>
+    );
+  }
 }
 
-Book.propTypes = {
-}
+Book.propTypes = {};
 
 export default Book;

@@ -1,4 +1,4 @@
-export const buildDisplayContent = originalContent => {
+export const formatBookString = originalContent => {
   // ========================================= //
   // ******* DEFINE REGEX EXPRESSIONS ******** //
   // ========================================= //
@@ -8,7 +8,7 @@ export const buildDisplayContent = originalContent => {
   // ******** HANDLE ASIDE ELEMENTS ********** //
   // ========================================= //
   const regExAsideBlock = /<aside (.*)<\/aside>/g; // use for separating asides from main content
-  const regExAsideElements = /(<aside .*?<\/aside>)/g; // use for splitting asideString into asideArray
+  const regExAsideElements = /(<aside .*?<\/aside>)/g; // use for splitting asideString into asides
 
   // ===== CREATE STRING OF ASIDE ELEMENTS ===== //
   const asideString = originalContent.match(regExAsideBlock)
@@ -16,13 +16,13 @@ export const buildDisplayContent = originalContent => {
     : null;
 
   // ===== SPLIT ASIDE ELEMENTS INTO ARRAY, REMOVE SPACES ===== //
-  const asideArray = asideString
+  const asides = asideString
     ? asideString.split(regExAsideElements).filter(function(item) {
         return item !== "";
       })
     : [];
 
-  // console.log(asideArray);
+  // console.log(asides);
 
   // ========================================= //
   // ******** HANDLE GALLERY ELEMENTS ******** //
@@ -38,20 +38,20 @@ export const buildDisplayContent = originalContent => {
     ? originalContent.match(regExImageGallery)
     : [];
 
-  let imageArray = [];
+  let images = [];
   for (let j = 0; j < galleryArray.length; j++) {
     let currentGallery = galleryArray[j];
 
     let thumbnailArray = currentGallery.match(regExImageThumbnail);
     let fullSizeArray = currentGallery.match(regExImageFullSize);
     let captionArray = currentGallery.match(regExFigCaption);
-    imageArray[j] = [];
+    images[j] = [];
 
     // console.log({ thumbnailArray, fullSizeArray, captionArray });
 
     // ===== BUILD GALLERY OBJECT FROM FULL SIZE IMAGES ===== //
     for (let k = 0; k < fullSizeArray.length; k++) {
-      imageArray[j][k] = {
+      images[j][k] = {
         thumbnail: thumbnailArray ? thumbnailArray[k].slice(20, -1) : null,
         src: fullSizeArray[k].slice(6, -1),
         caption: captionArray[k]
@@ -62,13 +62,13 @@ export const buildDisplayContent = originalContent => {
   }
 
   // console.log({ galleryArray });
-  // console.log({ imageArray });
+  // console.log({ images });
 
   // ========================================= //
   // ******** HANDLE LINK TAG ELEMENTS ******* //
   // ========================================= //
   const regExLinkTag = /<link .*?>/g;
-  const linkTagArray = originalContent.match(regExLinkTag);
+  const links = originalContent.match(regExLinkTag);
 
   // ====================================================== //
   // * REMOVE ASIDE & LINK TAG ELEMENTS FROM MAIN CONTENT * //
@@ -80,7 +80,7 @@ export const buildDisplayContent = originalContent => {
   // ================================================== //
   // * REPLACE IMAGE GALLERY ELEMENTS WITH GALLERY ID * //
   // ================================================== //
-  for (let i = 0; i < imageArray.length; i++) {
+  for (let i = 0; i < images.length; i++) {
     bookDisplayString = bookDisplayString.replace(
       regExImageGallerySingle,
       `<div id="image-gallery-${i}"></div>`
@@ -122,7 +122,7 @@ export const buildDisplayContent = originalContent => {
             id: `emc-${elementId}`,
             type: item === " " || item === "	" ? "space" : "text",
             content: item,
-            display: `<span id=emc-${elementId}>${item}</span>`,
+            display: `<span id="emc-${elementId}">${item}</span>`,
             classes: []
           };
           bookDisplay[`emc-${elementId}`] = tempObj;
@@ -152,7 +152,7 @@ export const buildDisplayContent = originalContent => {
         //   ***   SCENERIO 3/4   ***   //
         bookDisplay[`emc-${elementId}`] = {
           id: `emc-${elementId}`,
-          type: "tag-a",
+          type: "a-tag",
           display: tempATag
         };
         elementId++;
@@ -160,10 +160,9 @@ export const buildDisplayContent = originalContent => {
     } else {
       //   ***   SCENERIO 4/4   ***   //
       // ===== DEFAULT - for standard tag elements ===== //
-
       bookDisplay[`emc-${elementId}`] = {
         id: `emc-${elementId}`,
-        type: "tag",
+        type: bookArray[i].includes(`id="image-gallery`) ? "gallery" : "tag",
         display: bookArray[i]
       };
       elementId++;
@@ -174,11 +173,10 @@ export const buildDisplayContent = originalContent => {
   // ******** RETURN FORMATTED BOOK *************** //
   // ============================================== //
   return {
-    bookDisplayString,
-    asideArray,
-    imageArray,
+    asides,
+    images,
     bookDisplay,
-    linkTagArray
+    links
   };
 };
 
