@@ -13,6 +13,7 @@ my-app/
   node_modules/
   package.json
   public/
+    media/
     index.html
     favicon.ico
   src/
