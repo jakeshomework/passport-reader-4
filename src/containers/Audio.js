@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import PropTypes from "prop-types";
 /* ----- COMPONENT IMPORTS ----- */
 /* ----- GRAPHQL IMPORTS ----- */
@@ -7,14 +7,9 @@ import PropTypes from "prop-types";
 /*---undefined---*/
 
 const Audio = ({}) => {
-	
-	return(
-		<div>Audio
-		</div>
-	)
-}
+  return <div>Audio</div>;
+};
 
-Audio.propTypes = {
-}
+Audio.propTypes = {};
 
 export default Audio;

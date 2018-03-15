@@ -10,7 +10,7 @@ import BottomNavigation, {
 import Book from "material-ui-icons/Book";
 import Settings from "material-ui-icons/Settings";
 import FormatListBulleted from "material-ui-icons/FormatListBulleted";
-import QuestionAnswer from "material-ui-icons/QuestionAnswer";
+import VolumeUp from "material-ui-icons/VolumeUp";
 
 console.log(withStyles);
 
@@ -60,9 +60,9 @@ function NavigationMenu(props) {
         icon={<FormatListBulleted className={classes.icon} />}
       />
       <BottomNavigationAction
-        label="Activities"
+        label="Audio"
         value={3}
-        icon={<QuestionAnswer className={classes.icon} />}
+        icon={<VolumeUp className={classes.icon} />}
       />
       {/*<BottomNavigationButton label="Activities" value={3} icon={<Badge className={classes.badge} badgeContent={4} color="accent"><QuestionAnswer className={classes.icon} /></Badge>} />*/}
     </BottomNavigation>

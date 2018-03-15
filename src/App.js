@@ -66,12 +66,12 @@ class App extends Component {
         content: {}
       },
       settings: {
-        view: "Class || Individual ",
+        classView: false,
         focusMode: false,
         showHelpTips: false,
         darkMode: false,
-        fontSize: "14",
-        fontFamily: "Helvetica"
+        fontSize: [14, 18, 22],
+        fontFamily: ["Open Sans", "Josefin Slab", "Lato"]
       },
       slide: 0
     };

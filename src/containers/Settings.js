@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 /* ----- COMPONENT IMPORTS ----- */
-import SettingsList from "../components/SettingsList";
+import SettingsSelector from "../components/SettingsSelector";
 import SettingsSwitch from "../components/SettingsSwitch";
 /* ----- GRAPHQL IMPORTS ----- */
 //import GET_SETTINGS from "../graphql/GET_SETTINGS";
@@ -10,24 +10,32 @@ import SettingsSwitch from "../components/SettingsSwitch";
 
 /*---In a side drawer, Settings contains the user control over the content.---*/
 
-const Settings = ({}) => {
-  /*---Only show if correct correct permissions are met -- teacher or teacher authorized class view.---*/
-  const toggleView = () => {};
+class Settings extends Component {
+  /*---Only show if correct permissions are met -- teacher or teacher authorized class view.---*/
+  toggleView = () => {};
   /*---Hide all highlights to allow for a clean reading experience. *User can still add highlights.---*/
-  const togglefocusMode = () => {};
+  togglefocusMode = () => {};
   /*---Create and 'easy-on-eyes' reading experience---*/
-  const toggleDarkMode = () => {};
+  toggleDarkMode = () => {};
   /*---Available for teachers only, this allows students to use the toggleView method.---*/
-  const toggleViewPermissions = () => {};
+  toggleViewPermissions = () => {};
 
-  return (
-    <div>
-      Settings
-      <SettingsList settingsActions="object" settings="object" />
-    </div>
-  );
-};
-
+  render() {
+    const { handleChange } = this.props;
+    return (
+      <div>
+        <SettingsSwitch />
+        <SettingsSwitch />
+        <SettingsSwitch />
+        <SettingsSelector
+          fontSize={this.props.settings.fontSize}
+          handleChange={handleChange}
+          label="Font Size"
+        />
+      </div>
+    );
+  }
+}
 Settings.propTypes = {};
 
 export default Settings;
