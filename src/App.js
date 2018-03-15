@@ -42,7 +42,8 @@ class App extends Component {
     this.state = {
       user: {
         userId: "111",
-        role: "student"
+        role: "student",
+        allowClassView: false
       },
       book: {
         bookDisplay: formattedBook.bookDisplay,
@@ -78,8 +79,8 @@ class App extends Component {
 
   changeSettings = updateObject => {
     // INPUT: --- { property: value } --- //
-    let prevSettings = this.state.settings;
-    let newSettings = {
+    const prevSettings = this.state.settings;
+    const newSettings = {
       ...prevSettings,
       ...updateObject
     };
@@ -105,7 +106,8 @@ class App extends Component {
       >
         <button
           onClick={() =>
-            this.changeSettings({ darkMode: !this.state.settings.darkMode })}
+            this.changeSettings({ darkMode: !this.state.settings.darkMode })
+          }
         >
           Toggle Dark Mode Test
         </button>
@@ -115,15 +117,21 @@ class App extends Component {
           index={this.state.slide}
           onChangeIndex={this.changeSlideView}
           containerStyle={styles.slideContainer}
-          style={{
-            /*this.state.settings.darkMode ? (
+          style={
+            {
+              /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-          }}
+            }
+          }
         >
-          <Settings />
+          <Settings
+            settings={this.state.settings}
+            changeSettings={this.changeSettings}
+            user={this.state.user}
+          />
           <Book
             book={this.state.book}
             style={Object.assign({}, styles.slide, styles.slide2)}
