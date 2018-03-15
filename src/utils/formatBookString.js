@@ -123,7 +123,7 @@ export const formatBookString = originalContent => {
             type: item === " " || item === "	" ? "space" : "text",
             content: item,
             display: `<span id="emc-${elementId}">${item}</span>`,
-            classes: []
+            highlights: []
           };
           bookDisplay[`emc-${elementId}`] = tempObj;
           elementId++;

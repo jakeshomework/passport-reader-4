@@ -72,7 +72,7 @@ class App extends Component {
         fontSize: "14",
         fontFamily: "Helvetica"
       },
-      slide: 0
+      slide: 1
     };
   }
 
@@ -126,6 +126,8 @@ class App extends Component {
           <Settings />
           <Book
             book={this.state.book}
+            highlights={this.state.highlights}
+            settings={this.state.settings}
             style={Object.assign({}, styles.slide, styles.slide2)}
           />
           <Highlights

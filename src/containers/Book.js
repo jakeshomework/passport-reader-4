@@ -33,12 +33,28 @@ class Book extends Component {
 
   render() {
     const { bookDisplay } = this.props.book;
+    const { highlights } = this.props;
+
+    let bookDisplayWithHighlights = bookDisplay;
+
+    const highlightsKeys = Object.keys(highlights);
+    console.log(highlightsKeys);
+    console.log(highlights);
+    highlightsKeys.forEach(highlightId => {
+      const { startId, endId, id } = highlights[highlightId];
+
+      console.log(startId.slice(4));
+      // const emcIdArray =
+      // TODO: only add highlightId to
+    });
+
     return (
       <div>
         Book
         <BookDisplay
-          bookDisplay={bookDisplay}
-          highlights="array"
+          onClick={this.handleSelect}
+          bookDisplay={bookDisplayWithHighlights}
+          highlights={highlights}
           addHighlight="func"
           updateHighlight="func"
           deleteHighlight="func"
