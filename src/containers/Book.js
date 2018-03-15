@@ -32,12 +32,12 @@ class Book extends Component {
   handleBack = () => {};
 
   render() {
-    const {} = this.props;
+    const { bookDisplay } = this.props.book;
     return (
       <div>
         Book
         <BookDisplay
-          display="array"
+          bookDisplay={bookDisplay}
           highlights="array"
           addHighlight="func"
           updateHighlight="func"
