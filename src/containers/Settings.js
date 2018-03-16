@@ -11,6 +11,11 @@ import SettingsSwitch from "../components/SettingsSwitch";
 /*---In a side drawer, Settings contains the user control over the content.---*/
 
 class Settings extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    // this.handleChange = this.handleChange.bind(this);
+  }
   /*---Only show if correct permissions are met -- teacher or teacher authorized class view.---*/
   toggleView = () => {};
   /*---Hide all highlights to allow for a clean reading experience. *User can still add highlights.---*/
@@ -21,15 +26,39 @@ class Settings extends Component {
   toggleViewPermissions = () => {};
 
   render() {
-    const { handleChange } = this.props;
+    const {
+      classView,
+      focusMode,
+      showHelpTips,
+      darkMode,
+      fontSize,
+      fontFamily
+    } = this.props.settings;
     return (
       <div>
-        <SettingsSwitch />
-        <SettingsSwitch />
-        <SettingsSwitch />
+        <SettingsSwitch
+          classView={classView}
+          handleChangeSettings={this.props.changeSettings}
+          label="Class View"
+        />
+        <SettingsSwitch
+          focusMode={focusMode}
+          handleChangeSettings={this.props.changeSettings}
+          label="Focus Mode"
+        />
+        <SettingsSwitch
+          showHelpTips={showHelpTips}
+          handleChangeSettings={this.props.changeSettings}
+          label="Show Help Tips"
+        />
+        <SettingsSwitch
+          darkMode={darkMode}
+          handleChangeSettings={this.props.changeSettings}
+          label="Dark Mode"
+        />
         <SettingsSelector
-          fontSize={this.props.settings.fontSize}
-          handleChange={handleChange}
+          fontSize={fontSize}
+          handleChangeSettings={this.props.changeSettings}
           label="Font Size"
         />
       </div>

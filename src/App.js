@@ -66,6 +66,7 @@ class App extends Component {
         content: {}
       },
       settings: {
+        selectedFont: "",
         classView: false,
         focusMode: false,
         showHelpTips: false,

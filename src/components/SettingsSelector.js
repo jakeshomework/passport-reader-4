@@ -20,17 +20,14 @@ class SettingsSelector extends Component {
     super(props);
     this.state = {
       open: false,
-      settingsSelectValue: ""
+      fontSelect: "14"
     };
-    // this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   handleChange = event => {
-    console.log("handle change this", this);
-    this.setState({ settingsSelectValue: event.target.value });
-
-    // this.props.handleChange({
-    //   value: event.target.value
-    // });
+    this.setState({ fontSelect: event.target.value });
+    console.log("event target value", event.target.value);
+    this.props.handleChangeSettings({ selectedFont: event.target.value });
   };
   handleClose = () => {
     this.setState({ open: false });
@@ -41,24 +38,17 @@ class SettingsSelector extends Component {
   };
 
   render() {
-    const { label, fontSize } = this.props;
-    console.log(this.props.fontSize);
+    const { label } = this.props;
     return (
       <div className="classes.formControl">
-        <InputLabel htmlFor="settingsSelectValue">{label}</InputLabel>
+        <InputLabel htmlFor="fontSelect">{label}</InputLabel>
         <Select
           open={this.state.open}
           onClose={this.handleClose}
           onOpen={this.handleOpen}
-          value={this.state.settingsSelectValue}
+          value={this.state.fontSelect}
           onChange={this.handleChange}
-          input={<Input name="settingsSelectValue" />}
         >
-          {/* {fontSize.map((fontSize, i) => (
-            <MenuItem key={i} value={fontSize.value}>
-              {fontSize.display}
-            </MenuItem>
-          ))} */}
           <MenuItem value={this.props.fontSize[0]}>
             {this.props.fontSize[0]}
           </MenuItem>
@@ -68,6 +58,11 @@ class SettingsSelector extends Component {
           <MenuItem value={this.props.fontSize[2]}>
             {this.props.fontSize[2]}
           </MenuItem>
+          {/* {this.props.fontSize.map((fontsize, index) => (
+            <MenuItem key={index} value={fontsize.value}>
+              {fontsize.display}
+            </MenuItem>
+          ))} */}
         </Select>
       </div>
     );
