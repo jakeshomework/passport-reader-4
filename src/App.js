@@ -66,7 +66,7 @@ class App extends Component {
         content: {}
       },
       settings: {
-        selectedFont: "",
+        selectedFont: 14,
         classView: false,
         focusMode: false,
         showHelpTips: false,
@@ -74,6 +74,7 @@ class App extends Component {
         fontSize: [14, 18, 22],
         fontFamily: ["Open Sans", "Josefin Slab", "Lato"]
       },
+
       slide: 0
     };
   }

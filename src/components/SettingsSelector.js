@@ -8,7 +8,7 @@ import Select from "material-ui/Select";
 /* ----- COMPONENT IMPORTS ----- */
 
 const styles = theme => ({
-  formControl: {
+  selectField: {
     margin: theme.spacing.unit,
     minWidth: 120
   }
@@ -20,9 +20,8 @@ class SettingsSelector extends Component {
     super(props);
     this.state = {
       open: false,
-      fontSelect: "14"
+      fontSelect: ""
     };
-    this.handleChange = this.handleChange.bind(this);
   }
   handleChange = event => {
     this.setState({ fontSelect: event.target.value });
@@ -40,8 +39,8 @@ class SettingsSelector extends Component {
   render() {
     const { label } = this.props;
     return (
-      <div className="classes.formControl">
-        <InputLabel htmlFor="fontSelect">{label}</InputLabel>
+      <div className="classes.selectField">
+        <InputLabel htmlFor="Select">{label}</InputLabel>
         <Select
           open={this.state.open}
           onClose={this.handleClose}
@@ -49,7 +48,7 @@ class SettingsSelector extends Component {
           value={this.state.fontSelect}
           onChange={this.handleChange}
         >
-          <MenuItem value={this.props.fontSize[0]}>
+          {/* <MenuItem value={this.props.fontSize[0]}>
             {this.props.fontSize[0]}
           </MenuItem>
           <MenuItem value={this.props.fontSize[1]}>
@@ -57,12 +56,12 @@ class SettingsSelector extends Component {
           </MenuItem>
           <MenuItem value={this.props.fontSize[2]}>
             {this.props.fontSize[2]}
-          </MenuItem>
-          {/* {this.props.fontSize.map((fontsize, index) => (
+          </MenuItem> */}
+          {this.props.fontSize.map((fontsize, index) => (
             <MenuItem key={index} value={fontsize.value}>
-              {fontsize.display}
+              {fontsize}
             </MenuItem>
-          ))} */}
+          ))}
         </Select>
       </div>
     );
