@@ -11,6 +11,7 @@ export const AppStyles = {
     maxWidth: "960px",
     width: "100%",
     margin: "auto"
+
     // backgroundColor: "red"
     // background: theme.palette.background.paper
   }
