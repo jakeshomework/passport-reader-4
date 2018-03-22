@@ -15,6 +15,12 @@ import NavigationMenu from "./containers/NavigationMenu";
 import grey from "material-ui/colors/grey";
 /* ----- IMPORT UTILITIES ----- */
 import { formatBookString } from "./utils/formatBookString";
+import {
+  openModal,
+  closeModal,
+  updateModal
+} from "./utils/annotationModalUtils.js";
+import { updateSettings } from "./utils/settingsUtils";
 /* ----- IMPORT DATA ----- */
 import { HighlightsDemo } from "./data/highlights.js";
 /* ----- IMPORT STYLES ----- */
@@ -30,7 +36,8 @@ import { BookString } from "./data/tym/content1Unformatted.js";
 
 console.log(formatBookString(BookString));
 
-let formattedBook = formatBookString(BookString);
+/* --- break book into object --- */
+const formattedBook = formatBookString(BookString);
 
 const handleChangeIndex = () => {};
 
@@ -74,11 +81,11 @@ class App extends Component {
         fontSize: [14, 18, 22],
         fontFamily: ["Open Sans", "Josefin Slab", "Lato"]
       },
-
-      slide: 0
+      slide: 1
     };
   }
 
+  /* --- make updates to settings --- */
   changeSettings = updateObject => {
     // INPUT: --- { property: value } --- //
     const prevSettings = this.state.settings;
@@ -89,6 +96,20 @@ class App extends Component {
     this.setState({ settings: newSettings });
   };
 
+  settingsControl = {
+    updateSettings: updateObject =>
+      this.setState(prevState => updateSettings(updateObject))
+  };
+
+  annotationModalControl = {
+    close: () => this.setState(prevState => closeModal(prevState)),
+    open: highlightId =>
+      this.setState(prevState => openModal(prevState, highlightId)),
+    update: content =>
+      this.setState(prevState => updateModal(prevState, content))
+  };
+
+  /* --- control bottom navigation menu --- */
   changeSlideView = index => {
     this.setState({ slide: index });
   };
@@ -108,26 +129,27 @@ class App extends Component {
       >
         <button
           onClick={() =>
-            this.changeSettings({ darkMode: !this.state.settings.darkMode })
-          }
+            this.changeSettings({ darkMode: !this.state.settings.darkMode })}
         >
           Toggle Dark Mode Test
         </button>
-
-        <AnnotationModal annotationModal={this.state.annotationModal} />
+        <AnnotationModal
+          open={this.state.annotationModal.open}
+          highlightId={this.state.annotationModal.highlightId}
+          highlights={this.state.highlights}
+          annotationModalControl={this.annotationModalControl}
+        />
         <SwipeableViews
           index={this.state.slide}
           onChangeIndex={this.changeSlideView}
           containerStyle={styles.slideContainer}
-          style={
-            {
-              /*this.state.settings.darkMode ? (
+          style={{
+            /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-            }
-          }
+          }}
         >
           <Settings
             settings={this.state.settings}
@@ -136,7 +158,10 @@ class App extends Component {
           />
           <Book
             book={this.state.book}
+            highlights={this.state.highlights}
+            settings={this.state.settings}
             style={Object.assign({}, styles.slide, styles.slide2)}
+            annotationModalControl={this.annotationModalControl}
           />
           <Highlights
             highlights={this.state.highlights}
