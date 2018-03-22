@@ -1,3 +1,5 @@
+import { buildArrayOfDisplayIds } from "./buildArrayOfDisplayIds";
+
 export const addHighlightsToBook = (bookDisplayOriginal, highlights) => {
   /* --- build array of highlight keys to iterate over --- */
   const highlightKeys = Object.keys(highlights);
@@ -11,14 +13,8 @@ export const addHighlightsToBook = (bookDisplayOriginal, highlights) => {
   highlightKeys.forEach(highlightId => {
     let startId = highlights[highlightId].startId;
     let endId = highlights[highlightId].endId;
-    let currentId = startId.slice(4);
 
-    /* --- build array of bookDisplay ids to highlight --- */
-    const idArrayToHighlight = [];
-    while (currentId <= endId.slice(4)) {
-      idArrayToHighlight.push(`emc-${currentId}`);
-      currentId++;
-    }
+    const idArrayToHighlight = buildArrayOfDisplayIds(startId, endId);
 
     /* --- push highlight id to bookDisplay ids --- */
     idArrayToHighlight.forEach(spanId => {
