@@ -23,7 +23,7 @@ class Highlights extends Component {
     return (
       <div>
         Highlights
-        <HighlightsList filteredList="array" />
+        <HighlightsList filteredList={this.props.Highlights} />
         <StudyMode filteredList="array" open="boolean" />
       </div>
     );
