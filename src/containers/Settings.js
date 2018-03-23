@@ -13,38 +13,43 @@ import SettingsSwitch from "../components/SettingsSwitch";
 class Settings extends Component {
   /*---Only show if correct permissions are met -- teacher or teacher authorized class view.---*/
   toggleView = () => {
-    this.props.changeSettings({
+    this.props.settingsControl.update({
       classView: !this.props.settings.classView
     });
   };
   /*---Hide all highlights to allow for a clean reading experience. *User can still add highlights.---*/
   togglefocusMode = () => {
-    this.props.changeSettings({
+    this.props.settingsControl.update({
       focusMode: !this.props.settings.focusMode
     });
   };
   toggleHelpTips = () => {
-    this.props.changeSettings({
+    this.props.settingsControl.update({
       showHelpTips: !this.props.settings.showHelpTips
     });
   };
   /*---Create and 'easy-on-eyes' reading experience---*/
   toggleDarkMode = () => {
-    this.props.changeSettings({
+    this.props.settingsControl.update({
       darkMode: !this.props.settings.darkMode
+    });
+  };
+  changeFontSize = value => {
+    this.props.settingsControl.update({
+      selectedFontSize: value
+    });
+  };
+
+  changeFontFamily = value => {
+    this.props.settingsControl.update({
+      selectedFontFamily: value
     });
   };
 
   /*---Available for teachers only, this allows students to use the toggleView method.---*/
   toggleViewPermissions = () => {};
 
-  handleSwitch = (event, checked) => {
-    // this.props.handleChangeSettings({ switched: checked });
-  };
-
   render() {
-    console.log(this.props.settings ? true : false);
-    console.log("this.props.settings: ", this.props.settings);
     const {
       classView,
       focusMode,
@@ -53,8 +58,6 @@ class Settings extends Component {
       fontFamily,
       fontSize
     } = this.props.settings;
-
-    const { changeSettings } = this.props;
 
     return (
       <div>
@@ -80,9 +83,14 @@ class Settings extends Component {
         />
 
         <SettingsSelector
-          fontSize={fontSize}
-          handleChangeSettings={changeSettings}
+          options={fontSize}
+          handleChangeSettings={this.changeFontSize}
           label="Font Size"
+        />
+        <SettingsSelector
+          options={fontFamily}
+          handleChangeSettings={this.changeFontFamily}
+          label="Font Family"
         />
       </div>
     );

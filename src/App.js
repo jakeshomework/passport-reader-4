@@ -73,7 +73,8 @@ class App extends Component {
         content: {}
       },
       settings: {
-        selectedFont: 14,
+        selectedFontFamily: "Open Sans",
+        selectedFontSize: 14,
         classView: false,
         focusMode: false,
         showHelpTips: false,
@@ -86,19 +87,19 @@ class App extends Component {
   }
 
   /* --- make updates to settings --- */
-  changeSettings = updateObject => {
-    // INPUT: --- { property: value } --- //
-    const prevSettings = this.state.settings;
-    const newSettings = {
-      ...prevSettings,
-      ...updateObject
-    };
-    this.setState({ settings: newSettings });
-  };
+  // changeSettings = updateObject => {
+  //   // INPUT: --- { property: value } --- //
+  //   const prevSettings = this.state.settings;
+  //   const newSettings = {
+  //     ...prevSettings,
+  //     ...updateObject
+  //   };
+  //   this.setState({ settings: newSettings });
+  // };
 
   settingsControl = {
-    updateSettings: updateObject =>
-      this.setState(prevState => updateSettings(updateObject))
+    update: updateObject =>
+      this.setState(prevState => updateSettings(prevState, updateObject))
   };
 
   annotationModalControl = {
@@ -129,7 +130,8 @@ class App extends Component {
       >
         <button
           onClick={() =>
-            this.changeSettings({ darkMode: !this.state.settings.darkMode })}
+            this.changeSettings({ darkMode: !this.state.settings.darkMode })
+          }
         >
           Toggle Dark Mode Test
         </button>
@@ -143,17 +145,19 @@ class App extends Component {
           index={this.state.slide}
           onChangeIndex={this.changeSlideView}
           containerStyle={styles.slideContainer}
-          style={{
-            /*this.state.settings.darkMode ? (
+          style={
+            {
+              /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-          }}
+            }
+          }
         >
           <Settings
             settings={this.state.settings}
-            changeSettings={this.changeSettings}
+            settingsControl={this.settingsControl}
             user={this.state.user}
           />
           <Book
