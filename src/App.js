@@ -21,6 +21,11 @@ import {
   updateModal
 } from "./utils/annotationModalUtils.js";
 import { updateSettings } from "./utils/settingsUtils";
+import {
+  addHighlight,
+  updateHighlight,
+  deleteHighlight
+} from "./utils/highlightsUtils";
 /* ----- IMPORT DATA ----- */
 import { HighlightsDemo } from "./data/highlights.js";
 /* ----- IMPORT STYLES ----- */
@@ -33,8 +38,6 @@ import { AppStyles } from "./styles/AppStyles.js";
 /* ----- BOOK IMPORT (THANK YOU MA'AM IMPORT) ----- */
 // import { BookString } from "./data/tym/content1.js";
 import { BookString } from "./data/tym/content1Unformatted.js";
-
-console.log(formatBookString(BookString));
 
 /* --- break book into object --- */
 const formattedBook = formatBookString(BookString);
@@ -102,6 +105,15 @@ class App extends Component {
       this.setState(prevState => updateSettings(prevState, updateObject))
   };
 
+  highlightsControl = {
+    add: highlightObject =>
+      this.setState(prevState => addHighlight(prevState, highlightObject)),
+    update: highlightUpdate =>
+      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
+    delete: highlightId =>
+      this.setState(prevState => deleteHighlight(prevState, highlightId))
+  };
+
   annotationModalControl = {
     close: () => this.setState(prevState => closeModal(prevState)),
     open: highlightId =>
@@ -166,6 +178,7 @@ class App extends Component {
             settings={this.state.settings}
             style={Object.assign({}, styles.slide, styles.slide2)}
             annotationModalControl={this.annotationModalControl}
+            highlightsControl={this.highlightsControl}
           />
           <Highlights
             highlights={this.state.highlights}

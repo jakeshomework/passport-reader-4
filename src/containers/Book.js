@@ -7,6 +7,7 @@ import HighlightTooltip from "../components/HighlightTooltip";
 import GlossaryTooltip from "../components/GlossaryTooltip";
 /* ----- UTILITY IMPORTS ----- */
 import { addHighlightsToBook } from "../utils/addHighlightsToBook";
+import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
 
 //import GET_DISPLAY from "../graphql/GET_DISPLAY";
 //import GET_SETTINGS from "../graphql/GET_SETTINGS";
@@ -19,7 +20,8 @@ class Book extends Component {
     showTooltip: false,
     selection: {
       startId: "emc-start",
-      endId: "emc-end"
+      endId: "emc-end",
+      content: "---"
     },
     gallery: { open: false, position: 0, images: [] }
   };
@@ -34,7 +36,6 @@ class Book extends Component {
   /*---On select, open Tooltip, highlight content - save search details to state.---*/
   handleSelect = () => {
     const select = window.getSelection();
-    console.log(select);
 
     if (select.toString().trim().length > 0) {
       /* --- check if <p> tag is selected anchorNode (start of selection) --- */
@@ -59,19 +60,30 @@ class Book extends Component {
       const startId = anchor.slice(4) < focus.slice(4) ? anchor : focus;
       const endId = anchor.slice(4) > focus.slice(4) ? anchor : focus;
 
+      /* --- build array of displayIds to fill this.state.content --- */
+      const arrayOfContent = buildArrayOfDisplayIds(startId, endId);
+
       /* --- check for selection text after removing spaces --- */
       this.setState({
         showTooltip: true,
         selection: {
           startId: startId,
-          endId: endId
+          endId: endId,
+          content: arrayOfContent
+            .map(displayId => this.props.book.bookDisplay[displayId].content)
+            .join("")
         }
       });
     } else {
       this.handleClear();
-      if (select.anchorNode.parentNode.className === "highlight") {
+      if (
+        select.anchorNode.parentNode &&
+        select.anchorNode.parentNode.className === "highlight"
+      ) {
         this.props.annotationModalControl.open();
-      } else console.log("Nada for highlights");
+      } else {
+        // console.log("Nada for highlights");
+      }
     }
   };
 
@@ -88,7 +100,8 @@ class Book extends Component {
       showTooltip: false,
       selection: {
         startId: "---",
-        endId: "---"
+        endId: "---",
+        content: "---"
       }
     });
   };
@@ -112,7 +125,7 @@ class Book extends Component {
       : clearInterval(selectWatcher);
 
     const { bookDisplay } = this.props.book;
-    const { highlights } = this.props;
+    const { highlights, highlightsControl } = this.props;
 
     const highlightsKeys = Object.keys(highlights);
     // console.log(highlightsKeys);
@@ -128,12 +141,15 @@ class Book extends Component {
     return (
       <div>
         Book selected:
-        {` ${this.state.selection.startId} -> ${this.state.selection.endId}`}
+        <div>{` ${this.state.selection.startId} -> ${this.state.selection
+          .endId}`}</div>
+        <div>{this.state.selection.content}</div>
         {this.state.event}
         {this.state.showTooltip ? (
           <HighlightTooltip
             open={this.state.showTooltip}
             selection={this.state.selection}
+            highlightsControl={highlightsControl}
           />
         ) : null}
         <BookDisplay

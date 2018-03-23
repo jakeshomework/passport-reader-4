@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 792">
+  <defs>
+    <linearGradient id="gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" style="stop-color: #f6f7f8; stop-opacity: 1" />
+      <stop offset="50%" style="stop-color: #eee; stop-opacity: 1" />
+      <stop offset="100%" style="stop-color: #f6f7f8; stop-opacity: 1" />
+      <animate attributeName="x1" dur="1.5s" from="-20%" to="120%" repeatCount="indefinite" />
+      <animate attributeName="x2" dur="1.5s" from="0%" to="150%" repeatCount="indefinite" />
+    </linearGradient>
+    <style>
+      rect {
+        fill: url(#gradient);
+      }
+    </style>
+  </defs>
+  <rect x="42.48" y="47.95" width="536.7" height="24.13"/>
+  <rect x="42.48" y="96.28" width="491.04" height="24.13"/>
+  <rect x="42.48" y="144.46" width="536.7" height="24.13"/>
+  <rect x="42.48" y="192.72" width="475.62" height="24.13"/>
+  <rect x="42.48" y="723.69" width="475.62" height="24.13"/>
+  <rect x="42.48" y="241.04" width="405.12" height="24.13"/>
+  <rect x="42.48" y="545.54" width="536.7" height="24.13"/>
+  <rect x="42.48" y="593.8" width="475.62" height="24.13"/>
+  <rect x="42.48" y="642.12" width="405.12" height="24.13"/>
+  <rect x="42.48" y="321.92" width="491.04" height="24.13"/>
+  <rect x="42.48" y="370.11" width="536.7" height="24.13"/>
+  <rect x="42.48" y="418.37" width="475.62" height="24.13"/>
+  <rect x="42.48" y="466.69" width="405.12" height="24.13"/>
+</svg>
