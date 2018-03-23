@@ -123,6 +123,15 @@ class App extends Component {
       this.setState(prevState => deleteHighlight(prevState, highlightId))
   };
 
+  highlightsControl = {
+    add: highlightObject =>
+      this.setState(prevState => addHighlight(prevState, highlightObject)),
+    update: highlightUpdate =>
+      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
+    delete: highlightId =>
+      this.setState(prevState => deleteHighlight(prevState, highlightId))
+  };
+
   annotationModalControl = {
     close: () => this.setState(prevState => closeModal(prevState)),
     open: highlightId =>
