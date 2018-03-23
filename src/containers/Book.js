@@ -62,14 +62,8 @@ class Book extends Component {
       const endId =
         parseInt(anchor.slice(4)) > parseInt(focus.slice(4)) ? anchor : focus;
 
-      console.log("a greater than f", anchor.slice(4) > focus.slice(4));
-
-      console.log("anchor", anchor, "focus", focus);
-      console.log("start", startId, "end", endId);
-
       /* --- build array of displayIds to fill this.state.content --- */
       const arrayOfContent = buildArrayOfDisplayIds(startId, endId);
-      console.log(arrayOfContent);
 
       /* --- check for selection text after removing spaces --- */
       this.setState({

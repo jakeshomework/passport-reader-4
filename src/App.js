@@ -139,12 +139,6 @@ class App extends Component {
           typography: { fontFamily: fontFamily, fontSize: fontSize }
         })}
       >
-        <button
-          onClick={() =>
-            this.changeSettings({ darkMode: !this.state.settings.darkMode })}
-        >
-          Toggle Dark Mode Test
-        </button>
         <AnnotationModal
           open={this.state.annotationModal.open}
           highlightId={this.state.annotationModal.highlightId}
