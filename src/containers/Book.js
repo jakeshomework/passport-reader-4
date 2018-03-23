@@ -57,11 +57,19 @@ class Book extends Component {
           select.focusNode.parentNode.id;
 
       /* --- swap values if user highlighted content in reverse --- */
-      const startId = anchor.slice(4) < focus.slice(4) ? anchor : focus;
-      const endId = anchor.slice(4) > focus.slice(4) ? anchor : focus;
+      const startId =
+        parseInt(anchor.slice(4)) < parseInt(focus.slice(4)) ? anchor : focus;
+      const endId =
+        parseInt(anchor.slice(4)) > parseInt(focus.slice(4)) ? anchor : focus;
+
+      console.log("a greater than f", anchor.slice(4) > focus.slice(4));
+
+      console.log("anchor", anchor, "focus", focus);
+      console.log("start", startId, "end", endId);
 
       /* --- build array of displayIds to fill this.state.content --- */
       const arrayOfContent = buildArrayOfDisplayIds(startId, endId);
+      console.log(arrayOfContent);
 
       /* --- check for selection text after removing spaces --- */
       this.setState({
@@ -77,6 +85,7 @@ class Book extends Component {
     } else {
       this.handleClear();
       if (
+        select.anchorNode &&
         select.anchorNode.parentNode &&
         select.anchorNode.parentNode.className === "highlight"
       ) {
