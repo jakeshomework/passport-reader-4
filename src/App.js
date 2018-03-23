@@ -3,6 +3,14 @@ import React, { Component } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
 import { withStyles } from "material-ui/styles";
+import Paper from "material-ui/Paper";
+// import {
+//   grey100,
+//   grey300,
+//   white,
+//   darkBlack,
+//   fullBlack
+// } from "material-ui/colors";
 
 /* ----- IMPORT CONTAINERS ----- */
 import Settings from "./containers/Settings";
@@ -76,30 +84,20 @@ class App extends Component {
         content: {}
       },
       settings: {
-        selectedFontFamily: "Open Sans",
+        selectedFontFamily: "Helvetica",
         selectedFontSize: 14,
         classView: false,
         focusMode: false,
         showHelpTips: false,
         darkMode: false,
         fontSize: [14, 18, 22],
-        fontFamily: ["Open Sans", "Josefin Slab", "Lato"]
+        fontFamily: ["Helvetica", "Josefin Slab", "Lato"]
       },
       slide: 1
     };
   }
 
   /* --- make updates to settings --- */
-  // changeSettings = updateObject => {
-  //   // INPUT: --- { property: value } --- //
-  //   const prevSettings = this.state.settings;
-  //   const newSettings = {
-  //     ...prevSettings,
-  //     ...updateObject
-  //   };
-  //   this.setState({ settings: newSettings });
-  // };
-
   settingsControl = {
     update: updateObject =>
       this.setState(prevState => updateSettings(prevState, updateObject))
@@ -164,8 +162,8 @@ class App extends Component {
   };
 
   render() {
-    let fontFamily = this.state.settings.fontFamily;
-    let fontSize = this.state.settings.fontSize;
+    let selectedFontFamily = this.state.settings.selectedFontFamily;
+    let selectedFontSize = this.state.settings.selectedFontSize;
 
     return (
       <MuiThemeProvider
@@ -173,58 +171,57 @@ class App extends Component {
           palette: {
             type: this.state.settings.darkMode ? "dark" : "light"
           },
-          typography: { fontFamily: fontFamily, fontSize: fontSize }
+          typography: {
+            selectedFontFamily: selectedFontFamily,
+            selectedFontSize: selectedFontSize
+          }
         })}
       >
-        <button
-          onClick={() =>
-            this.changeSettings({ darkMode: !this.state.settings.darkMode })
-          }
-        >
-          Toggle Dark Mode Test
-        </button>
         <AnnotationModal
           open={this.state.annotationModal.open}
           highlightId={this.state.annotationModal.highlightId}
           highlights={this.state.highlights}
           annotationModalControl={this.annotationModalControl}
         />
-        <SwipeableViews
-          index={this.state.slide}
-          onChangeIndex={this.changeSlideView}
-          containerStyle={styles.slideContainer}
-          style={
-            {
-              /*this.state.settings.darkMode ? (
+        <Paper>
+          <SwipeableViews
+            index={this.state.slide}
+            onChangeIndex={this.changeSlideView}
+            containerStyle={styles.slideContainer}
+            style={
+              {
+                /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
+              }
             }
-          }
-        >
-          <Settings
-            settings={this.state.settings}
-            settingsControl={this.settingsControl}
-            user={this.state.user}
-          />
-          <Book
-            book={this.state.book}
-            highlights={this.state.highlights}
-            settings={this.state.settings}
-            style={Object.assign({}, styles.slide, styles.slide2)}
-            annotationModalControl={this.annotationModalControl}
-            highlightsControl={this.highlightsControl}
-          />
-          <Highlights
-            highlights={this.state.highlights}
-            style={Object.assign({}, styles.slide, styles.highlightsSlide)}
-          />
-          <Audio style={Object.assign({}, styles.slide, styles.audioSlide)} />
-          <SpeedReader
-            style={Object.assign({}, styles.slide, styles.speedReaderSlide)}
-          />
-        </SwipeableViews>
+          >
+            <Settings
+              settings={this.state.settings}
+              settingsControl={this.settingsControl}
+              user={this.state.user}
+            />
+
+            <Book
+              book={this.state.book}
+              highlights={this.state.highlights}
+              settings={this.state.settings}
+              style={Object.assign({}, styles.slide, styles.slide2)}
+              annotationModalControl={this.annotationModalControl}
+              highlightsControl={this.highlightsControl}
+            />
+            <Highlights
+              highlights={this.state.highlights}
+              style={Object.assign({}, styles.slide, styles.highlightsSlide)}
+            />
+            <Audio style={Object.assign({}, styles.slide, styles.audioSlide)} />
+            <SpeedReader
+              style={Object.assign({}, styles.slide, styles.speedReaderSlide)}
+            />
+          </SwipeableViews>
+        </Paper>
         {/*========== BOTTOM NAVIGATION MENU =========*/}
         <NavigationMenu
           changeSlideView={this.changeSlideView}
