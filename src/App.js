@@ -76,7 +76,8 @@ class App extends Component {
         content: {}
       },
       settings: {
-        selectedFont: 14,
+        selectedFontFamily: "Open Sans",
+        selectedFontSize: 14,
         classView: false,
         focusMode: false,
         showHelpTips: false,
@@ -89,19 +90,55 @@ class App extends Component {
   }
 
   /* --- make updates to settings --- */
-  changeSettings = updateObject => {
-    // INPUT: --- { property: value } --- //
-    const prevSettings = this.state.settings;
-    const newSettings = {
-      ...prevSettings,
-      ...updateObject
-    };
-    this.setState({ settings: newSettings });
-  };
+  // changeSettings = updateObject => {
+  //   // INPUT: --- { property: value } --- //
+  //   const prevSettings = this.state.settings;
+  //   const newSettings = {
+  //     ...prevSettings,
+  //     ...updateObject
+  //   };
+  //   this.setState({ settings: newSettings });
+  // };
 
   settingsControl = {
-    updateSettings: updateObject =>
-      this.setState(prevState => updateSettings(updateObject))
+    update: updateObject =>
+      this.setState(prevState => updateSettings(prevState, updateObject))
+  };
+
+  highlightsControl = {
+    add: highlightObject =>
+      this.setState(prevState => addHighlight(prevState, highlightObject)),
+    update: highlightUpdate =>
+      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
+    delete: highlightId =>
+      this.setState(prevState => deleteHighlight(prevState, highlightId))
+  };
+
+  highlightsControl = {
+    add: highlightObject =>
+      this.setState(prevState => addHighlight(prevState, highlightObject)),
+    update: highlightUpdate =>
+      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
+    delete: highlightId =>
+      this.setState(prevState => deleteHighlight(prevState, highlightId))
+  };
+
+  highlightsControl = {
+    add: highlightObject =>
+      this.setState(prevState => addHighlight(prevState, highlightObject)),
+    update: highlightUpdate =>
+      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
+    delete: highlightId =>
+      this.setState(prevState => deleteHighlight(prevState, highlightId))
+  };
+
+  highlightsControl = {
+    add: highlightObject =>
+      this.setState(prevState => addHighlight(prevState, highlightObject)),
+    update: highlightUpdate =>
+      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
+    delete: highlightId =>
+      this.setState(prevState => deleteHighlight(prevState, highlightId))
   };
 
   highlightsControl = {
@@ -159,7 +196,7 @@ class App extends Component {
         >
           <Settings
             settings={this.state.settings}
-            changeSettings={this.changeSettings}
+            settingsControl={this.settingsControl}
             user={this.state.user}
           />
           <Book

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
-import Input, { InputLabel } from "material-ui/Input";
-import { FormControl } from "material-ui/Form";
+import { InputLabel } from "material-ui/Input";
 import { MenuItem } from "material-ui/Menu";
 import Select from "material-ui/Select";
 /* ----- COMPONENT IMPORTS ----- */
@@ -20,13 +19,12 @@ class SettingsSelector extends Component {
     super(props);
     this.state = {
       open: false,
-      fontSelect: ""
+      select: ""
     };
   }
   handleChange = event => {
-    this.setState({ fontSelect: event.target.value });
-    console.log("event target value", event.target.value);
-    this.props.handleChangeSettings({ selectedFont: event.target.value });
+    this.setState({ select: event.target.value });
+    this.props.handleChangeSettings(event.target.value);
   };
   handleClose = () => {
     this.setState({ open: false });
@@ -37,7 +35,7 @@ class SettingsSelector extends Component {
   };
 
   render() {
-    const { label } = this.props;
+    const { label, options } = this.props;
     return (
       <div className="classes.selectField">
         <InputLabel htmlFor="Select">{label}</InputLabel>
@@ -45,21 +43,15 @@ class SettingsSelector extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           onOpen={this.handleOpen}
-          value={this.state.fontSelect}
+          value={this.state.select}
           onChange={this.handleChange}
         >
-          {/* <MenuItem value={this.props.fontSize[0]}>
-            {this.props.fontSize[0]}
-          </MenuItem>
-          <MenuItem value={this.props.fontSize[1]}>
-            {this.props.fontSize[1]}
-          </MenuItem>
-          <MenuItem value={this.props.fontSize[2]}>
-            {this.props.fontSize[2]}
-          </MenuItem> */}
-          {this.props.fontSize.map((fontsize, index) => (
-            <MenuItem key={index} value={fontsize.value}>
-              {fontsize}
+          {/* <MenuItem value={option[0]}>{option[0]}</MenuItem>
+          <MenuItem value={option[1]}>{option[1]}</MenuItem>
+          <MenuItem value={option[2]}>{option[2]}</MenuItem> */}
+          {options.map((option, index) => (
+            <MenuItem key={index} value={option}>
+              {option}
             </MenuItem>
           ))}
         </Select>

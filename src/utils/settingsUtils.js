@@ -3,5 +3,6 @@ export const updateSettings = (prevState, updateObject) => {
     ...prevState.settings,
     ...updateObject
   };
-  this.setState({ settings: newSettings });
+  console.table(updateObject);
+  return { settings: newSettings };
 };
