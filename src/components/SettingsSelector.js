@@ -9,7 +9,7 @@ import Select from "material-ui/Select";
 const styles = theme => ({
   selectField: {
     margin: theme.spacing.unit,
-    minWidth: 120
+    minWidth: 320
   }
 });
 /*---Style---*/
@@ -19,7 +19,7 @@ class SettingsSelector extends Component {
     super(props);
     this.state = {
       open: false,
-      select: ""
+      select: this.props.currentSelection
     };
   }
   handleChange = event => {
@@ -40,17 +40,15 @@ class SettingsSelector extends Component {
       <div className="classes.selectField">
         <InputLabel htmlFor="Select">{label}</InputLabel>
         <Select
+          className="classes.select"
           open={this.state.open}
           onClose={this.handleClose}
           onOpen={this.handleOpen}
           value={this.state.select}
           onChange={this.handleChange}
         >
-          {/* <MenuItem value={option[0]}>{option[0]}</MenuItem>
-          <MenuItem value={option[1]}>{option[1]}</MenuItem>
-          <MenuItem value={option[2]}>{option[2]}</MenuItem> */}
           {options.map((option, index) => (
-            <MenuItem key={index} value={option}>
+            <MenuItem className="classes.selection" key={index} value={option}>
               {option}
             </MenuItem>
           ))}
