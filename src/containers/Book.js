@@ -26,13 +26,6 @@ class Book extends Component {
     gallery: { open: false, position: 0, images: [] }
   };
 
-  bookDisplayWithHighlights = () => {
-    return addHighlightsToBook(
-      this.props.book.bookDisplay,
-      this.props.highlights
-    );
-  };
-
   /*---On select, open Tooltip, highlight content - save search details to state.---*/
   handleSelect = () => {
     const select = window.getSelection();
@@ -72,18 +65,25 @@ class Book extends Component {
           startId: startId,
           endId: endId,
           content: arrayOfContent
-            .map(displayId => this.props.book.bookDisplay[displayId].content)
+            .map(
+              displayId =>
+                this.props.bookDisplayWithHighlights[displayId].content
+            )
             .join("")
         }
       });
     } else {
       this.handleClear();
+
       if (
         select.anchorNode &&
         select.anchorNode.parentNode &&
         select.anchorNode.parentNode.className === "highlight"
       ) {
-        this.props.annotationModalControl.open();
+        const displayId = select.anchorNode.parentNode.id;
+        const highlightIdArray = this.props.bookDisplayWithHighlights[displayId]
+          .highlights;
+        this.props.annotationModalControl.open(highlightIdArray);
       } else {
         // console.log("Nada for highlights");
       }
@@ -158,7 +158,7 @@ class Book extends Component {
         <BookDisplay
           handleSelectClick={this.handleSelectClick}
           handleSelectTouch={this.handleSelectTouch}
-          bookDisplayWithHighlights={this.bookDisplayWithHighlights()}
+          bookDisplayWithHighlights={this.props.bookDisplayWithHighlights}
           highlights={highlights}
           addHighlight="func"
           updateHighlight="func"

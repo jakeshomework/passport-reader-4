@@ -7,11 +7,12 @@ export const closeModal = prevState => {
   };
 };
 
-export const openModal = (prevState, highlightId) => {
+export const openModal = (prevState, highlightsIdArray) => {
   return {
     annotationModal: {
       ...prevState.annotationModal,
-      open: true
+      open: true,
+      highlightsIdArray: highlightsIdArray
     }
   };
 };
