@@ -1,17 +1,24 @@
 import React, { Component } from "react";
-import { FormGroup, FormControlLabel } from "material-ui/Form";
+import { FormControlLabel } from "material-ui/Form";
+import { InputLabel } from "material-ui/Input";
+
 import Switch from "material-ui/Switch";
 /* ----- COMPONENT IMPORTS ----- */
 
 class SettingsSwitch extends Component {
   render() {
     return (
-      <FormGroup>
+      <div>
+        <InputLabel htmlFor="Select">{this.props.label}</InputLabel>
         <FormControlLabel
-          label={this.props.label}
-          control={<Switch onChange={this.props.handleChangeSettings} />}
+          control={
+            <Switch
+              color="primary"
+              onChange={this.props.handleChangeSettings}
+            />
+          }
         />
-      </FormGroup>
+      </div>
     );
   }
 }

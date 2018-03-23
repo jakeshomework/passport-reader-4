@@ -144,8 +144,9 @@ class Book extends Component {
     return (
       <div>
         Book selected:
-        <div>{` ${this.state.selection.startId} -> ${this.state.selection
-          .endId}`}</div>
+        <div>{` ${this.state.selection.startId} -> ${
+          this.state.selection.endId
+        }`}</div>
         <div>{this.state.selection.content}</div>
         {this.state.event}
         {this.state.showTooltip ? (
