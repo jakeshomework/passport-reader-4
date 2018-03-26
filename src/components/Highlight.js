@@ -10,7 +10,7 @@ const Highlight = ({ highlight }) => {
   /*---Handles click on highlight - triggers OPEN_ANNOTAION_MODAL with highlightId.---*/
   const openAnnotaionModal = () => {};
 
-  return <div>{this.props.listItem}</div>;
+  return <div>{this.props}</div>;
 };
 
 Highlight.propTypes = {

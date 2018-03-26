@@ -199,6 +199,7 @@ class App extends Component {
             }
           >
             <Settings
+              settings={this.state.settings}
               settingsControl={this.settingsControl}
               user={this.state.user}
             />
