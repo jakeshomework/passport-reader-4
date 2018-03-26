@@ -170,6 +170,7 @@ class App extends Component {
 
             <Book
               book={this.state.book}
+              bookDisplayWithHighlights={addHighlightsToBook(this.state.book.bookDisplay, this.state.highlights)}
               highlights={this.state.highlights}
               settings={this.state.settings}
               style={Object.assign({}, styles.slide, styles.slide2)}
