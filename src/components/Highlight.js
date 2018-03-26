@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import PropTypes from "prop-types";
 /* ----- COMPONENT IMPORTS ----- */
 /* ----- GRAPHQL IMPORTS ----- */
@@ -6,18 +6,15 @@ import PropTypes from "prop-types";
 
 /*---Displays a single highlights---*/
 
-const Highlight = ({highlight}) => {
-	/*---Handles click on highlight - triggers OPEN_ANNOTAION_MODAL with highlightId.---*/
-	const openAnnotaionModal = () => {}
-	
-	return(
-		<div>Highlight
-		</div>
-	)
-}
+const Highlight = ({ highlight }) => {
+  /*---Handles click on highlight - triggers OPEN_ANNOTAION_MODAL with highlightId.---*/
+  const openAnnotaionModal = () => {};
+
+  return <div>{this.props}</div>;
+};
 
 Highlight.propTypes = {
-	highlight: PropTypes.object
-}
+  highlight: PropTypes.object
+};
 
 export default Highlight;
