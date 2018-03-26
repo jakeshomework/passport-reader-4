@@ -35,9 +35,16 @@ const AnnotationModal = ({
     annotationModalControl.close();
   };
 
+  console.log("highlightsIdArray", highlightsIdArray);
+
   return (
     <Dialog open={open} onClose={handleClose}>
-      {/*<DialogTitle>Modify Highlight</DialogTitle>*/}
+      {highlightsIdArray.length === 1 ? (
+        <DialogTitle>{highlights[highlightsIdArray[0]].content}</DialogTitle>
+      ) : (
+        <Typography>Multiple Highlights Selected</Typography>
+      )}
+
       <DialogContent>
         {highlightsIdArray.length > 0 ? (
           <div>
