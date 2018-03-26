@@ -17,33 +17,63 @@ import Dialog, {
   DialogTitle
 } from "material-ui/Dialog";
 import Typography from "material-ui/Typography";
+import DeleteIcon from "material-ui-icons/Delete";
+import DoneIcon from "material-ui-icons/Done";
+import { withStyles } from "material-ui/styles";
+import grey from "material-ui/colors/grey";
+
 /*---Opens up on selection or click on highlight in Book or HighlightsList.---*/
+
+const styles = {};
 
 const AnnotationModal = ({
   open,
   highlightsIdArray,
   highlights,
-  annotationModalControl
+  annotationModalControl,
+  darkMode,
+  classes
 }) => {
-  /*---Update highlights array using UPDATE_HIGHLIGHT api.---*/
-  const updateHighlight = () => {};
-  /*---Delete highlight using DELETE_HIGHLIGHT api.---*/
-  const deleteAnnotation = () => {};
+  /* --- close modal without saving changes --- */
+  const handleCancel = () => {};
+  /* --- Update highlights array using UPDATE_HIGHLIGHT api. --- */
+  const handleSave = () => {};
+  /* --- Delete highlight using DELETE_HIGHLIGHT api. --- */
+  const handleDelete = () => {};
 
   const handleClose = () => {
-    console.log("clooosssin");
     annotationModalControl.close();
   };
 
-  console.log("highlightsIdArray", highlightsIdArray);
+  const generateTitleStyle = () => {
+    return {
+      border: "solid",
+      backgroundColor: darkMode ? grey[700] : grey[200],
+      borderColor:
+        highlightsIdArray.length === 1
+          ? highlights[highlightsIdArray[0]].active
+          : grey[100],
+      borderWidth: "0px 10px 0px 10px",
+      margin: "10px",
+      borderRadius: "10px",
+      boxShadow:
+        "inset 0px 1px 5px 0px rgba(0, 0, 0, 0.2), inset 0px 2px 2px 0px rgba(0, 0, 0, 0.14), inset 0px 3px 1px -2px rgba(0, 0, 0, 0.12)"
+    };
+  };
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      {highlightsIdArray.length === 1 ? (
-        <DialogTitle>{highlights[highlightsIdArray[0]].content}</DialogTitle>
-      ) : (
-        <Typography>Multiple Highlights Selected</Typography>
-      )}
+      <div style={generateTitleStyle()}>
+        {highlightsIdArray.length === 1 ? (
+          <DialogTitle>
+            {highlights[highlightsIdArray[0]].highlightedText}
+          </DialogTitle>
+        ) : (
+          <DialogTitle>
+            Multiple Highlights Selected -- import Highlight Component
+          </DialogTitle>
+        )}
+      </div>
 
       <DialogContent>
         {highlightsIdArray.length > 0 ? (
@@ -54,16 +84,21 @@ const AnnotationModal = ({
             </Typography>
           </div>
         ) : null}
-        <ColorSelector handleClick={updateHighlight} />
-        <AnnotationOptions handleClick={updateHighlight} />
+        <ColorSelector handleClick={this.handleUpdate} />
+        <AnnotationOptions handleClick={this.handleUpdate} />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          Cancel
-        </Button>
-        <Button onClick={this.updateAnnotation} color="primary" autoFocus>
-          Save
-        </Button>
+        <div className={classes.container}>
+          <Button onClick={handleDelete} variant="raised">
+            <DeleteIcon />
+          </Button>
+          <Button onClick={handleCancel} variant="raised">
+            Cancel
+          </Button>
+          <Button onClick={handleSave} variant="raised" color="primary">
+            <DoneIcon />
+          </Button>
+        </div>
       </DialogActions>
     </Dialog>
   );
@@ -71,4 +106,4 @@ const AnnotationModal = ({
 
 AnnotationModal.propTypes = {};
 
-export default AnnotationModal;
+export default withStyles(styles)(AnnotationModal);

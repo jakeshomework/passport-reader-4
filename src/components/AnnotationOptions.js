@@ -13,6 +13,7 @@ import Edit from "material-ui-icons/Edit";
 import Mic from "material-ui-icons/Mic";
 import Videocam from "material-ui-icons/Videocam";
 import Share from "material-ui-icons/Share";
+import grey from "material-ui/colors/grey";
 
 /* ----- COMPONENT IMPORTS ----- */
 

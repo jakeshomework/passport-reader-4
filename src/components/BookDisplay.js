@@ -24,7 +24,7 @@ const BookDisplay = ({
   // console.log(bookDisplayWithHighlights["emc-62"]);
 
   // replace with props.settings.classView
-  const classView = true;
+  const classView = false;
 
   const generateHighlightColor = highlightsArray => {
     return !classView
