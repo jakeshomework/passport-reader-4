@@ -7,23 +7,26 @@ export const HighlightsDemo = {
     highlightedText: "She was a large woman",
     startId: "emc-62",
     endId: "emc-96",
-    color: "red",
+    color: "hlc1",
     createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
     updated: "Wed Mar 15 2018 13:23:19 GMT-0500 (CDT)",
-    annotation: {
-      notes: {
+    annotations: [
+      {
+        type: "note",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "This is the note I'm taking :laughing:"
       },
-      audio: {
+      {
+        type: "audio",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "someplace/highlightId.mp3"
       },
-      video: {
+      {
+        type: "video",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "someplace/highlightId.mp4"
       }
-    }
+    ]
   },
   highlightID22222: {
     id: "highlightID22222",
@@ -33,22 +36,25 @@ export const HighlightsDemo = {
     highlightedText: "THE STRAP broke WITH a single tug",
     startId: "emc-176",
     endId: "emc-188",
-    color: "blue",
+    color: "hlc2",
     createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
     updated: "Wed Mar 15 2018 13:23:19 GMT-0500 (CDT)",
-    annotation: {
-      notes: {
+    annotations: [
+      {
+        type: "note",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "This is the note I'm taking :laughing:"
       },
-      audio: {
+      {
+        type: "audio",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "someplace/highlightId.mp3"
       },
-      video: {
+      {
+        type: "video",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "someplace/highlightId.mp4"
       }
-    }
+    ]
   }
 };

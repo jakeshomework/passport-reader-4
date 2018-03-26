@@ -148,6 +148,7 @@ class App extends Component {
           highlightsIdArray={this.state.annotationModal.highlightsIdArray}
           highlights={this.state.highlights}
           annotationModalControl={this.annotationModalControl}
+          darkMode={this.state.settings.darkMode}
         />
         <Paper>
           <SwipeableViews
@@ -170,7 +171,10 @@ class App extends Component {
 
             <Book
               book={this.state.book}
-              bookDisplayWithHighlights={addHighlightsToBook(this.state.book.bookDisplay, this.state.highlights)}
+              bookDisplayWithHighlights={addHighlightsToBook(
+                this.state.book.bookDisplay,
+                this.state.highlights
+              )}
               highlights={this.state.highlights}
               settings={this.state.settings}
               style={Object.assign({}, styles.slide, styles.slide2)}
