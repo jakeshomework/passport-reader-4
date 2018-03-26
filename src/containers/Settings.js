@@ -13,9 +13,9 @@ import { withStyles } from "material-ui/styles";
 
 /*---In a side drawer, Settings contains the user control over the content.---*/
 const styles = theme => ({
-  settingBase: {
-    margin: theme.spacing.unit
-  }
+  // settingBase: {
+  //   margin: theme.spacing.unit
+  // }
 });
 
 class Settings extends Component {
@@ -76,7 +76,6 @@ class Settings extends Component {
           </FormLabel>
 
           <SettingsSwitch
-            className={classes.settingBase}
             setting={classView}
             handleChangeSettings={this.toggleView}
             label="Class View"
