@@ -10,7 +10,6 @@ import List, {
 } from "material-ui/List";
 import Checkbox from "material-ui/Checkbox";
 import IconButton from "material-ui/IconButton";
-import highlight from "";
 
 /*---Displays a list of Highlights---*/
 const styles = theme => ({
