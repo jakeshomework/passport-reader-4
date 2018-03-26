@@ -13,9 +13,13 @@ import { withStyles } from "material-ui/styles";
 
 /*---In a side drawer, Settings contains the user control over the content.---*/
 const styles = theme => ({
-  // settingBase: {
-  //   margin: theme.spacing.unit
-  // }
+  root: {
+    width: "100%",
+    textAlign: "center"
+  },
+  formGroup: {
+    width: 900
+  }
 });
 
 class Settings extends Component {
@@ -69,8 +73,8 @@ class Settings extends Component {
     const { classes } = this.props;
 
     return (
-      <div>
-        <FormGroup>
+      <div className={classes.root}>
+        <FormGroup className={classes.formGroup}>
           <FormLabel component="legend">
             <h1>Settings</h1>
           </FormLabel>

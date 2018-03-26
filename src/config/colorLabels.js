@@ -7,29 +7,34 @@ import yellow from "material-ui/colors/yellow";
 import grey from "material-ui/colors/grey";
 
 export const colorLabels = {
-  yellow: {
+  hlc1: {
     label: "Main Concept",
-    active: yellow["500"],
-    inactive: yellow["500"]
+    active: yellow["600"],
+    inactive: yellow["600"]
   },
-  green: {
+  hlc2: {
     label: "Supporting Idea",
     active: lightGreen["A700"],
     inactive: lightGreen["A700"]
   },
-  blue: {
+  hlc3: {
     label: "Vocabulary",
     active: lightBlue["A100"],
     inactive: lightBlue["A100"]
   },
-  pink: {
+  hlc4: {
     label: "Character Detail",
     active: pink["A100"],
     inactive: pink["A100"]
   },
-  purple: {
+  hlc5: {
     label: "Question",
     active: purple["A100"],
     inactive: purple["A100"]
+  },
+  hlc6: {
+    label: "All",
+    active: grey["A100"],
+    inactive: grey["A100"]
   }
 };
