@@ -2,21 +2,34 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
+import IconButton from "material-ui/IconButton";
 import Card from "material-ui/Card";
 import Button from "material-ui/Button";
+import Edit from "material-ui-icons/Edit";
+import Mic from "material-ui-icons/Mic";
+import Videocam from "material-ui-icons/Videocam";
+import Share from "material-ui-icons/Share";
 
 /* ----- COMPONENT IMPORTS ----- */
+import ColorSelector from "./ColorSelector";
 
 /*---Opens on selection of text from Book.---*/
 
-// const renderTooltip = position => {
-//   ReactDOM.render(<Tooltip open={true} />, document.getElementById(position));
-// };
-
 const styles = theme => ({
   root: {
-    position: "fixed",
-    backgroundColor: "red"
+    position: "fixed"
+    // backgroundColor: "red"
+  },
+  triangle: {
+    // width: 0,
+    // height: 0,
+    // borderLeft: "10px solid transparent",
+    // borderRight: "10px solid transparent",
+    // borderBottom: "20px solid blue"
+  },
+  options: {
+    display: "flex",
+    justifyContent: "space-between"
   }
 });
 
@@ -25,11 +38,11 @@ const getTooltipPosition = selection => {
   const idToCheck = selection.endId ? selection.endId : selection.startId;
   const rect = document.getElementById(idToCheck).getBoundingClientRect();
   const top = rect.y;
-  const right = rect.x < 250 ? 250 : rect.x;
+  const right = rect.x < 350 ? 350 : rect.x;
   return { top: top + 20, right: -right };
 };
 
-const HighlightTooltip = ({ open, selection, classes, highlightsControl }) => {
+class HighlightTooltip extends Component {
   //   componentDidMount() {
   //     renderTooltip(this.props.position);
   //   }
@@ -38,18 +51,43 @@ const HighlightTooltip = ({ open, selection, classes, highlightsControl }) => {
   //     renderTooltip(this.props.position);
   //   }
 
-  const handleAdd = () => {
+  addHighlight = () => {
     // console.table(selection);
-    highlightsControl.add(selection);
+    this.props.highlightsControl.add(this.props.selection);
   };
 
-  return (
-    <Card raised className={classes.root} style={getTooltipPosition(selection)}>
-      <h2>No, I'm the tooltip</h2>
-      <Button onClick={handleAdd}>Add a fucking highlight!</Button>
-    </Card>
-  );
-};
+  render() {
+    const { open, selection, classes } = this.props;
+
+    return (
+      <Card
+        raised
+        className={classes.root}
+        style={getTooltipPosition(selection)}
+      >
+        {/*<div className={classes.triangle} />*/}
+        <ColorSelector handleClick={this.addHighlight} current="none" />
+        <div className={classes.options}>
+          <div>
+            <IconButton className={classes.button} aria-label="Note">
+              <Edit />
+            </IconButton>
+            <IconButton className={classes.button} aria-label="Microphone">
+              <Mic />
+            </IconButton>
+            <IconButton className={classes.button} aria-label="Video">
+              <Videocam />
+            </IconButton>
+            <IconButton className={classes.button} aria-label="Share">
+              <Share />
+            </IconButton>
+          </div>
+          <Button raised>Cancel</Button>
+        </div>
+      </Card>
+    );
+  }
+}
 
 HighlightTooltip.propTypes = {
   open: PropTypes.string,

@@ -11,6 +11,8 @@ import Book from "material-ui-icons/Book";
 import Settings from "material-ui-icons/Settings";
 import FormatListBulleted from "material-ui-icons/FormatListBulleted";
 import VolumeUp from "material-ui-icons/VolumeUp";
+import Headset from "material-ui-icons/Headset";
+import WbIridescent from "material-ui-icons/WbIridescent";
 
 console.log(withStyles);
 
@@ -62,7 +64,12 @@ function NavigationMenu(props) {
       <BottomNavigationAction
         label="Audio"
         value={3}
-        icon={<VolumeUp className={classes.icon} />}
+        icon={<Headset className={classes.icon} />}
+      />
+      <BottomNavigationAction
+        label="Speed Read"
+        value={4}
+        icon={<WbIridescent className={classes.icon} />}
       />
       {/*<BottomNavigationButton label="Activities" value={3} icon={<Badge className={classes.badge} badgeContent={4} color="accent"><QuestionAnswer className={classes.icon} /></Badge>} />*/}
     </BottomNavigation>

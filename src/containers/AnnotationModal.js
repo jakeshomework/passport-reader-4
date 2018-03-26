@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 /* ----- COMPONENT IMPORTS ----- */
-import AnnotationColorSelector from "../components/AnnotationColorSelector";
+import ColorSelector from "../components/ColorSelector";
 import AnnotationOptions from "../components/AnnotationOptions";
 /* ----- GRAPHQL IMPORTS ----- */
 //import GET_HIGHLIGHT_BY_ID from "../graphql/GET_HIGHLIGHT_BY_ID";
@@ -16,16 +16,17 @@ import Dialog, {
   DialogContentText,
   DialogTitle
 } from "material-ui/Dialog";
+import Typography from "material-ui/Typography";
 /*---Opens up on selection or click on highlight in Book or HighlightsList.---*/
 
 const AnnotationModal = ({
   open,
-  highlightId,
+  highlightsIdArray,
   highlights,
   annotationModalControl
 }) => {
   /*---Update highlights array using UPDATE_HIGHLIGHT api.---*/
-  const updateAnnotation = () => {};
+  const updateHighlight = () => {};
   /*---Delete highlight using DELETE_HIGHLIGHT api.---*/
   const deleteAnnotation = () => {};
 
@@ -36,10 +37,18 @@ const AnnotationModal = ({
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Modify Highlight</DialogTitle>
+      {/*<DialogTitle>Modify Highlight</DialogTitle>*/}
       <DialogContent>
-        <AnnotationColorSelector updateHighlight="func" />
-        <AnnotationOptions updateHighlight="func" />
+        {highlightsIdArray.length > 0 ? (
+          <div>
+            <Typography>Highlights here: {highlightsIdArray.join()}</Typography>
+            <Typography>
+              First startId in list: {highlights[highlightsIdArray[0]].startId}
+            </Typography>
+          </div>
+        ) : null}
+        <ColorSelector handleClick={updateHighlight} />
+        <AnnotationOptions handleClick={updateHighlight} />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">

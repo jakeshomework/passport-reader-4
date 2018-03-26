@@ -34,6 +34,8 @@ import {
   updateHighlight,
   deleteHighlight
 } from "./utils/highlightsUtils";
+import { addHighlightsToBook } from "./utils/addHighlightsToBook";
+
 /* ----- IMPORT DATA ----- */
 import { HighlightsDemo } from "./data/highlights.js";
 /* ----- IMPORT STYLES ----- */
@@ -80,7 +82,7 @@ class App extends Component {
       highlights: HighlightsDemo,
       annotationModal: {
         open: false,
-        highlightId: "",
+        highlightsIdArray: [],
         content: {}
       },
       settings: {
@@ -112,46 +114,10 @@ class App extends Component {
       this.setState(prevState => deleteHighlight(prevState, highlightId))
   };
 
-  highlightsControl = {
-    add: highlightObject =>
-      this.setState(prevState => addHighlight(prevState, highlightObject)),
-    update: highlightUpdate =>
-      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
-    delete: highlightId =>
-      this.setState(prevState => deleteHighlight(prevState, highlightId))
-  };
-
-  highlightsControl = {
-    add: highlightObject =>
-      this.setState(prevState => addHighlight(prevState, highlightObject)),
-    update: highlightUpdate =>
-      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
-    delete: highlightId =>
-      this.setState(prevState => deleteHighlight(prevState, highlightId))
-  };
-
-  highlightsControl = {
-    add: highlightObject =>
-      this.setState(prevState => addHighlight(prevState, highlightObject)),
-    update: highlightUpdate =>
-      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
-    delete: highlightId =>
-      this.setState(prevState => deleteHighlight(prevState, highlightId))
-  };
-
-  highlightsControl = {
-    add: highlightObject =>
-      this.setState(prevState => addHighlight(prevState, highlightObject)),
-    update: highlightUpdate =>
-      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
-    delete: highlightId =>
-      this.setState(prevState => deleteHighlight(prevState, highlightId))
-  };
-
   annotationModalControl = {
     close: () => this.setState(prevState => closeModal(prevState)),
-    open: highlightId =>
-      this.setState(prevState => openModal(prevState, highlightId)),
+    open: highlightsIdArray =>
+      this.setState(prevState => openModal(prevState, highlightsIdArray)),
     update: content =>
       this.setState(prevState => updateModal(prevState, content))
   };
@@ -179,7 +145,7 @@ class App extends Component {
       >
         <AnnotationModal
           open={this.state.annotationModal.open}
-          highlightId={this.state.annotationModal.highlightId}
+          highlightsIdArray={this.state.annotationModal.highlightsIdArray}
           highlights={this.state.highlights}
           annotationModalControl={this.annotationModalControl}
         />
@@ -188,15 +154,13 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={
-              {
-                /*this.state.settings.darkMode ? (
+            style={{
+              /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-              }
-            }
+            }}
           >
             <Settings
               settings={this.state.settings}
@@ -222,6 +186,7 @@ class App extends Component {
             />
           </SwipeableViews>
         </Paper>
+
         {/*========== BOTTOM NAVIGATION MENU =========*/}
         <NavigationMenu
           changeSlideView={this.changeSlideView}

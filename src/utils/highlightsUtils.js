@@ -1,6 +1,7 @@
 import uuidv4 from "uuid/v4";
 
 export const addHighlight = (prevState, highlightObject) => {
+  // console.log(highlightObject);
   let highlightId = uuidv4();
 
   const brandNewHighlight = {
@@ -34,6 +35,8 @@ export const addHighlight = (prevState, highlightObject) => {
     ...prevState.highlights,
     [highlightId]: brandNewHighlight
   };
+
+  // console.log(newHighlights);
 
   return { highlights: newHighlights };
 };
