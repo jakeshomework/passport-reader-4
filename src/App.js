@@ -38,6 +38,7 @@ import { addHighlightsToBook } from "./utils/addHighlightsToBook";
 
 /* ----- IMPORT DATA ----- */
 import { HighlightsDemo } from "./data/highlights.js";
+import { UsersDemo } from "./data/users.js";
 /* ----- IMPORT STYLES ----- */
 import { AppStyles } from "./styles/AppStyles.js";
 
@@ -60,12 +61,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
-        userId: "111",
-        role: "student",
-        allowClassView: false
-      },
+      user: UsersDemo.user111,
       book: {
+        bookId: "123",
         bookDisplay: formattedBook.bookDisplay,
         asides: formattedBook.asides,
         images: formattedBook.images,
@@ -135,7 +133,10 @@ class App extends Component {
       <MuiThemeProvider
         theme={createMuiTheme({
           palette: {
-            type: this.state.settings.darkMode ? "dark" : "light"
+            type: this.state.settings.darkMode ? "dark" : "light",
+            primary: {
+              main: "#4695ec"
+            }
           },
           typography: {
             selectedFontFamily: selectedFontFamily,
@@ -149,6 +150,8 @@ class App extends Component {
           highlights={this.state.highlights}
           annotationModalControl={this.annotationModalControl}
           darkMode={this.state.settings.darkMode}
+          users={UsersDemo}
+          highlightsControl={this.highlightsControl}
         />
         <Paper>
           <SwipeableViews
