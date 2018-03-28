@@ -51,9 +51,12 @@ class HighlightTooltip extends Component {
   //     renderTooltip(this.props.position);
   //   }
 
-  addHighlight = () => {
+  addHighlight = color => {
     // console.table(selection);
-    this.props.highlightsControl.add(this.props.selection);
+    this.props.highlightsControl.add({
+      ...this.props.selection,
+      color: color
+    });
   };
 
   render() {

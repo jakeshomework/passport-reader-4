@@ -4,6 +4,8 @@ import orange from "material-ui/colors/orange";
 /* ----- IMPORT UTILITIES ----- */
 /* ----- COMPONENT IMPORTS ----- */
 import BookSingleString from "./BookSingleString";
+/* ----- DATA IMPORTS ----- */
+import { colorLabels } from "../config/colorLabels";
 
 /*---Renders book content.---*/
 
@@ -27,8 +29,9 @@ const BookDisplay = ({
   const classView = false;
 
   const generateHighlightColor = highlightsArray => {
+    // console.log(highlights[highlightsArray[0]].color);
     return !classView
-      ? highlights[highlightsArray[0]].color
+      ? colorLabels[highlights[highlightsArray[0]].color].active
       : highlightsArray.length > 9
         ? orange[900]
         : orange[highlightsArray.length * 100];
