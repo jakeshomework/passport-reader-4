@@ -158,13 +158,15 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={{
-              /*this.state.settings.darkMode ? (
+            style={
+              {
+                /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-            }}
+              }
+            }
           >
             <Settings
               settings={this.state.settings}
@@ -187,6 +189,7 @@ class App extends Component {
             <Highlights
               highlights={this.state.highlights}
               style={Object.assign({}, styles.slide, styles.highlightsSlide)}
+              annotationModalControl={this.annotationModalControl}
             />
             <Audio style={Object.assign({}, styles.slide, styles.audioSlide)} />
             <SpeedReader

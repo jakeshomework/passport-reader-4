@@ -25,6 +25,7 @@ class Highlight extends Component {
   };
 
   render() {
+    console.log("highlight", this.props);
     return (
       <ListItem
         //key={}
