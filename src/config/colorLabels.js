@@ -31,10 +31,5 @@ export const colorLabels = {
     label: "Question",
     active: purple["A100"],
     inactive: purple["A100"]
-  },
-  hlc6: {
-    label: "All",
-    active: grey["A100"],
-    inactive: grey["A100"]
   }
 };

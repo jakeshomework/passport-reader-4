@@ -11,6 +11,7 @@ import List, {
 import Checkbox from "material-ui/Checkbox";
 import IconButton from "material-ui/IconButton";
 import Paper from "material-ui/Paper";
+import grey from "material-ui/colors/grey";
 
 // ===== MATERIAL-UI COLOR IMPORTS yellow, blue, green, pink, purple ===== //
 import { colorLabels } from "../config/colorLabels";
@@ -20,6 +21,14 @@ const styles = theme => ({
   root: {
     width: "100%",
     textAlign: "center"
+  },
+  checkbox: {
+    marginRight: "20px"
+  },
+  allCheckbox: {
+    marginLeft: "10px",
+    color: "white",
+    backgroundColor: grey["A100"]
   }
 });
 
@@ -44,11 +53,12 @@ class HighlightsList extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, checkbox, allCheckbox } = this.props;
     return (
       <div>
         <Checkbox
           //checked={this.state.checked.indexOf(value) !== -1}
+          className={classes.checkbox}
           disableRipple
           style={{
             backgroundColor: colorLabels.hlc1.active,
@@ -56,6 +66,7 @@ class HighlightsList extends Component {
           }}
         />
         <Checkbox
+          className={classes.checkbox}
           disableRipple
           style={{
             backgroundColor: colorLabels.hlc2.active,
@@ -63,6 +74,7 @@ class HighlightsList extends Component {
           }}
         />
         <Checkbox
+          className={classes.checkbox}
           disableRipple
           style={{
             backgroundColor: colorLabels.hlc3.active,
@@ -70,6 +82,7 @@ class HighlightsList extends Component {
           }}
         />
         <Checkbox
+          className={classes.checkbox}
           disableRipple
           style={{
             backgroundColor: colorLabels.hlc4.active,
@@ -77,20 +90,15 @@ class HighlightsList extends Component {
           }}
         />
         <Checkbox
+          className={classes.checkbox}
           disableRipple
           style={{
             backgroundColor: colorLabels.hlc5.active,
             color: "white"
           }}
         />
-        <Checkbox
-          label="all"
-          disableRipple
-          style={{
-            backgroundColor: colorLabels.hlc6.active,
-            color: "white"
-          }}
-        />
+        Select All
+        <Checkbox className={classes.allCheckbox} label="all" disableRipple />
         <List>
           {[0, 1, 2, 3].map(value => (
             <ListItem
@@ -101,12 +109,6 @@ class HighlightsList extends Component {
               onClick={this.handleToggle(value)}
               className={classes.listItem}
             >
-              <Checkbox
-                checked={this.state.checked.indexOf(value) !== -1}
-                tabIndex={-1}
-                disableRipple
-                color="primary"
-              />
               <Highlight listItem={this.props.filteredList} />
             </ListItem>
           ))}

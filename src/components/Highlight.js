@@ -20,18 +20,22 @@ import { colorLabels } from "../config/colorLabels";
 
 class Highlight extends Component {
   /*---Handles click on highlight - triggers OPEN_ANNOTAION_MODAL with highlightId.---*/
-  openAnnotaionModal = () => {};
+  openAnnotaionModal = () => {
+    console.log("opened");
+  };
 
   render() {
     return (
       <ListItem
-      //key={}
-      //role={undefined}
-      //dense
-      //button
+        //key={}
+        //role={undefined}
+        //dense
+        //button
+        onClick={this.openAnnotaionModal}
       >
-        <Avatar style={{ color: colorLabels.hlc1.active }} />
-
+        <Avatar>
+          <ModeEditIcon />
+        </Avatar>
         <ListItemText primary={`Highlight`} />
       </ListItem>
     );

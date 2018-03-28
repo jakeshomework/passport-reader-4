@@ -30,7 +30,6 @@ class Highlights extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        Highlights
         <HighlightsList filteredList={this.props.Highlights} />
         <StudyMode filteredList="array" open="boolean" />
       </div>
