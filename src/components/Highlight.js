@@ -27,13 +27,7 @@ class Highlight extends Component {
   render() {
     console.log("highlight", this.props);
     return (
-      <ListItem
-        //key={}
-        //role={undefined}
-        //dense
-        //button
-        onClick={this.openAnnotaionModal}
-      >
+      <ListItem onClick={this.openAnnotaionModal}>
         <Avatar>
           <ModeEditIcon />
         </Avatar>

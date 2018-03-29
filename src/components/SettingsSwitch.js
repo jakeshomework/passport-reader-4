@@ -1,26 +1,39 @@
 import React, { Component } from "react";
 import { FormControlLabel } from "material-ui/Form";
 import { InputLabel } from "material-ui/Input";
-
+import Grid from "material-ui/Grid";
 import Switch from "material-ui/Switch";
+import { withStyles } from "material-ui/styles";
 /* ----- COMPONENT IMPORTS ----- */
-
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    fontSize: theme.typography.fontSize
+  }
+});
 class SettingsSwitch extends Component {
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        <InputLabel htmlFor="Select">{this.props.label}</InputLabel>
-        <FormControlLabel
-          control={
-            <Switch
-              color="primary"
-              onChange={this.props.handleChangeSettings}
+      <div className={classes.root}>
+        <Grid container spacing={12}>
+          <Grid item xs={6}>
+            <InputLabel htmlFor="Select">{this.props.label}</InputLabel>
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel
+              control={
+                <Switch
+                  color="primary"
+                  onChange={this.props.handleChangeSettings}
+                />
+              }
             />
-          }
-        />
+          </Grid>
+        </Grid>
       </div>
     );
   }
 }
 
-export default SettingsSwitch;
+export default withStyles(styles)(SettingsSwitch);

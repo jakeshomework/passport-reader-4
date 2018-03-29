@@ -5,6 +5,8 @@ import BookDisplay from "../components/BookDisplay";
 import ImageGallery from "../components/ImageGallery";
 import HighlightTooltip from "../components/HighlightTooltip";
 import GlossaryTooltip from "../components/GlossaryTooltip";
+import Grid from "material-ui/Grid";
+import { withStyles } from "material-ui/styles";
 /* ----- UTILITY IMPORTS ----- */
 import { addHighlightsToBook } from "../utils/addHighlightsToBook";
 import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
@@ -14,7 +16,14 @@ import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
 //import GET_HIGHLIGHTS from "../graphql/GET_HIGHLIGHTS";
 
 /*---Book displays contents and processes highlights to be passed to Book component---*/
-
+const styles = theme => ({
+  root: {
+    padding: theme.spacing.unit * 4,
+    marginBottom: 100,
+    fontSize: theme.typography.fontSize,
+    fontFamily: theme.typography.fontFamily
+  }
+});
 class Book extends Component {
   state = {
     showTooltip: false,
@@ -128,44 +137,52 @@ class Book extends Component {
       : clearInterval(selectWatcher);
 
     const { bookDisplay } = this.props.book;
-    const { highlights, highlightsControl } = this.props;
+    const { highlights, highlightsControl, classes } = this.props;
 
     const highlightsKeys = Object.keys(highlights);
     // console.log(highlightsKeys);
     // console.log(highlights);
+
     highlightsKeys.forEach(highlightId => {
       const { startId, endId, id } = highlights[highlightId];
 
-      // console.log(startId.slice(4));
+      // console.log("startID: ", startId.slice(4));
       // const emcIdArray =
       // TODO: only add highlightId to
     });
 
     return (
-      <div>
-        Book selected:
-        <div>{` ${this.state.selection.startId} -> ${this.state.selection
-          .endId}`}</div>
-        <div>{this.state.selection.content}</div>
-        {this.state.event}
-        {this.state.showTooltip ? (
-          <HighlightTooltip
-            open={this.state.showTooltip}
-            selection={this.state.selection}
-            highlightsControl={highlightsControl}
-          />
-        ) : null}
-        <BookDisplay
-          handleSelectClick={this.handleSelectClick}
-          handleSelectTouch={this.handleSelectTouch}
-          bookDisplayWithHighlights={this.props.bookDisplayWithHighlights}
-          highlights={highlights}
-          addHighlight="func"
-          updateHighlight="func"
-          deleteHighlight="func"
-        />
-        <ImageGallery gallery="object" />
-        <GlossaryTooltip selection="object" />
+      <div className={classes.root}>
+        <Grid container spacing={24}>
+          <Grid item xs={1} sm={2} />
+          <Grid item xs={10} sm={8}>
+            Book selected:
+            <div>{` ${this.state.selection.startId} -> ${
+              this.state.selection.endId
+            }`}</div>
+            <div>{this.state.selection.content}</div>
+            {this.state.event}
+            {this.state.showTooltip ? (
+              <HighlightTooltip
+                open={this.state.showTooltip}
+                selection={this.state.selection}
+                highlightsControl={highlightsControl}
+              />
+            ) : null}
+            <BookDisplay
+              handleSelectClick={this.handleSelectClick}
+              handleSelectTouch={this.handleSelectTouch}
+              bookDisplayWithHighlights={this.props.bookDisplayWithHighlights}
+              highlights={highlights}
+              addHighlight="func"
+              updateHighlight="func"
+              deleteHighlight="func"
+            />
+            <ImageGallery gallery="object" />
+            <GlossaryTooltip selection="object" />
+          </Grid>
+          <Grid item xs={1} sm={2} />
+        </Grid>
       </div>
     );
   }
@@ -173,4 +190,4 @@ class Book extends Component {
 
 Book.propTypes = {};
 
-export default Book;
+export default withStyles(styles)(Book);

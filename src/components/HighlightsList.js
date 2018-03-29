@@ -7,6 +7,7 @@ import List, { ListItem } from "material-ui/List";
 import Checkbox from "material-ui/Checkbox";
 import IconButton from "material-ui/IconButton";
 import grey from "material-ui/colors/grey";
+import moment from "moment";
 
 import Table, {
   TableBody,
@@ -33,8 +34,6 @@ const CustomTableCell = withStyles(theme => ({
 /*---Displays a list of Highlights ---*/
 const styles = theme => ({
   root: {
-    // width: "100%",
-    flexGrow: 1,
     padding: theme.spacing.unit * 4
   },
   table: {
@@ -46,7 +45,8 @@ const styles = theme => ({
     }
   },
   tableHead: {
-    backgroundColor: grey["A400"]
+    backgroundColor: grey["700"],
+    color: "black"
   },
   checkbox: {
     marginRight: "20px"
@@ -54,7 +54,7 @@ const styles = theme => ({
   allCheckbox: {
     marginLeft: "10px",
     color: "white",
-    backgroundColor: grey["A100"]
+    backgroundColor: grey["700"]
   },
   checkBoxes: {
     float: "left",
@@ -62,10 +62,9 @@ const styles = theme => ({
   }
 });
 
-function createData(userId, content, date) {
-  return { userId, content, date };
+function createData(userId, highlightedText, updated, annotations) {
+  return { userId, highlightedText, updated, annotations };
 }
-const data = [createData("TS", "this is the content", "14days ago")];
 
 class HighlightsList extends Component {
   state = {
@@ -89,10 +88,10 @@ class HighlightsList extends Component {
   };
 
   render() {
-    const getData = this.props.filteredList;
-    console.log("getData", getData);
+    const { classes, filteredList } = this.props;
 
-    const { classes } = this.props;
+    const filteredListArray = Object.keys(filteredList);
+
     return (
       <div className={classes.root}>
         <div className={classes.checkBoxes}>
@@ -145,25 +144,37 @@ class HighlightsList extends Component {
             <TableHead className={classes.tableHead}>
               <TableRow>
                 <CustomTableCell>User</CustomTableCell>
-                <CustomTableCell>Content</CustomTableCell>
+                <CustomTableCell>Highlighted Text</CustomTableCell>
                 <CustomTableCell>Date</CustomTableCell>
+                <CustomTableCell>Annotations</CustomTableCell>
               </TableRow>
             </TableHead>
 
             <TableBody>
-              {data.map(highlight => {
+              {filteredListArray.map(highlightId => {
+                console.log("color labels", colorLabels);
+                const {
+                  userId,
+                  color,
+                  highlightedText,
+                  updated,
+                  annotations
+                } = filteredList[highlightId];
                 return (
                   <TableRow
                     className={classes.row}
-                    key={highlight.id}
                     onClick={this.props.annotationModalControl.open}
                   >
                     <CustomTableCell>
-                      <Avatar>{highlight.userId}</Avatar>
+                      <Avatar style={colorLabels}>{userId}</Avatar>
                     </CustomTableCell>
 
-                    <CustomTableCell>{highlight.content}</CustomTableCell>
-                    <CustomTableCell>{highlight.date}</CustomTableCell>
+                    <CustomTableCell>{highlightedText}</CustomTableCell>
+                    {/* <CustomTableCell>14 May, 2018</CustomTableCell> */}
+                    <CustomTableCell>
+                      {moment(updated).fromNow()}
+                    </CustomTableCell>
+                    <CustomTableCell>annotations</CustomTableCell>
                   </TableRow>
                 );
               })}
