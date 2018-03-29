@@ -1,6 +1,7 @@
 import { buildArrayOfDisplayIds } from "./buildArrayOfDisplayIds";
 
 export const addHighlightsToBook = (bookDisplayOriginal, highlights) => {
+  console.log(highlights);
   /* --- build array of highlight keys to iterate over --- */
   const highlightKeys = Object.keys(highlights);
 
@@ -13,6 +14,7 @@ export const addHighlightsToBook = (bookDisplayOriginal, highlights) => {
   highlightKeys.forEach(highlightId => {
     let startId = highlights[highlightId].startId;
     let endId = highlights[highlightId].endId;
+    console.log(startId, endId);
 
     const idArrayToHighlight = buildArrayOfDisplayIds(startId, endId);
 

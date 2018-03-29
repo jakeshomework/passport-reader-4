@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 /* ----- COMPONENT IMPORTS ----- */
@@ -29,21 +29,13 @@ const styles = {
   }
 };
 
-const AnnotationModal = ({
-  open,
-  highlightsIdArray,
-  highlights,
-  annotationModalControl,
-  highlightsControl,
-  darkMode,
-  users,
-  classes
-}) => {
-  const handleClose = () => {
-    annotationModalControl.close();
+class AnnotationModal extends Component {
+  handleClose = () => {
+    this.props.annotationModalControl.close();
   };
 
-  const generateTitleStyle = () => {
+  generateTitleStyle = () => {
+    const { highlightsIdArray, highlights } = this.props;
     return {
       border: "solid",
       // backgroundColor: darkMode ? grey[700] : grey[200],
@@ -60,41 +52,55 @@ const AnnotationModal = ({
     };
   };
 
-  return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      classes={{ paper: classes.modalRoot }}
-    >
-      <div style={generateTitleStyle()}>
-        {/* --- Check for multiple highlights --- */}
-        {highlightsIdArray.length === 1 ? (
-          <DialogTitle>
-            {highlights[highlightsIdArray[0]].highlightedText}
-          </DialogTitle>
-        ) : (
-          <DialogTitle>-- multiple highlights selected --</DialogTitle>
-        )}
-      </div>
+  render() {
+    const {
+      open,
+      highlightsIdArray,
+      highlights,
+      annotationModalControl,
+      highlightsControl,
+      darkMode,
+      users,
+      classes
+    } = this.props;
+    console.log("highlights:", this.props.highlights);
 
-      {highlightsIdArray.length > 0 ? highlightsIdArray.length > 1 ? (
-        <AnnotationMulti
-          users={users}
-          highlights={highlights}
-          highlightsIdArray={highlightsIdArray}
-          annotationModalControl={annotationModalControl}
-        />
-      ) : (
-        <AnnotationSingle
-          users={users}
-          highlight={highlights[highlightsIdArray[0]]}
-          annotationModalControl={annotationModalControl}
-          highlightsControl={highlightsControl}
-        />
-      ) : null}
-    </Dialog>
-  );
-};
+    return (
+      <Dialog
+        open={open}
+        onClose={this.handleClose}
+        classes={{ paper: classes.modalRoot }}
+      >
+        <div style={this.generateTitleStyle()}>
+          {/* --- Check for multiple highlights --- */}
+          {highlightsIdArray.length === 1 ? (
+            <DialogTitle>
+              {highlights[highlightsIdArray[0]].highlightedText}
+            </DialogTitle>
+          ) : (
+            <DialogTitle>-- multiple highlights selected --</DialogTitle>
+          )}
+        </div>
+
+        {highlightsIdArray.length > 0 ? highlightsIdArray.length > 1 ? (
+          <AnnotationMulti
+            users={users}
+            highlights={highlights}
+            highlightsIdArray={highlightsIdArray}
+            annotationModalControl={annotationModalControl}
+          />
+        ) : (
+          <AnnotationSingle
+            users={users}
+            highlight={highlights[highlightsIdArray[0]]}
+            annotationModalControl={annotationModalControl}
+            highlightsControl={highlightsControl}
+          />
+        ) : null}
+      </Dialog>
+    );
+  }
+}
 
 AnnotationModal.propTypes = {};
 

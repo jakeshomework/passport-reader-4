@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 /* ----- MATERIAL-UI IMPORTS ----- */
@@ -32,52 +32,86 @@ const styles = {
   }
 };
 
-function AnnotationSingle({
-  highlight,
-  users,
-  annotationModalControl,
-  highlightsControl,
-  classes
-}) {
-  const handleDelete = () => {
-    highlightsControl.delete(highlight.id);
+class AnnotationSingle extends Component {
+  state = {
+    modifiedHighlight: this.props.highlight,
+    unsavedChanges: false
   };
 
-  const handleSave = () => {
-    annotationModalControl.close();
+  handleDelete = () => {
+    this.props.highlightsControl.delete(this.props.highlight.id);
   };
 
-  const handleUpdate = () => {};
+  handleSave = () => {
+    this.props.annotationModalControl.close();
+  };
 
-  return (
-    <div>
-      <Typography align="center" className={classes.highlightAuthor}>
-        Highlight by{" "}
-        {`${users[highlight.userId].firstName} ${users[highlight.userId]
-          .lastName} ${moment(highlight.createdAt).fromNow()}`}
-      </Typography>
-      <DialogContent>
-        <AnnotationOptions
-          highlight={highlight}
-          handleClick={handleUpdate}
-          users={users}
-        />
-      </DialogContent>
-      <DialogActions>
-        <div className={classes.actions}>
-          <Button onClick={handleDelete} variant="raised">
-            <DeleteIcon />
-          </Button>
-          <Button onClick={handleDelete}>
-            <ShareIcon />
-          </Button>
-          <Button onClick={handleSave} variant="raised" color="primary">
-            <DoneIcon />
-          </Button>
-        </div>
-      </DialogActions>
-    </div>
-  );
+  componentWillReceiveProps() {
+    this.setState({
+      // highlightFromProps: this.props.highlight,
+      modifiedHighlight: this.props.highlight,
+      unsavedChanges: !(this.props.highlight === this.state.modifiedHighlight)
+    });
+  }
+
+  // TODO: Pass this function down
+  handleLocalUpdate = ({ annotationIndex, content }) => {
+    this.setState(prevState => {
+      let unsavedHighlight = JSON.parse(
+        JSON.stringify(prevState.modifiedHighlight)
+      );
+      unsavedHighlight.annotations[annotationIndex].content = content;
+
+      return {
+        modHighlightAnnotations: unsavedHighlight,
+        unsavedChanges: !(unsavedHighlight === this.state.modifiedHighlight)
+      };
+    });
+  };
+
+  render() {
+    const {
+      highlight,
+      users,
+      annotationModalControl,
+      highlightsControl,
+      classes
+    } = this.props;
+
+    return (
+      <div>
+        <Typography align="center" className={classes.highlightAuthor}>
+          Highlight by{" "}
+          {`${users[highlight.userId].firstName} ${users[highlight.userId]
+            .lastName} ${moment(highlight.createdAt).fromNow()}`}
+        </Typography>
+        <Typography align="center">
+          Unsaved Changes: {this.state.unsavedChanges.toString()}
+        </Typography>
+        <DialogContent>
+          <AnnotationOptions
+            users={users}
+            highlight={highlight}
+            highlightsControl={highlightsControl}
+            handleLocalUpdate={this.handleLocalUpdate}
+          />
+        </DialogContent>
+        <DialogActions>
+          <div className={classes.actions}>
+            <Button onClick={this.handleDelete} variant="raised">
+              <DeleteIcon />
+            </Button>
+            <Button onClick={this.handleDelete}>
+              <ShareIcon />
+            </Button>
+            <Button onClick={this.handleSave} variant="raised" color="primary">
+              <DoneIcon />
+            </Button>
+          </div>
+        </DialogActions>
+      </div>
+    );
+  }
 }
 
 const propTypes = {};
