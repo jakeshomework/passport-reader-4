@@ -3,6 +3,12 @@ import React, { Component } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
 import { withStyles } from "material-ui/styles";
+import "typeface-roboto";
+import "typeface-open-sans";
+import "typeface-playfair-display";
+import "typeface-montserrat";
+import "typeface-lobster";
+import "typeface-vt323";
 import Paper from "material-ui/Paper";
 // import {
 //   grey100,
@@ -42,6 +48,7 @@ import { addHighlightsToBook } from "./utils/addHighlightsToBook";
 /* ----- IMPORT DATA ----- */
 import { HighlightsDemo } from "./data/highlights.js";
 import { UsersDemo } from "./data/users.js";
+
 /* ----- IMPORT STYLES ----- */
 import { AppStyles } from "./styles/AppStyles.js";
 
@@ -94,13 +101,22 @@ class App extends Component {
       },
       settings: {
         selectedFontFamily: "Helvetica",
-        selectedFontSize: 14,
+        selectedFontSize: 16,
         classView: false,
         focusMode: false,
         showHelpTips: false,
         darkMode: false,
-        fontSize: [14, 18, 22],
-        fontFamily: ["Helvetica", "Josefin Slab", "Lato"]
+        fontSize: [14, 16, 20, 28],
+        fontFamily: [
+          "Helvetica",
+          "Roboto",
+          "Times",
+          "Open Sans",
+          "Playfair Display",
+          "Montserrat",
+          "Lobster",
+          "vt323"
+        ]
       },
       slide: 1
     };
@@ -156,9 +172,14 @@ class App extends Component {
               main: "#4695ec"
             }
           },
+          paper: {
+            typography: {
+              fontSize: selectedFontSize
+            }
+          },
           typography: {
-            selectedFontFamily: selectedFontFamily,
-            selectedFontSize: selectedFontSize
+            fontFamily: selectedFontFamily,
+            fontSize: selectedFontSize
           }
         })}
       >
@@ -176,13 +197,15 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={{
-              /*this.state.settings.darkMode ? (
+            style={
+              {
+                /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-            }}
+              }
+            }
           >
             <Settings
               settings={this.state.settings}
@@ -202,9 +225,11 @@ class App extends Component {
               annotationModalControl={this.annotationModalControl}
               highlightsControl={this.highlightsControl}
             />
+
             <Highlights
               highlights={this.state.highlights}
               style={Object.assign({}, styles.slide, styles.highlightsSlide)}
+              annotationModalControl={this.annotationModalControl}
             />
             <Audio style={Object.assign({}, styles.slide, styles.audioSlide)} />
             <SpeedReader

@@ -1,18 +1,28 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
 /* ----- COMPONENT IMPORTS ----- */
 import HighlightsList from "../components/HighlightsList";
 import StudyMode from "../components/StudyMode";
+
+/* ----- MATERIAL-UI COMPONENTS ----- */
 import { withStyles } from "material-ui/styles";
+import { filterHighlightsUtils } from "../utils/filterHighlightsUtils";
+import Button from "material-ui/Button";
+import Grid from "material-ui/Grid";
 
 /* ----- GRAPHQL IMPORTS ----- */
 //import GET_HIGHLIGHTS from "../graphql/GET_HIGHLIGHTS";
 
 /*---Hold selection filters in state while rendering the list.---*/
 const styles = theme => ({
-  root: {
-    width: "100%",
-    textAlign: "center"
+  root: {},
+  button: {
+    margin: theme.spacing.unit * 4,
+    float: "right"
+  },
+  input: {
+    display: "none"
   }
 });
 
@@ -30,9 +40,20 @@ class Highlights extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        Highlights
-        <HighlightsList filteredList={this.props.Highlights} />
-        <StudyMode filteredList="array" open="boolean" />
+        <Grid container spacing={24}>
+          <Grid item xs={2} />
+          <Grid item xs={8}>
+            <Button variant="raised" className={classes.button}>
+              <StudyMode filteredList="array" open="boolean" />
+            </Button>
+            <HighlightsList
+              filteredList={this.props.highlights}
+              toggleFilter={this.toggleFilter}
+              annotationModalControl={this.props.annotationModalControl}
+            />
+          </Grid>
+          <Grid item xs={2} />
+        </Grid>
       </div>
     );
   }
