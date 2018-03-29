@@ -19,6 +19,9 @@ import ShareIcon from "material-ui-icons/Share";
 import grey from "material-ui/colors/grey";
 
 /* ----- COMPONENT IMPORTS ----- */
+import AnnotationEditorAudio from "./AnnotationEditorAudio";
+import AnnotationEditorVideo from "./AnnotationEditorVideo";
+import AnnotationEditorNote from "./AnnotationEditorNote";
 
 /*---Opens annotation modal with a annotationType: note, video, or audio---*/
 const styles = {
@@ -30,8 +33,22 @@ const styles = {
   }
 };
 
-const AnnotationOptions = ({ highlight, users, classes }) => {
-  console.log(highlight.annotations);
+const AnnotationOptions = ({
+  highlight,
+  users,
+  highlightsControl,
+  handleLocalUpdate,
+  classes
+}) => {
+  const handleAddAnnotation = type => {
+    console.log(type);
+    highlightsControl.addAnnotation({
+      highlightId: highlight.id,
+      type: type
+    });
+  };
+
+  // console.log(highlight.annotations);
   return (
     <div>
       {highlight.annotations.map((annotation, index) => {
@@ -54,7 +71,29 @@ const AnnotationOptions = ({ highlight, users, classes }) => {
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography>{annotation.content}</Typography>
+              {annotation.type === "video" ? (
+                <AnnotationEditorVideo
+                  highlightId={highlight.id}
+                  annotation={annotation}
+                  highlightsControl={highlightsControl}
+                  annotationIndex={index}
+                />
+              ) : annotation.type === "audio" ? (
+                <AnnotationEditorAudio
+                  highlightId={highlight.id}
+                  annotation={annotation}
+                  highlightsControl={highlightsControl}
+                  annotationIndex={index}
+                />
+              ) : annotation.type === "note" ? (
+                <AnnotationEditorNote
+                  highlightId={highlight.id}
+                  annotation={annotation}
+                  highlightsControl={highlightsControl}
+                  annotationIndex={index}
+                  handleLocalUpdate={handleLocalUpdate}
+                />
+              ) : null}
             </ExpansionPanelDetails>
           </ExpansionPanel>
         );
@@ -69,13 +108,25 @@ const AnnotationOptions = ({ highlight, users, classes }) => {
           )
         }
       >
-        <IconButton className={classes.button} aria-label="Note">
+        <IconButton
+          className={classes.button}
+          aria-label="Note"
+          onClick={() => handleAddAnnotation("note")}
+        >
           <NoteIcon />
         </IconButton>
-        <IconButton className={classes.button} aria-label="Microphone">
+        <IconButton
+          className={classes.button}
+          aria-label="Microphone"
+          onClick={() => handleAddAnnotation("audio")}
+        >
           <MicIcon />
         </IconButton>
-        <IconButton className={classes.button} aria-label="Video">
+        <IconButton
+          className={classes.button}
+          aria-label="Video"
+          onClick={() => handleAddAnnotation("video")}
+        >
           <VideocamIcon />
         </IconButton>
       </div>

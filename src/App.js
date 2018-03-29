@@ -32,7 +32,10 @@ import { updateSettings } from "./utils/settingsUtils";
 import {
   addHighlight,
   updateHighlight,
-  deleteHighlight
+  deleteHighlight,
+  addAnnotation,
+  updateAnnotation,
+  deleteAnnotation
 } from "./utils/highlightsUtils";
 import { addHighlightsToBook } from "./utils/addHighlightsToBook";
 
@@ -62,6 +65,12 @@ class App extends Component {
     super(props);
     this.state = {
       user: UsersDemo.user111,
+      class: {
+        userList: UsersDemo,
+        permissions: {
+          allowClassView: true
+        }
+      },
       book: {
         bookId: "123",
         bookDisplay: formattedBook.bookDisplay,
@@ -109,7 +118,15 @@ class App extends Component {
     update: highlightUpdate =>
       this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
     delete: highlightId =>
-      this.setState(prevState => deleteHighlight(prevState, highlightId))
+      this.setState(prevState => deleteHighlight(prevState, highlightId)),
+    addAnnotation: annotationObject =>
+      this.setState(prevState => addAnnotation(prevState, annotationObject)),
+    updateAnnotation: annotationObject => {
+      this.setState(prevState => updateAnnotation(prevState, annotationObject));
+    },
+    deleteAnnotation: annotationObject => {
+      this.setState(prevState => deleteAnnotation(prevState, annotationObject));
+    }
   };
 
   annotationModalControl = {
@@ -128,6 +145,7 @@ class App extends Component {
   render() {
     let selectedFontFamily = this.state.settings.selectedFontFamily;
     let selectedFontSize = this.state.settings.selectedFontSize;
+    console.log(this.state.highlights);
 
     return (
       <MuiThemeProvider
