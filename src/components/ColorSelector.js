@@ -14,7 +14,8 @@ import pink from "material-ui/colors/pink";
 import purple from "material-ui/colors/purple";
 import yellow from "material-ui/colors/yellow";
 import grey from "material-ui/colors/grey";
-
+import IconButton from "material-ui/IconButton";
+import CloseIcon from "material-ui-icons/Close";
 /* ----- COMPONENT IMPORTS ----- */
 import { colorLabels } from "../config/colorLabels";
 
@@ -25,12 +26,29 @@ const styles = {
     maxWidth: 350
   },
   labelHeader: {
-    height: 15,
-    marginTop: 10
+    minHeight: 30,
+    marginTop: 10,
+    backgroundColor: grey[50],
+    width: "100%",
+    borderRadius: "10px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    boxShadow:
+      "inset 0px 1px 5px 0px rgba(0, 0, 0, 0.2), inset 0px 2px 2px 0px rgba(0, 0, 0, 0.14), inset 0px 3px 1px -2px rgba(0, 0, 0, 0.12)"
+  },
+  colors: {
+    maxWidth: 350,
+    borderRadius: "10px"
   },
   color: {
     padding: 10,
     minWidth: 20
+  },
+  tooltipTitle: {
+    display: "flex",
+    justifyContent: "space-between",
+    margin: "10px"
   }
 };
 
@@ -40,7 +58,7 @@ const inActiveStyles = {};
 
 class ColorSelector extends Component {
   state = {
-    label: ""
+    label: "---"
   };
 
   handleMouseOver = color => {
@@ -48,20 +66,36 @@ class ColorSelector extends Component {
   };
 
   handleMouseOut = () => {
-    this.setState({ label: "" });
+    this.setState({ label: "---" });
+  };
+
+  handleCancel = () => {
+    this.props.closeTooltip();
   };
 
   render() {
-    const { handleClick, current, classes } = this.props;
+    const {
+      handleClick,
+      current,
+      isTooltip,
+      closeTooltip,
+      classes
+    } = this.props;
 
     return (
-      <div>
-        <Typography align="center" className={classes.labelHeader}>
-          {this.state.label}
-        </Typography>
+      <div className={classes.root}>
+        <div className={classes.tooltipTitle}>
+          <Typography align="center" className={classes.labelHeader}>
+            {this.state.label}
+          </Typography>
+          <IconButton className={classes.button} onClick={this.handleCancel}>
+            <CloseIcon />
+          </IconButton>
+        </div>
+
         <BottomNavigation
           value={current ? current : "none"}
-          className={classes.root}
+          className={classes.colors}
         >
           {colorLabelsArray.map((color, index) => (
             <BottomNavigationAction

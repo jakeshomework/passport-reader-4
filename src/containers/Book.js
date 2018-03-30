@@ -118,6 +118,11 @@ class Book extends Component {
     });
   };
 
+  closeTooltip = () => {
+    this.setState({ showTooltip: false });
+    window.getSelection().removeAllRanges();
+  };
+
   /*---Update highlights array using ADD_HIGHLIGHT api.---*/
   saveAnnotation = () => {};
   /*---Update highlights array using UPDATE_HIGHLIGHT api.---*/
@@ -157,9 +162,8 @@ class Book extends Component {
           <Grid item xs={1} sm={2} />
           <Grid item xs={10} sm={8}>
             Book selected:
-            <div>{` ${this.state.selection.startId} -> ${
-              this.state.selection.endId
-            }`}</div>
+            <div>{` ${this.state.selection.startId} -> ${this.state.selection
+              .endId}`}</div>
             <div>{this.state.selection.content}</div>
             {this.state.event}
             {this.state.showTooltip ? (
@@ -167,6 +171,7 @@ class Book extends Component {
                 open={this.state.showTooltip}
                 selection={this.state.selection}
                 highlightsControl={highlightsControl}
+                closeTooltip={this.closeTooltip}
               />
             ) : null}
             <BookDisplay

@@ -29,6 +29,9 @@ const styles = {
   highlightAuthor: {
     color: grey[500],
     marginBottom: 10
+  },
+  cancelButton: {
+    color: grey[500]
   }
 };
 
@@ -43,6 +46,10 @@ class AnnotationSingle extends Component {
   };
 
   handleSave = () => {
+    this.props.annotationModalControl.close();
+  };
+
+  handleCancel = () => {
     this.props.annotationModalControl.close();
   };
 
@@ -101,8 +108,11 @@ class AnnotationSingle extends Component {
             <Button onClick={this.handleDelete} variant="raised">
               <DeleteIcon />
             </Button>
-            <Button onClick={this.handleDelete}>
-              <ShareIcon />
+            <Button
+              onClick={this.handleCancel}
+              className={classes.cancelButton}
+            >
+              <CloseIcon />
             </Button>
             <Button onClick={this.handleSave} variant="raised" color="primary">
               <DoneIcon />
