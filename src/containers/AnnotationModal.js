@@ -25,7 +25,8 @@ import { colorLabels } from "../config/colorLabels";
 
 const styles = {
   modalRoot: {
-    backgroundColor: "#F0F0F0"
+    backgroundColor: "#F0F0F0",
+    borderRadius: "10px"
   }
 };
 

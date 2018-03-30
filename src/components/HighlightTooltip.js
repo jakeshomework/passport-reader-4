@@ -9,6 +9,7 @@ import Edit from "material-ui-icons/Edit";
 import Mic from "material-ui-icons/Mic";
 import Videocam from "material-ui-icons/Videocam";
 import Share from "material-ui-icons/Share";
+import CloseIcon from "material-ui-icons/Close";
 
 /* ----- COMPONENT IMPORTS ----- */
 import ColorSelector from "./ColorSelector";
@@ -17,7 +18,8 @@ import ColorSelector from "./ColorSelector";
 
 const styles = theme => ({
   root: {
-    position: "fixed"
+    position: "fixed",
+    borderRadius: "10px"
     // backgroundColor: "red"
   },
   triangle: {
@@ -57,6 +59,8 @@ class HighlightTooltip extends Component {
       ...this.props.selection,
       color: color
     });
+
+    this.props.closeTooltip();
   };
 
   render() {
@@ -69,8 +73,13 @@ class HighlightTooltip extends Component {
         style={getTooltipPosition(selection)}
       >
         {/*<div className={classes.triangle} />*/}
-        <ColorSelector handleClick={this.addHighlight} current="none" />
-        <div className={classes.options}>
+        <ColorSelector
+          handleClick={this.addHighlight}
+          current="none"
+          closeTooltip={this.props.closeTooltip}
+        />
+
+        {/*<div className={classes.options}>
           <div>
             <IconButton className={classes.button} aria-label="Note">
               <Edit />
@@ -81,12 +90,9 @@ class HighlightTooltip extends Component {
             <IconButton className={classes.button} aria-label="Video">
               <Videocam />
             </IconButton>
-            <IconButton className={classes.button} aria-label="Share">
-              <Share />
-            </IconButton>
           </div>
           <Button raised>Cancel</Button>
-        </div>
+        </div>*/}
       </Card>
     );
   }

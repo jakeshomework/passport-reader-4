@@ -41,7 +41,8 @@ import {
   deleteHighlight,
   addAnnotation,
   updateAnnotation,
-  deleteAnnotation
+  deleteAnnotation,
+  newHighlightOpenModal
 } from "./utils/highlightsUtils";
 import { addHighlightsToBook } from "./utils/addHighlightsToBook";
 
@@ -129,8 +130,18 @@ class App extends Component {
   };
 
   highlightsControl = {
-    add: highlightObject =>
-      this.setState(prevState => addHighlight(prevState, highlightObject)),
+    add: highlightObject => {
+      console.log(highlightObject);
+      let currentHighlights = this.state.highlights;
+      this.setState(
+        prevState => addHighlight(prevState, highlightObject),
+        () =>
+          this.annotationModalControl.open(
+            newHighlightOpenModal(currentHighlights, this.state.highlights)
+          )
+      );
+      //
+    },
     update: highlightUpdate =>
       this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
     delete: highlightId =>
@@ -196,15 +207,13 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={
-              {
-                /*this.state.settings.darkMode ? (
+            style={{
+              /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-              }
-            }
+            }}
           >
             <Settings
               settings={this.state.settings}

@@ -25,9 +25,14 @@ export const addHighlight = (prevState, highlightObject) => {
     [highlightId]: brandNewHighlight
   };
 
-  // console.log(newHighlights);
-
   return { highlights: newHighlights };
+};
+
+export const newHighlightOpenModal = (prevHighlights, newHighlights) => {
+  let prevIds = Object.keys(prevHighlights);
+  let newIds = Object.keys(newHighlights);
+  let singleNewHighlightId = newIds.filter(id => prevIds.indexOf(id) === -1);
+  return singleNewHighlightId;
 };
 
 export const updateHighlight = (prevState, highlightUpdate) => {
