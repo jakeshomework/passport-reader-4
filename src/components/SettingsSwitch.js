@@ -13,7 +13,7 @@ const styles = theme => ({
 });
 class SettingsSwitch extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, theme } = this.props;
     return (
       <div className={classes.root}>
         <Grid container spacing={12}>

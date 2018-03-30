@@ -177,15 +177,14 @@ class App extends Component {
     return (
       <MuiThemeProvider
         theme={createMuiTheme({
+          root: {
+            fontFamily: selectedFontFamily,
+            fontSize: selectedFontSize
+          },
           palette: {
             type: this.state.settings.darkMode ? "dark" : "light",
             primary: {
               main: "#4695ec"
-            }
-          },
-          paper: {
-            typography: {
-              fontSize: selectedFontSize
             }
           },
           typography: {
