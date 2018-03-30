@@ -16,7 +16,10 @@ import Grid from "material-ui/Grid";
 
 /*---Hold selection filters in state while rendering the list.---*/
 const styles = theme => ({
-  root: {},
+  root: {
+    fontSize: theme.typography.fontSize,
+    fontFamily: theme.typography.fontFamily
+  },
   button: {
     margin: theme.spacing.unit * 4,
     float: "right"

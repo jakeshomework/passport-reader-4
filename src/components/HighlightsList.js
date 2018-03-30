@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 /* ----- COMPONENT IMPORTS ----- */
-import Highlight from "./Highlight";
 import { withStyles } from "material-ui/styles";
 import List, { ListItem } from "material-ui/List";
 import Checkbox from "material-ui/Checkbox";
 import IconButton from "material-ui/IconButton";
 import grey from "material-ui/colors/grey";
+
 import moment from "moment";
 
 import Table, {
@@ -27,7 +27,7 @@ const CustomTableCell = withStyles(theme => ({
     color: theme.palette.common.white
   },
   body: {
-    fontSize: 14
+    fontSize: theme.typography.fontSize
   }
 }))(TableCell);
 
@@ -37,7 +37,8 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4
   },
   table: {
-    // marginTop: theme.spacing.unit * 2
+    fontSize: theme.typography.fontSize,
+    fontFamily: theme.typography.fontFamily
   },
   row: {
     "&:nth-of-type(odd)": {
@@ -170,7 +171,6 @@ class HighlightsList extends Component {
                     </CustomTableCell>
 
                     <CustomTableCell>{highlightedText}</CustomTableCell>
-                    {/* <CustomTableCell>14 May, 2018</CustomTableCell> */}
                     <CustomTableCell>
                       {moment(updated).fromNow()}
                     </CustomTableCell>
@@ -180,7 +180,6 @@ class HighlightsList extends Component {
               })}
             </TableBody>
           </Table>
-          {/* <Highlight listItem={this.props.filteredList} /> */}
         </div>
       </div>
     );

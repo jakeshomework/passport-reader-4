@@ -37,6 +37,12 @@ const styles = theme => ({
   },
   list: {
     borderBottom: "1px solid #ccc"
+  },
+  listtext: {
+    fontSize: theme.typography.fontSize
+  },
+  listitemFontSize: {
+    fontSize: theme.typography.fontSize
   }
 });
 
@@ -101,7 +107,10 @@ class Settings extends Component {
                 <ListItemIcon>
                   <CenterFocusStrong />
                 </ListItemIcon>
-                <ListItemText primary="Focus Mode" />
+                <ListItemText
+                  styles={styles.listitemFontSize}
+                  primary="Focus Mode"
+                />
                 <ListItemSecondaryAction>
                   <SettingsSwitch
                     setting={focusMode}
