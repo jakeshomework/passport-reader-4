@@ -29,9 +29,16 @@ const BookDisplay = ({
   const classView = false;
 
   const generateHighlightColor = highlightsArray => {
-    // console.log(highlights[highlightsArray[0]].color);
+    // --- reduce highlightsIdArray to the most recent highlight --- //
+    const newestHighlight = highlightsArray.reduce((newest, current) => {
+      return highlights[newest].updated < highlights[current].updated
+        ? current
+        : newest;
+    });
+
+    // --- generate color depending on whether classView is selected --- //
     return !classView
-      ? colorLabels[highlights[highlightsArray[0]].color].active
+      ? colorLabels[highlights[newestHighlight].color].active
       : highlightsArray.length > 9
         ? orange[900]
         : orange[highlightsArray.length * 100];

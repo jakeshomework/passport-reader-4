@@ -172,7 +172,15 @@ class App extends Component {
   render() {
     let selectedFontFamily = this.state.settings.selectedFontFamily;
     let selectedFontSize = this.state.settings.selectedFontSize;
-    console.log(this.state.highlights);
+
+    // --- TODO: FIX ERROR --- why is highlights not an array --- //
+    // const highlightsToRender = this.state.classView
+    //   ? this.state.highlights
+    //   : this.state.highlights.filter(
+    //       highlight => highlight.userId === this.state.user.userId
+    //     );
+
+    const highlightsToRender = this.state.highlights;
 
     return (
       <MuiThemeProvider
@@ -225,7 +233,7 @@ class App extends Component {
               book={this.state.book}
               bookDisplayWithHighlights={addHighlightsToBook(
                 this.state.book.bookDisplay,
-                this.state.highlights
+                highlightsToRender
               )}
               highlights={this.state.highlights}
               settings={this.state.settings}
