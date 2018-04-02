@@ -14,9 +14,7 @@ const BookDisplay = ({
   handleSelectClick,
   handleSelectTouch,
   highlights,
-  addHighlight,
-  updateHighlight,
-  deleteHighlight
+  settings
 }) => {
   /*---Render book 'display' word by word into BookSingleWord, adding styles from highlights---*/
   const renderBookWithStyles = () => {};
@@ -26,7 +24,7 @@ const BookDisplay = ({
   // console.log(bookDisplayWithHighlights["emc-62"]);
 
   // replace with props.settings.classView
-  const classView = false;
+  // const classView = false;
 
   const generateHighlightColor = highlightsArray => {
     // --- reduce highlightsIdArray to the most recent highlight --- //
@@ -37,7 +35,7 @@ const BookDisplay = ({
     });
 
     // --- generate color depending on whether classView is selected --- //
-    return !classView
+    return !settings.classView
       ? colorLabels[highlights[newestHighlight].color].active
       : highlightsArray.length > 9
         ? orange[900]
@@ -76,10 +74,7 @@ const BookDisplay = ({
 BookDisplay.propTypes = {
   bookDisplay: PropTypes.object,
   handleSelect: PropTypes.func,
-  highlights: PropTypes.object,
-  addHighlight: PropTypes.func,
-  updateHighlight: PropTypes.func,
-  deleteHighlight: PropTypes.func
+  highlights: PropTypes.object
 };
 
 export default BookDisplay;

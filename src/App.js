@@ -72,13 +72,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: UsersDemo.user111,
-      class: {
-        userList: UsersDemo,
-        permissions: {
-          allowClassView: true
-        }
-      },
+      user: UsersDemo.user333,
       book: {
         bookId: "123",
         bookDisplay: formattedBook.bookDisplay,
@@ -103,6 +97,7 @@ class App extends Component {
       settings: {
         selectedFontFamily: "Helvetica",
         selectedFontSize: 16,
+        allowClassView: false,
         classView: false,
         focusMode: false,
         showHelpTips: false,
@@ -216,15 +211,13 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={
-              {
-                /*this.state.settings.darkMode ? (
+            style={{
+              /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-              }
-            }
+            }}
           >
             <Settings
               settings={this.state.settings}
@@ -243,6 +236,7 @@ class App extends Component {
               style={Object.assign({}, styles.slide, styles.slide2)}
               annotationModalControl={this.annotationModalControl}
               highlightsControl={this.highlightsControl}
+              settings={this.state.settings}
             />
 
             <Highlights

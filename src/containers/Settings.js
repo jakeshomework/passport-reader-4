@@ -47,8 +47,14 @@ const styles = theme => ({
 });
 
 class Settings extends Component {
+  /* --- AllowClassView only available for teachers --- */
+  toggleAllowClassView = () => {
+    this.props.settingsControl.update({
+      allowClassView: !this.props.settings.allowClassView
+    });
+  };
   /*---Only show if correct permissions are met -- teacher or teacher authorized class view.---*/
-  toggleView = () => {
+  toggleClassView = () => {
     this.props.settingsControl.update({
       classView: !this.props.settings.classView
     });
@@ -85,6 +91,7 @@ class Settings extends Component {
 
   render() {
     const {
+      allowClassView,
       classView,
       focusMode,
       showHelpTips,
@@ -92,7 +99,7 @@ class Settings extends Component {
       fontFamily,
       fontSize
     } = this.props.settings;
-    const { classes } = this.props;
+    const { classes, user } = this.props;
 
     return (
       <div className={classes.root}>
@@ -132,6 +139,27 @@ class Settings extends Component {
               </ListItem>
             </List>
 
+            {/* --- Only visible if user role is 'teacher' --- */}
+            {this.props.user.role === "teacher" ? (
+              <List
+                subheader={<ListSubheader>Teacher Settings</ListSubheader>}
+                className={classes.list}
+              >
+                <ListItem>
+                  <ListItemIcon>
+                    <People />
+                  </ListItemIcon>
+                  <ListItemText primary="Allow Class View" />
+                  <ListItemSecondaryAction>
+                    <SettingsSwitch
+                      setting={classView}
+                      handleChangeSettings={this.toggleAllowClassView}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+              </List>
+            ) : null}
+
             <List
               subheader={<ListSubheader>Visual Settings</ListSubheader>}
               className={classes.list}
@@ -144,7 +172,8 @@ class Settings extends Component {
                 <ListItemSecondaryAction>
                   <SettingsSwitch
                     setting={classView}
-                    handleChangeSettings={this.toggleView}
+                    handleChangeSettings={this.toggleClassView}
+                    disabled={!allowClassView}
                   />
                 </ListItemSecondaryAction>
               </ListItem>
