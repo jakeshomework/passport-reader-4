@@ -13,7 +13,7 @@ const styles = theme => ({
 });
 class SettingsSwitch extends Component {
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, disabled } = this.props;
     return (
       <div className={classes.root}>
         <Grid container spacing={12}>
@@ -26,6 +26,7 @@ class SettingsSwitch extends Component {
                 <Switch
                   color="primary"
                   onChange={this.props.handleChangeSettings}
+                  disabled={disabled}
                 />
               }
             />

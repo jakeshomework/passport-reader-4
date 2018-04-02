@@ -142,7 +142,7 @@ class Book extends Component {
       : clearInterval(selectWatcher);
 
     const { bookDisplay } = this.props.book;
-    const { highlights, highlightsControl, classes } = this.props;
+    const { highlights, highlightsControl, settings, classes } = this.props;
 
     const highlightsKeys = Object.keys(highlights);
     // console.log(highlightsKeys);
@@ -180,10 +180,7 @@ class Book extends Component {
               handleSelectTouch={this.handleSelectTouch}
               bookDisplayWithHighlights={this.props.bookDisplayWithHighlights}
               highlights={highlights}
-              addHighlight="func"
-              updateHighlight="func"
-              deleteHighlight="func"
-              className={classes.bookStyle}
+              settings={settings}
             />
             <ImageGallery gallery="object" />
             <GlossaryTooltip selection="object" />

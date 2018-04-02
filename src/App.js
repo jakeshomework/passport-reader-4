@@ -72,13 +72,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: UsersDemo.user111,
-      class: {
-        userList: UsersDemo,
-        permissions: {
-          allowClassView: true
-        }
-      },
+      user: UsersDemo.user333,
       book: {
         bookId: "123",
         bookDisplay: formattedBook.bookDisplay,
@@ -102,7 +96,8 @@ class App extends Component {
       },
       settings: {
         selectedFontFamily: "Helvetica",
-        selectedFontSize: 28,
+        selectedFontSize: 16,
+        allowClassView: false,
         classView: false,
         focusMode: false,
         showHelpTips: false,
@@ -172,7 +167,15 @@ class App extends Component {
   render() {
     let selectedFontFamily = this.state.settings.selectedFontFamily;
     let selectedFontSize = this.state.settings.selectedFontSize;
-    console.log(this.state.highlights);
+
+    // --- TODO: FIX ERROR --- why is highlights not an array --- //
+    // const highlightsToRender = this.state.classView
+    //   ? this.state.highlights
+    //   : this.state.highlights.filter(
+    //       highlight => highlight.userId === this.state.user.userId
+    //     );
+
+    const highlightsToRender = this.state.highlights;
 
     return (
       <MuiThemeProvider
@@ -228,13 +231,14 @@ class App extends Component {
               book={this.state.book}
               bookDisplayWithHighlights={addHighlightsToBook(
                 this.state.book.bookDisplay,
-                this.state.highlights
+                highlightsToRender
               )}
               highlights={this.state.highlights}
               settings={this.state.settings}
               style={Object.assign({}, styles.slide, styles.slide2)}
               annotationModalControl={this.annotationModalControl}
               highlightsControl={this.highlightsControl}
+              settings={this.state.settings}
             />
 
             <Highlights
