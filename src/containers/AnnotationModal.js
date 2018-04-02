@@ -37,7 +37,9 @@ class AnnotationModal extends Component {
 
   generateTitleStyle = () => {
     const { highlightsIdArray, highlights } = this.props;
+    const { selectedFontSize } = this.props.settings;
     return {
+      fontSize: selectedFontSize,
       border: "solid",
       // backgroundColor: darkMode ? grey[700] : grey[200],
       backgroundColor: grey[50],
@@ -83,20 +85,22 @@ class AnnotationModal extends Component {
           )}
         </div>
 
-        {highlightsIdArray.length > 0 ? highlightsIdArray.length > 1 ? (
-          <AnnotationMulti
-            users={users}
-            highlights={highlights}
-            highlightsIdArray={highlightsIdArray}
-            annotationModalControl={annotationModalControl}
-          />
-        ) : (
-          <AnnotationSingle
-            users={users}
-            highlight={highlights[highlightsIdArray[0]]}
-            annotationModalControl={annotationModalControl}
-            highlightsControl={highlightsControl}
-          />
+        {highlightsIdArray.length > 0 ? (
+          highlightsIdArray.length > 1 ? (
+            <AnnotationMulti
+              users={users}
+              highlights={highlights}
+              highlightsIdArray={highlightsIdArray}
+              annotationModalControl={annotationModalControl}
+            />
+          ) : (
+            <AnnotationSingle
+              users={users}
+              highlight={highlights[highlightsIdArray[0]]}
+              annotationModalControl={annotationModalControl}
+              highlightsControl={highlightsControl}
+            />
+          )
         ) : null}
       </Dialog>
     );
