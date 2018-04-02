@@ -20,7 +20,7 @@ import grey from "material-ui/colors/grey";
 /* ----- COMPONENT IMPORTS ----- */
 import AnnotationOptions from "../components/AnnotationOptions";
 
-const styles = {
+const styles = theme => ({
   actions: {
     display: "flex",
     justifyContent: "space-between",
@@ -28,12 +28,13 @@ const styles = {
   },
   highlightAuthor: {
     color: grey[500],
-    marginBottom: 10
+    marginBottom: 10,
+    fontSize: theme.typography.fontSize - 5
   },
   cancelButton: {
     color: grey[500]
   }
-};
+});
 
 class AnnotationSingle extends Component {
   state = {
@@ -89,8 +90,9 @@ class AnnotationSingle extends Component {
       <div>
         <Typography align="center" className={classes.highlightAuthor}>
           Highlight by{" "}
-          {`${users[highlight.userId].firstName} ${users[highlight.userId]
-            .lastName} ${moment(highlight.createdAt).fromNow()}`}
+          {`${users[highlight.userId].firstName} ${
+            users[highlight.userId].lastName
+          } ${moment(highlight.createdAt).fromNow()}`}
         </Typography>
         <Typography align="center">
           Unsaved Changes: {this.state.unsavedChanges.toString()}

@@ -17,9 +17,12 @@ import VideocamIcon from "material-ui-icons/Videocam";
 import ShareIcon from "material-ui-icons/Share";
 import grey from "material-ui/colors/grey";
 
-const styles = {
+const styles = theme => ({
   root: {
     width: "100%"
+  },
+  fontStyle: {
+    fontSize: theme.typography.fontSize
   },
   annotationButtonsCont: {
     display: "flex",
@@ -27,8 +30,16 @@ const styles = {
   },
   deleteButton: {
     color: grey[700]
+  },
+  labelStyle: {
+    input: {
+      fontSize: theme.typography.fontSize + 4
+    }
+  },
+  saveButton: {
+    fontSize: theme.typography.fontSize - 4
   }
-};
+});
 
 class AnnotationEditorNote extends Component {
   state = {
@@ -77,15 +88,20 @@ class AnnotationEditorNote extends Component {
 
     return (
       <div className={classes.root}>
-        <TextField
-          label={this.state.unsavedChanges ? "Changes Not Saved" : "Note Saved"}
-          multiline
-          fullWidth
-          rowsMax={4}
-          placeholder="Your note here"
-          value={this.state.content}
-          onChange={e => this.handleInputChange(e)}
-        />
+        <Typography className={classes.fontStyle}>
+          <TextField
+            label={
+              this.state.unsavedChanges ? "Changes Not Saved" : "Note Saved"
+            }
+            multiline
+            fullWidth
+            rowsMax={4}
+            placeholder="Your note here"
+            value={this.state.content}
+            onChange={e => this.handleInputChange(e)}
+            className={classes.labelStyle}
+          />
+        </Typography>
         <div className={classes.annotationButtonsCont}>
           <Button onClick={this.handleDelete} className={classes.deleteButton}>
             <DeleteIcon />

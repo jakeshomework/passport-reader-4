@@ -102,12 +102,12 @@ class App extends Component {
       },
       settings: {
         selectedFontFamily: "Helvetica",
-        selectedFontSize: 16,
+        selectedFontSize: 28,
         classView: false,
         focusMode: false,
         showHelpTips: false,
-        darkMode: false,
-        fontSize: [14, 16, 20, 28],
+        darkMode: true,
+        fontSize: [14, 16, 18, 20, 28],
         fontFamily: [
           "Helvetica",
           "Roboto",

@@ -53,7 +53,6 @@ const BookDisplay = ({
     })
     /* --- combine array into one giant string for rendering --- */
     .join("");
-
   return (
     <div>
       BookDisplay

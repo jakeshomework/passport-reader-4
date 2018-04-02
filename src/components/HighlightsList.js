@@ -37,8 +37,8 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4
   },
   table: {
-    fontSize: theme.typography.fontSize,
-    fontFamily: theme.typography.fontFamily
+    // fontSize: theme.typography.fontSize,
+    // fontFamily: theme.typography.fontFamily
   },
   row: {
     "&:nth-of-type(odd)": {

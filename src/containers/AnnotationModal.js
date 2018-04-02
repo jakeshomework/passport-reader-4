@@ -15,7 +15,7 @@ import Button from "material-ui/Button";
 import Dialog, { DialogTitle } from "material-ui/Dialog";
 
 import Typography from "material-ui/Typography";
-
+import Paper from "material-ui/Paper";
 import { withStyles } from "material-ui/styles";
 import grey from "material-ui/colors/grey";
 
@@ -23,12 +23,26 @@ import grey from "material-ui/colors/grey";
 import { colorLabels } from "../config/colorLabels";
 /*---Opens up on selection or click on highlight in Book or HighlightsList.---*/
 
-const styles = {
+const styles = theme => ({
   modalRoot: {
     backgroundColor: "#F0F0F0",
     borderRadius: "10px"
+  },
+  fontStyle: {
+    fontSize: theme.typography.fontSize
+  },
+  titleFontStyle: {
+    fontSize: theme.typography.fontSize + 2
+  },
+  titleStyle: {
+    border: "solid",
+    borderWidth: "0px 10px 0px 10px",
+    margin: "10px",
+    borderRadius: "10px",
+    boxShadow:
+      "inset 0px 1px 5px 0px rgba(0, 0, 0, 0.2), inset 0px 2px 2px 0px rgba(0, 0, 0, 0.14), inset 0px 3px 1px -2px rgba(0, 0, 0, 0.12)"
   }
-};
+});
 
 class AnnotationModal extends Component {
   handleClose = () => {
@@ -37,21 +51,13 @@ class AnnotationModal extends Component {
 
   generateTitleStyle = () => {
     const { highlightsIdArray, highlights } = this.props;
-    const { selectedFontSize } = this.props.settings;
+    const { darkMode } = this.props.settings;
     return {
-      fontSize: selectedFontSize,
-      border: "solid",
-      // backgroundColor: darkMode ? grey[700] : grey[200],
-      backgroundColor: grey[50],
+      backgroundColor: darkMode ? grey[700] : grey[200],
       borderColor:
         highlightsIdArray.length === 1
           ? colorLabels[highlights[highlightsIdArray[0]].color].active
-          : grey[700],
-      borderWidth: "0px 10px 0px 10px",
-      margin: "10px",
-      borderRadius: "10px",
-      boxShadow:
-        "inset 0px 1px 5px 0px rgba(0, 0, 0, 0.2), inset 0px 2px 2px 0px rgba(0, 0, 0, 0.14), inset 0px 3px 1px -2px rgba(0, 0, 0, 0.12)"
+          : grey[700]
     };
   };
 
@@ -66,7 +72,6 @@ class AnnotationModal extends Component {
       users,
       classes
     } = this.props;
-    console.log("highlights:", this.props.highlights);
 
     return (
       <Dialog
@@ -74,34 +79,50 @@ class AnnotationModal extends Component {
         onClose={this.handleClose}
         classes={{ paper: classes.modalRoot }}
       >
-        <div style={this.generateTitleStyle()}>
-          {/* --- Check for multiple highlights --- */}
-          {highlightsIdArray.length === 1 ? (
-            <DialogTitle>
-              {highlights[highlightsIdArray[0]].highlightedText}
-            </DialogTitle>
-          ) : (
-            <DialogTitle>-- multiple highlights selected --</DialogTitle>
-          )}
-        </div>
+        <Paper>
+          <Typography>
+            <div
+              className={classes.titleStyle}
+              style={this.generateTitleStyle()}
+            >
+              {/* --- Check for multiple highlights --- */}
 
-        {highlightsIdArray.length > 0 ? (
-          highlightsIdArray.length > 1 ? (
-            <AnnotationMulti
-              users={users}
-              highlights={highlights}
-              highlightsIdArray={highlightsIdArray}
-              annotationModalControl={annotationModalControl}
-            />
-          ) : (
-            <AnnotationSingle
-              users={users}
-              highlight={highlights[highlightsIdArray[0]]}
-              annotationModalControl={annotationModalControl}
-              highlightsControl={highlightsControl}
-            />
-          )
-        ) : null}
+              {highlightsIdArray.length === 1 ? (
+                <DialogTitle>
+                  <Typography className={classes.titleFontStyle}>
+                    {highlights[highlightsIdArray[0]].highlightedText}
+                  </Typography>
+                </DialogTitle>
+              ) : (
+                <DialogTitle>
+                  <Typography className={classes.titleFontStyle}>
+                    -- multiple highlights selected --
+                  </Typography>
+                </DialogTitle>
+              )}
+            </div>
+
+            {highlightsIdArray.length > 0 ? (
+              highlightsIdArray.length > 1 ? (
+                <AnnotationMulti
+                  users={users}
+                  highlights={highlights}
+                  highlightsIdArray={highlightsIdArray}
+                  annotationModalControl={annotationModalControl}
+                  className={classes.fontStyle}
+                />
+              ) : (
+                <AnnotationSingle
+                  users={users}
+                  highlight={highlights[highlightsIdArray[0]]}
+                  annotationModalControl={annotationModalControl}
+                  highlightsControl={highlightsControl}
+                  className={classes.fontStyle}
+                />
+              )
+            ) : null}
+          </Typography>
+        </Paper>
       </Dialog>
     );
   }
