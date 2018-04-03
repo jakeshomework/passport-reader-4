@@ -15,17 +15,19 @@ import Badge from "material-ui/Badge";
 import { withStyles } from "material-ui/styles";
 import CloseIcon from "material-ui-icons/Close";
 import grey from "material-ui/colors/grey";
+import Typography from "material-ui/Typography";
 
 /* ----- CONFIG IMPORTS ----- */
 import { colorLabels } from "../config/colorLabels";
 
-const styles = {
+const styles = theme => ({
   chipCont: {
     marginBottom: 20
   },
   label: {
     width: "100%",
-    overflow: "hidden"
+    overflow: "hidden",
+    fontSize: theme.typography.fontSize - 6
     // boxShadow:
     //   "0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)"
   },
@@ -41,8 +43,13 @@ const styles = {
   badge: {
     width: "100%"
   },
-  chip: { width: "100%", justifyContent: "flex-start" }
-};
+  chip: {
+    width: "100%",
+    justifyContent: "flex-start",
+    fontSize: theme.typography.fontSize - 7,
+    padding: "10px"
+  }
+});
 
 function AnnotationMulti({
   highlightsIdArray,

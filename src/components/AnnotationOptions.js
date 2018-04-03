@@ -24,14 +24,18 @@ import AnnotationEditorVideo from "./AnnotationEditorVideo";
 import AnnotationEditorNote from "./AnnotationEditorNote";
 
 /*---Opens annotation modal with a annotationType: note, video, or audio---*/
-const styles = {
+const styles = theme => ({
   icon: { color: grey[600], marginRight: 20 },
   addAnnotationIcon: {
     backgroundColor: "#eeab46",
     display: "flex",
     justifyContent: "space-around"
+  },
+  fontStyle: {
+    fontSize: theme.typography.fontSize - 2,
+    fontFamily: theme.typography.fontFamily
   }
-};
+});
 
 const AnnotationOptions = ({
   highlight,
@@ -64,7 +68,7 @@ const AnnotationOptions = ({
               ) : annotation.type === "note" ? (
                 <NoteIcon className={classes.icon} />
               ) : null}
-              <Typography className={classes.heading}>
+              <Typography className={classes.fontStyle}>
                 Created by {users[annotation.userId].firstName}{" "}
                 {users[annotation.userId].lastName}{" "}
                 {moment(annotation.createdAt).fromNow()}
@@ -101,11 +105,9 @@ const AnnotationOptions = ({
       <div
         className={classes.addAnnotationIcon}
         style={
-          highlight.annotations.length > 0 ? (
-            { borderRadius: "0px 0px 10px 10px" }
-          ) : (
-            { borderRadius: "10px 10px 10px 10px" }
-          )
+          highlight.annotations.length > 0
+            ? { borderRadius: "0px 0px 10px 10px" }
+            : { borderRadius: "10px 10px 10px 10px" }
         }
       >
         <IconButton

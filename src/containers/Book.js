@@ -162,8 +162,9 @@ class Book extends Component {
           <Grid item xs={1} sm={2} />
           <Grid item xs={10} sm={8}>
             Book selected:
-            <div>{` ${this.state.selection.startId} -> ${this.state.selection
-              .endId}`}</div>
+            <div>{` ${this.state.selection.startId} -> ${
+              this.state.selection.endId
+            }`}</div>
             <div>{this.state.selection.content}</div>
             {this.state.event}
             {this.state.showTooltip ? (

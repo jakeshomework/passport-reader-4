@@ -3,9 +3,12 @@ import PropTypes from "prop-types";
 /* ----- COMPONENT IMPORTS ----- */
 import { withStyles } from "material-ui/styles";
 import List, { ListItem } from "material-ui/List";
+import { FormGroup, FormControlLabel } from "material-ui/Form";
+
 import Checkbox from "material-ui/Checkbox";
 import IconButton from "material-ui/IconButton";
 import grey from "material-ui/colors/grey";
+import Typography from "material-ui/Typography";
 
 import moment from "moment";
 
@@ -53,7 +56,8 @@ const styles = theme => ({
     marginRight: "20px"
   },
   allCheckbox: {
-    marginLeft: "10px",
+    marginRight: "10px",
+    marginLeft: "30px",
     color: "white",
     backgroundColor: grey["700"]
   },
@@ -69,22 +73,37 @@ function createData(userId, highlightedText, updated, annotations) {
 
 class HighlightsList extends Component {
   state = {
-    checked: true
+    hlc1: true,
+    hlc2: true,
+    hlc3: true,
+    hlc4: true,
+    hlc5: true,
+    selectAll: true
   };
 
-  handleToggle = value => () => {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
+  togglehlc1 = (event, checked) => {
+    this.setState({ hlc1: checked });
+  };
+  togglehlc2 = (event, checked) => {
+    this.setState({ hlc2: checked });
+  };
+  togglehlc3 = (event, checked) => {
+    this.setState({ chlc3: checked });
+  };
+  togglehlc4 = (event, checked) => {
+    this.setState({ hlc4: checked });
+  };
+  togglehlc5 = (event, checked) => {
+    this.setState({ hlc5: checked });
+  };
+  toggleSelectAll = (event, checked) => {
     this.setState({
-      checked: newChecked
+      selectAll: checked,
+      hlc1: checked,
+      hlc2: checked,
+      hlc3: checked,
+      hlc4: checked,
+      hlc5: checked
     });
   };
 
@@ -94,6 +113,7 @@ class HighlightsList extends Component {
 
   render() {
     const { classes, filteredList } = this.props;
+    const { hlc1, hlc2, hlc3, hlc4, hlc5, selectAll } = this.state;
 
     const filteredListArray = Object.keys(filteredList);
 
@@ -101,7 +121,9 @@ class HighlightsList extends Component {
       <div className={classes.root}>
         <div className={classes.checkBoxes}>
           <Checkbox
-            checked={this.props.toggleFilter}
+            checked={hlc1}
+            onChange={this.togglehlc1}
+            value="checked"
             className={classes.checkbox}
             disableRipple
             style={{
@@ -110,6 +132,9 @@ class HighlightsList extends Component {
             }}
           />
           <Checkbox
+            checked={hlc2}
+            onChange={this.togglehlc2}
+            value="checked"
             className={classes.checkbox}
             disableRipple
             style={{
@@ -118,6 +143,9 @@ class HighlightsList extends Component {
             }}
           />
           <Checkbox
+            checked={hlc3}
+            onChange={this.togglehlc3}
+            value="checked"
             className={classes.checkbox}
             disableRipple
             style={{
@@ -126,6 +154,9 @@ class HighlightsList extends Component {
             }}
           />
           <Checkbox
+            checked={hlc4}
+            onChange={this.togglehlc4}
+            value="checked"
             className={classes.checkbox}
             disableRipple
             style={{
@@ -134,6 +165,9 @@ class HighlightsList extends Component {
             }}
           />
           <Checkbox
+            checked={hlc5}
+            onChange={this.togglehlc5}
+            value="checked"
             className={classes.checkbox}
             disableRipple
             style={{
@@ -141,8 +175,18 @@ class HighlightsList extends Component {
               color: "white"
             }}
           />
-          Select All
-          <Checkbox className={classes.allCheckbox} label="all" disableRipple />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={selectAll}
+                onChange={this.toggleSelectAll}
+                value="checked"
+                className={classes.allCheckbox}
+                disableRipple
+              />
+            }
+            label=" Select All"
+          />
         </div>
         <div>
           <Table className={classes.table}>
@@ -157,7 +201,6 @@ class HighlightsList extends Component {
 
             <TableBody>
               {filteredListArray.map(highlightId => {
-                console.log("color labels", colorLabels);
                 const {
                   userId,
                   color,
@@ -165,13 +208,19 @@ class HighlightsList extends Component {
                   updated,
                   annotations
                 } = filteredList[highlightId];
-                return (
+                console.log("highlight color: ", colorLabels[color]);
+                return this.state[color] ? (
                   <TableRow
-                    className={classes.row}
-                    onClick={() => this.handleHighlightClick(highlightId)}
+                    className={colorLabels[color]}
+                    onClick={this.props.annotationModalControl.open}
+                    value={color}
                   >
                     <CustomTableCell>
-                      <Avatar style={colorLabels}>{userId}</Avatar>
+                      <Avatar
+                        style={{ backgroundColor: colorLabels[color].active }}
+                      >
+                        {userId}
+                      </Avatar>
                     </CustomTableCell>
 
                     <CustomTableCell>{highlightedText}</CustomTableCell>
@@ -180,7 +229,7 @@ class HighlightsList extends Component {
                     </CustomTableCell>
                     <CustomTableCell>annotations</CustomTableCell>
                   </TableRow>
-                );
+                ) : null;
               })}
             </TableBody>
           </Table>

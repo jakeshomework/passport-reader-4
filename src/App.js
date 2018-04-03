@@ -103,8 +103,8 @@ class App extends Component {
         classView: false,
         focusMode: false,
         showHelpTips: false,
-        darkMode: false,
-        fontSize: [14, 16, 20, 28],
+        darkMode: true,
+        fontSize: [14, 16, 18, 20, 28],
         fontFamily: [
           "Helvetica",
           "Roboto",
@@ -251,13 +251,15 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={{
-              /*this.state.settings.darkMode ? (
+            style={
+              {
+                /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-            }}
+              }
+            }
           >
             <Settings
               settings={this.state.settings}
