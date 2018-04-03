@@ -23,6 +23,7 @@ import HelpOutline from "material-ui-icons/HelpOutline";
 import FontDownload from "material-ui-icons/FontDownload";
 import TextFields from "material-ui-icons/TextFields";
 import People from "material-ui-icons/People";
+import Typography from "material-ui/Typography";
 
 /* ----- GRAPHQL IMPORTS ----- */
 //import GET_SETTINGS from "../graphql/GET_SETTINGS";
@@ -38,8 +39,8 @@ const styles = theme => ({
   list: {
     borderBottom: "1px solid #ccc"
   },
-  listtext: {
-    fontSize: theme.typography.fontSize
+  ListItemText: {
+    fontSize: theme.typography.fontSize - 2
   },
   listitemFontSize: {
     fontSize: theme.typography.fontSize
@@ -114,10 +115,16 @@ class Settings extends Component {
                 <ListItemIcon>
                   <CenterFocusStrong />
                 </ListItemIcon>
-                <ListItemText
-                  styles={styles.listitemFontSize}
-                  primary="Focus Mode"
-                />
+                <Typography className={classes.fontStyle}>
+                  <ListItemText
+                    styles={styles.listitemFontSize}
+                    primary={
+                      <Typography className={classes.ListItemText}>
+                        Focus Mode
+                      </Typography>
+                    }
+                  />
+                </Typography>
                 <ListItemSecondaryAction>
                   <SettingsSwitch
                     setting={focusMode}
@@ -129,7 +136,15 @@ class Settings extends Component {
                 <ListItemIcon>
                   <InvertColors />
                 </ListItemIcon>
-                <ListItemText primary="Dark Mode" />
+                <Typography className={classes.fontStyle}>
+                  <ListItemText
+                    primary={
+                      <Typography className={classes.ListItemText}>
+                        Dark Mode
+                      </Typography>
+                    }
+                  />
+                </Typography>
                 <ListItemSecondaryAction>
                   <SettingsSwitch
                     darkMode={darkMode}
@@ -149,7 +164,13 @@ class Settings extends Component {
                   <ListItemIcon>
                     <People />
                   </ListItemIcon>
-                  <ListItemText primary="Allow Class View" />
+                  <ListItemText
+                    primary={
+                      <Typography className={classes.ListItemText}>
+                        Allow Class View
+                      </Typography>
+                    }
+                  />
                   <ListItemSecondaryAction>
                     <SettingsSwitch
                       setting={classView}
@@ -168,7 +189,13 @@ class Settings extends Component {
                 <ListItemIcon>
                   <People />
                 </ListItemIcon>
-                <ListItemText primary="Class View" />
+                <ListItemText
+                  primary={
+                    <Typography className={classes.ListItemText}>
+                      Class View
+                    </Typography>
+                  }
+                />
                 <ListItemSecondaryAction>
                   <SettingsSwitch
                     setting={classView}
@@ -181,7 +208,13 @@ class Settings extends Component {
                 <ListItemIcon>
                   <HelpOutline />
                 </ListItemIcon>
-                <ListItemText primary="Show Help Tips" />
+                <ListItemText
+                  primary={
+                    <Typography className={classes.ListItemText}>
+                      Show Help Tips
+                    </Typography>
+                  }
+                />
                 <ListItemSecondaryAction>
                   <SettingsSwitch
                     setting={showHelpTips}
@@ -195,7 +228,13 @@ class Settings extends Component {
                 <ListItemIcon>
                   <TextFields />
                 </ListItemIcon>
-                <ListItemText primary="Font Size" />
+                <ListItemText
+                  primary={
+                    <Typography className={classes.ListItemText}>
+                      Font Size
+                    </Typography>
+                  }
+                />
                 <ListItemSecondaryAction>
                   <SettingsSelector
                     options={fontSize}
@@ -208,7 +247,13 @@ class Settings extends Component {
                 <ListItemIcon>
                   <FontDownload />
                 </ListItemIcon>
-                <ListItemText primary="Font Family" />
+                <ListItemText
+                  primary={
+                    <Typography className={classes.ListItemText}>
+                      Font Family
+                    </Typography>
+                  }
+                />
                 <ListItemSecondaryAction>
                   <SettingsSelector
                     options={fontFamily}
