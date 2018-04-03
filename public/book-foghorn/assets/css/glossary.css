@@ -1,0 +1,72 @@
+sub{
+	font-size: 0.67em;
+	vertical-align: -10%;
+}
+a.anchor{
+	-ibooks-layout-hint: anchor;
+	display: none;
+}
+sup{
+	font-size: 0.67em;
+	vertical-align: 33%;
+}
+div.multichoice{
+	list-style-type: upper-alpha;
+}
+img{
+	max-height: 100%;
+	max-width: 100%;
+}
+a.page{
+	-ibooks-layout-hint: anchor page;
+	display: none;
+}
+.hide{
+	display: none;
+}
+a.attachment{
+	-ibooks-layout-hint: inline;
+	display: none;
+}
+.inlineblock{
+	display: inline;
+}
+a.shape{
+	-ibooks-layout-hint: shape;
+	display: none;
+}
+body{
+	white-space: pre-wrap;
+}
+figure{
+	margin: 1em 0 1em 0;
+	page-break-inside: avoid;
+	text-align: center;
+}
+p, ul, ol{
+	margin: 0px;
+}
+table{
+	border-collapse: collapse;
+	white-space: pre-wrap;
+}
+dt{
+	margin-bottom: 20px;
+}
+dl{
+	margin: 0px;
+}
+a.pageShape{
+	-ibooks-layout-hint: anchor page shape;
+	display: none;
+}
+dd{
+	-webkit-margin-start: 0px;
+	margin-bottom: 20px;
+}
+.pagebreak{
+	break-after: page;
+}
+.columnbreak{
+	break-after: column;
+}

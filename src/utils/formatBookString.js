@@ -38,20 +38,20 @@ export const formatBookString = originalContent => {
     ? originalContent.match(regExImageGallery)
     : [];
 
-  let images = [];
+  let galleries = [];
   for (let j = 0; j < galleryArray.length; j++) {
     let currentGallery = galleryArray[j];
 
     let thumbnailArray = currentGallery.match(regExImageThumbnail);
     let fullSizeArray = currentGallery.match(regExImageFullSize);
     let captionArray = currentGallery.match(regExFigCaption);
-    images[j] = [];
+    galleries[j] = [];
 
     // console.log({ thumbnailArray, fullSizeArray, captionArray });
 
     // ===== BUILD GALLERY OBJECT FROM FULL SIZE IMAGES ===== //
     for (let k = 0; k < fullSizeArray.length; k++) {
-      images[j][k] = {
+      galleries[j][k] = {
         thumbnail: thumbnailArray ? thumbnailArray[k].slice(20, -1) : null,
         src: fullSizeArray[k].slice(6, -1),
         caption: captionArray[k]
@@ -62,7 +62,6 @@ export const formatBookString = originalContent => {
   }
 
   // console.log({ galleryArray });
-  // console.log({ images });
 
   // ========================================= //
   // ******** HANDLE LINK TAG ELEMENTS ******* //
@@ -80,7 +79,7 @@ export const formatBookString = originalContent => {
   // ================================================== //
   // * REPLACE IMAGE GALLERY ELEMENTS WITH GALLERY ID * //
   // ================================================== //
-  for (let i = 0; i < images.length; i++) {
+  for (let i = 0; i < galleries.length; i++) {
     bookDisplayString = bookDisplayString.replace(
       regExImageGallerySingle,
       `<div id="image-gallery-${i}"></div>`
@@ -174,7 +173,7 @@ export const formatBookString = originalContent => {
   // ============================================== //
   return {
     asides,
-    images,
+    galleries,
     bookDisplay,
     links
   };

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ibooks:autoplayWidgetCount</key>
+	<integer>0</integer>
+	<key>ibooks:canvasHTMLWidgetCount</key>
+	<integer>0</integer>
+	<key>ibooks:currentVersion</key>
+	<real>2.2000000000000002</real>
+	<key>ibooks:imagesWithLinkCount</key>
+	<integer>0</integer>
+	<key>ibooks:kpfv1count</key>
+	<integer>0</integer>
+	<key>ibooks:kpfv2count</key>
+	<integer>0</integer>
+	<key>ibooks:requiredOSXAppVersion</key>
+	<string>1.0.1</string>
+	<key>ibooks:requiredVersion</key>
+	<real>2</real>
+	<key>ibooks:requirediOSAppVersion</key>
+	<string>3.1.3</string>
+	<key>navMap</key>
+	<dict>
+		<key>n-863DD79A-7827-49E8-8CE3-F67892F03639</key>
+		<dict>
+			<key>displayNumberFormat</key>
+			<string>decimal</string>
+			<key>displayStartPageNumber</key>
+			<integer>1</integer>
+			<key>glossaryTermLink</key>
+			<array>
+				<string>/OPS/glossary4.xhtml</string>
+				<string>/OPS/glossary5.xhtml</string>
+				<string>/OPS/glossary6.xhtml</string>
+				<string>/OPS/glossary7.xhtml</string>
+				<string>/OPS/glossary8.xhtml</string>
+				<string>/OPS/glossary9.xhtml</string>
+				<string>/OPS/glossary10.xhtml</string>
+				<string>/OPS/glossary11.xhtml</string>
+				<string>/OPS/glossary12.xhtml</string>
+				<string>/OPS/glossary13.xhtml</string>
+			</array>
+			<key>glossaryTermsExist</key>
+			<true/>
+			<key>includeInTOC</key>
+			<true/>
+			<key>numberOfPages</key>
+			<integer>1</integer>
+			<key>numberOfTOCHeadings</key>
+			<integer>0</integer>
+			<key>sectionIdentifier</key>
+			<string>1</string>
+		</dict>
+	</dict>
+	<key>showPageNumbers</key>
+	<false/>
+	<key>tocHeaderImage</key>
+	<string>/OPS/assets/images/toc-portrait-header.jpg</string>
+</dict>
+</plist>

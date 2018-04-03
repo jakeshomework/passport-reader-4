@@ -49,10 +49,17 @@ const styles = theme => ({
 class Settings extends Component {
   /* --- AllowClassView only available for teachers --- */
   toggleAllowClassView = () => {
-    this.props.settingsControl.update({
-      allowClassView: !this.props.settings.allowClassView
+    this.props.settingsControl.changePermissions({
+      allowClassView: !this.props.permissions.allowClassView
     });
   };
+  /* --- Allow students to leave comments on other students' highlights --- */
+  toggleSocialAnnotations = () => {
+    this.props.settingsControl.changePermissions({
+      allowSocialAnnotations: !this.props.permissions.allowSocialAnnotations
+    });
+  };
+
   /*---Only show if correct permissions are met -- teacher or teacher authorized class view.---*/
   toggleClassView = () => {
     this.props.settingsControl.update({
@@ -86,26 +93,103 @@ class Settings extends Component {
       selectedFontFamily: value
     });
   };
+
+  changeBook = value => {
+    this.props.settingsControl.changeBook({ bookName: value });
+  };
+
+  changeUser = user => {
+    this.props.settingsControl.changeUser(user);
+  };
+
   /*---Available for teachers only, this allows students to use the toggleView method.---*/
   toggleViewPermissions = () => {};
 
   render() {
     const {
-      allowClassView,
       classView,
       focusMode,
       showHelpTips,
       darkMode,
       fontFamily,
-      fontSize
+      fontSize,
+      bookName
     } = this.props.settings;
+
+    const { allowClassView } = this.props.permissions;
+
     const { classes, user } = this.props;
+
+    const bookOptions = ["tym", "foghorn"];
+    const userOptions = ["user111", "user222", "user333"];
 
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Grid item xs={1} sm={2} />
           <Grid item xs={10} sm={8}>
+            <List subheader={<ListSubheader>Book Selection</ListSubheader>}>
+              <ListItem>
+                <ListItemIcon>
+                  <TextFields />
+                </ListItemIcon>
+                <ListItemText primary="Book Name" />
+                <ListItemSecondaryAction>
+                  <SettingsSelector
+                    options={bookOptions}
+                    handleChangeSettings={this.changeBook}
+                    currentSelection={bookName}
+                  />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <TextFields />
+                </ListItemIcon>
+                <ListItemText primary="Change User" />
+                <ListItemSecondaryAction>
+                  <SettingsSelector
+                    options={userOptions}
+                    handleChangeSettings={this.changeUser}
+                    currentSelection={user.userId}
+                  />
+                </ListItemSecondaryAction>
+              </ListItem>
+            </List>
+
+            {/* --- Only visible if user role is 'teacher' --- */}
+            {this.props.user.role === "teacher" ? (
+              <List
+                subheader={<ListSubheader>Teacher Settings</ListSubheader>}
+                className={classes.list}
+              >
+                <ListItem>
+                  <ListItemIcon>
+                    <People />
+                  </ListItemIcon>
+                  <ListItemText primary="Allow Class View" />
+                  <ListItemSecondaryAction>
+                    <SettingsSwitch
+                      setting={classView}
+                      handleChangeSettings={this.toggleAllowClassView}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <People />
+                  </ListItemIcon>
+                  <ListItemText primary="Allow Social Annotations" />
+                  <ListItemSecondaryAction>
+                    <SettingsSwitch
+                      setting={classView}
+                      handleChangeSettings={this.toggleSocialAnnotations}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+              </List>
+            ) : null}
+
             <List
               subheader={<ListSubheader>Reading Modes</ListSubheader>}
               className={classes.list}
@@ -137,33 +221,6 @@ class Settings extends Component {
                   />
                 </ListItemSecondaryAction>
               </ListItem>
-            </List>
-
-            {/* --- Only visible if user role is 'teacher' --- */}
-            {this.props.user.role === "teacher" ? (
-              <List
-                subheader={<ListSubheader>Teacher Settings</ListSubheader>}
-                className={classes.list}
-              >
-                <ListItem>
-                  <ListItemIcon>
-                    <People />
-                  </ListItemIcon>
-                  <ListItemText primary="Allow Class View" />
-                  <ListItemSecondaryAction>
-                    <SettingsSwitch
-                      setting={classView}
-                      handleChangeSettings={this.toggleAllowClassView}
-                    />
-                  </ListItemSecondaryAction>
-                </ListItem>
-              </List>
-            ) : null}
-
-            <List
-              subheader={<ListSubheader>Visual Settings</ListSubheader>}
-              className={classes.list}
-            >
               <ListItem>
                 <ListItemIcon>
                   <People />
@@ -177,19 +234,8 @@ class Settings extends Component {
                   />
                 </ListItemSecondaryAction>
               </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <HelpOutline />
-                </ListItemIcon>
-                <ListItemText primary="Show Help Tips" />
-                <ListItemSecondaryAction>
-                  <SettingsSwitch
-                    setting={showHelpTips}
-                    handleChangeSettings={this.toggleHelpTips}
-                  />
-                </ListItemSecondaryAction>
-              </ListItem>
             </List>
+
             <List subheader={<ListSubheader>Font Settings</ListSubheader>}>
               <ListItem>
                 <ListItemIcon>

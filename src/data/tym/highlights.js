@@ -1,4 +1,4 @@
-export const HighlightsDemo = {
+export const TymHighlights = {
   highlightID33333: {
     id: "highlightID33333",
     courseId: "TempCourse",

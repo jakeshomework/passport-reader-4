@@ -47,8 +47,11 @@ export const deleteHighlight = (prevState, highlightId) => {
   let newHighlights = {
     ...prevState.highlights
   };
-  delete newHighlights.highlightId;
-  return { highlights: newHighlights };
+  delete newHighlights[highlightId];
+  console.log("lalalaa", newHighlights);
+  return {
+    highlights: newHighlights
+  };
 };
 
 export const addAnnotation = (prevState, { highlightId, type }) => {

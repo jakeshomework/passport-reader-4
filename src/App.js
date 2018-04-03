@@ -34,7 +34,7 @@ import {
   closeModal,
   updateModal
 } from "./utils/annotationModalUtils.js";
-import { updateSettings } from "./utils/settingsUtils";
+import { updateSettings, updatePermissions } from "./utils/settingsUtils";
 import {
   addHighlight,
   updateHighlight,
@@ -47,22 +47,25 @@ import {
 import { addHighlightsToBook } from "./utils/addHighlightsToBook";
 
 /* ----- IMPORT DATA ----- */
-import { HighlightsDemo } from "./data/highlights.js";
 import { UsersDemo } from "./data/users.js";
 
 /* ----- IMPORT STYLES ----- */
 import { AppStyles } from "./styles/AppStyles.js";
 
 /* ----- BOOK IMPORT (FOGHORN) ----- */
-// import { BookString } from "./data/foghorn/content1.js";
-// import { BookString } from "./data/foghorn/content1Unformatted.js";
+import { FoghornString } from "./data/foghorn/content1Unformatted.js";
+import { FoghornHighlights } from "./data/foghorn/highlights.js";
 
 /* ----- BOOK IMPORT (THANK YOU MA'AM IMPORT) ----- */
-// import { BookString } from "./data/tym/content1.js";
-import { BookString } from "./data/tym/content1Unformatted.js";
+import { TymString } from "./data/tym/content1Unformatted.js";
+import { TymHighlights } from "./data/tym/highlights.js";
+
+const defaultBook = "foghorn";
+const defaultUser = UsersDemo.user333;
 
 /* --- break book into object --- */
-const formattedBook = formatBookString(BookString);
+const formattedTym = formatBookString(TymString);
+const formattedFoghorn = formatBookString(FoghornString);
 
 const handleChangeIndex = () => {};
 
@@ -72,14 +75,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: UsersDemo.user333,
-      book: {
-        bookId: "123",
-        bookDisplay: formattedBook.bookDisplay,
-        asides: formattedBook.asides,
-        images: formattedBook.images,
-        links: formattedBook.links
-      },
+      user: defaultUser,
+      book: formattedTym,
+      highlights: TymHighlights,
       speedReader: { wpm: 250, isPlaying: false, position: 0 },
       audio: {
         isPlaying: false,
@@ -88,16 +86,20 @@ class App extends Component {
         playedSeconds: 0,
         totalDuration: 0
       },
-      highlights: HighlightsDemo,
       annotationModal: {
         open: false,
         highlightsIdArray: [],
         content: {}
       },
+      permissions: {
+        allowClassView: false,
+        allowSocialAnnotations: false
+      },
       settings: {
+        bookId: "123",
+        bookName: defaultBook,
         selectedFontFamily: "Helvetica",
         selectedFontSize: 16,
-        allowClassView: false,
         classView: false,
         focusMode: false,
         showHelpTips: false,
@@ -121,12 +123,30 @@ class App extends Component {
   /* --- make updates to settings --- */
   settingsControl = {
     update: updateObject =>
-      this.setState(prevState => updateSettings(prevState, updateObject))
+      this.setState(prevState => updateSettings(prevState, updateObject)),
+    changePermissions: updateObject =>
+      this.setState(prevState => updatePermissions(prevState, updateObject)),
+    changeBook: bookNameObject => {
+      if (bookNameObject.bookName === "tym") {
+        this.setState({
+          book: formattedTym,
+          highlights: TymHighlights
+        });
+      } else if (bookNameObject.bookName === "foghorn") {
+        this.setState({
+          book: formattedFoghorn,
+          highlights: FoghornHighlights
+        });
+      }
+      this.settingsControl.update(bookNameObject);
+    },
+    changeUser: user => {
+      this.setState({ user: UsersDemo[user] });
+    }
   };
 
   highlightsControl = {
     add: highlightObject => {
-      console.log(highlightObject);
       let currentHighlights = this.state.highlights;
       this.setState(
         prevState => addHighlight(prevState, highlightObject),
@@ -139,8 +159,17 @@ class App extends Component {
     },
     update: highlightUpdate =>
       this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
-    delete: highlightId =>
-      this.setState(prevState => deleteHighlight(prevState, highlightId)),
+    deleteHighlight: highlightId => {
+      this.setState(prevState => {
+        return {
+          annotationModal: {
+            highlightsIdArray: [],
+            open: false
+          }
+        };
+      }),
+        this.setState(prevState => deleteHighlight(prevState, highlightId));
+    },
     addAnnotation: annotationObject =>
       this.setState(prevState => addAnnotation(prevState, annotationObject)),
     updateAnnotation: annotationObject => {
@@ -153,11 +182,22 @@ class App extends Component {
 
   annotationModalControl = {
     close: () => this.setState(prevState => closeModal(prevState)),
-    open: highlightsIdArray =>
-      this.setState(prevState => openModal(prevState, highlightsIdArray)),
+    open: highlightsIdArray => {
+      console.log(highlightsIdArray);
+      this.setState(prevState => openModal(prevState, highlightsIdArray));
+    },
     update: content =>
       this.setState(prevState => updateModal(prevState, content))
   };
+
+  componentDidMount() {
+    this.state.settings.bookName === "tym"
+      ? this.setState({ book: formattedTym, highlights: TymHighlights })
+      : this.setState({
+          book: formattedFoghorn,
+          highlights: FoghornHighlights
+        });
+  }
 
   /* --- control bottom navigation menu --- */
   changeSlideView = index => {
@@ -221,6 +261,7 @@ class App extends Component {
           >
             <Settings
               settings={this.state.settings}
+              permissions={this.state.permissions}
               settingsControl={this.settingsControl}
               user={this.state.user}
             />

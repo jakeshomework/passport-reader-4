@@ -42,7 +42,8 @@ class AnnotationSingle extends Component {
   };
 
   handleDelete = () => {
-    this.props.highlightsControl.delete(this.props.highlight.id);
+    console.log("better off bad", this.props.highlight.id);
+    this.props.highlightsControl.deleteHighlight(this.props.highlight.id);
   };
 
   handleSave = () => {

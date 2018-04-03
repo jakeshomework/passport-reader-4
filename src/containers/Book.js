@@ -141,7 +141,7 @@ class Book extends Component {
       ? selectWatcher
       : clearInterval(selectWatcher);
 
-    const { bookDisplay } = this.props.book;
+    const { bookDisplay, galleries } = this.props.book;
     const { highlights, highlightsControl, settings, classes } = this.props;
 
     const highlightsKeys = Object.keys(highlights);
@@ -181,7 +181,7 @@ class Book extends Component {
               highlights={highlights}
               settings={settings}
             />
-            <ImageGallery gallery="object" />
+            <ImageGallery galleries={galleries} bookName={settings.bookName} />
             <GlossaryTooltip selection="object" />
           </Grid>
           <Grid item xs={1} sm={2} />

@@ -88,6 +88,10 @@ class HighlightsList extends Component {
     });
   };
 
+  handleHighlightClick = highlightId => {
+    this.props.annotationModalControl.open([highlightId]);
+  };
+
   render() {
     const { classes, filteredList } = this.props;
 
@@ -164,7 +168,7 @@ class HighlightsList extends Component {
                 return (
                   <TableRow
                     className={classes.row}
-                    onClick={this.props.annotationModalControl.open}
+                    onClick={() => this.handleHighlightClick(highlightId)}
                   >
                     <CustomTableCell>
                       <Avatar style={colorLabels}>{userId}</Avatar>

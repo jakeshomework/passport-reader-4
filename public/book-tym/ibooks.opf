@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package unique-identifier="uid" version="3.0" prefix="rendition: http://www.idpf.org/vocab/rendition/# ibooks: http://vocabulary.itunes.apple.com/rdf/ibooks/vocabulary-extensions-1.0/" 
+    xmlns="http://www.idpf.org/2007/opf">
+    <metadata 
+        xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <dc:identifier id="uid">64A4AEF2-52AF-473E-9C52-E656913C8326</dc:identifier>
+        <meta property="dcterms:modified">2017-07-26T19:03:54Z</meta>
+        <dc:title>Thank You, M’am</dc:title>
+        <dc:contributor id="bkp">iBooks Author 2.5</dc:contributor>
+        <dc:language>en</dc:language>
+        <meta name="ibooks:autoHyphenate" content="yes"/>
+        <meta name="ibooks:currentVersion" content="2.2"/>
+        <meta name="ibooks:contentVersions" content="{link=1}"/>
+        <meta name="ibooks:equationEnvironment" content="equationEnvironment"/>
+        <meta name="ibooks:pageCount" content="1"/>
+        <meta name="ibooks:searchIndex" content="searchIndex"/>
+        <meta name="ibooks:searchReferenceText" content="searchReferenceText"/>
+        <meta name="cover" content="cover-image"/>
+        <meta name="ibooks:requiredVersion" content="2"/>
+        <meta name="generator" content="iBooks Author 2.5"/>
+        <meta property="ibooks:version">1.0</meta>
+        <meta property="ibooks:format">RMT</meta>
+    </metadata>
+    <manifest 
+        xmlns:ibooks="http://www.apple.com/2011/iBooks">
+        <item id="ch1" href="content1.xhtml" media-type="application/xhtml+xml"/>
+        <item id="di2" href="assets/images/09_01_01_01a.jpg" media-type="image/jpeg"/>
+        <item id="di3" href="assets/images/Chapter_Section_Rule_new.jpg" media-type="image/jpeg"/>
+        <item id="di4" href="assets/media/Thank%20You%20Mam.m4p" media-type="audio/x-m4p"/>
+        <item id="di5" href="assets/images/Flipgrid.png" media-type="image/png"/>
+        <item id="di6" href="assets/images/09_01_01_01b-thumb.png" media-type="image/png"/>
+        <item id="di7" href="assets/images/09_01_01_01b.jpg" media-type="image/jpeg"/>
+        <item id="di8" href="assets/images/09_01_01_03-thumb.png" media-type="image/png"/>
+        <item id="di9" href="assets/images/09_01_01_03.jpg" media-type="image/jpeg"/>
+        <item id="di10" href="assets/images/Screen%20Shot%202017-04-13%20at%208.55.16%20PM.jpg" media-type="image/jpeg"/>
+        <item id="di11" href="assets/images/09_01_01_05b-thumb.png" media-type="image/png"/>
+        <item id="di12" href="assets/images/09_01_01_05b.jpg" media-type="image/jpeg"/>
+        <item id="di13" href="assets/images/09_01_01_06b-thumb.png" media-type="image/png"/>
+        <item id="di14" href="assets/images/09_01_01_06b.jpg" media-type="image/jpeg"/>
+        <item id="di15" href="assets/images/Screen%20Shot%202017-04-13%20at%208.46.07%20PM.jpg" media-type="image/jpeg"/>
+        <item id="ss1" href="assets/css/content1.css" media-type="text/css"/>
+        <item id="glossary" href="glossary.xhtml" media-type="application/xhtml+xml"/>
+        <item id="ss2" href="assets/css/glossary.css" media-type="text/css"/>
+        <item id="n-C72B352B-A1B5-48A6-9F30-A1CABC76A8E6" href="glossary1.xhtml" media-type="application/xhtml+xml"/>
+        <item id="ss3" href="assets/css/glossary1.css" media-type="text/css"/>
+        <item id="n-4A6F58F2-4C82-40BF-8D13-B909DDE28FAD" href="glossary2.xhtml" media-type="application/xhtml+xml"/>
+        <item id="ss4" href="assets/css/glossary2.css" media-type="text/css"/>
+        <item id="n-9FFF9AF9-00B2-45E5-A56F-5215CCC53C0F" href="glossary3.xhtml" media-type="application/xhtml+xml"/>
+        <item id="ss5" href="assets/css/glossary3.css" media-type="text/css"/>
+        <item id="searchIndex" href="assets/search/searchIndex.xml" media-type="text/xml"/>
+        <item id="searchReferenceText" href="assets/search/searchRefText.xml" media-type="text/xml"/>
+        <item id="equationEnvironment" href="assets/equation/equationEnvironment.xml" media-type="text/xml"/>
+        <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+        <item id="ncx" href="ibooks.ncx" media-type="application/x-dtbncx+xml"/>
+        <item id="di30" href="assets/images/toc-portrait-header.jpg" media-type="image/jpeg"/>
+        <item id="ncxExt" href="assets/ncxExtensions.xml" media-type="application/x-ibooks+ncx"/>
+        <item id="cover-image" href="assets/images/cover-image.jpg" media-type="image/jpeg"/>
+    </manifest>
+    <spine toc="ncx">
+        <itemref id="n-863DD79A-7827-49E8-8CE3-F67892F03639" idref="ch1" linear="yes"/>
+        <itemref idref="glossary" linear="yes"/>
+        <itemref idref="n-C72B352B-A1B5-48A6-9F30-A1CABC76A8E6" linear="no"/>
+        <itemref idref="n-4A6F58F2-4C82-40BF-8D13-B909DDE28FAD" linear="no"/>
+        <itemref idref="n-9FFF9AF9-00B2-45E5-A56F-5215CCC53C0F" linear="no"/>
+    </spine>
+    <guide>
+        <reference type="glossary" title="Glossary" href="glossary.xhtml"/>
+    </guide>
+</package>
