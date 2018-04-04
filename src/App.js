@@ -103,7 +103,7 @@ class App extends Component {
         classView: false,
         focusMode: false,
         showHelpTips: false,
-        darkMode: true,
+        darkMode: false,
         fontSize: [14, 16, 18, 20, 28],
         fontFamily: [
           "Helvetica",
@@ -286,6 +286,7 @@ class App extends Component {
               highlights={this.state.highlights}
               style={Object.assign({}, styles.slide, styles.highlightsSlide)}
               annotationModalControl={this.annotationModalControl}
+              users={UsersDemo}
             />
             <Audio style={Object.assign({}, styles.slide, styles.audioSlide)} />
             <SpeedReader

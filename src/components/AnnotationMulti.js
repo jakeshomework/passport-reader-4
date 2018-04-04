@@ -46,7 +46,7 @@ const styles = theme => ({
   chip: {
     width: "100%",
     justifyContent: "flex-start",
-    fontSize: theme.typography.fontSize - 7,
+    fontSize: theme.typography.fontSize - 4,
     padding: "10px"
   }
 });
@@ -72,6 +72,7 @@ function AnnotationMulti({
           {highlightsIdArray.map(highlightId => {
             const highlight = highlights[highlightId];
             const user = users[highlight.userId];
+
             const initials = user.firstName.charAt(0) + user.lastName.charAt(0);
             const generateBGColor = colorLabels[highlight.color].active;
             const createdDate = moment(highlight.createdAt).fromNow();
