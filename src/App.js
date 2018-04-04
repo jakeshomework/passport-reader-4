@@ -129,12 +129,12 @@ class App extends Component {
     changeBook: bookNameObject => {
       if (bookNameObject.bookName === "tym") {
         this.setState({
-          book: formattedTym,
+          book: formatBookString(TymString),
           highlights: TymHighlights
         });
       } else if (bookNameObject.bookName === "foghorn") {
         this.setState({
-          book: formattedFoghorn,
+          book: formatBookString(FoghornString),
           highlights: FoghornHighlights
         });
       }
@@ -251,15 +251,13 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={
-              {
-                /*this.state.settings.darkMode ? (
+            style={{
+              /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-              }
-            }
+            }}
           >
             <Settings
               settings={this.state.settings}

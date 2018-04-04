@@ -27,6 +27,10 @@ const BookDisplay = ({
   // const classView = false;
 
   const generateHighlightColor = highlightsArray => {
+    if (settings.focusMode) {
+      return "transparent";
+    }
+
     // --- reduce highlightsIdArray to the most recent highlight --- //
     const newestHighlight = highlightsArray.reduce((newest, current) => {
       return highlights[newest].updated < highlights[current].updated
@@ -37,7 +41,8 @@ const BookDisplay = ({
     // --- generate color depending on whether classView is selected --- //
     return !settings.classView
       ? colorLabels[highlights[newestHighlight].color].active
-      : highlightsArray.length > 9
+      : // --- determine color if classView is selected --- //
+        highlightsArray.length > 9
         ? orange[900]
         : orange[highlightsArray.length * 100];
   };

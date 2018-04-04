@@ -23,6 +23,9 @@ import HelpOutline from "material-ui-icons/HelpOutline";
 import FontDownload from "material-ui-icons/FontDownload";
 import TextFields from "material-ui-icons/TextFields";
 import People from "material-ui-icons/People";
+import GroupIcon from "material-ui-icons/GroupWork";
+import BookIcon from "material-ui-icons/Book";
+import PersonIcon from "material-ui-icons/Person";
 import Typography from "material-ui/Typography";
 
 /* ----- GRAPHQL IMPORTS ----- */
@@ -68,7 +71,7 @@ class Settings extends Component {
     });
   };
   /*---Hide all highlights to allow for a clean reading experience. *User can still add highlights.---*/
-  togglefocusMode = () => {
+  toggleFocusMode = () => {
     this.props.settingsControl.update({
       focusMode: !this.props.settings.focusMode
     });
@@ -129,15 +132,15 @@ class Settings extends Component {
         <Grid container spacing={24}>
           <Grid item xs={1} sm={2} />
           <Grid item xs={10} sm={8}>
-            <List subheader={<ListSubheader>Book Selection</ListSubheader>}>
+            <List subheader={<ListSubheader>Demo Controls</ListSubheader>}>
               <ListItem>
                 <ListItemIcon>
-                  <TextFields />
+                  <BookIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary={
                     <Typography className={classes.ListItemText}>
-                      Book Name
+                      Change Book
                     </Typography>
                   }
                 />
@@ -151,7 +154,7 @@ class Settings extends Component {
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <TextFields />
+                  <PersonIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary={
@@ -196,7 +199,7 @@ class Settings extends Component {
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
-                    <People />
+                    <GroupIcon />
                   </ListItemIcon>
                   <ListItemText primary="Allow Social Annotations" />
                   <ListItemSecondaryAction>
@@ -228,7 +231,7 @@ class Settings extends Component {
                 <ListItemSecondaryAction>
                   <SettingsSwitch
                     setting={focusMode}
-                    handleChangeSettings={this.togglefocusMode}
+                    handleChangeSettings={this.toggleFocusMode}
                   />
                 </ListItemSecondaryAction>
               </ListItem>
