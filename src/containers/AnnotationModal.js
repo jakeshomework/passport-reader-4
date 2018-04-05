@@ -5,6 +5,7 @@ import moment from "moment";
 import ColorSelector from "../components/ColorSelector";
 import AnnotationSingle from "../components/AnnotationSingle";
 import AnnotationMulti from "../components/AnnotationMulti";
+import renderHTML from "react-render-html";
 /* ----- GRAPHQL IMPORTS ----- */
 //import GET_HIGHLIGHT_BY_ID from "../graphql/GET_HIGHLIGHT_BY_ID";
 //import UPDATE_HIGHLIGHT from "../graphql/UPDATE_HIGHLIGHT";
@@ -90,7 +91,9 @@ class AnnotationModal extends Component {
               {highlightsIdArray.length === 1 ? (
                 <DialogTitle>
                   <Typography className={classes.titleFontStyle}>
-                    {highlights[highlightsIdArray[0]].highlightedText}
+                    {renderHTML(
+                      highlights[highlightsIdArray[0]].highlightedText
+                    )}
                   </Typography>
                 </DialogTitle>
               ) : (

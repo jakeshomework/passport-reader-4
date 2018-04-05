@@ -9,6 +9,7 @@ import Checkbox from "material-ui/Checkbox";
 import IconButton from "material-ui/IconButton";
 import grey from "material-ui/colors/grey";
 import Typography from "material-ui/Typography";
+import renderHTML from "react-render-html";
 
 import Badge from "material-ui/Badge";
 import NoteIcon from "material-ui-icons/Note";
@@ -253,7 +254,9 @@ class HighlightsList extends Component {
                       </Avatar>
                     </CustomTableCell>
 
-                    <CustomTableCell>{highlightedText}</CustomTableCell>
+                    <CustomTableCell>
+                      <Typography>{renderHTML(highlightedText)}</Typography>
+                    </CustomTableCell>
                     <CustomTableCell>
                       {moment(updated).fromNow()}
                     </CustomTableCell>
