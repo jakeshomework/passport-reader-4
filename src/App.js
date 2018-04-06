@@ -39,7 +39,6 @@ import {
   addHighlight,
   updateHighlight,
   deleteHighlight,
-  addAnnotation,
   updateAnnotation,
   deleteAnnotation,
   newHighlightOpenModal
@@ -60,7 +59,7 @@ import { FoghornHighlights } from "./data/foghorn/highlights.js";
 import { TymString } from "./data/tym/content1Unformatted.js";
 import { TymHighlights } from "./data/tym/highlights.js";
 
-const defaultBook = "foghorn";
+const defaultBook = "tym";
 const defaultUser = UsersDemo.user333;
 
 /* --- break book into object --- */
@@ -103,7 +102,7 @@ class App extends Component {
         classView: false,
         focusMode: false,
         showHelpTips: false,
-        darkMode: true,
+        darkMode: false,
         fontSize: [14, 16, 18, 20, 28],
         fontFamily: [
           "Helvetica",
@@ -157,8 +156,10 @@ class App extends Component {
       );
       //
     },
-    update: highlightUpdate =>
-      this.setState(prevState => updateHighlight(prevState, highlightUpdate)),
+    update: highlightUpdate => {
+      console.log(highlightUpdate);
+      this.setState(prevState => updateHighlight(prevState, highlightUpdate));
+    },
     deleteHighlight: highlightId => {
       this.setState(prevState => {
         return {
@@ -170,8 +171,6 @@ class App extends Component {
       }),
         this.setState(prevState => deleteHighlight(prevState, highlightId));
     },
-    addAnnotation: annotationObject =>
-      this.setState(prevState => addAnnotation(prevState, annotationObject)),
     updateAnnotation: annotationObject => {
       this.setState(prevState => updateAnnotation(prevState, annotationObject));
     },
@@ -228,6 +227,9 @@ class App extends Component {
             type: this.state.settings.darkMode ? "dark" : "light",
             primary: {
               main: "#4695ec"
+            },
+            secondary: {
+              main: "#eeab46"
             }
           },
           typography: {
@@ -243,6 +245,7 @@ class App extends Component {
           annotationModalControl={this.annotationModalControl}
           darkMode={this.state.settings.darkMode}
           users={UsersDemo}
+          userId={this.state.user.userId}
           highlightsControl={this.highlightsControl}
           settings={this.state.settings}
         />

@@ -37,9 +37,9 @@ export const newHighlightOpenModal = (prevHighlights, newHighlights) => {
 
 export const updateHighlight = (prevState, highlightUpdate) => {
   const newHighlights = {
-    ...prevState.highlights,
-    ...highlightUpdate
+    ...prevState.highlights
   };
+  newHighlights[highlightUpdate.id] = { ...highlightUpdate };
   return { highlights: newHighlights };
 };
 
@@ -54,29 +54,45 @@ export const deleteHighlight = (prevState, highlightId) => {
   };
 };
 
-export const addAnnotation = (prevState, { highlightId, type }) => {
-  const newAnnotationObject = {
-    userId: prevState.user.userId,
-    type: type,
-    createdAt: new Date(),
-    content: ""
-  };
+// export const addAnnotation = (prevState, { highlightId, type }) => {
+//   const newAnnotationObject = {
+//     userId: prevState.user.userId,
+//     type: type,
+//     createdAt: new Date(),
+//     content: ""
+//   };
 
-  let newHighlights = { ...prevState.highlights };
+//   let newHighlights = { ...prevState.highlights };
 
-  newHighlights[highlightId].annotations.push(newAnnotationObject);
+//   newHighlights[highlightId].annotations.push(newAnnotationObject);
 
-  console.log(newHighlights);
-  return { highlights: newHighlights };
-};
+//   console.log(newHighlights);
+//   return { highlights: newHighlights };
+// };
 
 export const updateAnnotation = (
   prevState,
-  { highlightId, annotationIndex, newContent }
+  { highlightId, annotationIndex, newContent, type }
 ) => {
   console.log(highlightId, annotationIndex, newContent);
   let newHighlights = { ...prevState.highlights };
-  newHighlights[highlightId].annotations[annotationIndex].content = newContent;
+  /* --- create new when saving a new annotation --- */
+  console.log("newbie", newHighlights);
+  if (!newHighlights[highlightId].annotations[annotationIndex]) {
+    let newAnnotationObject = {
+      userId: prevState.user.userId,
+      type: type,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      content: newContent
+    };
+    newHighlights[highlightId].annotations.push(newAnnotationObject);
+  } else {
+    /* --- update an existing annotation --- */
+    newHighlights[highlightId].annotations[
+      annotationIndex
+    ].content = newContent;
+  }
   console.log(newHighlights);
   return { highlights: newHighlights };
 };

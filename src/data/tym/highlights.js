@@ -28,18 +28,21 @@ export const TymHighlights = {
         userId: "user111",
         type: "note",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
+        updatedAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "This is the note I'm taking :laughing:"
       },
       {
         userId: "user111",
         type: "audio",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
+        updatedAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "someplace/highlightId.mp3"
       },
       {
         userId: "user333",
         type: "video",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
+        updatedAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "someplace/highlightId.mp4"
       }
     ]
@@ -54,24 +57,27 @@ export const TymHighlights = {
     endId: "emc-188",
     color: "hlc2",
     createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
-    updated: new Date("Wed Mar 15 2018 13:23:19 GMT-0500 (CDT)"),
+    updatedAt: new Date("Wed Mar 15 2018 13:23:19 GMT-0500 (CDT)"),
     annotations: [
       {
         userId: "user222",
         type: "note",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
+        updatedAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "This is the note I'm taking :laughing:"
       },
       {
         userId: "user111",
         type: "audio",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
+        updatedAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "someplace/highlightId.mp3"
       },
       {
         userId: "user222",
         type: "video",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
+        updatedAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
         content: "someplace/highlightId.mp4"
       }
     ]

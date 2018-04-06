@@ -45,6 +45,14 @@ const styles = theme => ({
 });
 
 class AnnotationModal extends Component {
+  // state = {
+  //   highlightEdit: {}
+  // };
+
+  // getDerivedStateFromProps() {
+  //   this.setState({ highlightEdit: this.props.highlights });
+  // }
+
   handleClose = () => {
     this.props.annotationModalControl.close();
   };
@@ -70,6 +78,7 @@ class AnnotationModal extends Component {
       highlightsControl,
       darkMode,
       users,
+      userId,
       classes
     } = this.props;
 
@@ -102,24 +111,23 @@ class AnnotationModal extends Component {
               )}
             </div>
 
-            {highlightsIdArray.length > 0 ? (
-              highlightsIdArray.length > 1 ? (
-                <AnnotationMulti
-                  users={users}
-                  highlights={highlights}
-                  highlightsIdArray={highlightsIdArray}
-                  annotationModalControl={annotationModalControl}
-                  className={classes.fontStyle}
-                />
-              ) : (
-                <AnnotationSingle
-                  users={users}
-                  highlight={highlights[highlightsIdArray[0]]}
-                  annotationModalControl={annotationModalControl}
-                  highlightsControl={highlightsControl}
-                  className={classes.fontStyle}
-                />
-              )
+            {highlightsIdArray.length > 0 ? highlightsIdArray.length > 1 ? (
+              <AnnotationMulti
+                users={users}
+                highlights={highlights}
+                highlightsIdArray={highlightsIdArray}
+                annotationModalControl={annotationModalControl}
+                className={classes.fontStyle}
+              />
+            ) : (
+              <AnnotationSingle
+                users={users}
+                userId={userId}
+                highlight={highlights[highlightsIdArray[0]]}
+                annotationModalControl={annotationModalControl}
+                highlightsControl={highlightsControl}
+                className={classes.fontStyle}
+              />
             ) : null}
           </Typography>
         </Paper>

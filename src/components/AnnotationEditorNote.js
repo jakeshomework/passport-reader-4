@@ -17,6 +17,11 @@ import VideocamIcon from "material-ui-icons/Videocam";
 import ShareIcon from "material-ui-icons/Share";
 import grey from "material-ui/colors/grey";
 
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
+
+import AnnotationSaveButtons from "./AnnotationSaveButtons";
+
 const styles = theme => ({
   root: {
     width: "100%"
@@ -42,44 +47,42 @@ const styles = theme => ({
 });
 
 class AnnotationEditorNote extends Component {
-  state = {
-    content: ""
+  addEmoji = emoji => {
+    console.log(emoji);
   };
 
-  componentDidMount() {
-    this.setState({
-      content: this.props.annotation.content,
-      unsavedChanges: false
-    });
-  }
-
   handleInputChange = e => {
-    this.setState({ content: e.target.value, unsavedChanges: true });
-    this.props.handleLocalUpdate({
+    /* --- update in modifiedHighlight - not yet saved in App --- */
+    this.props.modalActions.updateAnnotation({
       annotationIndex: this.props.annotationIndex,
       content: e.target.value
     });
   };
 
-  handleSaveChanges = () => {
+  handleSave = () => {
+    /* --- save in App --- */
     this.props.highlightsControl.updateAnnotation({
       highlightId: this.props.highlightId,
       annotationIndex: this.props.annotationIndex,
-      newContent: this.state.content
+      newContent: this.props.modifiedAnnotation.content,
+      type: this.props.modifiedAnnotation.type
     });
-    this.setState({ unsavedChanges: false });
   };
 
   handleDelete = () => {
-    this.props.highlightsControl.deleteAnnotation({
-      highlightId: this.props.highlightId,
+    // this.props.highlightsControl.deleteAnnotation({
+    //   highlightId: this.props.highlightId,
+    //   annotationIndex: this.props.annotationIndex
+    // });
+    this.props.modalActions.deleteAnnotation({
       annotationIndex: this.props.annotationIndex
     });
   };
 
   render() {
     const {
-      annotation,
+      modifiedAnnotation,
+      isAnnotationSaved,
       highlightsControl,
       highlightId,
       annotationIndex,
@@ -90,19 +93,23 @@ class AnnotationEditorNote extends Component {
       <div className={classes.root}>
         <Typography className={classes.fontStyle}>
           <TextField
-            label={
-              this.state.unsavedChanges ? "Changes Not Saved" : "Note Saved"
-            }
+            label={isAnnotationSaved ? "Note Saved" : "Changes Not Saved"}
             multiline
             fullWidth
             rowsMax={4}
             placeholder="Your note here"
-            value={this.state.content}
+            value={modifiedAnnotation.content}
             onChange={e => this.handleInputChange(e)}
             className={classes.labelStyle}
           />
         </Typography>
-        <div className={classes.annotationButtonsCont}>
+        {/*<Picker onSelect={this.addEmoji} title="EMC eBooks" emoji="book" />*/}
+        <AnnotationSaveButtons
+          handleSave={this.handleSave}
+          handleDelete={this.handleDelete}
+          isSaved={isAnnotationSaved}
+        />
+        {/*<div className={classes.annotationButtonsCont}>
           <Button onClick={this.handleDelete} className={classes.deleteButton}>
             <DeleteIcon />
           </Button>
@@ -114,7 +121,7 @@ class AnnotationEditorNote extends Component {
           >
             SAVE
           </Button>
-        </div>
+        </div>*/}
       </div>
     );
   }

@@ -11,6 +11,7 @@ import Typography from "material-ui/Typography";
 import IconButton from "material-ui/IconButton";
 import ExpandMoreIcon from "material-ui-icons/ExpandMore";
 import Button from "material-ui/Button";
+import Card from "material-ui/Card";
 import EditIcon from "material-ui-icons/Edit";
 import NoteIcon from "material-ui-icons/Note";
 import MicIcon from "material-ui-icons/Mic";
@@ -26,10 +27,11 @@ import AnnotationEditorNote from "./AnnotationEditorNote";
 /*---Opens annotation modal with a annotationType: note, video, or audio---*/
 const styles = theme => ({
   icon: { color: grey[600], marginRight: 20 },
-  addAnnotationIcon: {
-    backgroundColor: "#eeab46",
+  addAnnotationIcons: {
+    // backgroundColor: theme.palette.secondary.main,
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    padding: 10
   },
   fontStyle: {
     fontSize: theme.typography.fontSize - 2,
@@ -39,14 +41,15 @@ const styles = theme => ({
 
 const AnnotationOptions = ({
   highlight,
+  modifiedHighlight,
   users,
   highlightsControl,
-  handleLocalUpdate,
+  modalActions,
+  isHighlightSaved,
   classes
 }) => {
   const handleAddAnnotation = type => {
-    console.log(type);
-    highlightsControl.addAnnotation({
+    modalActions.addAnnotation({
       highlightId: highlight.id,
       type: type
     });
@@ -55,83 +58,107 @@ const AnnotationOptions = ({
   // console.log(highlight.annotations);
   return (
     <div>
-      {highlight.annotations.map((annotation, index) => {
+      {modifiedHighlight.annotations.map((modifiedAnnotation, index) => {
+        const savedAnnotation = highlight.annotations[index];
+        const isAnnotationSaved = () => {
+          const modified = modifiedAnnotation.content;
+          const saved = savedAnnotation ? savedAnnotation.content : null;
+          return modified === saved;
+        };
         return (
           <ExpansionPanel
             style={index === 0 ? { borderRadius: "10px 10px 0px 0px" } : null}
+            defaultExpanded={!isAnnotationSaved()}
           >
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              {annotation.type === "video" ? (
+              {modifiedAnnotation.type === "video" ? (
                 <VideocamIcon className={classes.icon} />
-              ) : annotation.type === "audio" ? (
+              ) : modifiedAnnotation.type === "audio" ? (
                 <MicIcon className={classes.icon} />
-              ) : annotation.type === "note" ? (
+              ) : modifiedAnnotation.type === "note" ? (
                 <NoteIcon className={classes.icon} />
               ) : null}
               <Typography className={classes.fontStyle}>
-                Created by {users[annotation.userId].firstName}{" "}
-                {users[annotation.userId].lastName}{" "}
-                {moment(annotation.createdAt).fromNow()}
+                Created by {users[modifiedAnnotation.userId].firstName}{" "}
+                {users[modifiedAnnotation.userId].lastName}{" "}
+                {moment(modifiedAnnotation.createdAt).fromNow()}
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              {annotation.type === "video" ? (
+              {modifiedAnnotation.type === "video" ? (
                 <AnnotationEditorVideo
                   highlightId={highlight.id}
-                  annotation={annotation}
+                  modifiedAnnotation={modifiedAnnotation}
+                  isAnnotationSaved={isAnnotationSaved()}
                   highlightsControl={highlightsControl}
                   annotationIndex={index}
                 />
-              ) : annotation.type === "audio" ? (
+              ) : modifiedAnnotation.type === "audio" ? (
                 <AnnotationEditorAudio
                   highlightId={highlight.id}
-                  annotation={annotation}
+                  modifiedAnnotation={modifiedAnnotation}
+                  isAnnotationSaved={isAnnotationSaved()}
                   highlightsControl={highlightsControl}
                   annotationIndex={index}
                 />
-              ) : annotation.type === "note" ? (
+              ) : modifiedAnnotation.type === "note" ? (
                 <AnnotationEditorNote
                   highlightId={highlight.id}
-                  annotation={annotation}
+                  modifiedAnnotation={modifiedAnnotation}
+                  isAnnotationSaved={isAnnotationSaved()}
                   highlightsControl={highlightsControl}
                   annotationIndex={index}
-                  handleLocalUpdate={handleLocalUpdate}
+                  modalActions={modalActions}
                 />
               ) : null}
             </ExpansionPanelDetails>
           </ExpansionPanel>
         );
       })}
-      <div
-        className={classes.addAnnotationIcon}
+      <Card
+        className={classes.addAnnotationIcons}
         style={
-          highlight.annotations.length > 0
-            ? { borderRadius: "0px 0px 10px 10px" }
-            : { borderRadius: "10px 10px 10px 10px" }
+          modifiedHighlight.annotations.length > 0 ? (
+            { borderRadius: "0px 0px 10px 10px" }
+          ) : (
+            { borderRadius: "10px 10px 10px 10px" }
+          )
         }
       >
-        <IconButton
+        <Button
           className={classes.button}
           aria-label="Note"
           onClick={() => handleAddAnnotation("note")}
+          variant="fab"
+          disabled={!isHighlightSaved}
+          size="small"
+          color="default"
         >
           <NoteIcon />
-        </IconButton>
-        <IconButton
+        </Button>
+        <Button
           className={classes.button}
           aria-label="Microphone"
           onClick={() => handleAddAnnotation("audio")}
+          variant="fab"
+          disabled={!isHighlightSaved}
+          size="small"
+          color="default"
         >
           <MicIcon />
-        </IconButton>
-        <IconButton
+        </Button>
+        <Button
           className={classes.button}
           aria-label="Video"
           onClick={() => handleAddAnnotation("video")}
+          variant="fab"
+          disabled={!isHighlightSaved}
+          size="small"
+          color="default"
         >
           <VideocamIcon />
-        </IconButton>
-      </div>
+        </Button>
+      </Card>
     </div>
   );
 };

@@ -15,8 +15,12 @@ import grey from "material-ui/colors/grey";
 
 const propTypes = {};
 
-function AnnotationEditorAudio({ annotation, highlightsControl }) {
-  return <Typography>{annotation.content}</Typography>;
+function AnnotationEditorAudio({
+  modifiedAnnotation,
+  savedAnnotation,
+  highlightsControl
+}) {
+  return <Typography>{modifiedAnnotation.content}</Typography>;
 }
 
 AnnotationEditorAudio.propTypes = propTypes;

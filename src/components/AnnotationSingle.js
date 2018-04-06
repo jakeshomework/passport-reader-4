@@ -15,6 +15,7 @@ import DeleteIcon from "material-ui-icons/Delete";
 import CloseIcon from "material-ui-icons/Close";
 import DoneIcon from "material-ui-icons/Done";
 import ShareIcon from "material-ui-icons/Share";
+import SaveIcon from "material-ui-icons/Save";
 import grey from "material-ui/colors/grey";
 
 /* ----- COMPONENT IMPORTS ----- */
@@ -31,51 +32,113 @@ const styles = theme => ({
     marginBottom: 10,
     fontSize: theme.typography.fontSize - 5
   },
-  cancelButton: {
+  grayButton: {
     color: grey[500]
   }
 });
 
 class AnnotationSingle extends Component {
   state = {
-    modifiedHighlight: this.props.highlight,
-    unsavedChanges: false
+    modifiedHighlight: this.props.highlight
   };
 
-  handleDelete = () => {
-    console.log("better off bad", this.props.highlight.id);
-    this.props.highlightsControl.deleteHighlight(this.props.highlight.id);
-  };
+  modalActions = {
+    deleteHighlight: () => {
+      this.props.highlightsControl.deleteHighlight(this.props.highlight.id);
+    },
+    saveAll: () => {
+      this.props.highlightsControl.update(this.state.modifiedHighlight);
+      this.props.annotationModalControl.close();
+    },
+    cancel: () => {
+      this.props.annotationModalControl.close();
+    },
+    addAnnotation: ({ annotationIndex, type }) => {
+      console.log("adding annotation");
 
-  handleSave = () => {
-    this.props.annotationModalControl.close();
-  };
+      const newAnnotationObject = {
+        userId: this.props.userId,
+        type: type,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        content: ""
+      };
 
-  handleCancel = () => {
-    this.props.annotationModalControl.close();
+      this.setState(prevState => {
+        let updatedHighlight = JSON.parse(
+          JSON.stringify(prevState.modifiedHighlight)
+        );
+
+        updatedHighlight.annotations.push(newAnnotationObject);
+        return { modifiedHighlight: updatedHighlight };
+      });
+    },
+    deleteAnnotation: annotationIndex => {
+      this.setState(prevState => {
+        let updatedHighlight = JSON.parse(
+          JSON.stringify(prevState.modifiedHighlight)
+        );
+        updatedHighlight.annotations.splice(annotationIndex, 1);
+        return { modifiedHighlight: updatedHighlight };
+      });
+    },
+    updateAnnotation: ({ annotationIndex, content }) => {
+      // console.log(
+      //   "now updating annotation",
+      //   annotationIndex,
+      //   " with ",
+      //   content
+      // );
+      this.setState(prevState => {
+        // --- hack avoid shallow clone consequences --- //
+        let updatedHighlight = JSON.parse(
+          JSON.stringify(prevState.modifiedHighlight)
+        );
+        updatedHighlight.annotations[annotationIndex].content = content;
+        // console.log(updatedHighlight);
+        return {
+          modifiedHighlight: updatedHighlight
+        };
+      });
+    }
   };
 
   componentWillReceiveProps() {
-    this.setState({
-      // highlightFromProps: this.props.highlight,
-      modifiedHighlight: this.props.highlight,
-      unsavedChanges: !(this.props.highlight === this.state.modifiedHighlight)
-    });
+    // let newAnnotationFromApp = this.props.highlight.annotations[
+    //   this.props.highlight.annotations.length - 1
+    // ];
+    // this.setState(prevState => {
+    //   let updatedHighlight = { ...prevState.modifiedHighlight };
+    //   console.log("updaddy", updatedHighlight);
+    //   updatedHighlight.annotations.push(newAnnotationFromApp);
+    //   return { modifiedHighlight: updatedHighlight };
+    // });
   }
 
   // TODO: Pass this function down
-  handleLocalUpdate = ({ annotationIndex, content }) => {
+  handleModalUpdate = ({ annotationIndex, content }) => {
     this.setState(prevState => {
-      let unsavedHighlight = JSON.parse(
+      /* --- hack avoid shallow clone consequences --- */
+      let updatedHighlight = JSON.parse(
         JSON.stringify(prevState.modifiedHighlight)
       );
-      unsavedHighlight.annotations[annotationIndex].content = content;
+      updatedHighlight.annotations[annotationIndex].content = content;
 
       return {
-        modHighlightAnnotations: unsavedHighlight,
-        unsavedChanges: !(unsavedHighlight === this.state.modifiedHighlight)
+        modifiedHighlight: updatedHighlight
       };
     });
+  };
+
+  isHighlightSaved = () => {
+    const modAnnotations = this.state.modifiedHighlight.annotations;
+    const savedAnnotations = this.props.highlight.annotations;
+    if (modAnnotations.length === savedAnnotations.length) {
+      return modAnnotations.every(
+        (modAnnotation, index) =>
+          modAnnotation.content === savedAnnotations[index].content
+      );
+    } else return false;
   };
 
   render() {
@@ -91,35 +154,47 @@ class AnnotationSingle extends Component {
       <div>
         <Typography align="center" className={classes.highlightAuthor}>
           Highlight by{" "}
-          {`${users[highlight.userId].firstName} ${
-            users[highlight.userId].lastName
-          } ${moment(highlight.createdAt).fromNow()}`}
+          {`${users[highlight.userId].firstName} ${users[highlight.userId]
+            .lastName} ${moment(highlight.createdAt).fromNow()}`}
         </Typography>
         <Typography align="center">
-          Unsaved Changes: {this.state.unsavedChanges.toString()}
+          Highlight Saved:{this.isHighlightSaved().toString()}
         </Typography>
         <DialogContent>
           <AnnotationOptions
             users={users}
             highlight={highlight}
+            modifiedHighlight={this.state.modifiedHighlight}
             highlightsControl={highlightsControl}
-            handleLocalUpdate={this.handleLocalUpdate}
+            modalActions={this.modalActions}
+            isHighlightSaved={this.isHighlightSaved()}
           />
         </DialogContent>
         <DialogActions>
           <div className={classes.actions}>
-            <Button onClick={this.handleDelete} variant="raised">
+            <Button
+              onClick={this.modalActions.deleteHighlight}
+              className={classes.grayButton}
+            >
               <DeleteIcon />
             </Button>
-            <Button
-              onClick={this.handleCancel}
-              className={classes.cancelButton}
-            >
-              <CloseIcon />
-            </Button>
-            <Button onClick={this.handleSave} variant="raised" color="primary">
-              <DoneIcon />
-            </Button>
+
+            {this.isHighlightSaved() ? (
+              <Button
+                onClick={this.modalActions.cancel}
+                className={classes.grayButton}
+              >
+                <CloseIcon />
+              </Button>
+            ) : (
+              <Button
+                onClick={this.modalActions.saveAll}
+                variant="raised"
+                color="primary"
+              >
+                <DoneIcon />
+              </Button>
+            )}
           </div>
         </DialogActions>
       </div>
