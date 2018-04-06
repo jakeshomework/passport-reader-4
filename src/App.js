@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./App.css";
 /* ----- IMPORT LIBRARIES ----- */
 import SwipeableViews from "react-swipeable-views";
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
@@ -54,10 +55,12 @@ import { AppStyles } from "./styles/AppStyles.js";
 /* ----- BOOK IMPORT (FOGHORN) ----- */
 import { FoghornString } from "./data/foghorn/content1Unformatted.js";
 import { FoghornHighlights } from "./data/foghorn/highlights.js";
+import { FoghornGlossary } from "./data/foghorn/glossary.js";
 
 /* ----- BOOK IMPORT (THANK YOU MA'AM IMPORT) ----- */
 import { TymString } from "./data/tym/content1Unformatted.js";
 import { TymHighlights } from "./data/tym/highlights.js";
+import { TymGlossary } from "./data/tym/glossary.js";
 
 const defaultBook = "tym";
 const defaultUser = UsersDemo.user333;
@@ -77,6 +80,7 @@ class App extends Component {
       user: defaultUser,
       book: formattedTym,
       highlights: TymHighlights,
+      glossary: TymGlossary,
       speedReader: { wpm: 250, isPlaying: false, position: 0 },
       audio: {
         isPlaying: false,
@@ -129,12 +133,14 @@ class App extends Component {
       if (bookNameObject.bookName === "tym") {
         this.setState({
           book: formatBookString(TymString),
-          highlights: TymHighlights
+          highlights: TymHighlights,
+          glossary: TymGlossary
         });
       } else if (bookNameObject.bookName === "foghorn") {
         this.setState({
           book: formatBookString(FoghornString),
-          highlights: FoghornHighlights
+          highlights: FoghornHighlights,
+          glossary: FoghornGlossary
         });
       }
       this.settingsControl.update(bookNameObject);
@@ -191,10 +197,15 @@ class App extends Component {
 
   componentDidMount() {
     this.state.settings.bookName === "tym"
-      ? this.setState({ book: formattedTym, highlights: TymHighlights })
+      ? this.setState({
+          book: formattedTym,
+          highlights: TymHighlights,
+          glossary: TymGlossary
+        })
       : this.setState({
           book: formattedFoghorn,
-          highlights: FoghornHighlights
+          highlights: FoghornHighlights,
+          glossary: FoghornGlossary
         });
   }
 
@@ -254,13 +265,15 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={{
-              /*this.state.settings.darkMode ? (
+            style={
+              {
+                /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-            }}
+              }
+            }
           >
             <Settings
               settings={this.state.settings}
@@ -281,12 +294,14 @@ class App extends Component {
               annotationModalControl={this.annotationModalControl}
               highlightsControl={this.highlightsControl}
               settings={this.state.settings}
+              glossary={this.state.glossary}
             />
 
             <Highlights
               highlights={this.state.highlights}
               style={Object.assign({}, styles.slide, styles.highlightsSlide)}
               annotationModalControl={this.annotationModalControl}
+              users={UsersDemo}
             />
             <Audio style={Object.assign({}, styles.slide, styles.audioSlide)} />
             <SpeedReader

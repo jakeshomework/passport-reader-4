@@ -7,6 +7,11 @@ import HighlightTooltip from "../components/HighlightTooltip";
 import GlossaryTooltip from "../components/GlossaryTooltip";
 import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
+import Snackbar from "material-ui/Snackbar";
+import Fade from "material-ui/transitions/Fade";
+import IconButton from "material-ui/IconButton";
+import CloseIcon from "material-ui-icons/Close";
+
 /* ----- UTILITY IMPORTS ----- */
 import { addHighlightsToBook } from "../utils/addHighlightsToBook";
 import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
@@ -22,6 +27,13 @@ const styles = theme => ({
     marginBottom: 100,
     fontSize: theme.typography.fontSize,
     fontFamily: theme.typography.fontFamily
+  },
+  snackbar: {
+    margin: theme.spacing.unit
+    // width: "100vw",
+    // //float: "left",
+    // bottom: 0
+    // //position: "relative"
   }
 });
 class Book extends Component {
@@ -32,11 +44,13 @@ class Book extends Component {
       endId: "emc-end",
       content: "---"
     },
-    gallery: { open: false, position: 0, images: [] }
+    gallery: { open: false, position: 0, images: [] },
+    glossaryDefinition: "",
+    open: false
   };
 
   /*---On select, open Tooltip, highlight content - save search details to state.---*/
-  handleSelect = () => {
+  handleSelect = e => {
     const select = window.getSelection();
 
     if (select.toString().trim().length > 0) {
@@ -93,18 +107,34 @@ class Book extends Component {
         const highlightIdArray = this.props.bookDisplayWithHighlights[displayId]
           .highlights;
         this.props.annotationModalControl.open(highlightIdArray);
-      } else {
-        // console.log("Nada for highlights");
       }
     }
   };
 
-  handleSelectClick = () => {
-    this.handleSelect();
+  handleSelectClick = (e, state) => {
+    this.handleSelect(e);
+    const glossaryWords = this.props.glossary;
+
+    if (glossaryWords[e.target.innerHTML]) {
+      console.log(glossaryWords[e.target.innerHTML].definition);
+
+      this.setState({
+        open: true,
+        glossaryDefinition: glossaryWords[e.target.innerHTML].definition
+      });
+    } else {
+      console.log(e.target.innerHTML, " is not a glossary word");
+    }
+  };
+  handleClose = () => {
+    this.setState({ open: false });
   };
 
-  handleSelectTouch = () => {
-    this.handleSelect();
+  handleSelectTouch = e => {
+    this.handleSelect(e);
+  };
+  handleClick = state => () => {
+    this.setState({ open: true, ...state });
   };
 
   handleClear = e => {
@@ -155,15 +185,16 @@ class Book extends Component {
       // const emcIdArray =
       // TODO: only add highlightId to
     });
-
+    const { vertical, horizontal, open } = this.state;
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Grid item xs={1} sm={2} />
           <Grid item xs={10} sm={8}>
             Book selected:
-            <div>{` ${this.state.selection.startId} -> ${this.state.selection
-              .endId}`}</div>
+            <div>{` ${this.state.selection.startId} -> ${
+              this.state.selection.endId
+            }`}</div>
             <div>{this.state.selection.content}</div>
             {this.state.event}
             {this.state.showTooltip ? (
@@ -174,6 +205,33 @@ class Book extends Component {
                 closeTooltip={this.closeTooltip}
               />
             ) : null}
+            <Snackbar
+              className={classes.snackbar}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              open={open}
+              transition={Fade}
+              onClose={this.handleClose}
+              style={{
+                bottom: 55,
+                marginLeft: "100vw"
+              }}
+              action={[
+                <IconButton
+                  key="close"
+                  aria-label="Close"
+                  color="inherit"
+                  className={classes.close}
+                  onClick={this.handleClose}
+                >
+                  <CloseIcon />
+                </IconButton>
+              ]}
+              message={
+                <span id="message-id">
+                  Definition: {this.state.glossaryDefinition}
+                </span>
+              }
+            />
             <BookDisplay
               handleSelectClick={this.handleSelectClick}
               handleSelectTouch={this.handleSelectTouch}

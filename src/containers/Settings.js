@@ -6,7 +6,7 @@ import SettingsSwitch from "../components/SettingsSwitch";
 
 /* ----- MATERIAL-UI COMPONENTS ----- */
 import { withStyles } from "material-ui/styles";
-import { FormControl, FormLabel } from "material-ui/Form";
+
 import List, {
   ListItem,
   ListItemIcon,
@@ -19,7 +19,6 @@ import Grid from "material-ui/Grid";
 /*===== MATERIAL-UI ICONS =====*/
 import CenterFocusStrong from "material-ui-icons/CenterFocusStrong";
 import InvertColors from "material-ui-icons/InvertColors";
-import HelpOutline from "material-ui-icons/HelpOutline";
 import FontDownload from "material-ui-icons/FontDownload";
 import TextFields from "material-ui-icons/TextFields";
 import People from "material-ui-icons/People";

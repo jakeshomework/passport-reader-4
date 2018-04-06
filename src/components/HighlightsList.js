@@ -9,6 +9,12 @@ import Checkbox from "material-ui/Checkbox";
 import IconButton from "material-ui/IconButton";
 import grey from "material-ui/colors/grey";
 import Typography from "material-ui/Typography";
+import renderHTML from "react-render-html";
+
+import Badge from "material-ui/Badge";
+import NoteIcon from "material-ui-icons/Note";
+import MicIcon from "material-ui-icons/Mic";
+import VideocamIcon from "material-ui-icons/Videocam";
 
 import moment from "moment";
 
@@ -64,6 +70,9 @@ const styles = theme => ({
   checkBoxes: {
     float: "left",
     paddingBottom: theme.spacing.unit * 4
+  },
+  badge: {
+    marginRight: "20px"
   }
 });
 
@@ -78,7 +87,7 @@ class HighlightsList extends Component {
     hlc3: true,
     hlc4: true,
     hlc5: true,
-    selectAll: true
+    selectAll: false
   };
 
   togglehlc1 = (event, checked) => {
@@ -112,7 +121,7 @@ class HighlightsList extends Component {
   };
 
   render() {
-    const { classes, filteredList } = this.props;
+    const { classes, filteredList, users } = this.props;
     const { hlc1, hlc2, hlc3, hlc4, hlc5, selectAll } = this.state;
 
     const filteredListArray = Object.keys(filteredList);
@@ -208,26 +217,72 @@ class HighlightsList extends Component {
                   updated,
                   annotations
                 } = filteredList[highlightId];
-                console.log("highlight color: ", colorLabels[color]);
+
+                const user = users[userId];
+
+                const initials =
+                  user.firstName.charAt(0) + user.lastName.charAt(0);
+
+                let noteTotal = 0,
+                  audioTotal = 0,
+                  videoTotal = 0;
+
+                annotations.forEach(annotation => {
+                  if (annotation.type === "note") {
+                    noteTotal++;
+                  }
+                  if (annotation.type === "audio") {
+                    audioTotal++;
+                  }
+                  if (annotation.type === "video") {
+                    videoTotal++;
+                  }
+                });
+
                 return this.state[color] ? (
                   <TableRow
-                    className={colorLabels[color]}
-                    onClick={this.props.annotationModalControl.open}
+                    onClick={() =>
+                      this.props.annotationModalControl.open([highlightId])
+                    }
                     value={color}
                   >
                     <CustomTableCell>
                       <Avatar
                         style={{ backgroundColor: colorLabels[color].active }}
                       >
-                        {userId}
+                        {initials}
                       </Avatar>
                     </CustomTableCell>
 
-                    <CustomTableCell>{highlightedText}</CustomTableCell>
+                    <CustomTableCell>
+                      <Typography>{renderHTML(highlightedText)}</Typography>
+                    </CustomTableCell>
                     <CustomTableCell>
                       {moment(updated).fromNow()}
                     </CustomTableCell>
-                    <CustomTableCell>annotations</CustomTableCell>
+                    <CustomTableCell>
+                      <Badge
+                        className={classes.badge}
+                        badgeContent={noteTotal}
+                        color="default"
+                      >
+                        <NoteIcon />
+                      </Badge>
+                      <Badge
+                        className={classes.badge}
+                        badgeContent={audioTotal}
+                        color="default"
+                      >
+                        <MicIcon />
+                      </Badge>
+                      <Badge
+                        className={classes.badge}
+                        badgeContent={videoTotal}
+                        color="default"
+                      >
+                        <VideocamIcon />
+                      </Badge>
+                    </CustomTableCell>
                   </TableRow>
                 ) : null;
               })}

@@ -53,6 +53,7 @@ class Highlights extends Component {
               filteredList={this.props.highlights}
               toggleFilter={this.toggleFilter}
               annotationModalControl={this.props.annotationModalControl}
+              users={this.props.users}
             />
           </Grid>
           <Grid item xs={2} />
