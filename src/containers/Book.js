@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import BookDisplay from "../components/BookDisplay";
 import ImageGallery from "../components/ImageGallery";
 import HighlightTooltip from "../components/HighlightTooltip";
-import GlossaryTooltip from "../components/GlossaryTooltip";
 import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
 import Snackbar from "material-ui/Snackbar";
@@ -23,17 +22,13 @@ import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
 /*---Book displays contents and processes highlights to be passed to Book component---*/
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing.unit * 2,
     marginBottom: 100,
     fontSize: theme.typography.fontSize,
     fontFamily: theme.typography.fontFamily
   },
   snackbar: {
     margin: theme.spacing.unit
-    // width: "100vw",
-    // //float: "left",
-    // bottom: 0
-    // //position: "relative"
   }
 });
 class Book extends Component {
@@ -189,8 +184,8 @@ class Book extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
-          <Grid item xs={1} sm={2} />
-          <Grid item xs={10} sm={8}>
+          <Grid item xs={0} sm={2} />
+          <Grid item xs={12} sm={8}>
             Book selected:
             <div>{` ${this.state.selection.startId} -> ${
               this.state.selection.endId
@@ -244,9 +239,8 @@ class Book extends Component {
               bookName={settings.bookName}
               focusMode={settings.focusMode}
             />
-            <GlossaryTooltip selection="object" />
           </Grid>
-          <Grid item xs={1} sm={2} />
+          <Grid item xs={0} sm={2} />
         </Grid>
       </div>
     );

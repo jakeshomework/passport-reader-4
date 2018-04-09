@@ -15,8 +15,9 @@ import Badge from "material-ui/Badge";
 import NoteIcon from "material-ui-icons/Note";
 import MicIcon from "material-ui-icons/Mic";
 import VideocamIcon from "material-ui-icons/Videocam";
-
+import Grid from "material-ui/Grid";
 import moment from "moment";
+import MediaQuery from "react-responsive";
 
 import Table, {
   TableBody,
@@ -43,7 +44,21 @@ const CustomTableCell = withStyles(theme => ({
 /*---Displays a list of Highlights ---*/
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing.unit * 2
+  },
+  checkbox: {
+    marginRight: 10,
+    marginBottom: 10
+  },
+  allCheckbox: {
+    marginRight: 10,
+    marginLeft: 14,
+    color: "white",
+    backgroundColor: grey["700"]
+  },
+  checkBoxes: {
+    float: "left",
+    paddingBottom: theme.spacing.unit * 4
   },
   table: {
     fontSize: theme.typography.fontSize,
@@ -58,18 +73,18 @@ const styles = theme => ({
     backgroundColor: grey["700"],
     color: "black"
   },
-  checkbox: {
-    marginRight: "20px"
+  tableCellHead: {
+    //paddingLeft: 5
   },
-  allCheckbox: {
-    marginRight: "10px",
-    marginLeft: "30px",
-    color: "white",
-    backgroundColor: grey["700"]
+  tableCellDate: {
+    padding: 0
   },
-  checkBoxes: {
-    float: "left",
-    paddingBottom: theme.spacing.unit * 4
+  tableCellBody: {
+    padding: 10
+  },
+  tableCellAnnotations: {
+    //display: "inline-block"
+    // padding: "20px 5px 5px 10px"
   },
   badge: {
     marginRight: "20px"
@@ -194,100 +209,127 @@ class HighlightsList extends Component {
                 disableRipple
               />
             }
-            label=" Select All"
+            label="All"
           />
         </div>
         <div>
-          <Table className={classes.table}>
-            <TableHead className={classes.tableHead}>
-              <TableRow>
-                <CustomTableCell>User</CustomTableCell>
-                <CustomTableCell>Highlighted Text</CustomTableCell>
-                <CustomTableCell>Date</CustomTableCell>
-                <CustomTableCell>Annotations</CustomTableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {filteredListArray.map(highlightId => {
-                const {
-                  userId,
-                  color,
-                  highlightedText,
-                  updated,
-                  annotations
-                } = filteredList[highlightId];
-
-                const user = users[userId];
-
-                const initials =
-                  user.firstName.charAt(0) + user.lastName.charAt(0);
-
-                let noteTotal = 0,
-                  audioTotal = 0,
-                  videoTotal = 0;
-
-                annotations.forEach(annotation => {
-                  if (annotation.type === "note") {
-                    noteTotal++;
-                  }
-                  if (annotation.type === "audio") {
-                    audioTotal++;
-                  }
-                  if (annotation.type === "video") {
-                    videoTotal++;
-                  }
-                });
-
-                return this.state[color] ? (
-                  <TableRow
-                    onClick={() =>
-                      this.props.annotationModalControl.open([highlightId])
-                    }
-                    value={color}
-                  >
-                    <CustomTableCell>
-                      <Avatar
-                        style={{ backgroundColor: colorLabels[color].active }}
-                      >
-                        {initials}
-                      </Avatar>
+          <Grid container spacing={24}>
+            <Grid item xs={0} />
+            <Grid item xs={12}>
+              <Table className={classes.table}>
+                <TableHead className={classes.tableHead}>
+                  <TableRow className={classes.tableRow}>
+                    <CustomTableCell className={classes.tableCellHead}>
+                      User
+                    </CustomTableCell>
+                    <CustomTableCell className={classes.tableCellHead}>
+                      Highlighted Text
                     </CustomTableCell>
 
-                    <CustomTableCell>
-                      <Typography>{renderHTML(highlightedText)}</Typography>
+                    <CustomTableCell
+                      hidden={{ xsDown: true }}
+                      className={classes.tableCellDate}
+                    >
+                      <Grid hidden={{ xsDown: true }}>Date</Grid>
                     </CustomTableCell>
-                    <CustomTableCell>
-                      {moment(updated).fromNow()}
-                    </CustomTableCell>
-                    <CustomTableCell>
-                      <Badge
-                        className={classes.badge}
-                        badgeContent={noteTotal}
-                        color="default"
-                      >
-                        <NoteIcon />
-                      </Badge>
-                      <Badge
-                        className={classes.badge}
-                        badgeContent={audioTotal}
-                        color="default"
-                      >
-                        <MicIcon />
-                      </Badge>
-                      <Badge
-                        className={classes.badge}
-                        badgeContent={videoTotal}
-                        color="default"
-                      >
-                        <VideocamIcon />
-                      </Badge>
+
+                    <CustomTableCell className={classes.tableCellHead}>
+                      Annotations
                     </CustomTableCell>
                   </TableRow>
-                ) : null;
-              })}
-            </TableBody>
-          </Table>
+                </TableHead>
+
+                <TableBody className={classes}>
+                  {filteredListArray.map(highlightId => {
+                    const {
+                      userId,
+                      color,
+                      highlightedText,
+                      updated,
+                      annotations
+                    } = filteredList[highlightId];
+
+                    const user = users[userId];
+
+                    const initials =
+                      user.firstName.charAt(0) + user.lastName.charAt(0);
+
+                    let noteTotal = 0,
+                      audioTotal = 0,
+                      videoTotal = 0;
+
+                    annotations.forEach(annotation => {
+                      if (annotation.type === "note") {
+                        noteTotal++;
+                      }
+                      if (annotation.type === "audio") {
+                        audioTotal++;
+                      }
+                      if (annotation.type === "video") {
+                        videoTotal++;
+                      }
+                    });
+
+                    return this.state[color] ? (
+                      <TableRow
+                        onClick={() =>
+                          this.props.annotationModalControl.open([highlightId])
+                        }
+                        value={color}
+                      >
+                        <CustomTableCell className={classes.tableCellBody}>
+                          <Avatar
+                            style={{
+                              backgroundColor: colorLabels[color].active
+                            }}
+                          >
+                            {initials}
+                          </Avatar>
+                        </CustomTableCell>
+
+                        <CustomTableCell className={classes.tableCellBody}>
+                          <Typography>{renderHTML(highlightedText)}</Typography>
+                        </CustomTableCell>
+
+                        <CustomTableCell className={classes.tableCellDate}>
+                          <Grid hidden={{ xsDown: true }}>
+                            {moment(updated).fromNow()}
+                          </Grid>
+                        </CustomTableCell>
+
+                        <CustomTableCell
+                          className={classes.tableCellAnnotations}
+                        >
+                          <Badge
+                            className={classes.badge}
+                            badgeContent={noteTotal}
+                            color="default"
+                          >
+                            <NoteIcon />
+                          </Badge>
+                          <Badge
+                            className={classes.badge}
+                            badgeContent={audioTotal}
+                            color="default"
+                          >
+                            <MicIcon />
+                          </Badge>
+                          <Badge
+                            className={classes.badge}
+                            badgeContent={videoTotal}
+                            color="default"
+                          >
+                            <VideocamIcon />
+                          </Badge>
+                        </CustomTableCell>
+                      </TableRow>
+                    ) : null;
+                  })}
+                </TableBody>
+              </Table>
+            </Grid>
+          </Grid>
+          <Grid item xs={0} />
         </div>
       </div>
     );

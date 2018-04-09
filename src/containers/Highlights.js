@@ -44,8 +44,8 @@ class Highlights extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
-          <Grid item xs={2} />
-          <Grid item xs={8}>
+          <Grid item xs={0} sm={1} />
+          <Grid item xs={12} sm={10}>
             <Button variant="raised" className={classes.button}>
               <StudyMode filteredList="array" open="boolean" />
             </Button>
@@ -56,7 +56,7 @@ class Highlights extends Component {
               users={this.props.users}
             />
           </Grid>
-          <Grid item xs={2} />
+          <Grid item xs={0} sm={1} />
         </Grid>
       </div>
     );

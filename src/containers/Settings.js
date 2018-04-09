@@ -35,7 +35,7 @@ import Typography from "material-ui/Typography";
 /*---In a side drawer, Settings contains the user control over the content.---*/
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing.unit * 2,
     marginBottom: 100
   },
   list: {
@@ -129,8 +129,8 @@ class Settings extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
-          <Grid item xs={1} sm={2} />
-          <Grid item xs={10} sm={8}>
+          <Grid item xs={0} sm={2} />
+          <Grid item xs={12} sm={8}>
             <List subheader={<ListSubheader>Demo Controls</ListSubheader>}>
               <ListItem>
                 <ListItemIcon>
@@ -308,7 +308,7 @@ class Settings extends Component {
               </ListItem>
             </List>
           </Grid>
-          <Grid item xs={1} sm={2} />
+          <Grid item xs={0} sm={2} />
         </Grid>
       </div>
     );
