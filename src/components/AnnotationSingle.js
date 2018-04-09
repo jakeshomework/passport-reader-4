@@ -31,9 +31,6 @@ const styles = theme => ({
     color: grey[500],
     marginBottom: 10,
     fontSize: theme.typography.fontSize - 5
-  },
-  grayButton: {
-    color: grey[500]
   }
 });
 
@@ -82,6 +79,7 @@ class AnnotationSingle extends Component {
         return { modifiedHighlight: updatedHighlight };
       });
     },
+
     updateAnnotation: ({ annotationIndex, content }) => {
       // console.log(
       //   "now updating annotation",
@@ -103,19 +101,6 @@ class AnnotationSingle extends Component {
     }
   };
 
-  componentWillReceiveProps() {
-    // let newAnnotationFromApp = this.props.highlight.annotations[
-    //   this.props.highlight.annotations.length - 1
-    // ];
-    // this.setState(prevState => {
-    //   let updatedHighlight = { ...prevState.modifiedHighlight };
-    //   console.log("updaddy", updatedHighlight);
-    //   updatedHighlight.annotations.push(newAnnotationFromApp);
-    //   return { modifiedHighlight: updatedHighlight };
-    // });
-  }
-
-  // TODO: Pass this function down
   handleModalUpdate = ({ annotationIndex, content }) => {
     this.setState(prevState => {
       /* --- hack avoid shallow clone consequences --- */
@@ -172,18 +157,12 @@ class AnnotationSingle extends Component {
         </DialogContent>
         <DialogActions>
           <div className={classes.actions}>
-            <Button
-              onClick={this.modalActions.deleteHighlight}
-              className={classes.grayButton}
-            >
+            <Button onClick={this.modalActions.deleteHighlight}>
               <DeleteIcon />
             </Button>
 
             {this.isHighlightSaved() ? (
-              <Button
-                onClick={this.modalActions.cancel}
-                className={classes.grayButton}
-              >
+              <Button onClick={this.modalActions.cancel}>
                 <CloseIcon />
               </Button>
             ) : (

@@ -70,10 +70,6 @@ class AnnotationEditorNote extends Component {
   };
 
   handleDelete = () => {
-    // this.props.highlightsControl.deleteAnnotation({
-    //   highlightId: this.props.highlightId,
-    //   annotationIndex: this.props.annotationIndex
-    // });
     this.props.modalActions.deleteAnnotation({
       annotationIndex: this.props.annotationIndex
     });

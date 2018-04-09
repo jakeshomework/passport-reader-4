@@ -1,24 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 /* ----- MATERIAL-UI IMPORTS ----- */
-import { withStyles } from "material-ui/styles";
 import Typography from "material-ui/Typography";
 import Button from "material-ui/Button";
+import Card from "material-ui/Card";
 import IconButton from "material-ui/IconButton";
 import EditIcon from "material-ui-icons/Edit";
 import NoteIcon from "material-ui-icons/Note";
 import MicIcon from "material-ui-icons/Mic";
 import VideocamIcon from "material-ui-icons/Videocam";
 import ShareIcon from "material-ui-icons/Share";
+import RecordIcon from "material-ui-icons/FiberManualRecord";
+import StopIcon from "material-ui-icons/Stop";
 import grey from "material-ui/colors/grey";
-
+import { withStyles } from "material-ui/styles";
 /* --- IMPORT EXTERNAL LIBRARIES --- */
 import MediaCapturer from "react-multimedia-capture";
+/* ----- COMPONENT IMPORTS ----- */
+import AnnotationSaveButtons from "./AnnotationSaveButtons";
 
 const styles = {
-  videoPlayer: {
+  root: {
     width: "100%"
+  },
+  videoPlayer: {
+    // minWidth: "320px",
+    width: "100%"
+  },
+  videoContainer: {
+    padding: 5
+  },
+
+  recorderButtonsContainer: {
+    display: "flex",
+    justifyContent: "space-around"
   }
 };
 class AnnotationEditorVideo extends React.Component {
@@ -29,7 +44,8 @@ class AnnotationEditorVideo extends React.Component {
       rejectedReason: "",
       recording: false,
       paused: false,
-      videoSrc: ""
+      videoSrc: "",
+      savedAudioFile: ""
     };
 
     this.handleGranted = this.handleGranted.bind(this);
@@ -42,6 +58,23 @@ class AnnotationEditorVideo extends React.Component {
     this.releaseStreamFromVideo = this.releaseStreamFromVideo.bind(this);
     this.downloadVideo = this.downloadVideo.bind(this);
   }
+
+  handleSave = () => {
+    /* --- save in App --- */
+    this.props.highlightsControl.updateAnnotation({
+      highlightId: this.props.highlightId,
+      annotationIndex: this.props.annotationIndex,
+      newContent: this.state.savedVideoFile,
+      type: this.props.modifiedAnnotation.type
+    });
+  };
+
+  handleDelete = () => {
+    this.props.modalActions.deleteAnnotation({
+      annotationIndex: this.props.annotationIndex
+    });
+  };
+
   handleGranted() {
     this.setState({ granted: true });
     console.log("Permission Granted!");
@@ -109,15 +142,14 @@ class AnnotationEditorVideo extends React.Component {
     // a.click();
   }
   render() {
-    const { classes } = this.props;
+    const { classes, isAnnotationSaved } = this.props;
     const granted = this.state.granted;
     const rejectedReason = this.state.rejectedReason;
     const recording = this.state.recording;
     const paused = this.state.paused;
 
     return (
-      <div ref="app">
-        <h3>Video Recorder</h3>
+      <div ref="app" className={classes.root}>
         <MediaCapturer
           constraints={{ audio: true, video: true }}
           timeSlice={10}
@@ -130,23 +162,26 @@ class AnnotationEditorVideo extends React.Component {
           onError={this.handleError}
           render={({ start, stop, pause, resume }) => (
             <div>
-              <p>Granted: {granted.toString()}</p>
-              <p>Rejected Reason: {rejectedReason}</p>
-              <p>Recording: {recording.toString()}</p>
-              <p>Paused: {paused.toString()}</p>
-              <button onClick={start}>Start</button>
-              <button onClick={stop}>Stop</button>
-              <button onClick={pause}>Pause</button>
-              <button onClick={resume}>Resume</button>
-
-              <p>Streaming test</p>
-
-              <video
-                autoPlay
-                loop
-                controls={this.state.videoSrc ? true : false}
-                src={this.state.videoSrc}
-                className={classes.videoPlayer}
+              <Card
+                className={classes.videoContainer}
+                style={{ backgroundColor: this.state.recording ? "red" : null }}
+              >
+                <video
+                  autoPlay
+                  loop
+                  controls={this.state.videoSrc ? true : false}
+                  src={this.state.videoSrc}
+                  className={classes.videoPlayer}
+                />
+              </Card>
+              <AnnotationSaveButtons
+                handleSave={this.handleSave}
+                handleDelete={this.handleDelete}
+                isSaved={isAnnotationSaved}
+                mediaControl={true}
+                isRecording={this.state.recording}
+                start={start}
+                stop={stop}
               />
             </div>
           )}
