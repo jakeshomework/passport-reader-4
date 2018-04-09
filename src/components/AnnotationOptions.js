@@ -26,7 +26,13 @@ import AnnotationEditorNote from "./AnnotationEditorNote";
 
 /*---Opens annotation modal with a annotationType: note, video, or audio---*/
 const styles = theme => ({
-  icon: { color: grey[600], marginRight: 20 },
+  icon: {
+    // color: grey[600],
+    marginRight: 20
+  },
+  annotationContainer: {
+    width: "100%"
+  },
   addAnnotationIcons: {
     // backgroundColor: theme.palette.secondary.main,
     display: "flex",
@@ -54,12 +60,18 @@ const AnnotationOptions = ({
       type: type
     });
   };
+  const annotationButtonsDisabled = () => {
+    /* --- return true to disable add annotation buttons --- */
+    if (modifiedHighlight.annotations.length === 0) {
+      return false;
+    } else return !isHighlightSaved;
+  };
 
-  // console.log(highlight.annotations);
   return (
     <div>
       {modifiedHighlight.annotations.map((modifiedAnnotation, index) => {
         const savedAnnotation = highlight.annotations[index];
+
         const isAnnotationSaved = () => {
           const modified = modifiedAnnotation.content;
           const saved = savedAnnotation ? savedAnnotation.content : null;
@@ -84,7 +96,7 @@ const AnnotationOptions = ({
                 {moment(modifiedAnnotation.createdAt).fromNow()}
               </Typography>
             </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
+            <ExpansionPanelDetails className={classes.expansionDetails}>
               {modifiedAnnotation.type === "video" ? (
                 <AnnotationEditorVideo
                   highlightId={highlight.id}
@@ -92,6 +104,8 @@ const AnnotationOptions = ({
                   isAnnotationSaved={isAnnotationSaved()}
                   highlightsControl={highlightsControl}
                   annotationIndex={index}
+                  modalActions={modalActions}
+                  className={classes.annotationContainer}
                 />
               ) : modifiedAnnotation.type === "audio" ? (
                 <AnnotationEditorAudio
@@ -100,6 +114,7 @@ const AnnotationOptions = ({
                   isAnnotationSaved={isAnnotationSaved()}
                   highlightsControl={highlightsControl}
                   annotationIndex={index}
+                  modalActions={modalActions}
                 />
               ) : modifiedAnnotation.type === "note" ? (
                 <AnnotationEditorNote
@@ -129,10 +144,8 @@ const AnnotationOptions = ({
           className={classes.button}
           aria-label="Note"
           onClick={() => handleAddAnnotation("note")}
-          variant="fab"
-          disabled={!isHighlightSaved}
+          disabled={annotationButtonsDisabled()}
           size="small"
-          color="default"
         >
           <NoteIcon />
         </Button>
@@ -140,8 +153,7 @@ const AnnotationOptions = ({
           className={classes.button}
           aria-label="Microphone"
           onClick={() => handleAddAnnotation("audio")}
-          variant="fab"
-          disabled={!isHighlightSaved}
+          disabled={annotationButtonsDisabled()}
           size="small"
           color="default"
         >
@@ -151,8 +163,7 @@ const AnnotationOptions = ({
           className={classes.button}
           aria-label="Video"
           onClick={() => handleAddAnnotation("video")}
-          variant="fab"
-          disabled={!isHighlightSaved}
+          disabled={annotationButtonsDisabled()}
           size="small"
           color="default"
         >

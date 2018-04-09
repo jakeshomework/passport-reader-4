@@ -40,7 +40,7 @@ export const FoghornHighlights = {
         userId: "user333",
         type: "video",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
-        content: "someplace/highlightId.mp4"
+        content: "demo-annotation-media/thumbs-up.webm"
       }
     ]
   },
@@ -72,7 +72,7 @@ export const FoghornHighlights = {
         userId: "user222",
         type: "video",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
-        content: "someplace/highlightId.mp4"
+        content: "demo-annotation-media/thumbs-up.webm"
       }
     ]
   }

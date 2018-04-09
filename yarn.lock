@@ -1031,6 +1031,10 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+batch-processor@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
+
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
@@ -2193,6 +2197,12 @@ ee-first@1.1.1:
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30:
   version "1.3.37"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.37.tgz#4a92734e0044c8cf0b1553be57eae21a4c6e5fab"
+
+element-resize-detector@^1.1.10:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.1.14.tgz#af064a0a618a820ad570a95c5eec5b77be0128c1"
+  dependencies:
+    batch-processor "^1.0.0"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -5782,6 +5792,14 @@ react-attr-converter@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/react-attr-converter/-/react-attr-converter-0.3.1.tgz#4a2abf6d907b7ddae4d862dfec80e489ce41ad6e"
 
+react-container-dimensions@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/react-container-dimensions/-/react-container-dimensions-1.3.3.tgz#5da301e30decb449fb0cef1a2ab210df970ca71e"
+  dependencies:
+    element-resize-detector "^1.1.10"
+    invariant "^2.2.2"
+    prop-types "^15.5.8"
+
 react-dev-utils@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-5.0.0.tgz#425ac7c9c40c2603bc4f7ab8836c1406e96bb473"
@@ -5827,6 +5845,13 @@ react-event-listener@^0.5.1:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
+react-ga@^2.2.0:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.4.1.tgz#dfbd5f028ed39a07067f7a8bf57dc0d240000767"
+  optionalDependencies:
+    prop-types "^15.6.0"
+    react "^15.6.2 || ^16.0"
+
 react-jss@^8.1.0:
   version "8.3.5"
   resolved "https://registry.yarnpkg.com/react-jss/-/react-jss-8.3.5.tgz#963ed6677e8112820d0495853cd4c3d0fb1d05fd"
@@ -5840,6 +5865,13 @@ react-jss@^8.1.0:
 react-lifecycles-compat@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-1.0.2.tgz#551d8b1d156346e5fcf30ffac9b32ce3f78b8850"
+
+react-mic@^9.1.2:
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/react-mic/-/react-mic-9.1.2.tgz#ce57793dbb49145296c868b3d01496e558ecd982"
+  dependencies:
+    prop-types "^15.5.10"
+    react-ga "^2.2.0"
 
 react-motion@^0.5.2:
   version "0.5.2"
@@ -5967,6 +5999,15 @@ react-transition-group@^2.2.1:
     loose-envify "^1.3.1"
     prop-types "^15.5.8"
     warning "^3.0.0"
+
+"react@^15.6.2 || ^16.0":
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.1.tgz#4a2da433d471251c69b6033ada30e2ed1202cfd8"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 react@^16.2.0:
   version "16.2.0"
