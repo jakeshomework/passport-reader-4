@@ -306,6 +306,8 @@ class App extends Component {
             <Audio style={Object.assign({}, styles.slide, styles.audioSlide)} />
             <SpeedReader
               style={Object.assign({}, styles.slide, styles.speedReaderSlide)}
+              book={this.state.book}
+              speedReader={this.state.speedReader}
             />
           </SwipeableViews>
         </Paper>

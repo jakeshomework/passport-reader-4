@@ -1,5 +1,10 @@
 export const formatBookString = originalContent => {
   // ========================================= //
+  // ****************** TODO ***************** //
+  // ========================================= //
+  // each image needs book-bookname/ in order to load the image correctly.
+
+  // ========================================= //
   // ******* DEFINE REGEX EXPRESSIONS ******** //
   // ========================================= //
   // let regExAudioElements = /<audio (.*?)>(.*?)<\/audio>/g;
