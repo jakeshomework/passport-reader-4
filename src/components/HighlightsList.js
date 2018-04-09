@@ -17,7 +17,6 @@ import MicIcon from "material-ui-icons/Mic";
 import VideocamIcon from "material-ui-icons/Videocam";
 import Grid from "material-ui/Grid";
 import moment from "moment";
-import MediaQuery from "react-responsive";
 
 import Table, {
   TableBody,
@@ -273,8 +272,7 @@ class HighlightsList extends Component {
                     return this.state[color] ? (
                       <TableRow
                         onClick={() =>
-                          this.props.annotationModalControl.open([highlightId])
-                        }
+                          this.props.annotationModalControl.open([highlightId])}
                         value={color}
                       >
                         <CustomTableCell className={classes.tableCellBody}>
