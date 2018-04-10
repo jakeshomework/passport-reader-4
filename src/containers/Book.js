@@ -186,6 +186,16 @@ class Book extends Component {
         <Grid container spacing={24}>
           <Grid item xs={0} sm={2} />
           <Grid item xs={12} sm={8}>
+            <div>{this.state.selection.content}</div>
+            {this.state.event}
+            {this.state.showTooltip ? (
+              <HighlightTooltip
+                open={this.state.showTooltip}
+                selection={this.state.selection}
+                highlightsControl={highlightsControl}
+                closeTooltip={this.closeTooltip}
+              />
+            ) : null}
             <Grid hidden={{ xsDown: true }}>
               <Snackbar
                 className={classes.snackbar}
@@ -196,7 +206,7 @@ class Book extends Component {
                 style={{
                   bottom: 55,
                   width: "98%",
-                  marginLeft: "101vw"
+                  marginLeft: "100vw"
                 }}
                 action={[
                   <IconButton
