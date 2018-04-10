@@ -66,7 +66,6 @@ const BookDisplay = ({
 
   return (
     <div>
-      BookDisplay
       <BookSingleString
         handleSelectClick={handleSelectClick}
         handleSelectTouch={handleSelectTouch}

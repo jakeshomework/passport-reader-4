@@ -27,7 +27,6 @@ const BookSingleString = ({
       onClick={handleSelectClick}
       className={classes.bookStyle}
     >
-      BookSingleString
       <Typography className={classes.bookStyle}>
         {renderHTML(content)}
       </Typography>

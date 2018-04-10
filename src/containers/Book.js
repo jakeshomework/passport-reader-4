@@ -186,47 +186,66 @@ class Book extends Component {
         <Grid container spacing={24}>
           <Grid item xs={0} sm={2} />
           <Grid item xs={12} sm={8}>
-            Book selected:
-            <div>{` ${this.state.selection.startId} -> ${
-              this.state.selection.endId
-            }`}</div>
-            <div>{this.state.selection.content}</div>
-            {this.state.event}
-            {this.state.showTooltip ? (
-              <HighlightTooltip
-                open={this.state.showTooltip}
-                selection={this.state.selection}
-                highlightsControl={highlightsControl}
-                closeTooltip={this.closeTooltip}
+            <Grid hidden={{ xsDown: true }}>
+              <Snackbar
+                className={classes.snackbar}
+                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                open={open}
+                transition={Fade}
+                onClose={this.handleClose}
+                style={{
+                  bottom: 55,
+                  width: "98%",
+                  marginLeft: "101vw"
+                }}
+                action={[
+                  <IconButton
+                    key="close"
+                    aria-label="Close"
+                    color="inherit"
+                    className={classes.close}
+                    onClick={this.handleClose}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                ]}
+                message={
+                  <span id="message-id">
+                    Definition: {this.state.glossaryDefinition}
+                  </span>
+                }
               />
-            ) : null}
-            <Snackbar
-              className={classes.snackbar}
-              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-              open={open}
-              transition={Fade}
-              onClose={this.handleClose}
-              style={{
-                bottom: 55,
-                marginLeft: "100vw"
-              }}
-              action={[
-                <IconButton
-                  key="close"
-                  aria-label="Close"
-                  color="inherit"
-                  className={classes.close}
-                  onClick={this.handleClose}
-                >
-                  <CloseIcon />
-                </IconButton>
-              ]}
-              message={
-                <span id="message-id">
-                  Definition: {this.state.glossaryDefinition}
-                </span>
-              }
-            />
+            </Grid>
+            <Grid hidden={{ smUp: true }}>
+              <Snackbar
+                className={classes.snackbar}
+                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                open={open}
+                transition={Fade}
+                onClose={this.handleClose}
+                style={{
+                  bottom: 55,
+                  marginLeft: "105vw",
+                  width: "90%"
+                }}
+                action={[
+                  <IconButton
+                    key="close"
+                    aria-label="Close"
+                    color="inherit"
+                    className={classes.close}
+                    onClick={this.handleClose}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                ]}
+                message={
+                  <span id="message-id">
+                    Definition: {this.state.glossaryDefinition}
+                  </span>
+                }
+              />
+            </Grid>
             <BookDisplay
               handleSelectClick={this.handleSelectClick}
               handleSelectTouch={this.handleSelectTouch}
