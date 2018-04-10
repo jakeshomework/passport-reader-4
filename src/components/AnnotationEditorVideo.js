@@ -59,6 +59,10 @@ class AnnotationEditorVideo extends React.Component {
     this.downloadVideo = this.downloadVideo.bind(this);
   }
 
+  componentDidMount = () => {
+    this.setState({ videoSrc: this.props.modifiedAnnotation.content });
+  };
+
   handleSave = () => {
     /* --- save in App --- */
     this.props.highlightsControl.updateAnnotation({
@@ -170,7 +174,7 @@ class AnnotationEditorVideo extends React.Component {
                   autoPlay
                   loop
                   controls={this.state.videoSrc ? true : false}
-                  src={this.state.videoSrc}
+                  src={"demo-annotation-media/thumbs-up.webm"}
                   className={classes.videoPlayer}
                 />
               </Card>

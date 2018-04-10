@@ -25,6 +25,9 @@ import AnnotationEditorVideo from "./AnnotationEditorVideo";
 import AnnotationEditorNote from "./AnnotationEditorNote";
 
 /*---Opens annotation modal with a annotationType: note, video, or audio---*/
+
+/* TODO: Handle permissions for allowSocialAnnotations */
+
 const styles = theme => ({
   icon: {
     // color: grey[600],
