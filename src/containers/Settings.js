@@ -200,7 +200,13 @@ class Settings extends Component {
                   <ListItemIcon>
                     <GroupIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Allow Social Annotations" />
+                  <ListItemText
+                    primary={
+                      <Typography className={classes.ListItemText}>
+                        Allow Social Annotations
+                      </Typography>
+                    }
+                  />
                   <ListItemSecondaryAction>
                     <SettingsSwitch
                       setting={classView}
@@ -238,7 +244,13 @@ class Settings extends Component {
                 <ListItemIcon>
                   <InvertColors />
                 </ListItemIcon>
-                <ListItemText primary="Dark Mode" />
+                <ListItemText
+                  primary={
+                    <Typography className={classes.ListItemText}>
+                      Dark Mode
+                    </Typography>
+                  }
+                />
                 <ListItemSecondaryAction>
                   <SettingsSwitch
                     darkMode={darkMode}

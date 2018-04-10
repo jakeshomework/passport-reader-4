@@ -75,45 +75,48 @@ class ImageGallery extends Component {
   };
 
   componentDidMount() {
-    if (!this.props.focusMode) {
-      this.renderGalleriesInDom();
-    }
+    this.renderGalleriesInDom();
   }
 
   componentDidUpdate() {
-    if (!this.props.focusMode) {
-      this.renderGalleriesInDom();
-    }
+    this.renderGalleriesInDom();
   }
 
+  /* --- render thumbnails in the respective gallery divs --- */
+
   renderGalleriesInDom() {
-    const { galleries, bookName, classes } = this.props;
+    const { galleries, bookName, focusMode, classes } = this.props;
+
     galleries.forEach((gallery, galleryIndex) => {
       ReactDOM.render(
-        <div className={classes.gallery}>
-          {gallery.map((image, imageIndex) => {
-            const thumbnailSrc = image.thumbnail
-              ? `book-${bookName}/${image.thumbnail}`
-              : `book-${bookName}/${image.src}`;
-            return (
-              <div key={imageIndex}>
-                <Button
-                  onClick={() => this.openGallery(galleryIndex, imageIndex)}
-                >
-                  <img
-                    src={thumbnailSrc}
-                    className={classes.thumbnail}
-                    alt=""
-                  />
-                </Button>
-              </div>
-            );
-          })}
-        </div>,
+        !focusMode ? (
+          <div className={classes.gallery}>
+            {gallery.map((image, imageIndex) => {
+              const thumbnailSrc = image.thumbnail
+                ? `book-${bookName}/${image.thumbnail}`
+                : `book-${bookName}/${image.src}`;
+              return (
+                <div key={imageIndex}>
+                  <Button
+                    onClick={() => this.openGallery(galleryIndex, imageIndex)}
+                  >
+                    <img
+                      src={thumbnailSrc}
+                      className={classes.thumbnail}
+                      alt=""
+                    />
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
+        ) : null,
         document.getElementById(`image-gallery-${galleryIndex}`)
       );
     });
   }
+
+  /* --- render the modal on the page --- */
 
   render() {
     const { galleries, classes, bookName } = this.props;

@@ -33,7 +33,7 @@ const BookDisplay = ({
 
     // --- reduce highlightsIdArray to the most recent highlight --- //
     const newestHighlight = highlightsArray.reduce((newest, current) => {
-      return highlights[newest].updated < highlights[current].updated
+      return highlights[newest].updatedAt < highlights[current].updatedAt
         ? current
         : newest;
     });

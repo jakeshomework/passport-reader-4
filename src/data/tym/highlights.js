@@ -9,7 +9,7 @@ export const TymHighlights = {
     endId: "emc-92",
     color: "hlc5",
     createdAt: "Wed Mar 20 2018 13:23:19 GMT-0500 (CDT)",
-    updated: new Date("Wed Mar 21 2018 13:23:19 GMT-0500 (CDT)"),
+    updatedAt: new Date("Wed Mar 21 2018 13:23:19 GMT-0500 (CDT)"),
     annotations: []
   },
   highlightID11111: {
@@ -22,7 +22,7 @@ export const TymHighlights = {
     endId: "emc-96",
     color: "hlc1",
     createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
-    updated: new Date("Wed Mar 15 2018 13:23:19 GMT-0500 (CDT)"),
+    updatedAt: new Date("Wed Mar 15 2018 13:23:19 GMT-0500 (CDT)"),
     annotations: [
       {
         userId: "user111",

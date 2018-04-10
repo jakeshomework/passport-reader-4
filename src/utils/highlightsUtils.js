@@ -16,7 +16,7 @@ export const addHighlight = (prevState, highlightObject) => {
     endId: highlightObject.endId,
     color: highlightObject.color,
     createdAt: currentDate,
-    updated: currentDate,
+    updatedAt: currentDate,
     annotations: []
   };
 

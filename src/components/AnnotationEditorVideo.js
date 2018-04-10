@@ -64,11 +64,16 @@ class AnnotationEditorVideo extends React.Component {
   };
 
   handleSave = () => {
+    /* --- save in Open Modal --- */
+    this.props.modalActions.updateAnnotation({
+      annotationIndex: this.props.annotationIndex,
+      content: "demo-annotation-media/thumbs-up.webm"
+    });
     /* --- save in App --- */
     this.props.highlightsControl.updateAnnotation({
       highlightId: this.props.highlightId,
       annotationIndex: this.props.annotationIndex,
-      newContent: this.state.savedVideoFile,
+      newContent: "demo-annotation-media/thumbs-up.webm",
       type: this.props.modifiedAnnotation.type
     });
   };
@@ -174,7 +179,7 @@ class AnnotationEditorVideo extends React.Component {
                   autoPlay
                   loop
                   controls={this.state.videoSrc ? true : false}
-                  src={"demo-annotation-media/thumbs-up.webm"}
+                  src={this.state.videoSrc}
                   className={classes.videoPlayer}
                 />
               </Card>

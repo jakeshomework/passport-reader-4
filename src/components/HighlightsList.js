@@ -17,7 +17,6 @@ import MicIcon from "material-ui-icons/Mic";
 import VideocamIcon from "material-ui-icons/Videocam";
 import Grid from "material-ui/Grid";
 import moment from "moment";
-import MediaQuery from "react-responsive";
 
 import Table, {
   TableBody,
@@ -91,8 +90,8 @@ const styles = theme => ({
   }
 });
 
-function createData(userId, highlightedText, updated, annotations) {
-  return { userId, highlightedText, updated, annotations };
+function createData(userId, highlightedText, updatedAt, annotations) {
+  return { userId, highlightedText, updatedAt, annotations };
 }
 
 class HighlightsList extends Component {
@@ -245,7 +244,7 @@ class HighlightsList extends Component {
                       userId,
                       color,
                       highlightedText,
-                      updated,
+                      updatedAt,
                       annotations
                     } = filteredList[highlightId];
 
@@ -273,8 +272,7 @@ class HighlightsList extends Component {
                     return this.state[color] ? (
                       <TableRow
                         onClick={() =>
-                          this.props.annotationModalControl.open([highlightId])
-                        }
+                          this.props.annotationModalControl.open([highlightId])}
                         value={color}
                       >
                         <CustomTableCell className={classes.tableCellBody}>
@@ -293,7 +291,7 @@ class HighlightsList extends Component {
 
                         <CustomTableCell className={classes.tableCellDate}>
                           <Grid hidden={{ xsDown: true }}>
-                            {moment(updated).fromNow()}
+                            {moment(updatedAt).fromNow()}
                           </Grid>
                         </CustomTableCell>
 
