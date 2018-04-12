@@ -62,7 +62,6 @@ class SpeedReaderControls extends Component {
         <FormControl className={classes.formControl}>
           <Select
             value={this.props.wpm}
-            placeholder={this.props.wpm}
             onChange={this.props.changeWpm}
             input={<Input id="select-wpm" />}
           >

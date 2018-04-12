@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
 /* ----- COMPONENT IMPORTS ----- */
 import SpeedReaderSingle from "../components/SpeedReaderSingle";
 import SpeedReaderControls from "../components/SpeedReaderControls";
+
+/* ----- UI IMPORTS ----- */
 import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
 
@@ -14,9 +16,8 @@ class SpeedReader extends Component {
     wpm: 250,
     wpmOptions: [250, 300, 350, 400, 450, 500, 550, 600, 650, 700],
     word: "WORD",
-    interval: 25,
     isPlaying: false,
-    wordIndex: 14,
+    wordIndex: 0,
     sentenceIndex: 0
   };
   handleChange = prop => event => {
@@ -43,16 +44,17 @@ class SpeedReader extends Component {
     // 6. set sentence index in state
   };
 
-  stopWords = (intervalSet, intervalclear) => {
-    clearInterval(intervalSet, intervalclear);
+  stopWords = interval => {
+    clearInterval(this.displayOneWord);
+    console.log("stop interval: ", interval);
     this.setState({ isPlaying: false });
   };
   startWords = () => {
-    let intervalSet = setInterval(this.displayOneWord, 60000 / this.state.wpm);
-    let intervalclear = clearInterval(
+    let interval = setInterval(
       this.displayOneWord,
-      60000 / this.state.wpm
+      60000 / this.state.wpm + 10
     );
+    console.log("start interval: ", interval);
     this.setState({ isPlaying: true });
   };
   fastForward = () => {};
@@ -62,7 +64,6 @@ class SpeedReader extends Component {
   // changePosition = () => {};
 
   render() {
-    const { classes } = this.props;
     return (
       <div>
         <Grid container spacing={24}>
@@ -86,7 +87,5 @@ class SpeedReader extends Component {
     );
   }
 }
-
-SpeedReader.propTypes = {};
 
 export default withStyles(styles)(SpeedReader);

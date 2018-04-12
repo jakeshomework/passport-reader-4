@@ -13,7 +13,7 @@ const styles = theme => ({
 });
 class SettingsSwitch extends Component {
   render() {
-    const { classes, theme, disabled } = this.props;
+    const { classes, disabled } = this.props;
     return (
       <div className={classes.root}>
         <Grid container>

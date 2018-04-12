@@ -1,35 +1,35 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
 /* ----- COMPONENT IMPORTS ----- */
-import { withStyles } from "material-ui/styles";
-import List, { ListItem } from "material-ui/List";
-import { FormGroup, FormControlLabel } from "material-ui/Form";
-
-import Checkbox from "material-ui/Checkbox";
-import IconButton from "material-ui/IconButton";
-import grey from "material-ui/colors/grey";
-import Typography from "material-ui/Typography";
 import renderHTML from "react-render-html";
+import moment from "moment";
 
+/* ----- UI IMPORTS ----- */
+import { withStyles } from "material-ui/styles";
+import Grid from "material-ui/Grid";
+import { FormControlLabel } from "material-ui/Form";
+import Checkbox from "material-ui/Checkbox";
+import Typography from "material-ui/Typography";
 import Badge from "material-ui/Badge";
 import NoteIcon from "material-ui-icons/Note";
 import MicIcon from "material-ui-icons/Mic";
-import VideocamIcon from "material-ui-icons/Videocam";
-import Grid from "material-ui/Grid";
-import moment from "moment";
-
 import Table, {
   TableBody,
   TableCell,
   TableHead,
   TableRow
 } from "material-ui/Table";
-import Paper from "material-ui/Paper";
-
-// ===== MATERIAL-UI COLOR IMPORTS yellow, blue, green, pink, purple ===== //
-import { colorLabels } from "../config/colorLabels";
 import { Avatar } from "material-ui";
 
+/* ----- ICON IMPORTS ----- */
+import VideocamIcon from "material-ui-icons/Videocam";
+
+/* ----- COLOR IMPORTS ----- */
+import { colorLabels } from "../config/colorLabels";
+import grey from "material-ui/colors/grey";
+
+/* ----- TABLE STYLES ----- */
 const CustomTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common,
@@ -40,7 +40,7 @@ const CustomTableCell = withStyles(theme => ({
   }
 }))(TableCell);
 
-/*---Displays a list of Highlights ---*/
+/*--- CUSTOM STYLES ---*/
 const styles = theme => ({
   root: {
     padding: theme.spacing.unit * 2
@@ -69,26 +69,26 @@ const styles = theme => ({
       backgroundColor: theme.palette.background.default
     }
   },
+  badge: {
+    marginRight: "20px"
+  },
   tableHead: {
     backgroundColor: grey["700"],
     color: "black"
-  },
-  tableCellHead: {
-    //paddingLeft: 5
-  },
+  }
+  // tableCellHead: {
+  //   paddingLeft: 5
+  // },
   // tableCellDate: {
   //   padding: 0
   // },
   // tableCellBody: {
   //   padding: 10
   // },
-  tableCellAnnotations: {
-    //display: "inline-block"
-    // padding: "20px 5px 5px 10px"
-  },
-  badge: {
-    marginRight: "20px"
-  }
+  // tableCellAnnotations: {
+  //   display: "inline-block"
+  //   padding: "20px 5px 5px 10px"
+  // },
 });
 
 function createData(userId, highlightedText, updatedAt, annotations) {
@@ -105,21 +105,10 @@ class HighlightsList extends Component {
     selectAll: false
   };
 
-  togglehlc1 = (event, checked) => {
-    this.setState({ hlc1: checked });
+  toggleHighlight = prop => (event, checked) => {
+    this.setState({ [prop]: checked });
   };
-  togglehlc2 = (event, checked) => {
-    this.setState({ hlc2: checked });
-  };
-  togglehlc3 = (event, checked) => {
-    this.setState({ hlc3: checked });
-  };
-  togglehlc4 = (event, checked) => {
-    this.setState({ hlc4: checked });
-  };
-  togglehlc5 = (event, checked) => {
-    this.setState({ hlc5: checked });
-  };
+
   toggleSelectAll = (event, checked) => {
     this.setState({
       selectAll: checked,
@@ -146,7 +135,7 @@ class HighlightsList extends Component {
         <div className={classes.checkBoxes}>
           <Checkbox
             checked={hlc1}
-            onChange={this.togglehlc1}
+            onChange={this.toggleHighlight("hlc1")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -157,7 +146,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc2}
-            onChange={this.togglehlc2}
+            onChange={this.toggleHighlight("hlc2")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -168,7 +157,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc3}
-            onChange={this.togglehlc3}
+            onChange={this.toggleHighlight("hlc3")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -179,7 +168,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc4}
-            onChange={this.togglehlc4}
+            onChange={this.toggleHighlight("hlc4")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -190,7 +179,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc5}
-            onChange={this.togglehlc5}
+            onChange={this.toggleHighlight("hlc5")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -337,8 +326,8 @@ class HighlightsList extends Component {
   }
 }
 
-HighlightsList.propTypes = {
-  filteredList: PropTypes.array
-};
+// HighlightsList.propTypes = {
+//   filteredList: PropTypes.array
+// };
 
 export default withStyles(styles)(HighlightsList);
