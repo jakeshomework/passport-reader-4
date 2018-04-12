@@ -14,8 +14,6 @@ import VolumeUp from "material-ui-icons/VolumeUp";
 import Headset from "material-ui-icons/Headset";
 import WbIridescent from "material-ui-icons/WbIridescent";
 
-console.log(withStyles);
-
 const styles = {
   root: {
     width: "100vw",
