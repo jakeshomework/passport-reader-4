@@ -53,7 +53,8 @@ const styles = theme => ({
     marginRight: 10,
     marginLeft: 14,
     color: "white",
-    backgroundColor: grey["700"]
+    backgroundColor: grey["700"],
+    marginBottom: 10
   },
   checkBoxes: {
     float: "left",
@@ -75,12 +76,12 @@ const styles = theme => ({
   tableCellHead: {
     //paddingLeft: 5
   },
-  tableCellDate: {
-    padding: 0
-  },
-  tableCellBody: {
-    padding: 10
-  },
+  // tableCellDate: {
+  //   padding: 0
+  // },
+  // tableCellBody: {
+  //   padding: 10
+  // },
   tableCellAnnotations: {
     //display: "inline-block"
     // padding: "20px 5px 5px 10px"
@@ -111,7 +112,7 @@ class HighlightsList extends Component {
     this.setState({ hlc2: checked });
   };
   togglehlc3 = (event, checked) => {
-    this.setState({ chlc3: checked });
+    this.setState({ hlc3: checked });
   };
   togglehlc4 = (event, checked) => {
     this.setState({ hlc4: checked });
@@ -239,7 +240,7 @@ class HighlightsList extends Component {
                 </TableHead>
 
                 <TableBody className={classes.tableBody}>
-                  {filteredListArray.map(highlightId => {
+                  {filteredListArray.map((highlightId, i) => {
                     const {
                       userId,
                       color,
@@ -272,8 +273,9 @@ class HighlightsList extends Component {
                     return this.state[color] ? (
                       <TableRow
                         onClick={() =>
-                          this.props.annotationModalControl.open([highlightId])}
-                        key={moment(updatedAt).fromNow()}
+                          this.props.annotationModalControl.open([highlightId])
+                        }
+                        key={i}
                         value={color}
                       >
                         <CustomTableCell className={classes.tableCellBody}>

@@ -43,12 +43,16 @@ class SpeedReader extends Component {
     // 6. set sentence index in state
   };
 
-  stopWords = interval => {
-    clearInterval(interval);
+  stopWords = (intervalSet, intervalclear) => {
+    clearInterval(intervalSet, intervalclear);
     this.setState({ isPlaying: false });
   };
   startWords = () => {
-    let interval = setInterval(this.displayOneWord, 60000 / this.state.wpm);
+    let intervalSet = setInterval(this.displayOneWord, 60000 / this.state.wpm);
+    let intervalclear = clearInterval(
+      this.displayOneWord,
+      60000 / this.state.wpm
+    );
     this.setState({ isPlaying: true });
   };
   fastForward = () => {};
