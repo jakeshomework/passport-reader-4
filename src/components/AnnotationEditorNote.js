@@ -15,7 +15,13 @@ import NoteIcon from "material-ui-icons/Note";
 import MicIcon from "material-ui-icons/Mic";
 import VideocamIcon from "material-ui-icons/Videocam";
 import ShareIcon from "material-ui-icons/Share";
+import ExpandMoreIcon from "material-ui-icons/ExpandMore";
+import EmojiIcon from "material-ui-icons/TagFaces";
 import grey from "material-ui/colors/grey";
+import ExpansionPanel, {
+  ExpansionPanelDetails,
+  ExpansionPanelSummary
+} from "material-ui/ExpansionPanel";
 
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
@@ -99,7 +105,19 @@ class AnnotationEditorNote extends Component {
             className={classes.labelStyle}
           />
         </Typography>
-        {/*<Picker onSelect={this.addEmoji} title="EMC eBooks" emoji="book" />*/}
+        <ExpansionPanel style={{ borderRadius: "0px 0px 10px 10px" }}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <EmojiIcon />
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Picker
+              onSelect={this.addEmoji}
+              title="EMC eBooks"
+              emoji="book"
+              style={{ width: "100%" }}
+            />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
         <AnnotationSaveButtons
           handleSave={this.handleSave}
           handleDelete={this.handleDelete}

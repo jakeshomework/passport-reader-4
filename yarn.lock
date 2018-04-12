@@ -5792,6 +5792,12 @@ react-attr-converter@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/react-attr-converter/-/react-attr-converter-0.3.1.tgz#4a2abf6d907b7ddae4d862dfec80e489ce41ad6e"
 
+react-audio-player@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/react-audio-player/-/react-audio-player-0.9.0.tgz#51daf4eb84fea59c1cd206b9d680555224c481d6"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-container-dimensions@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/react-container-dimensions/-/react-container-dimensions-1.3.3.tgz#5da301e30decb449fb0cef1a2ab210df970ca71e"

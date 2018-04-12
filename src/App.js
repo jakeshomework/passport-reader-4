@@ -265,15 +265,13 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={
-              {
-                /*this.state.settings.darkMode ? (
+            style={{
+              /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-              }
-            }
+            }}
           >
             <Settings
               settings={this.state.settings}
@@ -303,7 +301,10 @@ class App extends Component {
               annotationModalControl={this.annotationModalControl}
               users={UsersDemo}
             />
-            <Audio style={Object.assign({}, styles.slide, styles.audioSlide)} />
+            <Audio
+              bookName={this.state.settings.bookName}
+              style={Object.assign({}, styles.slide, styles.audioSlide)}
+            />
             <SpeedReader
               style={Object.assign({}, styles.slide, styles.speedReaderSlide)}
               book={this.state.book}
