@@ -16,7 +16,7 @@ class SettingsSwitch extends Component {
     const { classes, theme, disabled } = this.props;
     return (
       <div className={classes.root}>
-        <Grid container spacing={12}>
+        <Grid container>
           <Grid item xs={6}>
             <InputLabel htmlFor="Select">{this.props.label}</InputLabel>
           </Grid>

@@ -25,7 +25,8 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
     marginBottom: 100,
     fontSize: theme.typography.fontSize,
-    fontFamily: theme.typography.fontFamily
+    fontFamily: theme.typography.fontFamily,
+    Overflow: "hidden"
   },
   snackbar: {
     margin: theme.spacing.unit
@@ -184,9 +185,9 @@ class Book extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
-          <Grid item xs={0} sm={2} />
-          <Grid item xs={12} sm={8}>
-            <div>{this.state.selection.content}</div>
+          <Grid item xs sm={2} />
+          <Grid item xs sm={8}>
+            {/* <div>{this.state.selection.content}</div> */}
             {this.state.event}
             {this.state.showTooltip ? (
               <HighlightTooltip
@@ -196,66 +197,36 @@ class Book extends Component {
                 closeTooltip={this.closeTooltip}
               />
             ) : null}
-            <Grid hidden={{ xsDown: true }}>
-              <Snackbar
-                className={classes.snackbar}
-                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                open={open}
-                transition={Fade}
-                onClose={this.handleClose}
-                style={{
-                  bottom: 55,
-                  width: "98%",
-                  marginLeft: "100vw"
-                }}
-                action={[
-                  <IconButton
-                    key="close"
-                    aria-label="Close"
-                    color="inherit"
-                    className={classes.close}
-                    onClick={this.handleClose}
-                  >
-                    <CloseIcon />
-                  </IconButton>
-                ]}
-                message={
-                  <span id="message-id">
-                    Definition: {this.state.glossaryDefinition}
-                  </span>
-                }
-              />
-            </Grid>
-            <Grid hidden={{ smUp: true }}>
-              <Snackbar
-                className={classes.snackbar}
-                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                open={open}
-                transition={Fade}
-                onClose={this.handleClose}
-                style={{
-                  bottom: 55,
-                  marginLeft: "105vw",
-                  width: "90%"
-                }}
-                action={[
-                  <IconButton
-                    key="close"
-                    aria-label="Close"
-                    color="inherit"
-                    className={classes.close}
-                    onClick={this.handleClose}
-                  >
-                    <CloseIcon />
-                  </IconButton>
-                ]}
-                message={
-                  <span id="message-id">
-                    Definition: {this.state.glossaryDefinition}
-                  </span>
-                }
-              />
-            </Grid>
+
+            <Snackbar
+              className={classes.snackbar}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              open={open}
+              transition={Fade}
+              onClose={this.handleClose}
+              style={{
+                bottom: 55,
+                marginLeft: "101vw",
+                width: "98%"
+              }}
+              action={[
+                <IconButton
+                  key="close"
+                  aria-label="Close"
+                  color="inherit"
+                  className={classes.close}
+                  onClick={this.handleClose}
+                >
+                  <CloseIcon />
+                </IconButton>
+              ]}
+              message={
+                <span id="message-id">
+                  Definition: {this.state.glossaryDefinition}
+                </span>
+              }
+            />
+
             <BookDisplay
               handleSelectClick={this.handleSelectClick}
               handleSelectTouch={this.handleSelectTouch}
@@ -269,7 +240,7 @@ class Book extends Component {
               focusMode={settings.focusMode}
             />
           </Grid>
-          <Grid item xs={0} sm={2} />
+          <Grid item xs sm={2} />
         </Grid>
       </div>
     );

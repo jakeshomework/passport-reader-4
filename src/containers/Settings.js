@@ -27,11 +27,6 @@ import BookIcon from "material-ui-icons/Book";
 import PersonIcon from "material-ui-icons/Person";
 import Typography from "material-ui/Typography";
 
-/* ----- GRAPHQL IMPORTS ----- */
-//import GET_SETTINGS from "../graphql/GET_SETTINGS";
-//import GET_USER from "../graphql/GET_USER";
-//import UPDATE_SETTINGS from "../graphql/UPDATE_SETTINGS";
-
 /*---In a side drawer, Settings contains the user control over the content.---*/
 const styles = theme => ({
   root: {
@@ -129,8 +124,8 @@ class Settings extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
-          <Grid item xs={0} sm={2} />
-          <Grid item xs={12} sm={8}>
+          <Grid item xs sm={2} />
+          <Grid item xs sm={8}>
             <List subheader={<ListSubheader>Demo Controls</ListSubheader>}>
               <ListItem>
                 <ListItemIcon>
@@ -200,7 +195,13 @@ class Settings extends Component {
                   <ListItemIcon>
                     <GroupIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Allow Social Annotations" />
+                  <ListItemText
+                    primary={
+                      <Typography className={classes.ListItemText}>
+                        Allow Social Annotations
+                      </Typography>
+                    }
+                  />
                   <ListItemSecondaryAction>
                     <SettingsSwitch
                       setting={classView}
@@ -238,7 +239,13 @@ class Settings extends Component {
                 <ListItemIcon>
                   <InvertColors />
                 </ListItemIcon>
-                <ListItemText primary="Dark Mode" />
+                <ListItemText
+                  primary={
+                    <Typography className={classes.ListItemText}>
+                      Dark Mode
+                    </Typography>
+                  }
+                />
                 <ListItemSecondaryAction>
                   <SettingsSwitch
                     darkMode={darkMode}
@@ -308,7 +315,7 @@ class Settings extends Component {
               </ListItem>
             </List>
           </Grid>
-          <Grid item xs={0} sm={2} />
+          <Grid item xs sm={2} />
         </Grid>
       </div>
     );

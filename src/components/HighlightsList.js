@@ -214,9 +214,9 @@ class HighlightsList extends Component {
         </div>
         <div>
           <Grid container spacing={24}>
-            <Grid item xs={0} />
+            <Grid item xs />
             <Grid item xs={12}>
-              <Table className={classes.table}>
+              <Table>
                 <TableHead className={classes.tableHead}>
                   <TableRow className={classes.tableRow}>
                     <CustomTableCell className={classes.tableCellHead}>
@@ -239,7 +239,7 @@ class HighlightsList extends Component {
                   </TableRow>
                 </TableHead>
 
-                <TableBody className={classes}>
+                <TableBody className={classes.tableBody}>
                   {filteredListArray.map(highlightId => {
                     const {
                       userId,
@@ -275,6 +275,7 @@ class HighlightsList extends Component {
                         onClick={() =>
                           this.props.annotationModalControl.open([highlightId])
                         }
+                        key={moment(updated).fromNow()}
                         value={color}
                       >
                         <CustomTableCell className={classes.tableCellBody}>
@@ -329,7 +330,7 @@ class HighlightsList extends Component {
               </Table>
             </Grid>
           </Grid>
-          <Grid item xs={0} />
+          <Grid item xs />
         </div>
       </div>
     );
