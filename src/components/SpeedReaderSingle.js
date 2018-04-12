@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import renderHTML from "react-render-html";
+
+/* ----- UI IMPORTS ----- */
 import Typography from "material-ui/Typography";
 import { withStyles } from "material-ui/styles";
-import Paper from "material-ui/Paper";
-/* ----- COMPONENT IMPORTS ----- */
 
 /*---Display a single word in the speed reader.---*/
 const styles = theme => ({
   word: {
     textAlign: "center",
-    padding: 20
+    padding: 20,
+    fontSize: theme.typography.fontSize + 10
   },
   container: {
     marginTop: "30vh"
@@ -23,7 +25,7 @@ const SpeedReaderSingle = ({ word, classes }) => {
   return (
     <div className={classes.container}>
       <div className={classes.wordContainer}>
-        <Typography className={classes.word}>{word}</Typography>
+        <Typography className={classes.word}>{renderHTML(word)}</Typography>
       </div>
     </div>
   );

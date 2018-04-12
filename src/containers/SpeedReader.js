@@ -11,21 +11,18 @@ const styles = theme => ({});
 class SpeedReader extends Component {
   state = {
     wordPosition: 0,
-    wpm: 300,
+    wpm: 250,
+    wpmOptions: [250, 300, 350, 400, 450, 500, 550, 600, 650, 700],
     word: "WORD",
     interval: 25,
-    isPlaying: false
+    isPlaying: false,
+    wordIndex: 14,
+    sentenceIndex: 0
   };
-
-  /*------*/
-  adjustWPM = () => {};
-  /*------*/
-  pauseSpeed = () => {};
-  /*------*/
-  goBackRequest = () => {};
+  handleChange = prop => event => {
+    this.setState({ [prop]: event.target.value });
+  };
   displayOneWord = () => {
-    this.togglePlay();
-
     let wordIds = Object.keys(this.props.book.bookDisplay).filter(id => {
       if (this.props.book.bookDisplay[id].type === "text") {
         return true;
@@ -34,44 +31,31 @@ class SpeedReader extends Component {
     let words = wordIds.map((id, i) => {
       return this.props.book.bookDisplay[id].content;
     });
-
-    var wordIndex = 0;
-    var sentenceIndex = 0;
-    let wordSet = this.state.word;
-
-    let showOneWord = () => {
-      this.setState({ word: words[wordIndex] });
-      this.setState({ wordPosition: wordIndex });
-      wordIndex++;
-    };
-    console.log("wordIndex", wordIndex);
-
-    setInterval(showOneWord, this.state.wpm);
+    this.setState({ wordIndex: this.state.wordIndex + 1 });
+    this.setState({ word: words[this.state.wordIndex] });
+    this.setState({ wordPosition: this.state.wordIndex });
 
     // 1. count total words
     // 2. count index
     // 3. load state from each index
-
     // 4. set speed var
-
     // 5. regex sentence - period, question mark, exclamation
     // 6. set sentence index in state
   };
-  togglePlay = event => {
-    this.setState({ isPlaying: !this.state.isPlaying });
-  };
 
-  handleSpeedInput = prop => event => {
-    this.setState({ [prop]: event.target.value });
+  stopWords = interval => {
+    clearInterval(interval);
+    this.setState({ isPlaying: false });
   };
-  increaseSpeed = event => {
-    this.setState({ wpm: this.state.wpm + 100 });
+  startWords = () => {
+    let interval = setInterval(this.displayOneWord, 60000 / this.state.wpm);
+    this.setState({ isPlaying: true });
   };
-  decreaseSpeed = event => {
-    this.setState({ wpm: this.state.wpm - 100 });
-  };
+  fastForward = () => {};
+  fastRewind = () => {};
+
   /*---scrub, add, or subtract speed reader position in book.---*/
-  changePosition = () => {};
+  // changePosition = () => {};
 
   render() {
     const { classes } = this.props;
@@ -83,11 +67,13 @@ class SpeedReader extends Component {
             <SpeedReaderSingle word={this.state.word} />
             <SpeedReaderControls
               wpm={this.state.wpm}
+              wpmOptions={this.state.wpmOptions}
               playing={this.state.isPlaying}
-              displayOneWord={this.displayOneWord}
-              handleChange={this.handleSpeedInput("wpm")}
-              increaseSpeed={this.increaseSpeed}
-              decreaseSpeed={this.decreaseSpeed}
+              play={this.startWords}
+              fastRewind={this.fastRewind}
+              fastForward={this.fastForward}
+              changeWpm={this.handleChange("wpm")}
+              pause={this.stopWords}
             />
           </Grid>
           <Grid item xs={1} sm={4} />

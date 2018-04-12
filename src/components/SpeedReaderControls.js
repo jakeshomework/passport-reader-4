@@ -8,13 +8,15 @@ import { MenuItem } from "material-ui/Menu";
 import Button from "material-ui/Button";
 import Input, { InputLabel, InputAdornment } from "material-ui/Input";
 import TextField from "material-ui/TextField";
+import { ListItemText } from "material-ui/List";
+import { FormControl } from "material-ui/Form";
 
 /* ----- ICON IMPORTS ----- */
 import PlayArrow from "material-ui-icons/PlayArrow";
 import Pause from "material-ui-icons/Pause";
 import Replay30 from "material-ui-icons/Replay30";
-import ArrowUpward from "material-ui-icons/ArrowUpward";
-import ArrowDownward from "material-ui-icons/ArrowDownward";
+import FastRewind from "material-ui-icons/FastRewind";
+import FastForward from "material-ui-icons/FastForward";
 
 /*---Control the display of the words in speed reader mode.---*/
 const styles = theme => ({
@@ -24,39 +26,56 @@ const styles = theme => ({
   },
   input: {
     paddingTop: "20px"
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120,
+    maxWidth: 300
   }
 });
 
 class SpeedReaderControls extends Component {
   render() {
-    const { display, classes } = this.props;
+    const {
+      classes,
+      wpmOptions,
+      changeWpm,
+      fastForward,
+      fastRewind,
+      pause,
+      play
+    } = this.props;
     return (
       <div className={classes.controls}>
-        <Input
-          id="wpm"
-          value={this.props.wpm}
-          onChange={this.props.handleChange}
-          startAdornment={
-            <InputAdornment position="start">WPM: </InputAdornment>
-          }
-          placeholder={this.props.wpm}
-        />
-        <Button onClick={this.props.increaseSpeed}>
-          <ArrowUpward />
+        <Button onClick={fastRewind}>
+          <FastRewind />
         </Button>
-        <Button onClick={this.props.decreaseSpeed}>
-          <ArrowDownward />
+        {this.props.playing ? (
+          <Button onClick={pause}>
+            <Pause />
+          </Button>
+        ) : (
+          <Button onClick={play}>
+            <PlayArrow />
+          </Button>
+        )}
+        <Button onClick={fastForward}>
+          <FastForward />
         </Button>
-        <Button
-          //onClick={this.props.togglePlay}
-          onClick={this.props.displayOneWord}
-        >
-          {this.props.playing ? (
-            <Pause className={classes.icon} />
-          ) : (
-            <PlayArrow className={classes.icon} />
-          )}
-        </Button>
+        <FormControl className={classes.formControl}>
+          <Select
+            value={this.props.wpm}
+            placeholder={this.props.wpm}
+            onChange={this.props.changeWpm}
+            input={<Input id="select-wpm" />}
+          >
+            {wpmOptions.map(wpmOption => (
+              <MenuItem key={wpmOption} value={wpmOption}>
+                {wpmOption} wpm
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </div>
     );
   }
