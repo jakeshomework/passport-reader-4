@@ -12,17 +12,28 @@ const styles = theme => ({});
 
 class SpeedReader extends Component {
   state = {
-    wordPosition: 0,
+    //wordIndex: 0,
     wpm: 250,
     wpmOptions: [250, 300, 350, 400, 450, 500, 550, 600, 650, 700],
-    word: "WORD",
+    word: "Click Play to Start",
+    splitWordBegin: [],
+    splitWordMiddle: [],
+    splitWordEnd: [],
     isPlaying: false,
     wordIndex: 0,
     sentenceIndex: 0
   };
   handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
+    clearInterval(this.state.interval);
+    this.setState({ [prop]: event.target.value }, () => {
+      if (this.state.isPlaying) {
+        this.setState({
+          interval: setInterval(this.displayOneWord, 60000 / this.state.wpm)
+        });
+      }
+    });
   };
+
   displayOneWord = () => {
     let wordIds = Object.keys(this.props.book.bookDisplay).filter(id => {
       if (this.props.book.bookDisplay[id].type === "text") {
@@ -30,11 +41,82 @@ class SpeedReader extends Component {
       } else return false;
     });
     let words = wordIds.map((id, i) => {
-      return this.props.book.bookDisplay[id].content;
+      let word = this.props.book.bookDisplay[id].content
+        .replace(/&#x2019;/, "'")
+        .replace(/&#x201C;/, "“")
+        .replace(/&#x201D;/, "”");
+
+      return word;
     });
+
     this.setState({ wordIndex: this.state.wordIndex + 1 });
     this.setState({ word: words[this.state.wordIndex] });
     this.setState({ wordPosition: this.state.wordIndex });
+
+    let splitWord = this.state.word.split("");
+
+    this.setState({ splitWordBegin: splitWord });
+
+    let splitLength = splitWord.length;
+
+    switch (((splitWord, splitLength), true)) {
+      case splitLength < 2:
+        splitWord;
+        console.log(
+          "slice at 0: " + splitWord,
+          "sliced letter: ",
+          splitWord[0]
+        );
+        this.setState({ splitWordMiddle: splitWord });
+        break;
+      case splitLength < 5:
+        splitWord;
+        console.log(
+          "slice at 1: " + splitWord,
+          "sliced letter: ",
+          splitWord[1]
+        );
+        this.setState({ splitWordBegin: splitWord.slice(0, 1) });
+        this.setState({ splitWordMiddle: splitWord.slice(1, 2) });
+        this.setState({ splitWordEnd: splitWord.slice(2) });
+        break;
+      case splitLength < 9:
+        splitWord;
+        console.log(
+          "slice at 2: " + splitWord,
+          "sliced letter: ",
+          splitWord[2]
+        );
+        this.setState({ splitWordBegin: splitWord.slice(0, 2) });
+        this.setState({ splitWordMiddle: splitWord.slice(2, 3) });
+        this.setState({ splitWordEnd: splitWord.slice(3) });
+        break;
+      case splitLength < 13:
+        splitWord;
+        console.log(
+          "slice at 3: " + splitWord,
+          "sliced letter: ",
+          splitWord[3]
+        );
+        this.setState({ splitWordBegin: splitWord.slice(0, 3) });
+        this.setState({ splitWordMiddle: splitWord.slice(3, 4) });
+        this.setState({
+          splitWordEnd: splitWord.slice(4)
+        });
+        break;
+      case splitLength < 18:
+        splitWord;
+        console.log(
+          "slice at 4: " + splitWord,
+          "sliced letter: ",
+          splitWord[4]
+        );
+        this.setState({ splitWordBegin: splitWord.slice(0, 4) });
+        this.setState({ splitWordMiddle: splitWord.slice(4, 5) });
+        this.setState({ splitWordEnd: splitWord.slice(5) });
+        break;
+    }
+    // FOR MONDAY TODO: Add .join to split words and render split word instead of word
 
     // 1. count total words
     // 2. count index
@@ -45,23 +127,20 @@ class SpeedReader extends Component {
   };
 
   stopWords = interval => {
-    clearInterval(this.displayOneWord);
-    console.log("stop interval: ", interval);
     this.setState({ isPlaying: false });
+    clearInterval(this.state.interval);
   };
   startWords = () => {
-    let interval = setInterval(
-      this.displayOneWord,
-      60000 / this.state.wpm + 10
-    );
-    console.log("start interval: ", interval);
+    this.setState({
+      interval: setInterval(this.displayOneWord, 60000 / this.state.wpm)
+    });
     this.setState({ isPlaying: true });
   };
   fastForward = () => {};
   fastRewind = () => {};
 
   /*---scrub, add, or subtract speed reader position in book.---*/
-  // changePosition = () => {};
+  // changePosition = () => {}
 
   render() {
     return (
