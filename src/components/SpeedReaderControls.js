@@ -6,15 +6,12 @@ import { withStyles } from "material-ui/styles";
 import Select from "material-ui/Select";
 import { MenuItem } from "material-ui/Menu";
 import Button from "material-ui/Button";
-import Input, { InputLabel, InputAdornment } from "material-ui/Input";
-import TextField from "material-ui/TextField";
-import { ListItemText } from "material-ui/List";
+import Input from "material-ui/Input";
 import { FormControl } from "material-ui/Form";
 
 /* ----- ICON IMPORTS ----- */
 import PlayArrow from "material-ui-icons/PlayArrow";
 import Pause from "material-ui-icons/Pause";
-import Replay30 from "material-ui-icons/Replay30";
 import FastRewind from "material-ui-icons/FastRewind";
 import FastForward from "material-ui-icons/FastForward";
 
@@ -65,7 +62,6 @@ class SpeedReaderControls extends Component {
         <FormControl className={classes.formControl}>
           <Select
             value={this.props.wpm}
-            placeholder={this.props.wpm}
             onChange={this.props.changeWpm}
             input={<Input id="select-wpm" />}
           >

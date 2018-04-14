@@ -136,11 +136,9 @@ const AnnotationOptions = ({
       <Card
         className={classes.addAnnotationIcons}
         style={
-          modifiedHighlight.annotations.length > 0 ? (
-            { borderRadius: "0px 0px 10px 10px" }
-          ) : (
-            { borderRadius: "10px 10px 10px 10px" }
-          )
+          modifiedHighlight.annotations.length > 0
+            ? { borderRadius: "0px 0px 10px 10px" }
+            : { borderRadius: "10px 10px 10px 10px" }
         }
       >
         <Button

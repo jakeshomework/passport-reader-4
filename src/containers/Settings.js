@@ -107,7 +107,6 @@ class Settings extends Component {
     const {
       classView,
       focusMode,
-      showHelpTips,
       darkMode,
       fontFamily,
       fontSize,

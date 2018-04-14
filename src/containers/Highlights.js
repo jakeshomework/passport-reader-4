@@ -47,7 +47,7 @@ class Highlights extends Component {
           <Grid item xs sm={1} />
           <Grid item xs sm={10}>
             <Button variant="raised" className={classes.button}>
-              <StudyMode filteredList="array" open="boolean" />
+              <StudyMode />
             </Button>
             <HighlightsList
               filteredList={this.props.highlights}
