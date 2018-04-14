@@ -1,0 +1,1042 @@
+[
+  {
+    "phraseTranscribed": "the fog horn short story by Ray Bradbury",
+    "phraseDisplayed": "",
+    "startTime": 0.1,
+    "endTime": 3.6,
+    "startId": "emc-0",
+    "endId": "emc-25",
+    "startIndex": -4,
+    "endIndex": 3,
+    "confidence": 0.375
+  },
+  {
+    "phraseTranscribed":
+      "out there in the cold water far from Land we waited every night for the coming of the fog and it came and we all the brass machinery and let the fog light up in the Stone Tower",
+    "phraseDisplayed":
+      "Out there in the cold water far from land we waited every night for the coming of the fog and it came and we oiled the brass machinery and lit the fog light up in the stone tower",
+    "startTime": 5.6,
+    "endTime": 17.8,
+    "startId": "emc-29",
+    "endId": "emc-103",
+    "startIndex": 4,
+    "endIndex": 41,
+    "confidence": 0.6842105263157895
+  },
+  {
+    "phraseTranscribed":
+      "feeling like two birds in the gray sky mcdunn and I sent the light touching out red then white then red again to eye the lonely ships",
+    "phraseDisplayed":
+      "Feeling like two birds in the gray sky McDunn and I sent the light touching out red then white then red again to eye the lonely ships",
+    "startTime": 19,
+    "endTime": 28.8,
+    "startId": "emc-105",
+    "endId": "emc-157",
+    "startIndex": 42,
+    "endIndex": 68,
+    "confidence": 0.8518518518518519
+  },
+  {
+    "phraseTranscribed":
+      "if they did not see our light then there was always our voice the great deep Cry of our foghorn",
+    "phraseDisplayed":
+      "If they did not see our light then there was always our Voice the great deep cry of our Fog",
+    "startTime": 30.6,
+    "endTime": 36.9,
+    "startId": "emc-159",
+    "endId": "emc-197",
+    "startIndex": 69,
+    "endIndex": 88,
+    "confidence": 0.85
+  },
+  {
+    "phraseTranscribed":
+      "it's shuttered through the rags of missed the start of the goes away like decks of scattered cards and make the waves turn high and foam",
+    "phraseDisplayed":
+      "Horn It shuddered through the rags of mist to startle the gulls away like decks of scattered cards and make the waves turn high and foam",
+    "startTime": 37.9,
+    "endTime": 46.2,
+    "startId": "emc-199",
+    "endId": "emc-249",
+    "startIndex": 89,
+    "endIndex": 114,
+    "confidence": 0.4230769230769231
+  },
+  {
+    "phraseTranscribed":
+      "it's a lonely life but you're used to it now aren't you ask mcdunn",
+    "phraseDisplayed":
+      "It’s a lonely life but you’re used to it now aren’t you asked McDunn",
+    "startTime": 47.2,
+    "endTime": 51.3,
+    "startId": "emc-252",
+    "endId": "emc-278",
+    "startIndex": 115,
+    "endIndex": 128,
+    "confidence": 0.7142857142857143
+  },
+  {
+    "phraseTranscribed": "yes I said you're a good talker thank the Lord",
+    "phraseDisplayed": "Yes I said You’re a good talker thank the Lord",
+    "startTime": 52.3,
+    "endTime": 55.9,
+    "startId": "emc-281",
+    "endId": "emc-299",
+    "startIndex": 129,
+    "endIndex": 138,
+    "confidence": 0.9
+  },
+  {
+    "phraseTranscribed":
+      "well it's your turn on land tomorrow he said smiling to dance with the ladies",
+    "phraseDisplayed":
+      "Well it’s your turn on land tomorrow he said smiling to dance with the ladies",
+    "startTime": 56.8,
+    "endTime": 62,
+    "startId": "emc-302",
+    "endId": "emc-330",
+    "startIndex": 139,
+    "endIndex": 153,
+    "confidence": 0.9333333333333333
+  },
+  {
+    "phraseTranscribed":
+      "what do you think McDon when I leave you out here alone",
+    "phraseDisplayed":
+      "What do you think McDunn when I leave you out here alone",
+    "startTime": 63.2,
+    "endTime": 66.2,
+    "startId": "emc-333",
+    "endId": "emc-355",
+    "startIndex": 154,
+    "endIndex": 165,
+    "confidence": 0.8333333333333334
+  },
+  {
+    "phraseTranscribed":
+      "on the mysteries of the sea mcdunn latest pipe it was a quarter past 7 on a cold November evening the heat on the light switching its tail in 200 directions the Foghorn bumbling in the high throw to the Tower",
+    "phraseDisplayed":
+      "the mysteries of the sea McDunn lit his pipe It was a quarter past seven on a cold November evening the heat on the light switching its tail in two hundred directions the Fog Horn bumbling in the high throat of",
+    "startTime": 67.6,
+    "endTime": 82.3,
+    "startId": "emc-360",
+    "endId": "emc-440",
+    "startIndex": 167,
+    "endIndex": 207,
+    "confidence": 0.36585365853658536
+  },
+  {
+    "phraseTranscribed":
+      "there wasn't a town for a hundred miles down the coast just a road which came lonely through dead country to the sea with few cars on it a stretch of 2 miles of cold water outdoor rock and rare few ships",
+    "phraseDisplayed":
+      "There wasn’t a town for a hundred miles down the coast just a road which came lonely through dead country to the sea with few cars on it a stretch of two miles of cold water out to our rock and rare",
+    "startTime": 83.3,
+    "endTime": 97.4,
+    "startId": "emc-446",
+    "endId": "emc-528",
+    "startIndex": 210,
+    "endIndex": 251,
+    "confidence": 0.6190476190476191
+  },
+  {
+    "phraseTranscribed":
+      "the mysteries of the sea said McDonald thoughtfully you know the oceans the biggest snowflake ever it rolls and swells a thousand shapes and colors no two alike strange one night years ago I was here alone when all of the fish of the sea surface doubt there something made them swim in inline the bay sort of trembling they stared up at the tower light going red white red white across them so I could see their funny eyes I turned cold they were like a big peacock's tail moving out there until midnight then without so much as a sound they slipped away",
+    "phraseDisplayed":
+      "The mysteries of the sea said McDunn thoughtfully You know the ocean’s the biggest snowflake ever It rolls and swells a thousand shapes and colors no two alike Strange One night years ago I was here alone when all of the fish of the sea surfaced out there Something made them swim in and lie in the bay sort of trembling They stared up at the tower light going red white red white across them so I could see their funny eyes I turned cold They were like a big peacock’s tail moving out there until midnight Then without so much as a sound they",
+    "startTime": 98.5,
+    "endTime": 140.8,
+    "startId": "emc-535",
+    "endId": "emc-743",
+    "startIndex": 254,
+    "endIndex": 358,
+    "confidence": 0.4
+  },
+  {
+    "phraseTranscribed":
+      "the million of them was gone I kind of think maybe in some sort of way they came all those miles to worship strange",
+    "phraseDisplayed":
+      "The million of them was gone I kind of think maybe in some sort of way they came all those miles to worship Strange",
+    "startTime": 141.7,
+    "endTime": 150.6,
+    "startId": "emc-749",
+    "endId": "emc-795",
+    "startIndex": 361,
+    "endIndex": 384,
+    "confidence": 0.875
+  },
+  {
+    "phraseTranscribed":
+      "but think how the tower must look to them standing 70 feet above the water the god light flashing out from it and the tower declaring itself with a monster voice",
+    "phraseDisplayed":
+      "But think how the tower must look to them standing seventy feet above the water the God-light flashing out from it and the tower declaring itself with a monster voice They",
+    "startTime": 151.6,
+    "endTime": 161.5,
+    "startId": "emc-797",
+    "endId": "emc-857",
+    "startIndex": 385,
+    "endIndex": 415,
+    "confidence": 0.41935483870967744
+  },
+  {
+    "phraseTranscribed":
+      "they never came back those fish but don't you think for a while they thought they were in the presents",
+    "phraseDisplayed":
+      "They never came back those fish but don’t you think for a while they thought they were in the Presence",
+    "startTime": 162.8,
+    "endTime": 168.5,
+    "startId": "emc-857",
+    "endId": "emc-895",
+    "startIndex": 415,
+    "endIndex": 434,
+    "confidence": 0.8
+  },
+  {
+    "phraseTranscribed":
+      "I shivered I looked out at the long gray lawn of the sea stretching away into nothing and nowhere",
+    "phraseDisplayed":
+      "I shivered I looked out at the long gray lawn of the sea stretching away into nothing and nowhere",
+    "startTime": 169.7,
+    "endTime": 175.9,
+    "startId": "emc-898",
+    "endId": "emc-934",
+    "startIndex": 435,
+    "endIndex": 453,
+    "confidence": 0.8947368421052632
+  },
+  {
+    "phraseTranscribed":
+      "oh the Seas full McDonald puffed his pipe nervously blinking have been nervous all day and hadn't said why",
+    "phraseDisplayed":
+      "Oh the sea’s full McDunn puffed his pipe nervously blinking He had been nervous all day and hadn’t said",
+    "startTime": 177.1,
+    "endTime": 184.9,
+    "startId": "emc-937",
+    "endId": "emc-973",
+    "startIndex": 454,
+    "endIndex": 472,
+    "confidence": 0.42105263157894735
+  },
+  {
+    "phraseTranscribed":
+      "for all our engines and so-called submarines it'll be ten thousand centuries before we set foot on the real bottom of the sunken lands in the fairy kingdoms there and no real terror think of it it's still the year 300000 before Christ down under there while we've paraded around with trumpets lopping off each others countries and heads they have been living Beneath the Sea 12 miles deep in cold in a time as old as the beard of a comet",
+    "phraseDisplayed":
+      "For all our engines and so-called submarines it’ll be ten thousand centuries before we set foot on the real bottom of the sunken lands in the fairy kingdoms there and know real terror Think of it It’s still the year 300,000 Before Christ down under there While we’ve paraded around with trumpets lopping off each other’s countries and heads they have been living beneath the sea twelve miles deep and cold in a time as old as the beard of a comet",
+    "startTime": 186.1,
+    "endTime": 215.2,
+    "startId": "emc-977",
+    "endId": "emc-1139",
+    "startIndex": 474,
+    "endIndex": 555,
+    "confidence": 0.7195121951219512
+  },
+  {
+    "phraseTranscribed": "yes it's an old world",
+    "phraseDisplayed": "Yes it’s an old world",
+    "startTime": 216,
+    "endTime": 217.8,
+    "startId": "emc-1142",
+    "endId": "emc-1150",
+    "startIndex": 556,
+    "endIndex": 560,
+    "confidence": 0.8
+  },
+  {
+    "phraseTranscribed":
+      "come on I got something special I've been saving up to tell you",
+    "phraseDisplayed":
+      "Come on I got something special I been saving up to tell you",
+    "startTime": 218.7,
+    "endTime": 222.1,
+    "startId": "emc-1153",
+    "endId": "emc-1177",
+    "startIndex": 561,
+    "endIndex": 573,
+    "confidence": 0.9230769230769231
+  },
+  {
+    "phraseTranscribed":
+      "will send you the 80 steps talking and taking our time at the top McDonald's Switched Off the room lights so there be no reflection in the play class",
+    "phraseDisplayed":
+      "you We ascended the eighty steps talking and taking our time At the top McDunn switched off the room lights so there’d be no reflection in the plate glass",
+    "startTime": 223.5,
+    "endTime": 233.2,
+    "startId": "emc-1177",
+    "endId": "emc-1234",
+    "startIndex": 573,
+    "endIndex": 601,
+    "confidence": 0.6206896551724138
+  },
+  {
+    "phraseTranscribed":
+      "the great eye of the light was humming turning easily in its oil socket",
+    "phraseDisplayed":
+      "The great eye of the light was humming turning easily in its oiled socket",
+    "startTime": 234.3,
+    "endTime": 238.9,
+    "startId": "emc-1236",
+    "endId": "emc-1262",
+    "startIndex": 602,
+    "endIndex": 615,
+    "confidence": 0.8571428571428571
+  },
+  {
+    "phraseTranscribed":
+      "the Foghorn was blowing steadily once every 15 seconds",
+    "phraseDisplayed":
+      "Fog Horn was blowing steadily once every fifteen seconds",
+    "startTime": 239.9,
+    "endTime": 243.8,
+    "startId": "emc-1266",
+    "endId": "emc-1282",
+    "startIndex": 617,
+    "endIndex": 625,
+    "confidence": 0.6666666666666666
+  },
+  {
+    "phraseTranscribed":
+      "sounds like an animal Don't It Make done not it to himself",
+    "phraseDisplayed":
+      "Sounds like an animal don’t it McDunn nodded to himself A big",
+    "startTime": 245.3,
+    "endTime": 248.9,
+    "startId": "emc-1285",
+    "endId": "emc-1307",
+    "startIndex": 626,
+    "endIndex": 637,
+    "confidence": 0.4166666666666667
+  },
+  {
+    "phraseTranscribed":
+      "a big lonely animal crying in the night sitting here on the edge of 10 billion years calling out to the deeps I'm here I'm here I'm here",
+    "phraseDisplayed":
+      "A big lonely animal crying in the night Sitting here on the edge of ten billion years calling out to the Deeps I’m here I’m here I’m here",
+    "startTime": 250.1,
+    "endTime": 259.9,
+    "startId": "emc-1305",
+    "endId": "emc-1359",
+    "startIndex": 636,
+    "endIndex": 663,
+    "confidence": 0.6428571428571429
+  },
+  {
+    "phraseTranscribed":
+      "in the deeps do answer yes they do you been here now for 3 months Johnny so I better prepare you about this time of year he said studying the mark and fog something comes to visit the lighthouse",
+    "phraseDisplayed":
+      "​ the Deeps do answer yes they do You been here now for three months Johnny so I better prepare you About this time of year he said studying the murk and fog something comes to visit the lighthouse",
+    "startTime": 261,
+    "endTime": 274.8,
+    "startId": "emc-1363",
+    "endId": "emc-1439",
+    "startIndex": 665,
+    "endIndex": 703,
+    "confidence": 0.7692307692307693
+  },
+  {
+    "phraseTranscribed":
+      "the Swarms of fish like you said no this is something else I put off telling you because you might think I'm Daft but tonight's the latest I can put it off for if my calendar is marked right from last year tonight's the night at comes I won't go into detail you'll have to see it yourself just sit down there if you want tomorrow you can pack your stuff to take the motor boat in to land and get your car parked there at the ding appear on the cape and drive on back to some little Inland town and keep your lights burning nights I won't question or blame you it's happened 3 years now and this is the only time anyone's been here with me to verify it you wait and watch",
+    "phraseDisplayed":
+      "The swarms of fish like you said No this is something else I’ve put off telling you because you might think I’m daft  But tonight’s the latest I can put it off for if my calendar’s marked right from last year tonight’s the night it comes I won’t go into detail; you’ll have to see it yourself Just sit down there If you want tomorrow you can pack your duffel and take the motorboat into land and get your car parked there at the dinghy pier on the cape and drive on back to some little inland town and keep your lights burning nights I won’t question or blame you It’s happened three years now and this is the only time anyone’s been here with me to verify it You wait and watch Half an",
+    "startTime": 275.9,
+    "endTime": 318.6,
+    "startId": "emc-1442",
+    "endId": "emc-1725",
+    "startIndex": 704,
+    "endIndex": 839,
+    "confidence": 0.3014705882352941
+  },
+  {
+    "phraseTranscribed":
+      "half an hour past with only a few Whispers between us when we grew tired waiting mcdunn began describing some of his ideas to me he had some theories about the Foghorn itself one day many years ago a man walked along and stood in the sound of the ocean on a cold sunless Shore and said we need a voice to call across the water to warn ships I'll make one I'll make a voice like all of time and all of the fog that ever was I'll make a voice that is like an empty bed beside you all night long and like an empty house when you open the door and like trees in autumn with no leaves",
+    "phraseDisplayed":
+      "an hour passed with only a few whispers between us When we grew tired waiting McDunn began describing some of his ideas to me He had some theories about the Fog Horn itself One day many years ago a man walked along and stood in the sound of the ocean on a cold sunless shore and said &#x2018;We need a voice to call across the water to warn ships I’ll make one I’ll make a voice like all of time and all of the fog that ever was; I’ll make a voice that is like an empty bed beside you all night long and like an empty house when you open the door and like trees in autumn with no leaves",
+    "startTime": 319.7,
+    "endTime": 358,
+    "startId": "emc-1725",
+    "endId": "emc-1966",
+    "startIndex": 839,
+    "endIndex": 959,
+    "confidence": 0.38016528925619836
+  },
+  {
+    "phraseTranscribed":
+      "I sound like the birds flying south crying and it sounds like November wind in the sea on the hard cold sure I'll make a sound that's so alone that no one can miss it that whoever hears it will weep in their souls and hearts will see warmer and being inside will seem better to all who hear it in the distant towns",
+    "phraseDisplayed":
+      "A sound like the birds flying south crying and a sound like November wind and the sea on the hard cold shore I’ll make a sound that’s so alone that no one can miss it that whoever hears it will weep in their souls and hearths will seem warmer and being inside will seem better to all who hear it in the distant towns",
+    "startTime": 358.8,
+    "endTime": 379.9,
+    "startId": "emc-1968",
+    "endId": "emc-2094",
+    "startIndex": 960,
+    "endIndex": 1023,
+    "confidence": 0.625
+  },
+  {
+    "phraseTranscribed":
+      "I'll make me a sound in an apparatus and they'll call it a Foghorn and whoever hears it will know the sadness of Eternity in the briefness of life",
+    "phraseDisplayed":
+      "make me a sound and an apparatus and they’ll call it a Fog Horn and whoever hears it will know the sadness of eternity and the briefness of life.’",
+    "startTime": 380.8,
+    "endTime": 389.2,
+    "startId": "emc-2098",
+    "endId": "emc-2154",
+    "startIndex": 1025,
+    "endIndex": 1053,
+    "confidence": 0.3103448275862069
+  },
+  {
+    "phraseTranscribed":
+      "the Foghorn blue I made up that story said McDonald quietly to try to explain why this thing keeps coming back to the lighthouse every year the fog horn calls it I think and it comes but I said I said McDon there United out to the deeps something was swimming toward the lighthouse Tower",
+    "phraseDisplayed":
+      "Fog Horn blew I made up that story said McDunn quietly to try to explain why this thing keeps coming back to the lighthouse every year The Fog Horn calls it I think and it comes... But&#x2014; I said Sssst said McDunn There ​ He nodded out to the Deeps Something was swimming toward the",
+    "startTime": 390.4,
+    "endTime": 414.4,
+    "startId": "emc-2159",
+    "endId": "emc-2271",
+    "startIndex": 1055,
+    "endIndex": 1109,
+    "confidence": 0.43636363636363634
+  },
+  {
+    "phraseTranscribed":
+      "it was a cold night as I have said the high tower was cold the light was coming and going and the Foghorn calling and calling through the raveling missed you couldn't see far and you couldn't see plane but there was the deep sea moving on its way about the night earth flat and quiet the color of gray mud and here were the two of us alone in the high tower and they're far out at first was a ripple followed by a wave arising a bubble a bit of froth and then from the surface of the cold see came ahead a large head dark colored with a men size and then a neck",
+    "phraseDisplayed":
+      "was a cold night as I have said; the high tower was cold the light was coming and going and the Fog Horn calling and calling through the raveling mist You couldn’t see far and you couldn’t see plain but there was the deep sea moving on its way about the night earth flat and quiet the color of gray mud and here were the two of us alone in the high tower and there far out at first was a ripple followed by a wave a rising a bubble a bit of froth And then from the surface of the cold sea came a head a large head dark-colored with immense eyes and then a neck",
+    "startTime": 415.6,
+    "endTime": 457.7,
+    "startId": "emc-2280",
+    "endId": "emc-2512",
+    "startIndex": 1113,
+    "endIndex": 1229,
+    "confidence": 0.3076923076923077
+  },
+  {
+    "phraseTranscribed":
+      "and then not a body but more neck and more the head Rosa full 40 feet above the water on a slender and beautiful dark neck",
+    "phraseDisplayed":
+      "neck And then&#x2014;not a body&#x2014;but more neck and more The head rose a full forty feet above the water on a slender and beautiful dark neck",
+    "startTime": 458.5,
+    "endTime": 468.1,
+    "startId": "emc-2512",
+    "endId": "emc-2562",
+    "startIndex": 1229,
+    "endIndex": 1254,
+    "confidence": 0.34615384615384615
+  },
+  {
+    "phraseTranscribed":
+      "only then did the body like a slender little island of black coral and shells and crayfish drip up from the subterranean",
+    "phraseDisplayed":
+      "Only then did the body like a slender little island of black coral and shells and crayfish drip up from the subterranean",
+    "startTime": 469,
+    "endTime": 476.8,
+    "startId": "emc-2564",
+    "endId": "emc-2606",
+    "startIndex": 1255,
+    "endIndex": 1276,
+    "confidence": 0.9090909090909091
+  },
+  {
+    "phraseTranscribed": "there was a flicker of a tail",
+    "phraseDisplayed": "There was a flicker of tail In",
+    "startTime": 477.6,
+    "endTime": 479.1,
+    "startId": "emc-2608",
+    "endId": "emc-2620",
+    "startIndex": 1277,
+    "endIndex": 1283,
+    "confidence": 0.7142857142857143
+  },
+  {
+    "phraseTranscribed":
+      "it all from head to tip of tail is estimated The Monster at 90 or a hundred feet I don't know what I said I said something steady boy steady was McDonald it's impossible I said",
+    "phraseDisplayed":
+      "In all from head to tip of tail I estimated the monster at ninety or a ​ hundred feet I don’t know what I said I said something Steady boy steady whispered McDunn It’s impossible I",
+    "startTime": 480,
+    "endTime": 495.2,
+    "startId": "emc-2620",
+    "endId": "emc-2693",
+    "startIndex": 1283,
+    "endIndex": 1318,
+    "confidence": 0.3611111111111111
+  },
+  {
+    "phraseTranscribed":
+      "no Johnny we are impossible it's like it always was 10 million years ago it hasn't changed its Us in the land that have changed become impossible us",
+    "phraseDisplayed":
+      "said No Johnny we’re impossible It’s like it always was ten million years ago It hasn’t changed It’s us and the land that’ve changed become impossible Us It",
+    "startTime": 496.1,
+    "endTime": 508.6,
+    "startId": "emc-2695",
+    "endId": "emc-2751",
+    "startIndex": 1319,
+    "endIndex": 1346,
+    "confidence": 0.42857142857142855
+  },
+  {
+    "phraseTranscribed":
+      "it swims slowly and with a great dark Majesty out in the icy waters far away",
+    "phraseDisplayed":
+      "It swam slowly and with a great dark majesty out in the icy waters far away",
+    "startTime": 510,
+    "endTime": 515.4,
+    "startId": "emc-2751",
+    "endId": "emc-2781",
+    "startIndex": 1346,
+    "endIndex": 1361,
+    "confidence": 0.9375
+  },
+  {
+    "phraseTranscribed":
+      "the fog came and went about it momentarily erasing its shape",
+    "phraseDisplayed":
+      "The fog came and went about it momentarily erasing its shape",
+    "startTime": 516.5,
+    "endTime": 520.6,
+    "startId": "emc-2785",
+    "endId": "emc-2805",
+    "startIndex": 1363,
+    "endIndex": 1373,
+    "confidence": 1
+  },
+  {
+    "phraseTranscribed":
+      "one of the monster eyes caught and held in flashback or immense light red white red white like a disc held high and sending a message in primeval code",
+    "phraseDisplayed":
+      "of the monster eyes caught and held and flashed back our immense light red white red white like a disk held high and sending a message in primeval code",
+    "startTime": 521.6,
+    "endTime": 533.1,
+    "startId": "emc-2809",
+    "endId": "emc-2869",
+    "startIndex": 1375,
+    "endIndex": 1403,
+    "confidence": 0.41379310344827586
+  },
+  {
+    "phraseTranscribed": "it was a silent as the fog through which it swam",
+    "phraseDisplayed": "It was as silent as the fog through which it swam",
+    "startTime": 534,
+    "endTime": 536.7,
+    "startId": "emc-2871",
+    "endId": "emc-2891",
+    "startIndex": 1404,
+    "endIndex": 1414,
+    "confidence": 0.7272727272727273
+  },
+  {
+    "phraseTranscribed":
+      "it's a dinosaur of some sort I crouched down holding to the stair rail yes one of the tribe but they died out no only hit away in the deep deep deep down in the deepest deepest isn't that a word now Johnny a real word it says so much the deeps there's all the coldness in darkness and deepness in the word like that",
+    "phraseDisplayed":
+      "It’s a dinosaur of some sort I crouched down holding to the stair rail Yes one of the tribe But they died out No only hid away in the Deeps Deep deep down in the deepest Deeps Isn’t that a word now Johnny a real word it says so much: the Deeps There’s all the coldness and darkness and deepness in a word like that",
+    "startTime": 537.8,
+    "endTime": 562.8,
+    "startId": "emc-2894",
+    "endId": "emc-3025",
+    "startIndex": 1415,
+    "endIndex": 1479,
+    "confidence": 0.6
+  },
+  {
+    "phraseTranscribed": "what do we do",
+    "phraseDisplayed": "that What’ll we do",
+    "startTime": 563.8,
+    "endTime": 564.6,
+    "startId": "emc-3025",
+    "endId": "emc-3032",
+    "startIndex": 1479,
+    "endIndex": 1482,
+    "confidence": 0.5
+  },
+  {
+    "phraseTranscribed":
+      "do we got our job we can't leave besides we're safer here than in any boat trying to get to land that things as big as the destroyer and almost as Swift but here why does it come here the next moment I had my answer the Foghorn blue and the monster Hansard",
+    "phraseDisplayed":
+      "Do We got our job we can’t leave Besides we’re safer here than in any boat trying to get to land That thing’s as big as a destroyer and almost as swift But here why does it come here The next moment I had my answer The Fog Horn blew And the monster",
+    "startTime": 565.6,
+    "endTime": 587.2,
+    "startId": "emc-3035",
+    "endId": "emc-3144",
+    "startIndex": 1483,
+    "endIndex": 1535,
+    "confidence": 0.660377358490566
+  },
+  {
+    "phraseTranscribed":
+      "I Cry came across a million years of water and missed a cry so anguish Standalone that it shuttered in my head in my body",
+    "phraseDisplayed":
+      "A cry came across a million years of water and mist A cry so anguished and alone that it shuddered in my head and my",
+    "startTime": 588.1,
+    "endTime": 596,
+    "startId": "emc-3149",
+    "endId": "emc-3201",
+    "startIndex": 1537,
+    "endIndex": 1561,
+    "confidence": 0.36
+  },
+  {
+    "phraseTranscribed":
+      "the monster cried out at the tower the Foghorn blue the monster roared again the fog horn blue",
+    "phraseDisplayed":
+      "The monster cried out at the tower The Fog Horn blew The monster roared again ​ The Fog",
+    "startTime": 597.1,
+    "endTime": 604.9,
+    "startId": "emc-3207",
+    "endId": "emc-3241",
+    "startIndex": 1564,
+    "endIndex": 1581,
+    "confidence": 0.3333333333333333
+  },
+  {
+    "phraseTranscribed":
+      "the monster opened its great tooth mouth and the sound that came from it was the sound of the Foghorn itself lonely and fast and far away the sound of isolation of you who is c a cold night apartments that was the sound",
+    "phraseDisplayed":
+      "The monster opened its great toothed mouth and the sound that came from it was the sound of the Fog Horn itself Lonely and vast and far away The sound of isolation a viewless sea a cold night apartness That was the sound Now",
+    "startTime": 606.1,
+    "endTime": 622.6,
+    "startId": "emc-3247",
+    "endId": "emc-3334",
+    "startIndex": 1584,
+    "endIndex": 1627,
+    "confidence": 0.3181818181818182
+  },
+  {
+    "phraseTranscribed": "now whisper mcdunn do you know why it comes here",
+    "phraseDisplayed": "Now whispered McDunn do you know why it comes here",
+    "startTime": 623.8,
+    "endTime": 627.5,
+    "startId": "emc-3334",
+    "endId": "emc-3352",
+    "startIndex": 1627,
+    "endIndex": 1636,
+    "confidence": 0.9
+  },
+  {
+    "phraseTranscribed":
+      "I nodded all year long poor monster there thousand miles at Sea in 20 miles deep may be biting its time perhaps it's a million years old this one creature think of it waiting a million years could you wait that long",
+    "phraseDisplayed":
+      "Johnny that poor monster there lying far out a thousand miles at sea and twenty miles deep maybe biding its time perhaps it’s a million years old this one creature Think of it waiting a million years Could you wait that long",
+    "startTime": 628.6,
+    "endTime": 644.6,
+    "startId": "emc-3377",
+    "endId": "emc-3459",
+    "startIndex": 1644,
+    "endIndex": 1685,
+    "confidence": 0.38095238095238093
+  },
+  {
+    "phraseTranscribed":
+      "maybe it's the last of its kind I sort of think that's true anyway here come man on land and build this Lighthouse 5 years ago and set up there fog horn and sounded and sounded out where the place where you bury yourself in sleep and see memories of a world where there were thousands like yourself but now you're alone all alone in a world not made for you a world where you have to hide but the sound of a fog horn comes and goes comes and goes and you stir From the Muddy Bottom of the deeps in your eyes open like lenses it's up to four cameras and you move slow slow for you have the ocean-sea on your shoulders heavy",
+    "phraseDisplayed":
+      "Maybe it’s the last of its kind I sort of think that’s true Anyway here come men on land and build this lighthouse five years ago And set up their Fog Horn and sound it and sound it out toward the place where you bury yourself in sleep and sea memories of a world where there were thousands like yourself but now you’re alone all alone in a world not made for you a world where you have to hide &#xA0; But the sound of the Fog Horn comes and goes comes and goes and you stir from the muddy bottom of the Deeps and your eyes open like the lenses of two-foot cameras and you move slow slow for you have the ocean sea on",
+    "startTime": 645.7,
+    "endTime": 689.3,
+    "startId": "emc-3461",
+    "endId": "emc-3715",
+    "startIndex": 1686,
+    "endIndex": 1811,
+    "confidence": 0.2222222222222222
+  },
+  {
+    "phraseTranscribed":
+      "but that Foghorn comes through a thousand miles of water faint and familiar in the furnace in your belly Stokes up and you begin to rise slow slow",
+    "phraseDisplayed":
+      "that Fog Horn comes through a thousand miles of water faint and familiar and the furnace in your belly stokes up and you begin to rise slow slow",
+    "startTime": 690,
+    "endTime": 700.6,
+    "startId": "emc-3725",
+    "endId": "emc-3779",
+    "startIndex": 1816,
+    "endIndex": 1843,
+    "confidence": 0.75
+  },
+  {
+    "phraseTranscribed":
+      "you feed yourself on Great's Lakes of cod and minnow on rivers of jellyfish and you rise slow through the Autumn months through September when the fog started through October with more fog in the horn still calling you on and then late November after pressurizing yourself day-by-day a few feet higher every hour you're near the surface and still alive you got to go slow if you surpassed all at once you explode so it takes you all of 3 months to surface and then a number of days to swim through the cold Waters to the lighthouse",
+    "phraseDisplayed":
+      "You feed yourself on great slakes of cod and minnow on rivers of jellyfish and you rise slow through the autumn months through September when the fogs started through October with more fog and the horn still calling you on and then late in November after pressurizing yourself day by day a few feet higher every hour you are near the surface and still alive You’ve got to go slow; if you surfaced all at once you’d explode So it takes you all of three months to surface and then a number of days to swim through the cold",
+    "startTime": 701.6,
+    "endTime": 737.8,
+    "startId": "emc-3781",
+    "endId": "emc-3977",
+    "startIndex": 1844,
+    "endIndex": 1942,
+    "confidence": 0.2727272727272727
+  },
+  {
+    "phraseTranscribed":
+      "and there you are out there in the night Johnny the biggest monster in creation and here's the lighthouse calling to you with a long neck like your neck sticking way up out of the water in a body like your body and most important of all a voice like your voice do you understand now Johnny do you understand",
+    "phraseDisplayed":
+      "And there you are out there in the night Johnny the biggest monster in creation And here’s the lighthouse calling to you with a long neck like your neck sticking way up out of the water and a body like your body and most important of all a voice like your voice Do you understand now Johnny do you understand",
+    "startTime": 738.9,
+    "endTime": 761.9,
+    "startId": "emc-3987",
+    "endId": "emc-4105",
+    "startIndex": 1947,
+    "endIndex": 2006,
+    "confidence": 0.5166666666666667
+  },
+  {
+    "phraseTranscribed": "the fog horn blue the monster answered",
+    "phraseDisplayed": "The Fog Horn blew The monster answered",
+    "startTime": 763,
+    "endTime": 766.2,
+    "startId": "emc-4108",
+    "endId": "emc-4121",
+    "startIndex": 2007,
+    "endIndex": 2013,
+    "confidence": 0.7142857142857143
+  },
+  {
+    "phraseTranscribed":
+      "I saw it all I knew it all the million years of waiting alone for someone to come back who never came back the million years of isolation at the bottom of the sea the insanity of time there while the skies cleared of reptile Birds the swamps of dried on the Continental lands the sloths and sabertooths had their day and sank and tar pits and Men ran like white ants upon the Hills",
+    "phraseDisplayed":
+      "answered I saw it all I knew it all&#x2014;the million years of waiting alone for someone to come back who never came back The million years of isolation at the bottom of the sea the insanity of time there while the skies cleared of reptile-birds the swamps dried on the continental lands the sloths and saber-tooths had their day and sank in tar pits and men ran like white ants upon the hills The Fog",
+    "startTime": 767.3,
+    "endTime": 793.1,
+    "startId": "emc-4121",
+    "endId": "emc-4275",
+    "startIndex": 2013,
+    "endIndex": 2087,
+    "confidence": 0.32
+  },
+  {
+    "phraseTranscribed": "the fog horn blue",
+    "phraseDisplayed": "The Fog Horn blew",
+    "startTime": 793.9,
+    "endTime": 795.1,
+    "startId": "emc-4273",
+    "endId": "emc-4279",
+    "startIndex": 2086,
+    "endIndex": 2089,
+    "confidence": 0.5
+  },
+  {
+    "phraseTranscribed":
+      "last year said mcdunn that creature swam round and round round and round all night not coming to near puzzled I'd say afraid maybe in a bit angry after coming all this way but the next day unexpectedly the fog lifted the sun came out fresh the sky was as blue as a painting and the monster swim off away from the Heat and silence it didn't come back I suppose it's been brooding on it for a year now thinking it over from Every Witch Way",
+    "phraseDisplayed":
+      "year said McDunn that creature swam round and round round and round all night Not coming too near puzzled ​ I’d say Afraid maybe And a bit angry after coming all this way But the next day unexpectedly the fog lifted the sun ​ came out fresh the sky was as blue as a painting And the monster swam off away from the heat and the silence and didn’t come back I suppose it’s been brooding on it for a year now thinking it over from every",
+    "startTime": 796.2,
+    "endTime": 828.1,
+    "startId": "emc-4284",
+    "endId": "emc-4460",
+    "startIndex": 2091,
+    "endIndex": 2177,
+    "confidence": 0.19540229885057472
+  },
+  {
+    "phraseTranscribed":
+      "the monster was only a hundred yards off now it's in the fog horn crying at each other as the lights hit them the Monster's eyes were Fire and Ice Fire and Ice",
+    "phraseDisplayed":
+      "The monster was only a hundred yards off now it and the Fog Horn crying at each other As the lights hit them the monster’s eyes were fire and ice fire and ice",
+    "startTime": 829.2,
+    "endTime": 839.6,
+    "startId": "emc-4467",
+    "endId": "emc-4531",
+    "startIndex": 2180,
+    "endIndex": 2212,
+    "confidence": 0.696969696969697
+  },
+  {
+    "phraseTranscribed":
+      "that's life for you said mcdunn someone always waiting for someone who never comes home always someone loving something more than that thing loves them and after awhile you want to destroy whatever that thing is so it can't hurt you no more",
+    "phraseDisplayed":
+      "That’s life for you said McDunn Someone always waiting for someone ​ who never comes home Always someone loving some thing more than that thing loves them And after a while you want to destroy whatever that thing is so it can’t hurt",
+    "startTime": 840.6,
+    "endTime": 855.2,
+    "startId": "emc-4534",
+    "endId": "emc-4618",
+    "startIndex": 2213,
+    "endIndex": 2255,
+    "confidence": 0.18604651162790697
+  },
+  {
+    "phraseTranscribed":
+      "the monster was rushing at the Lighthouse the fog horn blue",
+    "phraseDisplayed":
+      "The monster was rushing at the lighthouse The Fog Horn blew",
+    "startTime": 856.3,
+    "endTime": 859.9,
+    "startId": "emc-4629",
+    "endId": "emc-4650",
+    "startIndex": 2260,
+    "endIndex": 2270,
+    "confidence": 0.7272727272727273
+  },
+  {
+    "phraseTranscribed":
+      "let's see what happens said mcdunn he switched the fog horn off",
+    "phraseDisplayed":
+      "Let’s see what happens said McDunn He switched the Fog Horn off",
+    "startTime": 861.1,
+    "endTime": 866,
+    "startId": "emc-4653",
+    "endId": "emc-4676",
+    "startIndex": 2271,
+    "endIndex": 2282,
+    "confidence": 0.9166666666666666
+  },
+  {
+    "phraseTranscribed":
+      "the ensuing minute of Silence was so intense that we could hear our hearts pounding in the glass area of the tower could hear the slow grease turn of the light",
+    "phraseDisplayed":
+      "The ensuing minute of silence was so intense that we could hear our hearts pounding in the glassed area of the tower could hear the slow greased turn of the ​",
+    "startTime": 867.2,
+    "endTime": 876.1,
+    "startId": "emc-4679",
+    "endId": "emc-4739",
+    "startIndex": 2283,
+    "endIndex": 2313,
+    "confidence": 0.6451612903225806
+  },
+  {
+    "phraseTranscribed":
+      "the monster stopped and froze its great Lantern eyes blinked its mouth gate the cave of sort of Rumble like a volcano it switched its head this way in that as if to seek the sound now dwindled off into the fog",
+    "phraseDisplayed":
+      "The monster stopped and froze Its great lantern eyes blinked Its mouth gaped It gave a sort of rumble like a volcano It twitched its head this way and that as if to seek the sounds now dwindled off into the fog",
+    "startTime": 877.2,
+    "endTime": 892.5,
+    "startId": "emc-4744",
+    "endId": "emc-4826",
+    "startIndex": 2315,
+    "endIndex": 2356,
+    "confidence": 0.6904761904761905
+  },
+  {
+    "phraseTranscribed":
+      "appeared at the Lighthouse it rumbled again then its eyes caught fire it reared up thresh the water and rushed at the tower its eyes filled with angry torment it done I cried switch on the horn mcdunn fumbled with the switch but even as he flipped it on the monster was rearing up I had a glimpse of its gigantic pause fish skin glittering and webs between the finger-like projections Klein at the tower the huge eyes on the right side of its anguished head glittered before me like a cauldron into which I might drop screaming the tower shook the Foghorn cried the monster cried it sees the tower and Nash. The glass was shattered in upon us",
+    "phraseDisplayed":
+      "peered at the lighthouse It rumbled again Then its eyes caught fire It reared up threshed the water and rushed at the tower its eyes filled with angry torment McDunn I cried Switch on the horn McDunn fumbled with the switch But even as he flicked it on the monster was rearing up I had a glimpse of its gigantic paws fishskin glittering in webs between the finger-like projections clawing at the tower The huge eyes on the right side of its anguished head glittered before me like a cauldron into which I might drop screaming The tower shook The Fog Horn cried the monster cried It seized the tower and gnashed at the glass which shattered in upon us",
+    "startTime": 893.3,
+    "endTime": 940.3,
+    "startId": "emc-4830",
+    "endId": "emc-5074",
+    "startIndex": 2358,
+    "endIndex": 2477,
+    "confidence": 0.2
+  },
+  {
+    "phraseTranscribed": "McDonald's sees my arm downstairs",
+    "phraseDisplayed": "McDunn seized my arm Downstairs",
+    "startTime": 941.2,
+    "endTime": 944.1,
+    "startId": "emc-5077",
+    "endId": "emc-5085",
+    "startIndex": 2478,
+    "endIndex": 2482,
+    "confidence": 0.6
+  },
+  {
+    "phraseTranscribed":
+      "the tower rocked trembled and started to give the fog horn in the monster roared we stumbled and have fell down the stairs quick we reach the bottom is the tower buckle down toward us we ducked under the stairs into the small Stone cellar",
+    "phraseDisplayed":
+      "The tower rocked trembled and started to give The Fog Horn and the monster roared We stumbled and half fell down the stairs Quick We reached the bottom as the tower buckled down toward us We ducked under the stairs into the small stone cellar",
+    "startTime": 945.1,
+    "endTime": 961.6,
+    "startId": "emc-5088",
+    "endId": "emc-5177",
+    "startIndex": 2483,
+    "endIndex": 2527,
+    "confidence": 0.6
+  },
+  {
+    "phraseTranscribed":
+      "there were a thousand concussions as the Rocks rain down the fog horn stopped abruptly the monster crashed upon the tower the tower fell we nail together McDonough Nye holding tight while our world exploded",
+    "phraseDisplayed":
+      "There were a thousand concussions as the rocks rained down The Fog Horn stopped abruptly The monster crashed upon the tower The tower fell We knelt together McDunn and I holding tight while our world",
+    "startTime": 962.4,
+    "endTime": 977.9,
+    "startId": "emc-5179",
+    "endId": "emc-5247",
+    "startIndex": 2528,
+    "endIndex": 2562,
+    "confidence": 0.5714285714285714
+  },
+  {
+    "phraseTranscribed":
+      "then it was over and there was nothing but darkness and the wash of the Sea on the raw stones",
+    "phraseDisplayed":
+      "Then it was over and there was nothing but darkness and the wash of the sea on the raw stones",
+    "startTime": 979.1,
+    "endTime": 984.4,
+    "startId": "emc-5252",
+    "endId": "emc-5290",
+    "startIndex": 2564,
+    "endIndex": 2583,
+    "confidence": 0.8
+  },
+  {
+    "phraseTranscribed":
+      "that and the other sound listen said mcdunn quietly listen we waited a moment and then I began to hear it",
+    "phraseDisplayed":
+      "That and the other sound Listen said McDunn quietly Listen We waited a moment And then I began to hear it",
+    "startTime": 985.3,
+    "endTime": 994.7,
+    "startId": "emc-5293",
+    "endId": "emc-5335",
+    "startIndex": 2584,
+    "endIndex": 2604,
+    "confidence": 0.9047619047619048
+  },
+  {
+    "phraseTranscribed":
+      "first a great vacuum sucking of air and then the Lament The bewilderment the loneliness of the great monster folded over and Upon Us above us so that the sickening recommits body filled the air a Stones thickness away from our cellar",
+    "phraseDisplayed":
+      "a great vacuumed sucking of air and then the lament  the bewilderment the loneliness of the great monster folded over and upon us above us so that the sickening reek of its body filled the air a stone’s thickness away from",
+    "startTime": 995.6,
+    "endTime": 1011.5,
+    "startId": "emc-5339",
+    "endId": "emc-5424",
+    "startIndex": 2606,
+    "endIndex": 2647,
+    "confidence": 0.2619047619047619
+  },
+  {
+    "phraseTranscribed":
+      "the monster gasped and cried the tower was gone the light was gone the thing that it called to it across a million years was gone in the monster was opening its mouth and sending out great sounds the sounds of a fog horn again and again and ships far at Sea not finding the light not seeing anything but passing and hearing late that night must have thought there it is the lonely sound The Lonesome Bay horn all is well we've rounded the cape",
+    "phraseDisplayed":
+      "The monster gasped and cried The tower was gone The light was gone The thing that had called to it across a million years was gone And the monster was opening its mouth and sending out great sounds The sounds of a Fog Horn again and again And ships far at sea not finding the light not seeing anything but passing and hearing late that night must’ve thought: There it is the lonely sound the Lonesome Bay horn All’s well We’ve rounded the cape And so",
+    "startTime": 1012.4,
+    "endTime": 1046.1,
+    "startId": "emc-5430",
+    "endId": "emc-5601",
+    "startIndex": 2650,
+    "endIndex": 2735,
+    "confidence": 0.4883720930232558
+  },
+  {
+    "phraseTranscribed":
+      "and so it went for the rest of that night the sun was hot and yellow the next afternoon when The Rescuers came out to dig us from our Stone under seller",
+    "phraseDisplayed":
+      "And so it went for the rest of that night The sun was hot and yellow the next afternoon when the rescuers came out to dig us from our stoned-under cellar It",
+    "startTime": 1047,
+    "endTime": 1055.8,
+    "startId": "emc-5599",
+    "endId": "emc-5662",
+    "startIndex": 2734,
+    "endIndex": 2765,
+    "confidence": 0.78125
+  },
+  {
+    "phraseTranscribed":
+      "it fell apart is all said mcdunn Gravely we had a few bad knocks when the waves and it just crumbled he pinched my arm",
+    "phraseDisplayed":
+      "apart is all said Mr McDunn gravely We had a few bad knocks from ​ the waves and it just crumbled He pinched my arm",
+    "startTime": 1056.7,
+    "endTime": 1064.7,
+    "startId": "emc-5666",
+    "endId": "emc-5714",
+    "startIndex": 2767,
+    "endIndex": 2791,
+    "confidence": 0.36
+  },
+  {
+    "phraseTranscribed":
+      "there was nothing to see the ocean was called the sky blue the only thing was a great LG extinct from the green matter that covered the Fallen Tower stones and the shore rocks flies buzzed about the ocean washed empty on the shore",
+    "phraseDisplayed":
+      "There was nothing to see The ocean was calm the sky blue The only thing was a great algaic stink from the green matter that covered the fallen tower stones and the shore rocks Flies buzzed about The ocean washed empty on the shore",
+    "startTime": 1065.8,
+    "endTime": 1082.2,
+    "startId": "emc-5717",
+    "endId": "emc-5807",
+    "startIndex": 2792,
+    "endIndex": 2835,
+    "confidence": 0.6818181818181818
+  },
+  {
+    "phraseTranscribed":
+      "the next year they built a new Lighthouse but by that time I had a job in a little town and a wife and a good small warm house that glowed yellow on Autumn nights the doors locked the chimney puffing smoke",
+    "phraseDisplayed":
+      "The next year they built a new lighthouse but by that time I had a job in the little town and a wife and a good small warm house that glowed yellow on autumn nights the doors locked the chimney puffing smoke",
+    "startTime": 1083.5,
+    "endTime": 1096.1,
+    "startId": "emc-5811",
+    "endId": "emc-5893",
+    "startIndex": 2836,
+    "endIndex": 2877,
+    "confidence": 0.8095238095238095
+  },
+  {
+    "phraseTranscribed":
+      "ask for mcdunn he was Master of the new lighthouse built his own specifications out of steel-reinforced concrete just in case he said",
+    "phraseDisplayed":
+      "As for McDunn he was master of the new lighthouse built to his own specifications out of steel-reinforced concrete Just in case he",
+    "startTime": 1097.3,
+    "endTime": 1107.7,
+    "startId": "emc-5895",
+    "endId": "emc-5939",
+    "startIndex": 2878,
+    "endIndex": 2900,
+    "confidence": 0.43478260869565216
+  },
+  {
+    "phraseTranscribed": "the new Lighthouse was ready in November",
+    "phraseDisplayed": "The new lighthouse was ready in November",
+    "startTime": 1109.4,
+    "endTime": 1111.5,
+    "startId": "emc-5944",
+    "endId": "emc-5956",
+    "startIndex": 2902,
+    "endIndex": 2908,
+    "confidence": 1
+  },
+  {
+    "phraseTranscribed":
+      "I drove down alone one evening late and park my car and looked across the grey Waters and listen to the new horn sounding once twice three four times a minute far out there by itself",
+    "phraseDisplayed":
+      "I drove down alone one evening late and parked my car and looked across the gray waters and listened to the new horn sounding once twice three four times a minute far out there by itself",
+    "startTime": 1112.4,
+    "endTime": 1125.9,
+    "startId": "emc-5958",
+    "endId": "emc-6028",
+    "startIndex": 2909,
+    "endIndex": 2944,
+    "confidence": 0.8333333333333334
+  },
+  {
+    "phraseTranscribed": "the monster it never came back",
+    "phraseDisplayed": "The monster It never came back",
+    "startTime": 1127.3,
+    "endTime": 1129.7,
+    "startId": "emc-6031",
+    "endId": "emc-6042",
+    "startIndex": 2945,
+    "endIndex": 2950,
+    "confidence": 1
+  },
+  {
+    "phraseTranscribed":
+      "it's gone away said mcdunn it's gone back to the deeps it's learned you can't love anything too much in this world it's gone into the deepest deeps to wait another million years ago the poor thing waiting out there and waiting out there well man comes and goes on this pitiful little planet waiting and waiting",
+    "phraseDisplayed":
+      "It’s gone away said McDunn It’s gone back to the Deeps It’s learned you can’t love anything too much in this world It’s gone into the deepest Deeps to wait another million years Ah the poor thing Waiting out there and waiting out there while man comes and goes on this pitiful little planet Waiting and waiting",
+    "startTime": 1131.2,
+    "endTime": 1151.6,
+    "startId": "emc-6045",
+    "endId": "emc-6157",
+    "startIndex": 2951,
+    "endIndex": 3007,
+    "confidence": 0.6140350877192983
+  },
+  {
+    "phraseTranscribed":
+      "I sent my car listening I couldn't see the light house or the light standing out in Lonesome Bay I can only hear the horn the horn the horn it sounded like the monster calling",
+    "phraseDisplayed":
+      "I sat in my car listening I couldn’t see the lighthouse or the light standing out in Lonesome Bay I could only hear the Horn the Horn the Horn It sounded like the monster calling",
+    "startTime": 1152.8,
+    "endTime": 1165.5,
+    "startId": "emc-6160",
+    "endId": "emc-6228",
+    "startIndex": 3008,
+    "endIndex": 3042,
+    "confidence": 0.42857142857142855
+  },
+  {
+    "phraseTranscribed": "I sat there wishing there was something I could say",
+    "phraseDisplayed": "I sat there wishing there was something ​ I could",
+    "startTime": 1166.4,
+    "endTime": 1168.7,
+    "startId": "emc-6231",
+    "endId": "emc-6249",
+    "startIndex": 3043,
+    "endIndex": 3052,
+    "confidence": 0.6
+  }
+]

@@ -46,7 +46,7 @@ import {
 } from "./utils/highlightsUtils";
 import { addHighlightsToBook } from "./utils/addHighlightsToBook";
 
-/* ----- IMPORT DATA ----- */
+/* ----- IMPORT USER DATA ----- */
 import { UsersDemo } from "./data/users.js";
 
 /* ----- IMPORT STYLES ----- */
@@ -56,18 +56,21 @@ import { AppStyles } from "./styles/AppStyles.js";
 import { FoghornString } from "./data/foghorn/content1Unformatted.js";
 import { FoghornHighlights } from "./data/foghorn/highlights.js";
 import { FoghornGlossary } from "./data/foghorn/glossary.js";
+import FoghornTranscription from "./data/foghorn/transcription.json";
 
 /* ----- BOOK IMPORT (THANK YOU MA'AM IMPORT) ----- */
 import { TymString } from "./data/tym/content1Unformatted.js";
 import { TymHighlights } from "./data/tym/highlights.js";
 import { TymGlossary } from "./data/tym/glossary.js";
 
-const defaultBook = "tym";
+const defaultBook = "foghorn";
 const defaultUser = UsersDemo.user333;
 
 /* --- break book into object --- */
 const formattedTym = formatBookString(TymString);
 const formattedFoghorn = formatBookString(FoghornString);
+
+const transcription = JSON.parse(JSON.stringify(FoghornTranscription));
 
 const handleChangeIndex = () => {};
 
@@ -79,6 +82,7 @@ class App extends Component {
     this.state = {
       user: defaultUser,
       book: formattedTym,
+      transcription: transcription,
       highlights: TymHighlights,
       glossary: TymGlossary,
       speedReader: { wpm: 250, isPlaying: false, position: 0 },
@@ -303,6 +307,7 @@ class App extends Component {
             />
             <Audio
               bookName={this.state.settings.bookName}
+              transcription={this.state.transcription}
               style={Object.assign({}, styles.slide, styles.audioSlide)}
             />
             <SpeedReader
