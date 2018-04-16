@@ -69,13 +69,9 @@ class SpeedReader extends Component {
           "sliced letter: ",
           splitWord[0]
         );
-<<<<<<< HEAD
-        this.setState({ splitWordMiddle: splitWord });
-=======
         this.setState({ splitWordBegin: [] });
         this.setState({ splitWordMiddle: splitWord.slice() });
         this.setState({ splitWordEnd: [] });
->>>>>>> 01a2d292ba59ac3308b8b4aebc8725b7f5d1906f
         break;
       case splitLength < 5:
         splitWord;
@@ -124,16 +120,12 @@ class SpeedReader extends Component {
         this.setState({ splitWordEnd: splitWord.slice(5) });
         break;
     }
-<<<<<<< HEAD
-    // FOR MONDAY TODO: Add .join to split words and render split word instead of word
 
-=======
     this.setState({
       joinedWordBegin: this.state.splitWordBegin.join(""),
       joinedWordMiddle: this.state.splitWordMiddle.join(""),
       joinedWordEnd: this.state.splitWordEnd.join("")
     });
->>>>>>> 01a2d292ba59ac3308b8b4aebc8725b7f5d1906f
     // 1. count total words
     // 2. count index
     // 3. load state from each index
