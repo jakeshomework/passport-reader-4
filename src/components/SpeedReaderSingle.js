@@ -18,18 +18,19 @@ const styles = theme => ({
   },
   wordContainer: {
     borderTop: "1px solid #000",
-    paddingBottom: 38,
     borderBottom: "1px solid #000",
-    display: "flex"
-    //flexFlow: "row"
+    display: "flex",
+    flex: "1 100%",
+    flexFlow: "row wrap",
+    justifyContent: "center"
   },
-  left: { backgroundColor: "#ccc" },
-  right: { backgroundColor: "#ccc" },
+  left: { backgroundColor: "#ccc", order: 1 },
   middle: {
     color: "red",
     backgroundColor: "yellow",
-    justifyContent: "center"
+    order: 2
   },
+  right: { backgroundColor: "#ccc", order: 3 },
 
   lineTop: {
     //display: "block",
@@ -37,8 +38,6 @@ const styles = theme => ({
     width: 1,
     border: 0,
     backgroundColor: "#000",
-    justifyContent: "center",
-    display: "flex",
     margin: 0,
     padding: 0
   }
