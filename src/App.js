@@ -23,7 +23,6 @@ import Paper from "material-ui/Paper";
 import Settings from "./containers/Settings";
 import Book from "./containers/Book";
 import Highlights from "./containers/Highlights";
-import Audio from "./containers/Audio";
 import SpeedReader from "./containers/SpeedReader";
 import AnnotationModal from "./containers/AnnotationModal";
 import NavigationMenu from "./containers/NavigationMenu";
@@ -44,6 +43,15 @@ import {
   deleteAnnotation,
   newHighlightOpenModal
 } from "./utils/highlightsUtils";
+import {
+  toggleAudioMenu,
+  playAudio,
+  pauseAudio,
+  setAudioSpeed,
+  seekAudio,
+  setHighlights
+} from "./utils/audioUtils";
+
 import { addHighlightsToBook } from "./utils/addHighlightsToBook";
 
 /* ----- IMPORT USER DATA ----- */
@@ -89,9 +97,8 @@ class App extends Component {
       audio: {
         isPlaying: false,
         isMenuOpen: false,
-        speed: 1,
-        playedSeconds: 0,
-        totalDuration: 0
+        showAudioHighlights: true,
+        audioHighlightsIds: []
       },
       annotationModal: {
         open: false,
@@ -199,6 +206,19 @@ class App extends Component {
       this.setState(prevState => updateModal(prevState, content))
   };
 
+  audioControls = {
+    toggleAudioMenu: () =>
+      this.setState(prevState => toggleAudioMenu(prevState)),
+    play: () => this.setState(prevState => playAudio(prevState)),
+    pause: () => this.setState(prevState => pauseAudio(prevState)),
+    setSpeed: speed =>
+      this.setState(prevState => setAudioSpeed(prevState, speed)),
+    seekAudio: seconds =>
+      this.setState(prevState => seekAudio(prevState, seconds)),
+    setHighlights: ids =>
+      this.setState(prevState => setHighlights(prevState, ids))
+  };
+
   componentDidMount() {
     this.state.settings.bookName === "tym"
       ? this.setState({
@@ -297,6 +317,9 @@ class App extends Component {
               highlightsControl={this.highlightsControl}
               settings={this.state.settings}
               glossary={this.state.glossary}
+              audioControls={this.audioControls}
+              audio={this.state.audio}
+              transcription={this.state.transcription}
             />
 
             <Highlights
@@ -305,16 +328,16 @@ class App extends Component {
               annotationModalControl={this.annotationModalControl}
               users={UsersDemo}
             />
-            <Audio
-              bookName={this.state.settings.bookName}
-              transcription={this.state.transcription}
-              style={Object.assign({}, styles.slide, styles.audioSlide)}
-            />
             <SpeedReader
               style={Object.assign({}, styles.slide, styles.speedReaderSlide)}
               book={this.state.book}
               speedReader={this.state.speedReader}
             />
+            {/*<AudioContainer
+              bookName={this.state.settings.bookName}
+              transcription={this.state.transcription}
+              style={Object.assign({}, styles.slide, styles.audioSlide)}
+            />*/}
           </SwipeableViews>
         </Paper>
 
@@ -322,6 +345,7 @@ class App extends Component {
         <NavigationMenu
           changeSlideView={this.changeSlideView}
           view={this.state.slide}
+          audioControls={this.audioControls}
         />
       </MuiThemeProvider>
     );

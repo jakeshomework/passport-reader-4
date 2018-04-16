@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 /* ----- COMPONENT IMPORTS ----- */
+import AudioContainer from "./AudioContainer";
 import BookDisplay from "../components/BookDisplay";
 import ImageGallery from "../components/ImageGallery";
 import HighlightTooltip from "../components/HighlightTooltip";
@@ -112,14 +113,14 @@ class Book extends Component {
     const glossaryWords = this.props.glossary;
 
     if (glossaryWords[e.target.innerHTML]) {
-      console.log(glossaryWords[e.target.innerHTML].definition);
+      // console.log(glossaryWords[e.target.innerHTML].definition);
 
       this.setState({
         open: true,
         glossaryDefinition: glossaryWords[e.target.innerHTML].definition
       });
     } else {
-      console.log(e.target.innerHTML, " is not a glossary word");
+      // console.log(e.target.innerHTML, " is not a glossary word");
     }
   };
   handleClose = () => {
@@ -168,7 +169,13 @@ class Book extends Component {
       : clearInterval(selectWatcher);
 
     const { bookDisplay, galleries } = this.props.book;
-    const { highlights, highlightsControl, settings, classes } = this.props;
+    const {
+      highlights,
+      highlightsControl,
+      settings,
+      audio,
+      classes
+    } = this.props;
 
     const highlightsKeys = Object.keys(highlights);
     // console.log(highlightsKeys);
@@ -184,6 +191,12 @@ class Book extends Component {
     const { vertical, horizontal, open } = this.state;
     return (
       <div className={classes.root}>
+        <AudioContainer
+          bookName={settings.bookName}
+          transcription={this.props.transcription}
+          audioControls={this.props.audioControls}
+          audio={audio}
+        />
         <Grid container spacing={24}>
           <Grid item xs sm={2} />
           <Grid item xs sm={8}>
@@ -232,7 +245,9 @@ class Book extends Component {
               handleSelectTouch={this.handleSelectTouch}
               bookDisplayWithHighlights={this.props.bookDisplayWithHighlights}
               highlights={highlights}
+              audioHighlightsIds={this.props.audioHighlightsIds}
               settings={settings}
+              audio={audio}
             />
             <ImageGallery
               galleries={galleries}

@@ -14,7 +14,8 @@ const BookDisplay = ({
   handleSelectClick,
   handleSelectTouch,
   highlights,
-  settings
+  settings,
+  audio
 }) => {
   /*---Render book 'display' word by word into BookSingleWord, adding styles from highlights---*/
   const renderBookWithStyles = () => {};
@@ -26,40 +27,49 @@ const BookDisplay = ({
   // replace with props.settings.classView
   // const classView = false;
 
-  const generateHighlightColor = highlightsArray => {
+  const generateHighlightColor = (highlightsArray, id) => {
     if (settings.focusMode) {
       return "transparent";
     }
 
-    // --- reduce highlightsIdArray to the most recent highlight --- //
-    const newestHighlight = highlightsArray.reduce((newest, current) => {
-      return highlights[newest].updatedAt < highlights[current].updatedAt
-        ? current
-        : newest;
-    });
+    if (highlightsArray.length > 0) {
+      // --- reduce highlightsIdArray to the most recent highlight --- //
+      const newestHighlight = highlightsArray.reduce((newest, current) => {
+        return highlights[newest].updatedAt < highlights[current].updatedAt
+          ? current
+          : newest;
+      });
 
-    // --- generate color depending on whether classView is selected --- //
-    return !settings.classView
-      ? colorLabels[highlights[newestHighlight].color].active
-      : // --- determine color if classView is selected --- //
-        highlightsArray.length > 9
-        ? orange[900]
-        : orange[highlightsArray.length * 100];
+      // --- generate color depending on whether classView is selected --- //
+      return !settings.classView
+        ? colorLabels[highlights[newestHighlight].color].active
+        : // --- determine color if classView is selected --- //
+          highlightsArray.length > 9
+          ? orange[900]
+          : orange[highlightsArray.length * 100];
+    }
   };
 
   const displayString = displayKeys
     .map(key => {
       let el = bookDisplayWithHighlights[key];
-      return el.highlights && el.highlights.length > 0
-        ? // --- handle text tags and apply styles based on classView and highlights --- //
-          `${el.display.slice(
-            0,
-            5
-          )} class="highlight" style="background: ${generateHighlightColor(
-            el.highlights
-          )}" ${el.display.slice(5)}`
-        : // if no highlights or if it's a tag, gallery, or aside render .display, as is
-          el.display;
+      return el.highlights &&
+      audio.showAudioHighlights &&
+      audio.audioHighlightsIds.includes(el.id)
+        ? // 1st check for audio being played.
+          `${el.display.slice(0, 5)} style="background: ${colorLabels.audio
+            .active};font-size: 1.3em" ${el.display.slice(5)}`
+        : // 2nd check if element has highlights
+          el.highlights && el.highlights.length > 0
+          ? // --- handle text tags and apply styles based on classView and highlights --- //
+            `${el.display.slice(
+              0,
+              5
+            )} class="highlight" style="background: ${generateHighlightColor(
+              el.highlights
+            )}" ${el.display.slice(5)}`
+          : // if no highlights or if it's a tag, gallery, or aside render .display, as is
+            el.display;
     })
     /* --- combine array into one giant string for rendering --- */
     .join("");

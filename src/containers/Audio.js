@@ -21,7 +21,7 @@ class Audio extends Component {
     console.log(time);
     const transcriptions = this.props.transcription;
     let currentTrans = transcriptions.find(el => {
-      return time > el.startTime && time < el.endTime;
+      return time + 1 > el.startTime && time + 1 < el.endTime;
     });
 
     console.log(currentTrans);
@@ -32,6 +32,7 @@ class Audio extends Component {
         currentTrans.startId,
         currentTrans.endId
       );
+      this.props.audioControls.setHighlights(ids);
       this.setState({ textOnScreen: text, idsToHighlight: ids });
     }
   };

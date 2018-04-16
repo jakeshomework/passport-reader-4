@@ -5,6 +5,7 @@ import pink from "material-ui/colors/pink";
 import purple from "material-ui/colors/purple";
 import yellow from "material-ui/colors/yellow";
 import grey from "material-ui/colors/grey";
+import teal from "material-ui/colors/teal";
 
 export const colorLabels = {
   hlc1: {
@@ -31,5 +32,8 @@ export const colorLabels = {
     label: "Question",
     active: purple["A100"],
     inactive: purple["A100"]
+  },
+  audio: {
+    active: teal["A400"]
   }
 };

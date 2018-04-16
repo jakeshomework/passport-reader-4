@@ -1,16 +1,5 @@
 [
   {
-    "phraseTranscribed": "the fog horn short story by Ray Bradbury",
-    "phraseDisplayed": "",
-    "startTime": 0.1,
-    "endTime": 3.6,
-    "startId": "emc-0",
-    "endId": "emc-25",
-    "startIndex": -4,
-    "endIndex": 3,
-    "confidence": 0.375
-  },
-  {
     "phraseTranscribed":
       "out there in the cold water far from Land we waited every night for the coming of the fog and it came and we all the brass machinery and let the fog light up in the Stone Tower",
     "phraseDisplayed":
@@ -40,11 +29,11 @@
     "phraseTranscribed":
       "if they did not see our light then there was always our voice the great deep Cry of our foghorn",
     "phraseDisplayed":
-      "If they did not see our light then there was always our Voice the great deep cry of our Fog",
+      "If they did not see our light then there was always our Voice the great deep cry of our Fog Horn",
     "startTime": 30.6,
     "endTime": 36.9,
     "startId": "emc-159",
-    "endId": "emc-197",
+    "endId": "emc-199",
     "startIndex": 69,
     "endIndex": 88,
     "confidence": 0.85
@@ -53,10 +42,10 @@
     "phraseTranscribed":
       "it's shuttered through the rags of missed the start of the goes away like decks of scattered cards and make the waves turn high and foam",
     "phraseDisplayed":
-      "Horn It shuddered through the rags of mist to startle the gulls away like decks of scattered cards and make the waves turn high and foam",
+      "It shuddered through the rags of mist to startle the gulls away like decks of scattered cards and make the waves turn high and foam",
     "startTime": 37.9,
     "endTime": 46.2,
-    "startId": "emc-199",
+    "startId": "emc-201",
     "endId": "emc-249",
     "startIndex": 89,
     "endIndex": 114,
@@ -116,11 +105,11 @@
     "phraseTranscribed":
       "on the mysteries of the sea mcdunn latest pipe it was a quarter past 7 on a cold November evening the heat on the light switching its tail in 200 directions the Foghorn bumbling in the high throw to the Tower",
     "phraseDisplayed":
-      "the mysteries of the sea McDunn lit his pipe It was a quarter past seven on a cold November evening the heat on the light switching its tail in two hundred directions the Fog Horn bumbling in the high throat of",
+      "the mysteries of the sea McDunn lit his pipe It was a quarter past seven on a cold November evening the heat on the light switching its tail in two hundred directions the Fog Horn bumbling in the high throat of the tower",
     "startTime": 67.6,
     "endTime": 82.3,
     "startId": "emc-360",
-    "endId": "emc-440",
+    "endId": "emc-444",
     "startIndex": 167,
     "endIndex": 207,
     "confidence": 0.36585365853658536
@@ -142,11 +131,11 @@
     "phraseTranscribed":
       "the mysteries of the sea said McDonald thoughtfully you know the oceans the biggest snowflake ever it rolls and swells a thousand shapes and colors no two alike strange one night years ago I was here alone when all of the fish of the sea surface doubt there something made them swim in inline the bay sort of trembling they stared up at the tower light going red white red white across them so I could see their funny eyes I turned cold they were like a big peacock's tail moving out there until midnight then without so much as a sound they slipped away",
     "phraseDisplayed":
-      "The mysteries of the sea said McDunn thoughtfully You know the ocean’s the biggest snowflake ever It rolls and swells a thousand shapes and colors no two alike Strange One night years ago I was here alone when all of the fish of the sea surfaced out there Something made them swim in and lie in the bay sort of trembling They stared up at the tower light going red white red white across them so I could see their funny eyes I turned cold They were like a big peacock’s tail moving out there until midnight Then without so much as a sound they",
+      "The mysteries of the sea said McDunn thoughtfully You know the ocean’s the biggest snowflake ever It rolls and swells a thousand shapes and colors no two alike Strange One night years ago I was here alone when all of the fish of the sea surfaced out there Something made them swim in and lie in the bay sort of trembling They stared up at the tower light going red white red white across them so I could see their funny eyes I turned cold They were like a big peacock’s tail moving out there until midnight Then without so much as a sound they slipped away",
     "startTime": 98.5,
     "endTime": 140.8,
     "startId": "emc-535",
-    "endId": "emc-743",
+    "endId": "emc-747",
     "startIndex": 254,
     "endIndex": 358,
     "confidence": 0.4

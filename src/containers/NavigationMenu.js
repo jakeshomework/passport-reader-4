@@ -35,7 +35,9 @@ function NavigationMenu(props) {
   // const value = props.view;
 
   const handleChange = (event, value) => {
-    props.changeSlideView(value);
+    if (value === 4) {
+      props.audioControls.toggleAudioMenu();
+    } else props.changeSlideView(value);
   };
 
   return (
@@ -60,14 +62,14 @@ function NavigationMenu(props) {
         icon={<FormatListBulleted className={classes.icon} />}
       />
       <BottomNavigationAction
-        label="Audio"
+        label="Speed Read"
         value={3}
-        icon={<Headset className={classes.icon} />}
+        icon={<WbIridescent className={classes.icon} />}
       />
       <BottomNavigationAction
-        label="Speed Read"
+        label="Audio"
         value={4}
-        icon={<WbIridescent className={classes.icon} />}
+        icon={<Headset className={classes.icon} />}
       />
       {/*<BottomNavigationButton label="Activities" value={3} icon={<Badge className={classes.badge} badgeContent={4} color="accent"><QuestionAnswer className={classes.icon} /></Badge>} />*/}
     </BottomNavigation>
