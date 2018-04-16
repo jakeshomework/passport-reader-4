@@ -12,13 +12,15 @@ const styles = theme => ({});
 
 class SpeedReader extends Component {
   state = {
-    //wordIndex: 0,
     wpm: 250,
     wpmOptions: [250, 300, 350, 400, 450, 500, 550, 600, 650, 700],
-    word: "Click Play to Start",
+    word: "",
     splitWordBegin: [],
     splitWordMiddle: [],
     splitWordEnd: [],
+    joinedWordBegin: "Click Play to Start",
+    joinedWordMiddle: "",
+    joinedWordEnd: "",
     isPlaying: false,
     wordIndex: 0,
     sentenceIndex: 0
@@ -67,7 +69,13 @@ class SpeedReader extends Component {
           "sliced letter: ",
           splitWord[0]
         );
+<<<<<<< HEAD
         this.setState({ splitWordMiddle: splitWord });
+=======
+        this.setState({ splitWordBegin: [] });
+        this.setState({ splitWordMiddle: splitWord.slice() });
+        this.setState({ splitWordEnd: [] });
+>>>>>>> 01a2d292ba59ac3308b8b4aebc8725b7f5d1906f
         break;
       case splitLength < 5:
         splitWord;
@@ -116,8 +124,16 @@ class SpeedReader extends Component {
         this.setState({ splitWordEnd: splitWord.slice(5) });
         break;
     }
+<<<<<<< HEAD
     // FOR MONDAY TODO: Add .join to split words and render split word instead of word
 
+=======
+    this.setState({
+      joinedWordBegin: this.state.splitWordBegin.join(""),
+      joinedWordMiddle: this.state.splitWordMiddle.join(""),
+      joinedWordEnd: this.state.splitWordEnd.join("")
+    });
+>>>>>>> 01a2d292ba59ac3308b8b4aebc8725b7f5d1906f
     // 1. count total words
     // 2. count index
     // 3. load state from each index
@@ -148,7 +164,11 @@ class SpeedReader extends Component {
         <Grid container spacing={24}>
           <Grid item xs={1} sm={4} />
           <Grid item xs={10} sm={4}>
-            <SpeedReaderSingle word={this.state.word} />
+            <SpeedReaderSingle
+              wordBegin={this.state.joinedWordBegin}
+              wordMiddle={this.state.joinedWordMiddle}
+              wordEnd={this.state.joinedWordEnd}
+            />
             <SpeedReaderControls
               wpm={this.state.wpm}
               wpmOptions={this.state.wpmOptions}
