@@ -14,21 +14,33 @@ import Forward from "material-ui-icons/Forward10";
 import Backward from "material-ui-icons/Replay10";
 import { LinearProgress } from "material-ui/Progress";
 import IconButton from "material-ui/IconButton";
+import CloseIcon from "material-ui-icons/Close";
 
 import { withStyles } from "material-ui/styles";
 
 /* ----- COMPONENT IMPORTS ----- */
+import SettingsSelector from "../components/SettingsSelector";
 
 /* ----- EXTERNAL LIBRARY IMPORTS ----- */
-import ReactAudioPlayer from "react-player";
+import ReactPlayer from "react-player";
+import ReactSimpleRange from "react-simple-range";
+
+const speeds = [0.75, 1.0, 1.25, 1.75, 2.0];
 
 /*---undefined---*/
 const styles = {
   root: { backgroundColor: "red", height: "200px" },
   controlIcons: {
-    width: "100%",
+    width: 330,
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+    backgroundColor: "white",
+    borderRadius: "10px"
+  },
+  slider: {
+    width: "100%"
   }
 };
 class AudioContainer extends Component {
@@ -36,22 +48,54 @@ class AudioContainer extends Component {
     idsToHighlight: [],
     textOnScreen: "",
     speed: 1,
-    seconds: 20
+    played: 0,
+    duration: 0,
+    seeking: false
   };
 
-  handleSpeedChange = e => {
-    this.setState({ speed: e.target.value });
+  /* --- TOTAL - triggered by ReactPlayer --- */
+  handleSetDuration = duration => {
+    if (!this.state.seeking) {
+      this.setState({ duration: duration });
+    }
+  };
+
+  /* --- SPEED - triggered by select in audio menu --- */
+  handleSpeedChange = speed => {
+    this.setState({ speed: speed });
+  };
+
+  handleSeek = slide => {
+    console.log("slippery slide", slide);
+    if (typeof slide !== "number") {
+      this.setState({ played: slide.percent * 100, seeking: true });
+    }
+  };
+
+  /* --- SEEK - triggered by ReactSimpleRange --- */
+  onSeekMouseUp = slide => {
+    console.log(slide);
+    this.setState({ played: slide.percent * 100, seeking: false });
+    this.player.seekTo(parseFloat(slide.percent));
   };
 
   audioListener = playObject => {
-    console.log(playObject);
-    const time = playObject.playedSeconds;
+    const playedSeconds = playObject.playedSeconds;
+    const played = playObject.played;
+    console.log("played", played);
     const transcriptions = this.props.transcription;
     let currentTrans = transcriptions.find(el => {
-      return time + 1 > el.startTime && time + 1 < el.endTime;
+      return (
+        playedSeconds + 1.5 > el.startTime && playedSeconds + 1.5 < el.endTime
+      );
     });
 
-    console.log(currentTrans);
+    if (!this.state.seeking) {
+      this.setState({
+        played: played * 100,
+        playedSeconds: playedSeconds
+      });
+    }
 
     if (currentTrans !== undefined) {
       const text = currentTrans.phraseDisplayed;
@@ -60,8 +104,14 @@ class AudioContainer extends Component {
         currentTrans.endId
       );
       this.props.audioControls.setHighlights(ids);
-      this.setState({ textOnScreen: text, idsToHighlight: ids });
+      this.setState({
+        textOnScreen: text,
+        idsToHighlight: ids
+      });
     }
+  };
+  ref = player => {
+    this.player = player;
   };
 
   render() {
@@ -79,7 +129,10 @@ class AudioContainer extends Component {
       <div>
         <Snackbar
           open={audio.isMenuOpen}
-          style={{ marginLeft: "100vw", marginBottom: "50px" }}
+          style={{
+            marginLeft: "100vw",
+            marginBottom: "55px"
+          }}
           anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           message={
             <div>
@@ -87,45 +140,55 @@ class AudioContainer extends Component {
                 <IconButton>
                   <Backward />
                 </IconButton>
-                {audio.isPlaying ? (
-                  <IconButton onClick={audioControls.pause}>
-                    <Pause />
-                  </IconButton>
-                ) : (
-                  <IconButton onClick={audioControls.play}>
-                    <Play />
-                  </IconButton>
-                )}
                 <IconButton>
                   <Forward />
                 </IconButton>
+                {audio.isPlaying ? (
+                  <IconButton>
+                    <Pause onClick={audioControls.pause} />
+                  </IconButton>
+                ) : (
+                  <IconButton>
+                    <Play onClick={audioControls.play} />
+                  </IconButton>
+                )}
+                <SettingsSelector
+                  options={speeds}
+                  handleChangeSettings={this.handleSpeedChange}
+                  currentSelection={this.state.speed}
+                />
+                <IconButton>
+                  <CloseIcon />
+                </IconButton>
               </div>
 
-              <LinearProgress
-                variant="determinate"
-                value={this.state.seconds}
-                valueBuffer={100}
+              <ReactSimpleRange
+                thumbSize={18}
+                min={0}
+                max={100}
+                step={1}
+                value={this.state.played}
+                onChange={this.handleSeek}
+                onChangeComplete={this.onSeekMouseUp}
+                className={classes.simpleRange}
+                sliderColor="#fff"
+                trackColor="#757575"
+                thumbColor="#BDBDBD"
+                sliderSize={2}
+                eventWrapperPadding={1}
               />
-
-              <Select
-                value={this.state.speed}
-                onChange={this.handleSpeedChange}
-              >
-                <MenuItem value={0.75}>.75</MenuItem>
-                <MenuItem value={1}>1.0</MenuItem>
-                <MenuItem value={1.25}>1.25</MenuItem>
-                <MenuItem value={1.5}>1.5</MenuItem>
-                <MenuItem value={1.75}>1.75</MenuItem>
-                <MenuItem value={2}>2.0</MenuItem>
-              </Select>
             </div>
           }
         />
-        <ReactAudioPlayer
+        <ReactPlayer
+          ref={this.ref}
           url={audioFile}
           progressInterval={1000}
+          playbackRate={this.state.speed}
           onProgress={this.audioListener}
+          onDuration={this.handleSetDuration}
           playing={audio.isPlaying}
+          onSeek={this.handleSeek}
           height={50}
           width={250}
         />

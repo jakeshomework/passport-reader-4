@@ -16,6 +16,7 @@
     "react-player": "^1.4.0",
     "react-render-html": "^0.6.0",
     "react-responsive": "^4.1.0",
+    "react-simple-range": "^1.6.0",
     "react-swipeable-views": "^0.12.13",
     "typeface-lobster": "^0.0.54",
     "typeface-montserrat": "^0.0.54",
