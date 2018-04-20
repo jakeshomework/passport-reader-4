@@ -6,6 +6,30 @@ export const toggleAudioMenu = prevState => {
   return { audio: newAudio };
 };
 
+export const closeAudioMenu = prevState => {
+  let newAudio = {
+    ...prevState.audio,
+    isMenuOpen: false
+  };
+  return { audio: newAudio };
+};
+
+export const openAudioMenu = prevState => {
+  let newAudio = {
+    ...prevState.audio,
+    isMenuOpen: true
+  };
+  return { audio: newAudio };
+};
+
+export const toggleShowAudioHighlights = prevState => {
+  let newAudio = {
+    ...prevState.audio,
+    showAudioHighlights: !prevState.audio.showAudioHighlights
+  };
+  return { audio: newAudio };
+};
+
 export const playAudio = prevState => {
   let newAudio = {
     ...prevState.audio,

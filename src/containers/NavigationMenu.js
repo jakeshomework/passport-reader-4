@@ -34,9 +34,13 @@ function NavigationMenu(props) {
   const classes = props.classes;
   // const value = props.view;
 
+  /* --- Open audio menu, unless already on slide with menu open --- */
   const handleChange = (event, value) => {
-    if (value === 4) {
+    if (value === 4 && props.view === 1) {
       props.audioControls.toggleAudioMenu();
+    } else if (value === 4 && props.view !== 1) {
+      props.audioControls.openAudioMenu();
+      props.changeSlideView(1);
     } else props.changeSlideView(value);
   };
 

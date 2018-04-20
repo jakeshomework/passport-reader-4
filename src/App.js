@@ -11,13 +11,6 @@ import "typeface-montserrat";
 import "typeface-lobster";
 import "typeface-vt323";
 import Paper from "material-ui/Paper";
-// import {
-//   grey100,
-//   grey300,
-//   white,
-//   darkBlack,
-//   fullBlack
-// } from "material-ui/colors";
 
 /* ----- IMPORT CONTAINERS ----- */
 import Settings from "./containers/Settings";
@@ -45,6 +38,9 @@ import {
 } from "./utils/highlightsUtils";
 import {
   toggleAudioMenu,
+  openAudioMenu,
+  closeAudioMenu,
+  toggleShowAudioHighlights,
   playAudio,
   pauseAudio,
   setAudioSpeed,
@@ -209,6 +205,10 @@ class App extends Component {
   audioControls = {
     toggleAudioMenu: () =>
       this.setState(prevState => toggleAudioMenu(prevState)),
+    closeAudioMenu: () => this.setState(prevState => closeAudioMenu(prevState)),
+    openAudioMenu: () => this.setState(prevState => openAudioMenu(prevState)),
+    toggleShowAudioHighlights: () =>
+      this.setState(prevState => toggleShowAudioHighlights(prevState)),
     play: () => this.setState(prevState => playAudio(prevState)),
     pause: () => this.setState(prevState => pauseAudio(prevState)),
     setSpeed: speed =>

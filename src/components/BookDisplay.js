@@ -58,7 +58,9 @@ const BookDisplay = ({
       audio.audioHighlightsIds.includes(el.id)
         ? // 1st check for audio being played.
           `${el.display.slice(0, 5)} style="background: ${colorLabels.audio
-            .active}; font-style: bold" ${el.display.slice(5)}`
+            .active}; font-style: bold; text-decoration: wavy underline lime" ${el.display.slice(
+            5
+          )}`
         : // 2nd check if element has highlights
           el.highlights && el.highlights.length > 0
           ? // --- handle text tags and apply styles based on classView and highlights --- //

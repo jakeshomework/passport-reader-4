@@ -20,6 +20,7 @@ import { withStyles } from "material-ui/styles";
 
 /* ----- COMPONENT IMPORTS ----- */
 import SettingsSelector from "../components/SettingsSelector";
+import AudioSwitch from "../components/AudioSwitch";
 
 /* ----- EXTERNAL LIBRARY IMPORTS ----- */
 import ReactPlayer from "react-player";
@@ -41,6 +42,12 @@ const styles = {
   },
   slider: {
     width: "100%"
+  },
+  pausePlayButton: {
+    flexGrow: 1
+  },
+  forwardBackwardButtons: {
+    marginRight: 10
   }
 };
 class AudioContainer extends Component {
@@ -49,6 +56,7 @@ class AudioContainer extends Component {
     textOnScreen: "",
     speed: 1,
     played: 0,
+    playedSeconds: 0,
     duration: 0,
     seeking: false
   };
@@ -65,8 +73,72 @@ class AudioContainer extends Component {
     this.setState({ speed: speed });
   };
 
+  findCurrentTranscriptionIndex = playedSeconds => {
+    return this.props.transcription.findIndex(el => {
+      return playedSeconds <= el.endTime && playedSeconds >= el.startTime;
+    });
+  };
+
+  handleSeekToNext = () => {
+    let currentIndex = this.findCurrentTranscriptionIndex(
+      this.state.playedSeconds
+    );
+
+    if (currentIndex !== this.props.transcription.length - 1) {
+      const nextTranscription = this.props.transcription[currentIndex + 1];
+      const { startTime } = nextTranscription;
+
+      /* --- update player --- */
+      this.player.seekTo(parseFloat(startTime));
+
+      /* --- update highlights and playedSeconds --- */
+      const ids = buildArrayOfDisplayIds(
+        nextTranscription.startId,
+        nextTranscription.endId
+      );
+      this.props.audioControls.setHighlights(ids);
+      this.setState({
+        idsToHighlight: ids,
+        playedSeconds: nextTranscription.startTime
+      });
+    }
+
+    console.log("currentIndex", currentIndex);
+  };
+
+  handleSeekToPrevius = () => {
+    let currentIndex = this.findCurrentTranscriptionIndex(
+      this.state.playedSeconds
+    );
+    if (currentIndex != 0) {
+      let oneOrZero =
+        this.state.playedSeconds - 2 <
+        this.props.transcription[currentIndex].startTime
+          ? 1
+          : 0;
+      const prevTranscription = this.props.transcription[
+        currentIndex - oneOrZero
+      ];
+      const { startTime } = prevTranscription;
+
+      /* --- update player --- */
+      this.player.seekTo(parseFloat(startTime));
+
+      /* --- update highlights and playedSeconds --- */
+      const ids = buildArrayOfDisplayIds(
+        prevTranscription.startId,
+        prevTranscription.endId
+      );
+      this.props.audioControls.setHighlights(ids);
+      this.setState({
+        idsToHighlight: ids,
+        playedSeconds: prevTranscription.startTime
+      });
+    }
+  };
+
+  /* --- SEEK - triggered by ReactSimpleRange --- */
   handleSeek = slide => {
-    console.log("slippery slide", slide);
     if (typeof slide !== "number") {
       this.setState({ played: slide.percent * 100, seeking: true });
     }
@@ -137,27 +209,42 @@ class AudioContainer extends Component {
           message={
             <div>
               <div className={classes.controlIcons}>
-                <IconButton>
-                  <Backward />
-                </IconButton>
-                <IconButton>
-                  <Forward />
-                </IconButton>
+                <AudioSwitch
+                  label="Highlight"
+                  setting={audio.showAudioHighlights}
+                  handleChangeSettings={audioControls.toggleShowAudioHighlights}
+                />
                 {audio.isPlaying ? (
-                  <IconButton>
-                    <Pause onClick={audioControls.pause} />
+                  <IconButton
+                    className={classes.pausePlayButton}
+                    onClick={audioControls.pause}
+                    variant="raised"
+                  >
+                    <Pause />
                   </IconButton>
                 ) : (
-                  <IconButton>
-                    <Play onClick={audioControls.play} />
+                  <IconButton
+                    className={classes.pausePlayButton}
+                    onClick={audioControls.play}
+                    variant="raised"
+                  >
+                    <Play />
                   </IconButton>
                 )}
+                <div className={classes.forwardBackwardButtons}>
+                  <IconButton onClick={this.handleSeekToPrevius}>
+                    <Backward />
+                  </IconButton>
+                  <IconButton onClick={this.handleSeekToNext}>
+                    <Forward />
+                  </IconButton>
+                </div>
                 <SettingsSelector
                   options={speeds}
                   handleChangeSettings={this.handleSpeedChange}
                   currentSelection={this.state.speed}
                 />
-                <IconButton>
+                <IconButton onClick={audioControls.closeAudioMenu}>
                   <CloseIcon />
                 </IconButton>
               </div>
