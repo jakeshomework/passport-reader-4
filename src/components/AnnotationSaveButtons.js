@@ -35,11 +35,17 @@ function AnnotationSaveButtons({
   start,
   stop,
   isRecording,
+  canAnnotate,
+  isOwner,
   classes
 }) {
   return (
     <div className={classes.annotationButtonsCont}>
-      <Button onClick={handleDelete} className={classes.deleteButton}>
+      <Button
+        onClick={handleDelete}
+        className={classes.deleteButton}
+        disabled={!isOwner}
+      >
         <DeleteIcon />
       </Button>
 

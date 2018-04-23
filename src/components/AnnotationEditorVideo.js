@@ -93,12 +93,14 @@ class AnnotationEditorVideo extends React.Component {
     console.log("Permission Denied!", err);
   }
   handleStart(stream) {
-    this.setState({
-      recording: true
-    });
+    if (this.props.canAnnotate && this.props.isOwner) {
+      this.setState({
+        recording: true
+      });
 
-    this.setStreamToVideo(stream);
-    console.log("Recording Started.");
+      this.setStreamToVideo(stream);
+      console.log("Recording Started.");
+    }
   }
   handleStop(blob) {
     this.setState({
@@ -191,6 +193,8 @@ class AnnotationEditorVideo extends React.Component {
                 isRecording={this.state.recording}
                 start={start}
                 stop={stop}
+                canAnnotate={this.props.canAnnotate}
+                isOwner={this.props.isOwner}
               />
             </div>
           )}

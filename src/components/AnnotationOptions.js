@@ -52,6 +52,8 @@ const AnnotationOptions = ({
   highlight,
   modifiedHighlight,
   users,
+  userId,
+  permissions,
   highlightsControl,
   modalActions,
   isHighlightSaved,
@@ -63,11 +65,30 @@ const AnnotationOptions = ({
       type: type
     });
   };
+
+  const canAnnotateHighlight = () => {
+    if (users[userId].role === "teacher") {
+      /* --- give teachers permissions to add annotation --- */
+      // console.log("Hey, you're a teacher");
+      return true;
+    } else if (permissions.allowSocialAnnotations) {
+      /* --- allow other students to add annotation --- */
+      // console.log("Hey, social annotations are allowed!");
+      return true;
+    } else if (userId === highlight.userId) {
+      /* --- allow creator of highlight to add annotation --- */
+      // console.log("Hey, you own this highlight");
+      return true;
+    } else return false;
+  };
+
   const annotationButtonsDisabled = () => {
     /* --- return true to disable add annotation buttons --- */
-    if (modifiedHighlight.annotations.length === 0) {
+    if (canAnnotateHighlight() && modifiedHighlight.annotations.length === 0) {
       return false;
-    } else return !isHighlightSaved;
+    } else if (canAnnotateHighlight() && isHighlightSaved) {
+      return false;
+    } else return true;
   };
 
   return (
@@ -109,6 +130,8 @@ const AnnotationOptions = ({
                   annotationIndex={index}
                   modalActions={modalActions}
                   className={classes.annotationContainer}
+                  canAnnotate={canAnnotateHighlight()}
+                  isOwner={userId === modifiedAnnotation.userId}
                 />
               ) : modifiedAnnotation.type === "audio" ? (
                 <AnnotationEditorAudio
@@ -118,6 +141,8 @@ const AnnotationOptions = ({
                   highlightsControl={highlightsControl}
                   annotationIndex={index}
                   modalActions={modalActions}
+                  canAnnotate={canAnnotateHighlight()}
+                  isOwner={userId === modifiedAnnotation.userId}
                 />
               ) : modifiedAnnotation.type === "note" ? (
                 <AnnotationEditorNote
@@ -127,6 +152,8 @@ const AnnotationOptions = ({
                   highlightsControl={highlightsControl}
                   annotationIndex={index}
                   modalActions={modalActions}
+                  canAnnotate={canAnnotateHighlight()}
+                  isOwner={userId === modifiedAnnotation.userId}
                 />
               ) : null}
             </ExpansionPanelDetails>
@@ -136,9 +163,11 @@ const AnnotationOptions = ({
       <Card
         className={classes.addAnnotationIcons}
         style={
-          modifiedHighlight.annotations.length > 0
-            ? { borderRadius: "0px 0px 10px 10px" }
-            : { borderRadius: "10px 10px 10px 10px" }
+          modifiedHighlight.annotations.length > 0 ? (
+            { borderRadius: "0px 0px 10px 10px" }
+          ) : (
+            { borderRadius: "10px 10px 10px 10px" }
+          )
         }
       >
         <Button

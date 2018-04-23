@@ -10,8 +10,8 @@ import Input, { InputLabel } from "material-ui/Input";
 import { FormControl } from "material-ui/Form";
 import Play from "material-ui-icons/PlayArrow";
 import Pause from "material-ui-icons/Pause";
-import Forward from "material-ui-icons/Forward10";
-import Backward from "material-ui-icons/Replay10";
+import Forward from "material-ui-icons/SkipNext";
+import Backward from "material-ui-icons/SkipPrevious";
 import { LinearProgress } from "material-ui/Progress";
 import IconButton from "material-ui/IconButton";
 import CloseIcon from "material-ui-icons/Close";
@@ -25,6 +25,16 @@ import AudioSwitch from "../components/AudioSwitch";
 /* ----- EXTERNAL LIBRARY IMPORTS ----- */
 import ReactPlayer from "react-player";
 import ReactSimpleRange from "react-simple-range";
+
+// const speedObjects = [
+//   { number: 0.75, display: "0.75x" },
+//   { number: 1.0, display: "1.0x" },
+//   { number: 1.25, display: "1.25x" },
+//   { number: 1.5, display: "1.5x" },
+//   { number: 0.75, display: "0.75" },
+//   { number: 1.75, display: "1.75x" },
+//   { number: 2.0, display: "2.0x" }
+// ];
 
 const speeds = [0.75, 1.0, 1.25, 1.75, 2.0];
 
@@ -154,7 +164,8 @@ class AudioContainer extends Component {
   audioListener = playObject => {
     const playedSeconds = playObject.playedSeconds;
     const played = playObject.played;
-    console.log("played", played);
+    // console.log("played", played);
+    // console.log("playedSeconds", playedSeconds);
     const transcriptions = this.props.transcription;
     let currentTrans = transcriptions.find(el => {
       return (

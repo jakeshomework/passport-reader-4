@@ -59,10 +59,12 @@ class AnnotationEditorNote extends Component {
 
   handleInputChange = e => {
     /* --- update in modifiedHighlight - not yet saved in App --- */
-    this.props.modalActions.updateAnnotation({
-      annotationIndex: this.props.annotationIndex,
-      content: e.target.value
-    });
+    if (this.props.canAnnotate && this.props.isOwner) {
+      this.props.modalActions.updateAnnotation({
+        annotationIndex: this.props.annotationIndex,
+        content: e.target.value
+      });
+    }
   };
 
   handleSave = () => {
@@ -122,20 +124,9 @@ class AnnotationEditorNote extends Component {
           handleSave={this.handleSave}
           handleDelete={this.handleDelete}
           isSaved={isAnnotationSaved}
+          canAnnotate={this.props.canAnnotate}
+          isOwner={this.props.isOwner}
         />
-        {/*<div className={classes.annotationButtonsCont}>
-          <Button onClick={this.handleDelete} className={classes.deleteButton}>
-            <DeleteIcon />
-          </Button>
-
-          <Button
-            onClick={this.handleSaveChanges}
-            className={classes.saveButton}
-            disabled={this.state.unsavedChanges ? false : true}
-          >
-            SAVE
-          </Button>
-        </div>*/}
       </div>
     );
   }

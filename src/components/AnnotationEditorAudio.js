@@ -50,10 +50,11 @@ class AnnotationEditorAudio extends Component {
   };
 
   startRecording = () => {
-    console.log("WTTFFFFF");
-    this.setState({
-      record: true
-    });
+    if (this.props.canAnnotate && this.props.isOwner) {
+      this.setState({
+        record: true
+      });
+    }
   };
 
   stopRecording = () => {
@@ -101,6 +102,7 @@ class AnnotationEditorAudio extends Component {
           isRecording={this.state.record}
           start={this.startRecording}
           stop={this.stopRecording}
+          isOwner={this.props.isOwner}
         />
       </div>
     );

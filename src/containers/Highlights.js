@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 /* ----- COMPONENT IMPORTS ----- */
 import HighlightsList from "../components/HighlightsList";
-import StudyMode from "../components/StudyMode";
+import FlashCardContainer from "./FlashCardContainer";
 
 /* ----- MATERIAL-UI COMPONENTS ----- */
 import { withStyles } from "material-ui/styles";
@@ -47,7 +47,8 @@ class Highlights extends Component {
           <Grid item xs sm={1} />
           <Grid item xs sm={10}>
             <Button variant="raised" className={classes.button}>
-              <StudyMode />
+              Study Mode
+              {/*<FlashCardContainer studySet={this.props.highlights} />*/}
             </Button>
             <HighlightsList
               filteredList={this.props.highlights}

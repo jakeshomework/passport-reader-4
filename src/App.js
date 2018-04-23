@@ -170,7 +170,6 @@ class App extends Component {
       //
     },
     update: highlightUpdate => {
-      console.log(highlightUpdate);
       this.setState(prevState => updateHighlight(prevState, highlightUpdate));
     },
     deleteHighlight: highlightId => {
@@ -188,6 +187,7 @@ class App extends Component {
       this.setState(prevState => updateAnnotation(prevState, annotationObject));
     },
     deleteAnnotation: annotationObject => {
+      console.log("delete buddy", annotationObject);
       this.setState(prevState => deleteAnnotation(prevState, annotationObject));
     }
   };
@@ -195,7 +195,6 @@ class App extends Component {
   annotationModalControl = {
     close: () => this.setState(prevState => closeModal(prevState)),
     open: highlightsIdArray => {
-      console.log(highlightsIdArray);
       this.setState(prevState => openModal(prevState, highlightsIdArray));
     },
     update: content =>
@@ -283,6 +282,7 @@ class App extends Component {
           userId={this.state.user.userId}
           highlightsControl={this.highlightsControl}
           settings={this.state.settings}
+          permissions={this.state.permissions}
         />
         <Paper>
           <SwipeableViews

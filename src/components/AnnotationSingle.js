@@ -71,11 +71,16 @@ class AnnotationSingle extends Component {
       });
     },
     deleteAnnotation: annotationIndex => {
+      console.log("delete from Single", annotationIndex);
       this.setState(prevState => {
         let updatedHighlight = JSON.parse(
           JSON.stringify(prevState.modifiedHighlight)
         );
+        console.log("before", updatedHighlight);
+        // whyDoesThisBreak?
         updatedHighlight.annotations.splice(annotationIndex, 1);
+        console.log("after", updatedHighlight);
+
         return { modifiedHighlight: updatedHighlight };
       });
     },
@@ -130,6 +135,8 @@ class AnnotationSingle extends Component {
     const {
       highlight,
       users,
+      userId,
+      permissions,
       annotationModalControl,
       highlightsControl,
       classes
@@ -142,12 +149,11 @@ class AnnotationSingle extends Component {
           {`${users[highlight.userId].firstName} ${users[highlight.userId]
             .lastName} ${moment(highlight.createdAt).fromNow()}`}
         </Typography>
-        <Typography align="center">
-          Highlight Saved:{this.isHighlightSaved().toString()}
-        </Typography>
         <DialogContent>
           <AnnotationOptions
             users={users}
+            userId={userId}
+            permissions={permissions}
             highlight={highlight}
             modifiedHighlight={this.state.modifiedHighlight}
             highlightsControl={highlightsControl}
@@ -157,7 +163,10 @@ class AnnotationSingle extends Component {
         </DialogContent>
         <DialogActions>
           <div className={classes.actions}>
-            <Button onClick={this.modalActions.deleteHighlight}>
+            <Button
+              onClick={this.modalActions.deleteHighlight}
+              disabled={userId !== this.state.modifiedHighlight.userId}
+            >
               <DeleteIcon />
             </Button>
 

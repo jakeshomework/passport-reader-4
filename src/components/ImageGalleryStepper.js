@@ -6,15 +6,26 @@ import Button from "material-ui/Button";
 import KeyboardArrowLeft from "material-ui-icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "material-ui-icons/KeyboardArrowRight";
 
-/*---Switch image in gallery.---*/
+import { withStyles } from "material-ui/styles";
 
-const ImageGalleryStepper = ({ handleBack, handleNext, position, length }) => {
+/*---Switch image in gallery.---*/
+const styles = {};
+
+const ImageGalleryStepper = ({
+  handleBack,
+  handleNext,
+  closeGallery,
+  position,
+  length,
+  classes
+}) => {
   return (
     <div>
       <MobileStepper
         type="dots"
         steps={length}
-        position="static"
+        position="bottom"
+        maxWidth="xs"
         activeStep={position}
         backButton={
           <Button dense onClick={handleBack} disabled={position === 0}>
@@ -40,4 +51,4 @@ ImageGalleryStepper.propTypes = {
   length: PropTypes.number
 };
 
-export default ImageGalleryStepper;
+export default withStyles(styles)(ImageGalleryStepper);

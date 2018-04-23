@@ -79,6 +79,7 @@ class AnnotationModal extends Component {
       highlightsControl,
       darkMode,
       users,
+      permissions,
       userId,
       classes
     } = this.props;
@@ -126,6 +127,7 @@ class AnnotationModal extends Component {
               <AnnotationSingle
                 users={users}
                 userId={userId}
+                permissions={permissions}
                 highlight={highlights[highlightsIdArray[0]]}
                 annotationModalControl={annotationModalControl}
                 highlightsControl={highlightsControl}

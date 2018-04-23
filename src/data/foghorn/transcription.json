@@ -105,10 +105,10 @@
     "phraseTranscribed":
       "on the mysteries of the sea mcdunn latest pipe it was a quarter past 7 on a cold November evening the heat on the light switching its tail in 200 directions the Foghorn bumbling in the high throw to the Tower",
     "phraseDisplayed":
-      "the mysteries of the sea McDunn lit his pipe It was a quarter past seven on a cold November evening the heat on the light switching its tail in two hundred directions the Fog Horn bumbling in the high throat of the tower",
+      "On the mysteries of the sea McDunn lit his pipe It was a quarter past seven on a cold November evening the heat on the light switching its tail in two hundred directions the Fog Horn bumbling in the high throat of the tower",
     "startTime": 67.6,
     "endTime": 82.3,
-    "startId": "emc-360",
+    "startId": "emc-358",
     "endId": "emc-444",
     "startIndex": 167,
     "endIndex": 207,
@@ -118,23 +118,36 @@
     "phraseTranscribed":
       "there wasn't a town for a hundred miles down the coast just a road which came lonely through dead country to the sea with few cars on it a stretch of 2 miles of cold water outdoor rock and rare few ships",
     "phraseDisplayed":
-      "There wasn’t a town for a hundred miles down the coast just a road which came lonely through dead country to the sea with few cars on it a stretch of two miles of cold water out to our rock and rare",
+      "There wasn’t a town for a hundred miles down the coast just a road which came lonely through dead country to the sea with few cars on it a stretch of two miles of cold water out to our rock and rare few ships",
     "startTime": 83.3,
     "endTime": 97.4,
     "startId": "emc-446",
-    "endId": "emc-528",
+    "endId": "emc-532",
     "startIndex": 210,
     "endIndex": 251,
     "confidence": 0.6190476190476191
   },
   {
     "phraseTranscribed":
-      "the mysteries of the sea said McDonald thoughtfully you know the oceans the biggest snowflake ever it rolls and swells a thousand shapes and colors no two alike strange one night years ago I was here alone when all of the fish of the sea surface doubt there something made them swim in inline the bay sort of trembling they stared up at the tower light going red white red white across them so I could see their funny eyes I turned cold they were like a big peacock's tail moving out there until midnight then without so much as a sound they slipped away",
+      "the mysteries of the sea said McDonald thoughtfully you know the oceans the biggest snowflake ever it rolls and swells a thousand shapes and colors no two alike",
     "phraseDisplayed":
-      "The mysteries of the sea said McDunn thoughtfully You know the ocean’s the biggest snowflake ever It rolls and swells a thousand shapes and colors no two alike Strange One night years ago I was here alone when all of the fish of the sea surfaced out there Something made them swim in and lie in the bay sort of trembling They stared up at the tower light going red white red white across them so I could see their funny eyes I turned cold They were like a big peacock’s tail moving out there until midnight Then without so much as a sound they slipped away",
+      "The mysteries of the sea said McDunn thoughtfully You know the ocean’s the biggest snowflake ever It rolls and swells a thousand shapes and colors no two alike",
     "startTime": 98.5,
-    "endTime": 140.8,
+    "endTime": 110.1,
     "startId": "emc-535",
+    "endId": "emc-589",
+    "startIndex": 254,
+    "endIndex": 358,
+    "confidence": 0.4
+  },
+  {
+    "phraseTranscribed":
+      "strange one night years ago I was here alone when all of the fish of the sea surface doubt there something made them swim in inline the bay sort of trembling they stared up at the tower light going red white red white across them so I could see their funny eyes I turned cold they were like a big peacock's tail moving out there until midnight then without so much as a sound they slipped away",
+    "phraseDisplayed":
+      "Strange One night years ago I was here alone when all of the fish of the sea surfaced out there Something made them swim in and lie in the bay sort of trembling They stared up at the tower light going red white red white across them so I could see their funny eyes I turned cold They were like a big peacock’s tail moving out there until midnight Then without so much as a sound they slipped away",
+    "startTime": 110.2,
+    "endTime": 140.8,
+    "startId": "emc-591",
     "endId": "emc-747",
     "startIndex": 254,
     "endIndex": 358,
@@ -157,11 +170,11 @@
     "phraseTranscribed":
       "but think how the tower must look to them standing 70 feet above the water the god light flashing out from it and the tower declaring itself with a monster voice",
     "phraseDisplayed":
-      "But think how the tower must look to them standing seventy feet above the water the God-light flashing out from it and the tower declaring itself with a monster voice They",
+      "But think how the tower must look to them standing seventy feet above the water the God-light flashing out from it and the tower declaring itself with a monster voice",
     "startTime": 151.6,
     "endTime": 161.5,
     "startId": "emc-797",
-    "endId": "emc-857",
+    "endId": "emc-855",
     "startIndex": 385,
     "endIndex": 415,
     "confidence": 0.41935483870967744
@@ -196,23 +209,36 @@
     "phraseTranscribed":
       "oh the Seas full McDonald puffed his pipe nervously blinking have been nervous all day and hadn't said why",
     "phraseDisplayed":
-      "Oh the sea’s full McDunn puffed his pipe nervously blinking He had been nervous all day and hadn’t said",
+      "Oh the sea’s full McDunn puffed his pipe nervously blinking He had been nervous all day and hadn’t said why",
     "startTime": 177.1,
     "endTime": 184.9,
     "startId": "emc-937",
-    "endId": "emc-973",
+    "endId": "emc-975",
     "startIndex": 454,
     "endIndex": 472,
     "confidence": 0.42105263157894735
   },
   {
     "phraseTranscribed":
-      "for all our engines and so-called submarines it'll be ten thousand centuries before we set foot on the real bottom of the sunken lands in the fairy kingdoms there and no real terror think of it it's still the year 300000 before Christ down under there while we've paraded around with trumpets lopping off each others countries and heads they have been living Beneath the Sea 12 miles deep in cold in a time as old as the beard of a comet",
+      "for all our engines and so-called submarines it'll be ten thousand centuries before we set foot on the real bottom of the sunken lands in the fairy kingdoms there and no real terror",
     "phraseDisplayed":
-      "For all our engines and so-called submarines it’ll be ten thousand centuries before we set foot on the real bottom of the sunken lands in the fairy kingdoms there and know real terror Think of it It’s still the year 300,000 Before Christ down under there While we’ve paraded around with trumpets lopping off each other’s countries and heads they have been living beneath the sea twelve miles deep and cold in a time as old as the beard of a comet",
+      "For all our engines and so-called submarines it’ll be ten thousand centuries before we set foot on the real bottom of the sunken lands in the fairy kingdoms there and know real terror",
     "startTime": 186.1,
-    "endTime": 215.2,
+    "endTime": 197.6,
     "startId": "emc-977",
+    "endId": "emc-1041",
+    "startIndex": 474,
+    "endIndex": 555,
+    "confidence": 0.7195121951219512
+  },
+  {
+    "phraseTranscribed":
+      "think of it it's still the year 300000 before Christ down under there while we've paraded around with trumpets lopping off each others countries and heads they have been living Beneath the Sea 12 miles deep in cold in a time as old as the beard of a comet",
+    "phraseDisplayed":
+      "Think of it It’s still the year 300,000 Before Christ down under there While we’ve paraded around with trumpets lopping off each other’s countries and heads they have been living beneath the sea twelve miles deep and cold in a time as old as the beard of a comet",
+    "startTime": 197.7,
+    "endTime": 215.2,
+    "startId": "emc-1043",
     "endId": "emc-1139",
     "startIndex": 474,
     "endIndex": 555,
@@ -289,7 +315,7 @@
     "startTime": 245.3,
     "endTime": 248.9,
     "startId": "emc-1285",
-    "endId": "emc-1307",
+    "endId": "emc-1303",
     "startIndex": 626,
     "endIndex": 637,
     "confidence": 0.4166666666666667
@@ -311,10 +337,10 @@
     "phraseTranscribed":
       "in the deeps do answer yes they do you been here now for 3 months Johnny so I better prepare you about this time of year he said studying the mark and fog something comes to visit the lighthouse",
     "phraseDisplayed":
-      "​ the Deeps do answer yes they do You been here now for three months Johnny so I better prepare you About this time of year he said studying the murk and fog something comes to visit the lighthouse",
+      "​and the Deeps do answer yes they do You been here now for three months Johnny so I better prepare you About this time of year he said studying the murk and fog something comes to visit the lighthouse",
     "startTime": 261,
     "endTime": 274.8,
-    "startId": "emc-1363",
+    "startId": "emc-1361",
     "endId": "emc-1439",
     "startIndex": 665,
     "endIndex": 703,
