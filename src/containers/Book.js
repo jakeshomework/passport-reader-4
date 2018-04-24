@@ -13,7 +13,6 @@ import IconButton from "material-ui/IconButton";
 import CloseIcon from "material-ui-icons/Close";
 
 /* ----- UTILITY IMPORTS ----- */
-import { addHighlightsToBook } from "../utils/addHighlightsToBook";
 import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
 
 //import GET_DISPLAY from "../graphql/GET_DISPLAY";
@@ -71,9 +70,13 @@ class Book extends Component {
 
       /* --- swap values if user highlighted content in reverse --- */
       const startId =
-        parseInt(anchor.slice(4)) < parseInt(focus.slice(4)) ? anchor : focus;
+        parseInt(anchor.slice(4), 10) < parseInt(focus.slice(4), 10)
+          ? anchor
+          : focus;
       const endId =
-        parseInt(anchor.slice(4)) > parseInt(focus.slice(4)) ? anchor : focus;
+        parseInt(anchor.slice(4), 10) > parseInt(focus.slice(4), 10)
+          ? anchor
+          : focus;
 
       /* --- build array of displayIds to fill this.state.content --- */
       const arrayOfContent = buildArrayOfDisplayIds(startId, endId);
@@ -162,13 +165,14 @@ class Book extends Component {
   handleBack = () => {};
 
   render() {
-    /* --- run handleSelect on an interval if showTooltip is true --- */
+    /* --- Move HighlightToolTip to the right position --- */
     const selectWatcher = setTimeout(this.handleSelect, 500);
     const selectWatcherControl = this.state.showTooltip
       ? selectWatcher
       : clearInterval(selectWatcher);
 
-    const { bookDisplay, galleries } = this.props.book;
+    /* --- run handleSelect on an interval if showTooltip is true --- */
+    const { galleries } = this.props.book;
     const {
       highlights,
       highlightsControl,
@@ -177,18 +181,7 @@ class Book extends Component {
       classes
     } = this.props;
 
-    const highlightsKeys = Object.keys(highlights);
-    // console.log(highlightsKeys);
-    // console.log(highlights);
-
-    highlightsKeys.forEach(highlightId => {
-      const { startId, endId, id } = highlights[highlightId];
-
-      // console.log("startID: ", startId.slice(4));
-      // const emcIdArray =
-      // TODO: only add highlightId to
-    });
-    const { vertical, horizontal, open } = this.state;
+    const { open } = this.state;
     return (
       <div className={classes.root}>
         <AudioContainer
@@ -204,7 +197,6 @@ class Book extends Component {
             {this.state.event}
             {this.state.showTooltip ? (
               <HighlightTooltip
-                open={this.state.showTooltip}
                 selection={this.state.selection}
                 highlightsControl={highlightsControl}
                 closeTooltip={this.closeTooltip}
@@ -262,6 +254,21 @@ class Book extends Component {
   }
 }
 
-Book.propTypes = {};
+Book.propTypes = {
+  book: PropTypes.object
+  // bookDisplayWithHighlights={addHighlightsToBook(
+  //   this.state.book.bookDisplay,
+  //   highlightsToRender
+  // )}
+  // highlights={this.state.highlights}
+  // settings={this.state.settings}
+  // style={Object.assign({}, styles.slide, styles.slide2)}
+  // annotationModalControl={this.annotationModalControl}
+  // highlightsControl={this.highlightsControl}
+  // glossary={this.state.glossary}
+  // audioControls={this.audioControls}
+  // audio={this.state.audio}
+  // transcription={this.state.transcription}
+};
 
 export default withStyles(styles)(Book);

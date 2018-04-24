@@ -1,20 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
+
 /* ----- COMPONENT IMPORTS ----- */
-import ColorSelector from "../components/ColorSelector";
 import AnnotationSingle from "../components/AnnotationSingle";
 import AnnotationMulti from "../components/AnnotationMulti";
 import renderHTML from "react-render-html";
-/* ----- GRAPHQL IMPORTS ----- */
-//import GET_HIGHLIGHT_BY_ID from "../graphql/GET_HIGHLIGHT_BY_ID";
-//import UPDATE_HIGHLIGHT from "../graphql/UPDATE_HIGHLIGHT";
-//import DELETE_HIGHLIGHT from "../graphql/DELETE_HIGHLIGHT";
 
 /* ----- MATERIAL-UI IMPORTS ----- */
-import Button from "material-ui/Button";
 import Dialog, { DialogTitle } from "material-ui/Dialog";
-
 import Typography from "material-ui/Typography";
 import Paper from "material-ui/Paper";
 import { withStyles } from "material-ui/styles";
@@ -77,7 +70,6 @@ class AnnotationModal extends Component {
       highlights,
       annotationModalControl,
       highlightsControl,
-      darkMode,
       users,
       permissions,
       userId,
@@ -141,6 +133,16 @@ class AnnotationModal extends Component {
   }
 }
 
-AnnotationModal.propTypes = {};
+AnnotationModal.propTypes = {
+  open: PropTypes.bool
+  // highlightsIdArray={this.state.annotationModal.highlightsIdArray}
+  // highlights={this.state.highlights}
+  // annotationModalControl={this.annotationModalControl}
+  // users={UsersDemo}
+  // userId={this.state.user.userId}
+  // highlightsControl={this.highlightsControl}
+  // settings={this.state.settings}
+  // permissions={this.state.permissions}
+};
 
 export default withStyles(styles)(AnnotationModal);

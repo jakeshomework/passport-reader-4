@@ -3,19 +3,13 @@ import PropTypes from "prop-types";
 import moment from "moment";
 /* ----- MATERIAL-UI IMPORTS ----- */
 import Button from "material-ui/Button";
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
-} from "material-ui/Dialog";
+import { DialogActions, DialogContent } from "material-ui/Dialog";
 import Avatar from "material-ui/Avatar";
 import Chip from "material-ui/Chip";
 import Badge from "material-ui/Badge";
 import { withStyles } from "material-ui/styles";
 import CloseIcon from "material-ui-icons/Close";
 import grey from "material-ui/colors/grey";
-import Typography from "material-ui/Typography";
 
 /* ----- CONFIG IMPORTS ----- */
 import { colorLabels } from "../config/colorLabels";
@@ -74,7 +68,6 @@ function AnnotationMulti({
             const user = users[highlight.userId];
 
             const initials = user.firstName.charAt(0) + user.lastName.charAt(0);
-            const generateBGColor = colorLabels[highlight.color].active;
             const createdDate = moment(highlight.createdAt).fromNow();
 
             const generateChipLabel = (
@@ -126,7 +119,12 @@ function AnnotationMulti({
   );
 }
 
-const propTypes = {};
+const propTypes = {
+  users: PropTypes.object
+  // highlights={highlights}
+  // highlightsIdArray={highlightsIdArray}
+  // annotationModalControl={annotationModalControl}
+};
 
 AnnotationMulti.propTypes = propTypes;
 

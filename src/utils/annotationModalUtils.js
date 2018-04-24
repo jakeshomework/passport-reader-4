@@ -8,7 +8,7 @@ export const closeModal = prevState => {
 };
 
 export const openModal = (prevState, highlightsIdArray) => {
-  console.log("highlightsIdArray", highlightsIdArray);
+  // console.log("highlightsIdArray", highlightsIdArray);
   return {
     annotationModal: {
       ...prevState.annotationModal,

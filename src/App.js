@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-import "./App.css";
+
 /* ----- IMPORT LIBRARIES ----- */
 import SwipeableViews from "react-swipeable-views";
-import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
-import { withStyles } from "material-ui/styles";
+
+/* ----- IMPORT FONTS ----- */
 import "typeface-roboto";
 import "typeface-open-sans";
 import "typeface-playfair-display";
 import "typeface-montserrat";
 import "typeface-lobster";
 import "typeface-vt323";
+
+/* ----- MATERIAL-UI IMPORTS ----- */
 import Paper from "material-ui/Paper";
+import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
+import { withStyles } from "material-ui/styles";
 
 /* ----- IMPORT CONTAINERS ----- */
 import Settings from "./containers/Settings";
@@ -19,7 +23,7 @@ import Highlights from "./containers/Highlights";
 import SpeedReader from "./containers/SpeedReader";
 import AnnotationModal from "./containers/AnnotationModal";
 import NavigationMenu from "./containers/NavigationMenu";
-import grey from "material-ui/colors/grey";
+
 /* ----- IMPORT UTILITIES ----- */
 import { formatBookString } from "./utils/formatBookString";
 import {
@@ -47,7 +51,6 @@ import {
   seekAudio,
   setHighlights
 } from "./utils/audioUtils";
-
 import { addHighlightsToBook } from "./utils/addHighlightsToBook";
 
 /* ----- IMPORT USER DATA ----- */
@@ -55,6 +58,7 @@ import { UsersDemo } from "./data/users.js";
 
 /* ----- IMPORT STYLES ----- */
 import { AppStyles } from "./styles/AppStyles.js";
+import "./App.css";
 
 /* ----- BOOK IMPORT (FOGHORN) ----- */
 import { FoghornString } from "./data/foghorn/content1Unformatted.js";
@@ -75,8 +79,6 @@ const formattedTym = formatBookString(TymString);
 const formattedFoghorn = formatBookString(FoghornString);
 
 const transcription = JSON.parse(JSON.stringify(FoghornTranscription));
-
-const handleChangeIndex = () => {};
 
 const styles = AppStyles;
 
@@ -180,8 +182,7 @@ class App extends Component {
             open: false
           }
         };
-      }),
-        this.setState(prevState => deleteHighlight(prevState, highlightId));
+      }, this.setState(prevState => deleteHighlight(prevState, highlightId)));
     },
     updateAnnotation: annotationObject => {
       this.setState(prevState => updateAnnotation(prevState, annotationObject));
@@ -277,7 +278,6 @@ class App extends Component {
           highlightsIdArray={this.state.annotationModal.highlightsIdArray}
           highlights={this.state.highlights}
           annotationModalControl={this.annotationModalControl}
-          darkMode={this.state.settings.darkMode}
           users={UsersDemo}
           userId={this.state.user.userId}
           highlightsControl={this.highlightsControl}
@@ -289,15 +289,13 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={
-              {
-                /*this.state.settings.darkMode ? (
+            style={{
+              /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-              }
-            }
+            }}
           >
             <Settings
               settings={this.state.settings}
@@ -317,7 +315,6 @@ class App extends Component {
               style={Object.assign({}, styles.slide, styles.slide2)}
               annotationModalControl={this.annotationModalControl}
               highlightsControl={this.highlightsControl}
-              settings={this.state.settings}
               glossary={this.state.glossary}
               audioControls={this.audioControls}
               audio={this.state.audio}

@@ -1,25 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
+
 /* ----- MATERIAL-UI IMPORTS ----- */
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
-} from "material-ui/Dialog";
+import { DialogActions, DialogContent } from "material-ui/Dialog";
 import Typography from "material-ui/Typography";
 import Button from "material-ui/Button";
 import { withStyles } from "material-ui/styles";
 import DeleteIcon from "material-ui-icons/Delete";
 import CloseIcon from "material-ui-icons/Close";
 import DoneIcon from "material-ui-icons/Done";
-import ShareIcon from "material-ui-icons/Share";
-import SaveIcon from "material-ui-icons/Save";
 import grey from "material-ui/colors/grey";
 
 /* ----- COMPONENT IMPORTS ----- */
 import AnnotationOptions from "../components/AnnotationOptions";
+
+/* --- IMPORT EXTERNAL LIBRARIES --- */
+import moment from "moment";
 
 const styles = theme => ({
   actions: {
@@ -51,8 +47,6 @@ class AnnotationSingle extends Component {
       this.props.annotationModalControl.close();
     },
     addAnnotation: ({ annotationIndex, type }) => {
-      console.log("adding annotation");
-
       const newAnnotationObject = {
         userId: this.props.userId,
         type: type,
@@ -132,7 +126,6 @@ class AnnotationSingle extends Component {
       users,
       userId,
       permissions,
-      annotationModalControl,
       highlightsControl,
       classes
     } = this.props;
@@ -185,7 +178,14 @@ class AnnotationSingle extends Component {
   }
 }
 
-const propTypes = {};
+const propTypes = {
+  users: PropTypes.object
+  // userId={userId}
+  // permissions={permissions}
+  // highlight={highlights[highlightsIdArray[0]]}
+  // annotationModalControl={annotationModalControl}
+  // highlightsControl={highlightsControl}
+};
 
 AnnotationSingle.propTypes = propTypes;
 

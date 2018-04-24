@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
+// ----- MATERIAL-UI IMPORTS ----- //
 import LabelIcon from "material-ui-icons/Label";
 import BottomNavigation, {
   BottomNavigationAction
 } from "material-ui/BottomNavigation";
 import { withStyles } from "material-ui/styles";
 import Typography from "material-ui/Typography";
-
-// ===== MATERIAL-UI COLOR IMPORTS ===== //
-import lightBlue from "material-ui/colors/lightBlue";
-import lightGreen from "material-ui/colors/lightGreen";
-import pink from "material-ui/colors/pink";
-import purple from "material-ui/colors/purple";
-import yellow from "material-ui/colors/yellow";
 import grey from "material-ui/colors/grey";
 import IconButton from "material-ui/IconButton";
 import CloseIcon from "material-ui-icons/Close";
+
 /* ----- COMPONENT IMPORTS ----- */
 import { colorLabels } from "../config/colorLabels";
 
@@ -74,13 +70,7 @@ class ColorSelector extends Component {
   };
 
   render() {
-    const {
-      handleClick,
-      current,
-      isTooltip,
-      closeTooltip,
-      classes
-    } = this.props;
+    const { handleClick, current, classes } = this.props;
 
     return (
       <div className={classes.root}>

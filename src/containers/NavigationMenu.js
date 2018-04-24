@@ -10,7 +10,6 @@ import BottomNavigation, {
 import Book from "material-ui-icons/Book";
 import Settings from "material-ui-icons/Settings";
 import FormatListBulleted from "material-ui-icons/FormatListBulleted";
-import VolumeUp from "material-ui-icons/VolumeUp";
 import Headset from "material-ui-icons/Headset";
 import WbIridescent from "material-ui-icons/WbIridescent";
 

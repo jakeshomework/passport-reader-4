@@ -1,18 +1,15 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+
+/* ----- UTILITY IMPORTS ----- */
 import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
+
 /* ----- MATERIAL-UI IMPORTS ----- */
-import Typography from "material-ui/Typography";
-import Snackbar, { SnackbarContent } from "material-ui/Snackbar";
-import { MenuItem } from "material-ui/Menu";
-import Select from "material-ui/Snackbar";
-import Input, { InputLabel } from "material-ui/Input";
-import { FormControl } from "material-ui/Form";
+import Snackbar from "material-ui/Snackbar";
 import Play from "material-ui-icons/PlayArrow";
 import Pause from "material-ui-icons/Pause";
 import Forward from "material-ui-icons/SkipNext";
 import Backward from "material-ui-icons/SkipPrevious";
-import { LinearProgress } from "material-ui/Progress";
 import IconButton from "material-ui/IconButton";
 import CloseIcon from "material-ui-icons/Close";
 
@@ -120,7 +117,7 @@ class AudioContainer extends Component {
     let currentIndex = this.findCurrentTranscriptionIndex(
       this.state.playedSeconds
     );
-    if (currentIndex != 0) {
+    if (currentIndex !== 0) {
       let oneOrZero =
         this.state.playedSeconds - 2 <
         this.props.transcription[currentIndex].startTime
@@ -198,13 +195,7 @@ class AudioContainer extends Component {
   };
 
   render() {
-    const {
-      bookName,
-      transcription,
-      audio,
-      audioControls,
-      classes
-    } = this.props;
+    const { bookName, audio, audioControls, classes } = this.props;
 
     const audioFile = `book-${bookName}/audio/${bookName}.mp3`;
 
@@ -295,6 +286,10 @@ class AudioContainer extends Component {
   }
 }
 
-AudioContainer.propTypes = {};
+AudioContainer.propTypes = {
+  // transcription: PropTypes.Object,
+  // audioControls: PropTypes.Object,
+  // audio: PropTypes.Object
+};
 
 export default withStyles(styles)(AudioContainer);

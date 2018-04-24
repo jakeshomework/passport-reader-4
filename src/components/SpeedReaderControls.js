@@ -41,6 +41,7 @@ class SpeedReaderControls extends Component {
       classes,
       wpmOptions,
       changeWpm,
+      wpm,
       resetWords,
       pause,
       play,
@@ -69,8 +70,8 @@ class SpeedReaderControls extends Component {
         </Button>
         <FormControl className={classes.formControl}>
           <Select
-            value={this.props.wpm}
-            onChange={this.props.changeWpm}
+            value={wpm}
+            onChange={changeWpm}
             input={<Input id="select-wpm" />}
           >
             {wpmOptions.map(wpmOption => (

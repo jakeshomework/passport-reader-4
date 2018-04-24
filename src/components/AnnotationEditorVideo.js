@@ -1,18 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 /* ----- MATERIAL-UI IMPORTS ----- */
-import Typography from "material-ui/Typography";
-import Button from "material-ui/Button";
 import Card from "material-ui/Card";
-import IconButton from "material-ui/IconButton";
-import EditIcon from "material-ui-icons/Edit";
-import NoteIcon from "material-ui-icons/Note";
-import MicIcon from "material-ui-icons/Mic";
-import VideocamIcon from "material-ui-icons/Videocam";
-import ShareIcon from "material-ui-icons/Share";
-import RecordIcon from "material-ui-icons/FiberManualRecord";
-import StopIcon from "material-ui-icons/Stop";
-import grey from "material-ui/colors/grey";
 import { withStyles } from "material-ui/styles";
 /* --- IMPORT EXTERNAL LIBRARIES --- */
 import MediaCapturer from "react-multimedia-capture";
@@ -48,15 +38,15 @@ class AnnotationEditorVideo extends React.Component {
       savedAudioFile: ""
     };
 
-    this.handleGranted = this.handleGranted.bind(this);
-    this.handleDenied = this.handleDenied.bind(this);
-    this.handleStart = this.handleStart.bind(this);
-    this.handleStop = this.handleStop.bind(this);
-    this.handlePause = this.handlePause.bind(this);
-    this.handleResume = this.handleResume.bind(this);
-    this.setStreamToVideo = this.setStreamToVideo.bind(this);
-    this.releaseStreamFromVideo = this.releaseStreamFromVideo.bind(this);
-    this.downloadVideo = this.downloadVideo.bind(this);
+    // this.handleGranted = this.handleGranted.bind(this);
+    // this.handleDenied = this.handleDenied.bind(this);
+    // this.handleStart = this.handleStart.bind(this);
+    // this.handleStop = this.handleStop.bind(this);
+    // this.handlePause = this.handlePause.bind(this);
+    // this.handleResume = this.handleResume.bind(this);
+    // this.setStreamToVideo = this.setStreamToVideo.bind(this);
+    // this.releaseStreamFromVideo = this.releaseStreamFromVideo.bind(this);
+    // this.downloadVideo = this.downloadVideo.bind(this);
   }
 
   componentDidMount = () => {
@@ -82,52 +72,52 @@ class AnnotationEditorVideo extends React.Component {
     this.props.modalActions.deleteAnnotation(this.props.annotationIndex);
   };
 
-  handleGranted() {
+  handleGranted = () => {
     this.setState({ granted: true });
-    console.log("Permission Granted!");
-  }
-  handleDenied(err) {
+    // console.log("Permission Granted!");
+  };
+  handleDenied = err => {
     this.setState({ rejectedReason: err.name });
-    console.log("Permission Denied!", err);
-  }
-  handleStart(stream) {
+    // console.log("Permission Denied!", err);
+  };
+  handleStart = stream => {
     if (this.props.canAnnotate && this.props.isOwner) {
       this.setState({
         recording: true
       });
 
       this.setStreamToVideo(stream);
-      console.log("Recording Started.");
+      // console.log("Recording Started.");
     }
-  }
-  handleStop(blob) {
+  };
+  handleStop = blob => {
     this.setState({
       recording: false
     });
 
     this.releaseStreamFromVideo();
 
-    console.log("Recording Stopped.");
+    // console.log("Recording Stopped.");
     this.downloadVideo(blob);
-  }
-  handlePause() {
+  };
+  handlePause = () => {
     this.releaseStreamFromVideo();
 
     this.setState({
       paused: true
     });
-  }
-  handleResume(stream) {
+  };
+  handleResume = stream => {
     this.setStreamToVideo(stream);
 
     this.setState({
       paused: false
     });
-  }
-  handleError(err) {
+  };
+  handleError = err => {
     console.log(err);
-  }
-  setStreamToVideo(stream) {
+  };
+  setStreamToVideo = stream => {
     let video = this.refs.app.querySelector("video");
 
     if (window.URL) {
@@ -135,27 +125,16 @@ class AnnotationEditorVideo extends React.Component {
     } else {
       video.src = stream;
     }
-  }
-  releaseStreamFromVideo() {
+  };
+  releaseStreamFromVideo = () => {
     this.refs.app.querySelector("video").src = "";
-  }
-  downloadVideo(blob) {
+  };
+  downloadVideo = blob => {
     let url = URL.createObjectURL(blob);
     this.setState({ videoSrc: url });
-    // let a = document.createElement("a");
-    // a.style.display = "none";
-    // a.href = url;
-    // a.target = "_blank";
-    // document.body.appendChild(a);
-
-    // a.click();
-  }
+  };
   render() {
     const { classes, isAnnotationSaved } = this.props;
-    const granted = this.state.granted;
-    const rejectedReason = this.state.rejectedReason;
-    const recording = this.state.recording;
-    const paused = this.state.paused;
 
     return (
       <div ref="app" className={classes.root}>
@@ -201,5 +180,14 @@ class AnnotationEditorVideo extends React.Component {
     );
   }
 }
+
+AnnotationEditorVideo.propTypes = {
+  modifiedAnnotation: PropTypes.object
+  // isAnnotationSaved={isAnnotationSaved()}
+  // annotationIndex={index}
+  // modalActions={modalActions}
+  // canAnnotate={canAnnotateHighlight()}
+  // isOwner={userId === modifiedAnnotation.userId}
+};
 
 export default withStyles(styles)(AnnotationEditorVideo);

@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 /* ----- COMPONENT IMPORTS ----- */
 import HighlightsList from "../components/HighlightsList";
-import FlashCardContainer from "./FlashCardContainer";
+// import FlashCardContainer from "./FlashCardContainer";
 
 /* ----- MATERIAL-UI COMPONENTS ----- */
 import { withStyles } from "material-ui/styles";
-import { filterHighlightsUtils } from "../utils/filterHighlightsUtils";
+// import { filterHighlightsUtils } from "../utils/filterHighlightsUtils";
 import Button from "material-ui/Button";
 import Grid from "material-ui/Grid";
 
@@ -64,6 +64,11 @@ class Highlights extends Component {
   }
 }
 
-Highlights.propTypes = {};
+Highlights.propTypes = {
+  highlights: PropTypes.object
+  // style={Object.assign({}, styles.slide, styles.highlightsSlide)}
+  // annotationModalControl={this.annotationModalControl}
+  // users={UsersDemo}
+};
 
 export default withStyles(styles)(Highlights);

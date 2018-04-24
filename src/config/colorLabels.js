@@ -4,7 +4,6 @@ import lightGreen from "material-ui/colors/lightGreen";
 import pink from "material-ui/colors/pink";
 import purple from "material-ui/colors/purple";
 import yellow from "material-ui/colors/yellow";
-import grey from "material-ui/colors/grey";
 import teal from "material-ui/colors/teal";
 
 export const colorLabels = {

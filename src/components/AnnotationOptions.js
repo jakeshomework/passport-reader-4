@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+
 /* ----- MATERIAL-UI IMPORTS ----- */
 import { withStyles } from "material-ui/styles";
 import ExpansionPanel, {
@@ -8,16 +9,12 @@ import ExpansionPanel, {
   ExpansionPanelSummary
 } from "material-ui/ExpansionPanel";
 import Typography from "material-ui/Typography";
-import IconButton from "material-ui/IconButton";
 import ExpandMoreIcon from "material-ui-icons/ExpandMore";
 import Button from "material-ui/Button";
 import Card from "material-ui/Card";
-import EditIcon from "material-ui-icons/Edit";
 import NoteIcon from "material-ui-icons/Note";
 import MicIcon from "material-ui-icons/Mic";
 import VideocamIcon from "material-ui-icons/Videocam";
-import ShareIcon from "material-ui-icons/Share";
-import grey from "material-ui/colors/grey";
 
 /* ----- COMPONENT IMPORTS ----- */
 import AnnotationEditorAudio from "./AnnotationEditorAudio";
@@ -123,10 +120,8 @@ const AnnotationOptions = ({
             <ExpansionPanelDetails className={classes.expansionDetails}>
               {modifiedAnnotation.type === "video" ? (
                 <AnnotationEditorVideo
-                  highlightId={highlight.id}
                   modifiedAnnotation={modifiedAnnotation}
                   isAnnotationSaved={isAnnotationSaved()}
-                  highlightsControl={highlightsControl}
                   annotationIndex={index}
                   modalActions={modalActions}
                   className={classes.annotationContainer}
@@ -135,10 +130,8 @@ const AnnotationOptions = ({
                 />
               ) : modifiedAnnotation.type === "audio" ? (
                 <AnnotationEditorAudio
-                  highlightId={highlight.id}
                   modifiedAnnotation={modifiedAnnotation}
                   isAnnotationSaved={isAnnotationSaved()}
-                  highlightsControl={highlightsControl}
                   annotationIndex={index}
                   modalActions={modalActions}
                   canAnnotate={canAnnotateHighlight()}

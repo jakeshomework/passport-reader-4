@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
+
+/* --- MATERIAL-UI IMPORTS --- */
 import { withStyles } from "material-ui/styles";
-import IconButton from "material-ui/IconButton";
 import Card from "material-ui/Card";
-import Button from "material-ui/Button";
-import Edit from "material-ui-icons/Edit";
-import Mic from "material-ui-icons/Mic";
-import Videocam from "material-ui-icons/Videocam";
-import Share from "material-ui-icons/Share";
-import CloseIcon from "material-ui-icons/Close";
 
 /* ----- COMPONENT IMPORTS ----- */
 import ColorSelector from "./ColorSelector";
@@ -45,14 +39,6 @@ const getTooltipPosition = selection => {
 };
 
 class HighlightTooltip extends Component {
-  //   componentDidMount() {
-  //     renderTooltip(this.props.position);
-  //   }
-
-  //   componentDidUpdate() {
-  //     renderTooltip(this.props.position);
-  //   }
-
   addHighlight = color => {
     // console.table(selection);
     this.props.highlightsControl.add({
@@ -64,7 +50,7 @@ class HighlightTooltip extends Component {
   };
 
   render() {
-    const { open, selection, classes } = this.props;
+    const { selection, classes } = this.props;
 
     return (
       <Card
@@ -72,35 +58,20 @@ class HighlightTooltip extends Component {
         className={classes.root}
         style={getTooltipPosition(selection)}
       >
-        {/*<div className={classes.triangle} />*/}
         <ColorSelector
           handleClick={this.addHighlight}
           current="none"
           closeTooltip={this.props.closeTooltip}
         />
-
-        {/*<div className={classes.options}>
-          <div>
-            <IconButton className={classes.button} aria-label="Note">
-              <Edit />
-            </IconButton>
-            <IconButton className={classes.button} aria-label="Microphone">
-              <Mic />
-            </IconButton>
-            <IconButton className={classes.button} aria-label="Video">
-              <Videocam />
-            </IconButton>
-          </div>
-          <Button raised>Cancel</Button>
-        </div>*/}
       </Card>
     );
   }
 }
 
 HighlightTooltip.propTypes = {
-  open: PropTypes.string,
-  selection: PropTypes.object
+  highlightsControl: PropTypes.object
+  // selection={this.state.selection}
+  // closeTooltip={this.closeTooltip}
 };
 
 export default withStyles(styles)(HighlightTooltip);

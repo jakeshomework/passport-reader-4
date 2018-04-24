@@ -1,23 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
 /* ----- MATERIAL-UI IMPORTS ----- */
-import Typography from "material-ui/Typography";
-import Button from "material-ui/Button";
-import IconButton from "material-ui/IconButton";
-import EditIcon from "material-ui-icons/Edit";
-import NoteIcon from "material-ui-icons/Note";
-import MicIcon from "material-ui-icons/Mic";
-import VideocamIcon from "material-ui-icons/Videocam";
-import ShareIcon from "material-ui-icons/Share";
-import grey from "material-ui/colors/grey";
 import { withStyles } from "material-ui/styles";
+
 /* --- IMPORT EXTERNAL LIBRARIES --- */
 import { ReactMic } from "react-mic";
 import ContainerDimensions from "react-container-dimensions";
+
 /* ----- COMPONENT IMPORTS ----- */
 import AnnotationSaveButtons from "./AnnotationSaveButtons";
-
-const propTypes = {};
 
 const styles = {
   audioContainer: {
@@ -70,13 +62,7 @@ class AnnotationEditorAudio extends Component {
   }
 
   render() {
-    const {
-      modifiedAnnotation,
-      savedAnnotation,
-      highlightsControl,
-      isAnnotationSaved,
-      classes
-    } = this.props;
+    const { isAnnotationSaved, classes } = this.props;
 
     return (
       <div className={classes.audioContainer}>
@@ -107,6 +93,13 @@ class AnnotationEditorAudio extends Component {
   }
 }
 
-AnnotationEditorAudio.propTypes = propTypes;
+AnnotationEditorAudio.propTypes = {
+  modifiedAnnotation: PropTypes.object
+  // isAnnotationSaved={isAnnotationSaved()}
+  // annotationIndex={index}
+  // modalActions={modalActions}
+  // canAnnotate={canAnnotateHighlight()}
+  // isOwner={userId === modifiedAnnotation.userId}
+};
 
 export default withStyles(styles)(AnnotationEditorAudio);

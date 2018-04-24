@@ -1,16 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 /* ----- MATERIAL-UI IMPORTS ----- */
-import Typography from "material-ui/Typography";
 import Button from "material-ui/Button";
 import DeleteIcon from "material-ui-icons/Delete";
 import { withStyles } from "material-ui/styles";
-import grey from "material-ui/colors/grey";
 import IconButton from "material-ui/IconButton";
 import RecordIcon from "material-ui-icons/FiberManualRecord";
 import StopIcon from "material-ui-icons/Stop";
-
-const propTypes = {};
 
 const styles = theme => ({
   annotationButtonsCont: {
@@ -77,6 +74,16 @@ function AnnotationSaveButtons({
   );
 }
 
-AnnotationSaveButtons.propTypes = propTypes;
+AnnotationSaveButtons.propTypes = {
+  handleSave: PropTypes.func
+  // handleDelete={this.handleDelete}
+  // isSaved={isAnnotationSaved}
+  // mediaControl={true}
+  // isRecording={this.state.recording}
+  // start={start}
+  // stop={stop}
+  // canAnnotate={this.props.canAnnotate}
+  // isOwner={this.props.isOwner}
+};
 
 export default withStyles(styles)(AnnotationSaveButtons);

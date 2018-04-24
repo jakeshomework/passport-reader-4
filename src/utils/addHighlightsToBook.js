@@ -22,7 +22,7 @@ export const addHighlightsToBook = (bookDisplayOriginal, highlights) => {
     idArrayToHighlight.forEach(spanId => {
       if (
         bookDisplayWithHighlights[spanId].type === "text" ||
-        bookDisplayWithHighlights[spanId].type == "space"
+        bookDisplayWithHighlights[spanId].type === "space"
       ) {
         bookDisplayWithHighlights[spanId].highlights.push(highlightId);
       }

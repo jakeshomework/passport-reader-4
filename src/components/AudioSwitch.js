@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { FormControlLabel } from "material-ui/Form";
-import { InputLabel } from "material-ui/Input";
-import Grid from "material-ui/Grid";
 import Switch from "material-ui/Switch";
 import { withStyles } from "material-ui/styles";
 /* ----- COMPONENT IMPORTS ----- */

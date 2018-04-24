@@ -48,36 +48,20 @@ export const deleteHighlight = (prevState, highlightId) => {
     ...prevState.highlights
   };
   delete newHighlights[highlightId];
-  console.log("lalalaa", newHighlights);
+  // console.log("newHighlights", newHighlights);
   return {
     highlights: newHighlights
   };
 };
 
-// export const addAnnotation = (prevState, { highlightId, type }) => {
-//   const newAnnotationObject = {
-//     userId: prevState.user.userId,
-//     type: type,
-//     createdAt: new Date(),
-//     content: ""
-//   };
-
-//   let newHighlights = { ...prevState.highlights };
-
-//   newHighlights[highlightId].annotations.push(newAnnotationObject);
-
-//   console.log(newHighlights);
-//   return { highlights: newHighlights };
-// };
-
 export const updateAnnotation = (
   prevState,
   { highlightId, annotationIndex, newContent, type }
 ) => {
-  console.log(highlightId, annotationIndex, newContent);
+  // console.log(highlightId, annotationIndex, newContent);
   let newHighlights = { ...prevState.highlights };
   /* --- create new when saving a new annotation --- */
-  console.log("newbie", newHighlights);
+  // console.log("newbie", newHighlights);
   if (!newHighlights[highlightId].annotations[annotationIndex]) {
     let newAnnotationObject = {
       userId: prevState.user.userId,
@@ -93,7 +77,7 @@ export const updateAnnotation = (
       annotationIndex
     ].content = newContent;
   }
-  console.log(newHighlights);
+  // console.log(newHighlights);
   return { highlights: newHighlights };
 };
 

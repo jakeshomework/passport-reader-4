@@ -6,15 +6,6 @@ import { withStyles } from "material-ui/styles";
 import TextField from "material-ui/TextField";
 
 import Typography from "material-ui/Typography";
-import Button from "material-ui/Button";
-import DeleteIcon from "material-ui-icons/Delete";
-
-import IconButton from "material-ui/IconButton";
-import EditIcon from "material-ui-icons/Edit";
-import NoteIcon from "material-ui-icons/Note";
-import MicIcon from "material-ui-icons/Mic";
-import VideocamIcon from "material-ui-icons/Videocam";
-import ShareIcon from "material-ui-icons/Share";
 import ExpandMoreIcon from "material-ui-icons/ExpandMore";
 import EmojiIcon from "material-ui-icons/TagFaces";
 import grey from "material-ui/colors/grey";
@@ -113,9 +104,9 @@ class AnnotationEditorNote extends Component {
     const {
       modifiedAnnotation,
       isAnnotationSaved,
-      highlightsControl,
-      highlightId,
       annotationIndex,
+      canAnnotate,
+      isOwner,
       classes
     } = this.props;
 
@@ -151,16 +142,23 @@ class AnnotationEditorNote extends Component {
           handleSave={this.handleSave}
           handleDelete={this.handleDelete}
           isSaved={isAnnotationSaved}
-          canAnnotate={this.props.canAnnotate}
-          isOwner={this.props.isOwner}
+          canAnnotate={canAnnotate}
+          isOwner={isOwner}
         />
       </div>
     );
   }
 }
 
-const propTypes = {};
-
-AnnotationEditorNote.propTypes = propTypes;
+AnnotationEditorNote.propTypes = {
+  highlightId: PropTypes.string,
+  modifiedAnnotation: PropTypes.object,
+  isAnnotationSaved: PropTypes.bool,
+  highlightsControl: PropTypes.object,
+  annotationIndex: PropTypes.number,
+  modalActions: PropTypes.object,
+  canAnnotate: PropTypes.bool,
+  isOwner: PropTypes.bool
+};
 
 export default withStyles(styles)(AnnotationEditorNote);

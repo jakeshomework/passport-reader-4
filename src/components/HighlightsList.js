@@ -76,24 +76,7 @@ const styles = theme => ({
     backgroundColor: grey["700"],
     color: "black"
   }
-  // tableCellHead: {
-  //   paddingLeft: 5
-  // },
-  // tableCellDate: {
-  //   padding: 0
-  // },
-  // tableCellBody: {
-  //   padding: 10
-  // },
-  // tableCellAnnotations: {
-  //   display: "inline-block"
-  //   padding: "20px 5px 5px 10px"
-  // },
 });
-
-function createData(userId, highlightedText, updatedAt, annotations) {
-  return { userId, highlightedText, updatedAt, annotations };
-}
 
 class HighlightsList extends Component {
   state = {
@@ -262,8 +245,7 @@ class HighlightsList extends Component {
                     return this.state[color] ? (
                       <TableRow
                         onClick={() =>
-                          this.props.annotationModalControl.open([highlightId])
-                        }
+                          this.props.annotationModalControl.open([highlightId])}
                         key={i}
                         value={color}
                       >
@@ -326,8 +308,11 @@ class HighlightsList extends Component {
   }
 }
 
-// HighlightsList.propTypes = {
-//   filteredList: PropTypes.array
-// };
+HighlightsList.propTypes = {
+  highlights: PropTypes.object
+  // style={Object.assign({}, styles.slide, styles.highlightsSlide)}
+  // annotationModalControl={this.annotationModalControl}
+  // users={UsersDemo}
+};
 
 export default withStyles(styles)(HighlightsList);

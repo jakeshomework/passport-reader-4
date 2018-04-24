@@ -1,31 +1,26 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-/* ----- COMPONENT IMPORTS ----- */
-import ImageGalleryStepper from "./ImageGalleryStepper";
-/* ----- MATERIAL-UI IMPORTS ----- */
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText
-} from "material-ui/Dialog";
-import MobileStepper from "material-ui/MobileStepper";
 
+/* ----- MATERIAL-UI IMPORTS ----- */
+import Dialog, { DialogActions, DialogContent } from "material-ui/Dialog";
 import Button from "material-ui/Button";
 import { withStyles } from "material-ui/styles";
 import Slide from "material-ui/transitions/Slide";
-
 import IconButton from "material-ui/IconButton";
 import KeyboardArrowLeft from "material-ui-icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "material-ui-icons/KeyboardArrowRight";
-
 import AppBar from "material-ui/AppBar";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 import CloseIcon from "material-ui-icons/Close";
 import grey from "material-ui/colors/grey";
 
+/* --- IMPORT EXTERNAL LIBRARIES --- */
 import renderHTML from "react-render-html";
+
+/* ----- COMPONENT IMPORTS ----- */
+import ImageGalleryStepper from "./ImageGalleryStepper";
 
 /*---Opens modal when image is clicked in book.---*/
 const styles = {
@@ -156,6 +151,7 @@ class ImageGallery extends Component {
 
                   return (
                     <div
+                      key={dotIndex}
                       style={
                         dotIndex === this.state.imageIndex ? (
                           activeDot
@@ -187,9 +183,9 @@ class ImageGallery extends Component {
 
   render() {
     const { galleries, classes, bookName } = this.props;
-    const imageSrc = `book-${bookName}/${
-      galleries[this.state.galleryIndex][this.state.imageIndex].src
-    }`;
+    const imageSrc = `book-${bookName}/${galleries[this.state.galleryIndex][
+      this.state.imageIndex
+    ].src}`;
     const imageCaption =
       galleries[this.state.galleryIndex][this.state.imageIndex].caption;
 
@@ -197,7 +193,7 @@ class ImageGallery extends Component {
       <Dialog
         open={this.state.galleryIsOpen}
         onClose={this.closeGallery}
-        className={{ paper: classes.modalRoot }}
+        classes={{ paper: classes.modalRoot }}
         fullScreen
         transition={Transition}
       >
@@ -234,9 +230,13 @@ class ImageGallery extends Component {
                 ? `book-${bookName}/${image.thumbnail}`
                 : `book-${bookName}/${image.src}`;
               return (
-                <Button onClick={() => this.setImageIndex(imageIndex)}>
+                <Button
+                  key={imageIndex}
+                  onClick={() => this.setImageIndex(imageIndex)}
+                >
                   <img
                     src={thumbnailSrc}
+                    alt={image.caption}
                     className={classes.miniThumbnail}
                     style={
                       imageIndex === this.state.imageIndex ? (
