@@ -24,7 +24,7 @@ import ExpansionPanel, {
 } from "material-ui/ExpansionPanel";
 
 import "emoji-mart/css/emoji-mart.css";
-import { Picker } from "emoji-mart";
+import { Picker, Emoji } from "emoji-mart";
 
 import AnnotationSaveButtons from "./AnnotationSaveButtons";
 
@@ -78,9 +78,35 @@ class AnnotationEditorNote extends Component {
   };
 
   handleDelete = () => {
-    this.props.modalActions.deleteAnnotation({
-      annotationIndex: this.props.annotationIndex
-    });
+    this.props.modalActions.deleteAnnotation(this.props.annotationIndex);
+  };
+
+  handleNewInputChange = e => {
+    console.log(e);
+  };
+
+  textWithEmoji = () => {
+    return (
+      <div
+        contentEditable={true}
+        onKeyDown={this.handleNewInputChange}
+        tabIndex="0"
+      >
+        Looks good to me
+        <span
+          contentEditable={false}
+          dangerouslySetInnerHTML={{
+            __html: Emoji({
+              html: true,
+              set: "apple",
+              emoji: "+1",
+              size: 24
+            })
+          }}
+        />
+        Alrighty
+      </div>
+    );
   };
 
   render() {
@@ -102,11 +128,13 @@ class AnnotationEditorNote extends Component {
             fullWidth
             rowsMax={4}
             placeholder="Your note here"
-            value={modifiedAnnotation.content}
             onChange={e => this.handleInputChange(e)}
             className={classes.labelStyle}
           />
         </Typography>
+
+        {this.textWithEmoji()}
+
         <ExpansionPanel style={{ borderRadius: "0px 0px 10px 10px" }}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <EmojiIcon />

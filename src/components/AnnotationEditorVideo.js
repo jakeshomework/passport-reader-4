@@ -79,9 +79,7 @@ class AnnotationEditorVideo extends React.Component {
   };
 
   handleDelete = () => {
-    this.props.modalActions.deleteAnnotation({
-      annotationIndex: this.props.annotationIndex
-    });
+    this.props.modalActions.deleteAnnotation(this.props.annotationIndex);
   };
 
   handleGranted() {

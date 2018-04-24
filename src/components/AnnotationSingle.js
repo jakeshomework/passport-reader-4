@@ -71,16 +71,11 @@ class AnnotationSingle extends Component {
       });
     },
     deleteAnnotation: annotationIndex => {
-      console.log("delete from Single", annotationIndex);
       this.setState(prevState => {
         let updatedHighlight = JSON.parse(
           JSON.stringify(prevState.modifiedHighlight)
         );
-        console.log("before", updatedHighlight);
-        // whyDoesThisBreak?
         updatedHighlight.annotations.splice(annotationIndex, 1);
-        console.log("after", updatedHighlight);
-
         return { modifiedHighlight: updatedHighlight };
       });
     },
