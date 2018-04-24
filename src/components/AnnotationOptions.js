@@ -102,6 +102,7 @@ const AnnotationOptions = ({
           <ExpansionPanel
             style={index === 0 ? { borderRadius: "10px 10px 0px 0px" } : null}
             defaultExpanded={!isAnnotationSaved()}
+            key={index}
           >
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               {modifiedAnnotation.type === "video" ? (
