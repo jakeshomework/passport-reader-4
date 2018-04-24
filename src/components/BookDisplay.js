@@ -54,11 +54,12 @@ const BookDisplay = ({
     .map(key => {
       let el = bookDisplayWithHighlights[key];
       return el.highlights &&
-      audio.showAudioHighlights &&
-      audio.audioHighlightsIds.includes(el.id)
+        audio.showAudioHighlights &&
+        audio.audioHighlightsIds.includes(el.id)
         ? // 1st check for audio being played.
-          `${el.display.slice(0, 5)} style="background: ${colorLabels.audio
-            .active}; font-style: bold; text-decoration: wavy underline lime" ${el.display.slice(
+          `${el.display.slice(0, 5)} style="background: ${
+            colorLabels.audio.active
+          }; font-style: bold; text-decoration: wavy underline lime" ${el.display.slice(
             5
           )}`
         : // 2nd check if element has highlights

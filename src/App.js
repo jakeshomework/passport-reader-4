@@ -289,13 +289,15 @@ class App extends Component {
             index={this.state.slide}
             onChangeIndex={this.changeSlideView}
             containerStyle={styles.slideContainer}
-            style={{
-              /*this.state.settings.darkMode ? (
+            style={
+              {
+                /*this.state.settings.darkMode ? (
               { backgroundColor: grey[800] }
             ) : (
               { backgroundColor: "white" }
             )*/
-            }}
+              }
+            }
           >
             <Settings
               settings={this.state.settings}

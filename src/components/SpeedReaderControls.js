@@ -12,8 +12,9 @@ import { FormControl } from "material-ui/Form";
 /* ----- ICON IMPORTS ----- */
 import PlayArrow from "material-ui-icons/PlayArrow";
 import Pause from "material-ui-icons/Pause";
-import FastRewind from "material-ui-icons/FastRewind";
-import FastForward from "material-ui-icons/FastForward";
+import Cached from "material-ui-icons/Cached";
+import SkipNext from "material-ui-icons/SkipNext";
+import SkipPrevious from "material-ui-icons/SkipPrevious";
 
 /*---Control the display of the words in speed reader mode.---*/
 const styles = theme => ({
@@ -28,6 +29,9 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     minWidth: 120,
     maxWidth: 300
+  },
+  button: {
+    minWidth: 70
   }
 });
 
@@ -37,27 +41,31 @@ class SpeedReaderControls extends Component {
       classes,
       wpmOptions,
       changeWpm,
-      fastForward,
-      fastRewind,
+      resetWords,
       pause,
-      play
+      play,
+      skipPrevious,
+      skipNext
     } = this.props;
     return (
       <div className={classes.controls}>
-        <Button onClick={fastRewind}>
-          <FastRewind />
+        <Button className={classes.button} onClick={resetWords}>
+          <Cached />
+        </Button>
+        <Button className={classes.button} onClick={skipPrevious}>
+          <SkipPrevious />
         </Button>
         {this.props.playing ? (
-          <Button onClick={pause}>
+          <Button className={classes.button} onClick={pause}>
             <Pause />
           </Button>
         ) : (
-          <Button onClick={play}>
+          <Button className={classes.button} onClick={play}>
             <PlayArrow />
           </Button>
         )}
-        <Button onClick={fastForward}>
-          <FastForward />
+        <Button className={classes.button} onClick={skipNext}>
+          <SkipNext />
         </Button>
         <FormControl className={classes.formControl}>
           <Select

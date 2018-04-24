@@ -187,9 +187,9 @@ class ImageGallery extends Component {
 
   render() {
     const { galleries, classes, bookName } = this.props;
-    const imageSrc = `book-${bookName}/${galleries[this.state.galleryIndex][
-      this.state.imageIndex
-    ].src}`;
+    const imageSrc = `book-${bookName}/${
+      galleries[this.state.galleryIndex][this.state.imageIndex].src
+    }`;
     const imageCaption =
       galleries[this.state.galleryIndex][this.state.imageIndex].caption;
 
