@@ -81,33 +81,33 @@ class AnnotationEditorNote extends Component {
     this.props.modalActions.deleteAnnotation(this.props.annotationIndex);
   };
 
-  handleNewInputChange = e => {
-    console.log(e);
+  /* --- Experimental attempt at displaying emoji in an editable div --- */
+  /*handleNewInputChange = e => {
+    console.log(e.target.innerHTML);
+    console.log(e.target.innerHTML.replace(/<[^>]*>/g, ":laughing:"));
   };
 
   textWithEmoji = () => {
+    const emojArray = ["This", "is", "a", ":santa:"];
     return (
       <div
         contentEditable={true}
         onKeyDown={this.handleNewInputChange}
         tabIndex="0"
       >
-        Looks good to me
-        <span
-          contentEditable={false}
-          dangerouslySetInnerHTML={{
-            __html: Emoji({
-              html: true,
-              set: "apple",
-              emoji: "+1",
-              size: 24
-            })
+        {this.props.modifiedAnnotation.content}
+        <Emoji
+          emoji="santa"
+          set="emojione"
+          size={16}
+          fallback={emoji => {
+            console.log(emoji);
           }}
         />
         Alrighty
       </div>
     );
-  };
+  };*/
 
   render() {
     const {
@@ -128,12 +128,11 @@ class AnnotationEditorNote extends Component {
             fullWidth
             rowsMax={4}
             placeholder="Your note here"
+            value={modifiedAnnotation.content}
             onChange={e => this.handleInputChange(e)}
             className={classes.labelStyle}
           />
         </Typography>
-
-        {this.textWithEmoji()}
 
         <ExpansionPanel style={{ borderRadius: "0px 0px 10px 10px" }}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
