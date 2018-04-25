@@ -24,10 +24,6 @@ import ImageGalleryStepper from "./ImageGalleryStepper";
 
 /*---Opens modal when image is clicked in book.---*/
 const styles = {
-  modalRoot: {
-    backgroundColor: "red",
-    borderRadius: "10px"
-  },
   modalStyle: {
     display: "flex",
     justifyContent: "center",
@@ -45,7 +41,8 @@ const styles = {
   },
   imageStyle: {
     //width: '100%',
-    maxHeight: "65vh"
+    maxHeight: "65vh",
+    maxWidth: "100%"
   },
   miniThumbnailContainer: {
     display: "flex",

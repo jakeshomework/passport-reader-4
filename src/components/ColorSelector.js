@@ -17,6 +17,9 @@ import { colorLabels } from "../config/colorLabels";
 
 const colorLabelsArray = Object.keys(colorLabels);
 
+// remove the extra color label that's used for audio
+colorLabelsArray.pop();
+
 const styles = {
   root: {
     maxWidth: 350
