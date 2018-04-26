@@ -51,6 +51,9 @@ const styles = theme => ({
   pos: {
     marginBottom: 12,
     color: theme.palette.text.secondary
+  },
+  flipButton: {
+    marginBottom: 20
   }
 });
 
@@ -141,7 +144,7 @@ class FlashCard extends React.Component {
                         {cardContent.frontCategory}
                       </Typography>
                       <div className={classes.cardContent}>
-                        <Typography type="headline" component="h2">
+                        <Typography variant="headline">
                           {cardContent.frontPrimary}
                         </Typography>
                         <Typography type="body1" className={classes.pos}>
@@ -151,7 +154,11 @@ class FlashCard extends React.Component {
                           {cardContent.frontSecondary}
                         </Typography>
                       </div>
-                      <Button onClick={this.handleFlip} dense>
+                      <Button
+                        onClick={this.handleFlip}
+                        dense
+                        className={classes.flipButton}
+                      >
                         {cardContent.buttonText}
                         <FlipToBack />
                       </Button>
@@ -173,7 +180,7 @@ class FlashCard extends React.Component {
                         {cardContent.backCategory}
                       </Typography>
                       <div className={classes.cardContent}>
-                        <Typography type="headline" component="h2">
+                        <Typography variant="headline" component="h2">
                           {cardContent.backPrimary}
                         </Typography>
                         <Typography type="body1" className={classes.pos}>
@@ -183,7 +190,7 @@ class FlashCard extends React.Component {
                           {cardContent.backSecondary}
                         </Typography>
                       </div>
-                      <Button onClick={this.handleFlip}>
+                      <Button onClick={this.handleFlip} className={classes.flipButton}>
                         {cardContent.buttonText}
                         <FlipToFront />
                       </Button>

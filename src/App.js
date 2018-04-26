@@ -212,14 +212,6 @@ class App extends Component {
         backToMultiModal(prevState, highlightsIdArray)
       );
     },
-    // backToMultiModal: highlightsIdArray => {
-    //   this.setState(
-    //     prevState => closeModal(prevState),
-    //     this.setState(prevState =>
-    //       backToMultiModal(prevState, highlightsIdArray)
-    //     )
-    //   );
-    // },
     update: content =>
       this.setState(prevState => updateModal(prevState, content))
   };

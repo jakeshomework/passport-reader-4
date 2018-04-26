@@ -64,9 +64,9 @@ class FlashCardStepper extends React.Component {
       <div>
         <MobileStepper
           type="progress"
-          steps={this.props.length + 1}
+          steps={this.props.length}
           position="static"
-          activeStep={this.props.activeStep + 1}
+          activeStep={this.props.activeStep}
           className={classes.root}
           nextButton={
             <Button

@@ -39,6 +39,10 @@ const styles = {
   }
 };
 
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
+
 class FlashCardContainer extends React.Component {
   state = {
     open: false,
@@ -77,35 +81,20 @@ class FlashCardContainer extends React.Component {
   };
 
   displayFlashcards = () => {
-    if (this.props.studySet !== undefined) {
-      let studySet = this.props.studySet;
-
-      // let studyItem = studySet ? studySet[this.state.activeStep] : false;
+    if (this.props.studyObject !== undefined) {
+      const studyKeys = Object.keys(this.props.studyObject);
+      const studySet = studyKeys.map(key => this.props.studyObject[key]);
 
       return studySet.map((studyItem, i) => {
         let cardContent = {};
         if (studyItem) {
-          if (!studyItem.savedDictionary || studyItem.savedDictionary.error) {
-            /*** HANDLE NON-DICTIONARY HIGHLIGHT ***/
-            cardContent.frontPrimary = studyItem.selectedText;
-            cardContent.backPrimary = studyItem.note;
-            cardContent.frontCategory = "Highlight";
-            cardContent.backCategory = "Note";
-          } else if (
-            /*** HANDLE HIGHLIGHT WITH SAVED DICTIONARY ***/
-            studyItem.savedDictionary ||
-            !studyItem.savedDictionary.error
-          ) {
-            let dic = studyItem.savedDictionary;
-            cardContent.frontPrimary = studyItem.selectedText;
-            cardContent.frontSub =
-              dic.definitions[dic.definitionIndex].speech_part;
-            cardContent.frontCategory = "Word";
-            cardContent.backCategory = "Definition";
-            cardContent.backPrimary = dic.definitions[dic.definitionIndex].def;
-            cardContent.backSub = dic.definitions[dic.definitionIndex].example;
-            cardContent.backSecondary = studyItem.note;
-          }
+          cardContent.frontPrimary = studyItem.highlightedText;
+          cardContent.backPrimary =
+            studyItem.annotations.length > 0
+              ? studyItem.annotations[0].content
+              : "no annotations";
+          cardContent.frontCategory = "Highlight";
+          cardContent.backCategory = "Note";
           cardContent.buttonText = "Flip";
           /*** SET POSITION OF CARD ***/
           cardContent.position =
@@ -136,13 +125,13 @@ class FlashCardContainer extends React.Component {
     return (
       <div>
         <Button raised onClick={this.handleClickOpen}>
-          Open Study Mode
+          <div style={{ color: "white" }}>Open Study Mode</div>
         </Button>
         <Dialog
           fullScreen
           open={this.state.open}
-          onRequestClose={this.handleRequestClose}
-          transition={<Slide direction="up" className={classes.background} />}
+          onClose={this.handleRequestClose}
+          transition={Transition}
         >
           <AppBar className={classes.appBar}>
             <Toolbar className={classes.toolBarStyle}>
@@ -174,7 +163,13 @@ class FlashCardContainer extends React.Component {
             handleBack={this.handleBack}
             handleNext={this.handleNext}
             activeStep={this.state.activeStep}
-            length={this.props.studySet ? this.props.studySet.length : 0}
+            length={
+              this.props.studyObject ? (
+                Object.keys(this.props.studyObject).length
+              ) : (
+                0
+              )
+            }
             className={classes.stepperStyles}
           />
         </Dialog>

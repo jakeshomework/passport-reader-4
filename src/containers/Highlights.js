@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 /* ----- COMPONENT IMPORTS ----- */
 import HighlightsList from "../components/HighlightsList";
-// import FlashCardContainer from "./FlashCardContainer";
+import FlashCardContainer from "./FlashCardContainer";
 
 /* ----- MATERIAL-UI COMPONENTS ----- */
 import { withStyles } from "material-ui/styles";
@@ -21,7 +21,8 @@ const styles = theme => ({
     fontFamily: theme.typography.fontFamily
   },
   button: {
-    margin: theme.spacing.unit * 4,
+    margin: theme.spacing.unit,
+    // marginBottom: 0,
     float: "right"
   },
   input: {
@@ -46,9 +47,8 @@ class Highlights extends Component {
         <Grid container spacing={24}>
           <Grid item xs sm={1} />
           <Grid item xs sm={10}>
-            <Button variant="raised" className={classes.button}>
-              Study Mode
-              {/*<FlashCardContainer studySet={this.props.highlights} />*/}
+            <Button variant="raised" className={classes.button} color="primary">
+              <FlashCardContainer studyObject={this.props.highlights} />
             </Button>
             <HighlightsList
               filteredList={this.props.highlights}

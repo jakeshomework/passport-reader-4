@@ -16,22 +16,22 @@ import CloseIcon from "material-ui-icons/Close";
 import { withStyles } from "material-ui/styles";
 
 /* ----- COMPONENT IMPORTS ----- */
-import SettingsSelector from "../components/SettingsSelector";
+import AudioSpeedSelector from "../components/AudioSpeedSelector";
 import AudioSwitch from "../components/AudioSwitch";
 
 /* ----- EXTERNAL LIBRARY IMPORTS ----- */
 import ReactPlayer from "react-player";
 import ReactSimpleRange from "react-simple-range";
 
-// const speedObjects = [
-//   { number: 0.75, display: "0.75x" },
-//   { number: 1.0, display: "1.0x" },
-//   { number: 1.25, display: "1.25x" },
-//   { number: 1.5, display: "1.5x" },
-//   { number: 0.75, display: "0.75" },
-//   { number: 1.75, display: "1.75x" },
-//   { number: 2.0, display: "2.0x" }
-// ];
+const speedObjects = [
+  { value: 0.75, display: "0.75x" },
+  { value: 1.0, display: "1.0x" },
+  { value: 1.25, display: "1.25x" },
+  { value: 1.5, display: "1.5x" },
+  { value: 0.75, display: "0.75" },
+  { value: 1.75, display: "1.75x" },
+  { value: 2.0, display: "2.0x" }
+];
 
 const speeds = [0.75, 1.0, 1.25, 1.75, 2.0];
 
@@ -39,7 +39,7 @@ const speeds = [0.75, 1.0, 1.25, 1.75, 2.0];
 const styles = {
   root: { backgroundColor: "red", height: "200px" },
   controlIcons: {
-    width: 330,
+    width: 350,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -241,8 +241,8 @@ class AudioContainer extends Component {
                     <Forward />
                   </IconButton>
                 </div>
-                <SettingsSelector
-                  options={speeds}
+                <AudioSpeedSelector
+                  options={speedObjects}
                   handleChangeSettings={this.handleSpeedChange}
                   currentSelection={this.state.speed}
                 />

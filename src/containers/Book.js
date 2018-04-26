@@ -11,6 +11,8 @@ import Snackbar from "material-ui/Snackbar";
 import Fade from "material-ui/transitions/Fade";
 import IconButton from "material-ui/IconButton";
 import CloseIcon from "material-ui-icons/Close";
+import Avatar from "material-ui/Avatar";
+import Typography from "material-ui/Typography";
 
 /* ----- UTILITY IMPORTS ----- */
 import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
@@ -30,6 +32,15 @@ const styles = theme => ({
   },
   snackbar: {
     margin: theme.spacing.unit
+  },
+  avatarContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center"
+  },
+  avatar: {
+    margin: 5
   }
 });
 class Book extends Component {
@@ -182,8 +193,40 @@ class Book extends Component {
     } = this.props;
 
     const { open } = this.state;
+
+    const generateRandomColor = () => {
+      var letters = "0123456789ABCDEF";
+      var color = "#";
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    };
+
     return (
       <div className={classes.root}>
+        <div className={classes.avatarContainer}>
+          <Typography>Online: </Typography>
+          <Avatar
+            className={classes.avatar}
+            style={{ backgroundColor: generateRandomColor() }}
+          >
+            TS
+          </Avatar>
+          <Avatar
+            className={classes.avatar}
+            style={{ backgroundColor: generateRandomColor() }}
+          >
+            PP
+          </Avatar>
+          <Avatar
+            className={classes.avatar}
+            style={{ backgroundColor: generateRandomColor() }}
+          >
+            SL
+          </Avatar>
+        </div>
+
         <AudioContainer
           bookName={settings.bookName}
           transcription={this.props.transcription}
