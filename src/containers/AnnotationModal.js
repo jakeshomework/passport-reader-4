@@ -62,11 +62,7 @@ class AnnotationModal extends Component {
   generateTitleStyle = () => {
     const { highlightsIdArray, highlights } = this.props;
     const { darkMode } = this.props.settings;
-    console.log("Mr Meeseeks", highlights);
-    console.log("Mr Meeseekssssss", highlightsIdArray[0]);
-    console.log("Mr length", highlightsIdArray.length);
-    console.log("Mr FUCKy YOU", highlightsIdArray[0]);
-    console.log("Mr FUCK YOU", highlights[highlightsIdArray[0]]);
+
     return {
       backgroundColor: darkMode ? grey[700] : grey[200],
       borderColor:

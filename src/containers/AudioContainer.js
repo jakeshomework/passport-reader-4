@@ -55,6 +55,14 @@ const styles = {
   },
   forwardBackwardButtons: {
     marginRight: 10
+  },
+  timeDisplayContainer: {
+    display: "flex",
+    alignItems: "center"
+  },
+  timeRange: {
+    flexGrow: 1,
+    margin: 10
   }
 };
 class AudioContainer extends Component {
@@ -194,6 +202,16 @@ class AudioContainer extends Component {
     this.player = player;
   };
 
+  returnMinutesAndSeconds = totalSeconds => {
+    let seconds, minutes;
+    seconds = Math.round(totalSeconds % 60).toString();
+    minutes = Math.round(totalSeconds / 60).toString();
+    if (seconds.length === 1) {
+      seconds = `0${seconds}`;
+    }
+    return `${minutes}:${seconds}`;
+  };
+
   render() {
     const { bookName, audio, audioControls, classes } = this.props;
 
@@ -250,29 +268,36 @@ class AudioContainer extends Component {
                   <CloseIcon />
                 </IconButton>
               </div>
-
-              <ReactSimpleRange
-                thumbSize={18}
-                min={0}
-                max={100}
-                step={1}
-                value={this.state.played}
-                onChange={this.handleSeek}
-                onChangeComplete={this.onSeekMouseUp}
-                className={classes.simpleRange}
-                sliderColor="#fff"
-                trackColor="#757575"
-                thumbColor="#BDBDBD"
-                sliderSize={2}
-                eventWrapperPadding={1}
-              />
+              <div className={classes.timeDisplayContainer}>
+                <div>
+                  {this.returnMinutesAndSeconds(this.state.playedSeconds)}
+                </div>
+                <div className={classes.timeRange}>
+                  <ReactSimpleRange
+                    thumbSize={18}
+                    min={0}
+                    max={100}
+                    step={1}
+                    value={this.state.played}
+                    onChange={this.handleSeek}
+                    onChangeComplete={this.onSeekMouseUp}
+                    className={classes.simpleRange}
+                    sliderColor="#fff"
+                    trackColor="#757575"
+                    thumbColor="#BDBDBD"
+                    sliderSize={2}
+                    eventWrapperPadding={1}
+                  />
+                </div>
+                <div>{this.returnMinutesAndSeconds(this.state.duration)}</div>
+              </div>
             </div>
           }
         />
         <ReactPlayer
           ref={this.ref}
           url={audioFile}
-          progressInterval={1000}
+          progressInterval={200}
           playbackRate={this.state.speed}
           onProgress={this.audioListener}
           onDuration={this.handleSetDuration}

@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-/* ----- COMPONENT IMPORTS ----- */
-import AudioContainer from "./AudioContainer";
-import BookDisplay from "../components/BookDisplay";
-import ImageGallery from "../components/ImageGallery";
-import HighlightTooltip from "../components/HighlightTooltip";
+
+/* ----- MATERIAL-UI IMPORTS ----- */
 import Grid from "material-ui/Grid";
 import { withStyles } from "material-ui/styles";
 import Snackbar from "material-ui/Snackbar";
@@ -13,6 +10,15 @@ import IconButton from "material-ui/IconButton";
 import CloseIcon from "material-ui-icons/Close";
 import Avatar from "material-ui/Avatar";
 import Typography from "material-ui/Typography";
+import lightBlue from "material-ui/colors/lightBlue";
+import lightGreen from "material-ui/colors/lightGreen";
+import teal from "material-ui/colors/teal";
+
+/* ----- COMPONENT IMPORTS ----- */
+import AudioContainer from "./AudioContainer";
+import BookDisplay from "../components/BookDisplay";
+import ImageGallery from "../components/ImageGallery";
+import HighlightTooltip from "../components/HighlightTooltip";
 
 /* ----- UTILITY IMPORTS ----- */
 import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
@@ -194,34 +200,25 @@ class Book extends Component {
 
     const { open } = this.state;
 
-    const generateRandomColor = () => {
-      var letters = "0123456789ABCDEF";
-      var color = "#";
-      for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    };
-
     return (
       <div className={classes.root}>
         <div className={classes.avatarContainer}>
           <Typography>Online: </Typography>
           <Avatar
             className={classes.avatar}
-            style={{ backgroundColor: generateRandomColor() }}
+            style={{ backgroundColor: lightBlue[500] }}
           >
             TS
           </Avatar>
           <Avatar
             className={classes.avatar}
-            style={{ backgroundColor: generateRandomColor() }}
+            style={{ backgroundColor: lightGreen[500] }}
           >
             PP
           </Avatar>
           <Avatar
             className={classes.avatar}
-            style={{ backgroundColor: generateRandomColor() }}
+            style={{ backgroundColor: teal[500] }}
           >
             SL
           </Avatar>
