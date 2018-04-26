@@ -61,6 +61,13 @@ class Audio extends Component {
   }
 }
 
-Audio.propTypes = {};
+Audio.propTypes = {
+  children: PropTypes.array,
+  controls: PropTypes.bool,
+  loop: PropTypes.bool,
+  preload: PropTypes.string,
+  src: PropTypes.string,
+  style: PropTypes.object
+};
 
 export default Audio;

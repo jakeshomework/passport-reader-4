@@ -122,24 +122,26 @@ class AnnotationModal extends Component {
               )}
             </div>
 
-            {highlightsIdArray.length > 0 ? highlightsIdArray.length > 1 ? (
-              <AnnotationMulti
-                users={users}
-                highlights={highlights}
-                highlightsIdArray={highlightsIdArray}
-                annotationModalControl={annotationModalControl}
-                className={classes.fontStyle}
-              />
-            ) : (
-              <AnnotationSingle
-                users={users}
-                userId={userId}
-                permissions={permissions}
-                highlight={highlights[highlightsIdArray[0]]}
-                annotationModalControl={annotationModalControl}
-                highlightsControl={highlightsControl}
-                className={classes.fontStyle}
-              />
+            {highlightsIdArray.length > 0 ? (
+              highlightsIdArray.length > 1 ? (
+                <AnnotationMulti
+                  users={users}
+                  highlights={highlights}
+                  highlightsIdArray={highlightsIdArray}
+                  annotationModalControl={annotationModalControl}
+                  className={classes.fontStyle}
+                />
+              ) : (
+                <AnnotationSingle
+                  users={users}
+                  userId={userId}
+                  permissions={permissions}
+                  highlight={highlights[highlightsIdArray[0]]}
+                  annotationModalControl={annotationModalControl}
+                  highlightsControl={highlightsControl}
+                  className={classes.fontStyle}
+                />
+              )
             ) : null}
           </Typography>
         </Paper>
@@ -149,7 +151,17 @@ class AnnotationModal extends Component {
 }
 
 AnnotationModal.propTypes = {
-  open: PropTypes.bool
+  annotationModalControl: PropTypes.object,
+  classes: PropTypes.object,
+  highlights: PropTypes.object,
+  highlightsControl: PropTypes.object,
+  highlightsIdArray: PropTypes.array,
+  multiHighlightIds: PropTypes.array,
+  open: PropTypes.bool,
+  permissions: PropTypes.object,
+  settings: PropTypes.object,
+  userId: PropTypes.string,
+  users: PropTypes.object
   // highlightsIdArray={this.state.annotationModal.highlightsIdArray}
   // highlights={this.state.highlights}
   // annotationModalControl={this.annotationModalControl}

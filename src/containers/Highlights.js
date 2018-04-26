@@ -7,22 +7,24 @@ import FlashCardContainer from "./FlashCardContainer";
 
 /* ----- MATERIAL-UI COMPONENTS ----- */
 import { withStyles } from "material-ui/styles";
-// import { filterHighlightsUtils } from "../utils/filterHighlightsUtils";
 import Button from "material-ui/Button";
 import Grid from "material-ui/Grid";
-
-/* ----- GRAPHQL IMPORTS ----- */
-//import GET_HIGHLIGHTS from "../graphql/GET_HIGHLIGHTS";
+import Hidden from "material-ui/Hidden";
 
 /*---Hold selection filters in state while rendering the list.---*/
 const styles = theme => ({
   root: {
     fontSize: theme.typography.fontSize,
-    fontFamily: theme.typography.fontFamily
+    fontFamily: theme.typography.fontFamily,
+    padding: theme.spacing.unit
   },
   button: {
     margin: theme.spacing.unit,
-    // marginBottom: 0,
+    float: "right"
+  },
+  buttonFull: {
+    margin: theme.spacing.unit,
+    width: "96%",
     float: "right"
   },
   input: {
@@ -31,25 +33,34 @@ const styles = theme => ({
 });
 
 class Highlights extends Component {
-  state = { filters: {}, filteredHighlights: [], studyMode: false };
-
-  /*---On click, send filter name to toggle.---*/
-  toggleFilter = () => {};
-  /*---On click, toggle all filters.---*/
-  toggleAllFilters = () => {};
-  /*---Set studyModeOpen to 'true' -- which opens StudyMode container.---*/
-  openStudyMode = () => {};
-
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
-          <Grid item xs sm={1} />
-          <Grid item xs sm={10}>
-            <Button variant="raised" className={classes.button} color="primary">
-              <FlashCardContainer studyObject={this.props.highlights} />
-            </Button>
+          <Hidden xsDown>
+            <Grid item sm={1} />
+          </Hidden>
+          <Grid item xs={12} sm={10}>
+            <Hidden smUp>
+              <Button
+                variant="raised"
+                className={classes.buttonFull}
+                color="primary"
+              >
+                <FlashCardContainer studyObject={this.props.highlights} />
+              </Button>
+            </Hidden>
+            <Hidden only="xs">
+              <Button
+                variant="raised"
+                className={classes.button}
+                color="primary"
+              >
+                <FlashCardContainer studyObject={this.props.highlights} />
+              </Button>
+            </Hidden>
+
             <HighlightsList
               filteredList={this.props.highlights}
               toggleFilter={this.toggleFilter}
@@ -57,7 +68,9 @@ class Highlights extends Component {
               users={this.props.users}
             />
           </Grid>
-          <Grid item xs sm={1} />
+          <Hidden xsDown>
+            <Grid item sm={1} />
+          </Hidden>
         </Grid>
       </div>
     );
@@ -65,7 +78,12 @@ class Highlights extends Component {
 }
 
 Highlights.propTypes = {
-  highlights: PropTypes.object
+  highlights: PropTypes.object,
+  annotationModalControl: PropTypes.object,
+  users: PropTypes.object,
+  style: PropTypes.object,
+  classes: PropTypes.object
+
   // style={Object.assign({}, styles.slide, styles.highlightsSlide)}
   // annotationModalControl={this.annotationModalControl}
   // users={UsersDemo}

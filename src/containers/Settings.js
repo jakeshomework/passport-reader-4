@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 /* ----- CUSTOM COMPONENTS  ----- */
 import SettingsSelector from "../components/SettingsSelector";
@@ -41,6 +42,12 @@ const styles = theme => ({
   },
   listitemFontSize: {
     fontSize: theme.typography.fontSize
+  },
+  gridContent: {
+    width: "100%"
+  },
+  subHeader: {
+    position: "relative"
   }
 });
 
@@ -121,11 +128,17 @@ class Settings extends Component {
     const userOptions = ["user111", "user222", "user333"];
 
     return (
-      <div className={classes.root}>
-        <Grid container spacing={24}>
-          <Grid item xs sm={2} />
-          <Grid item xs sm={8}>
-            <List subheader={<ListSubheader>Demo Controls</ListSubheader>}>
+      <div>
+        <Grid container spacing={12} className={classes.root}>
+          <Grid item sm={2} />
+          <Grid item sm={8} className={classes.gridContent}>
+            <List
+              subheader={
+                <ListSubheader className={classes.subHeader}>
+                  Demo Controls
+                </ListSubheader>
+              }
+            >
               <ListItem>
                 <ListItemIcon>
                   <BookIcon />
@@ -314,11 +327,18 @@ class Settings extends Component {
               </ListItem>
             </List>
           </Grid>
-          <Grid item xs sm={2} />
+          <Grid item sm={2} />
         </Grid>
       </div>
     );
   }
 }
+Settings.propTypes = {
+  classes: PropTypes.object,
+  permissions: PropTypes.object,
+  settings: PropTypes.object,
+  settingsControl: PropTypes.object,
+  user: PropTypes.object
+};
 
 export default withStyles(styles)(Settings);

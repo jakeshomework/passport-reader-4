@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 /* ----- COMPONENT IMPORTS ----- */
 import SpeedReaderSingle from "../components/SpeedReaderSingle";
@@ -20,12 +21,12 @@ class SpeedReader extends Component {
     wpm: 250,
     multiplier: 1,
     wpmOptions: [150, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700],
-    word: "start",
+    word: "Start",
     splitWordBegin: [],
     splitWordMiddle: [],
     splitWordEnd: [],
     joinedWordBegin: "",
-    joinedWordMiddle: "",
+    joinedWordMiddle: "Start",
     joinedWordEnd: "",
     isPlaying: false,
     wordIndex: -1,
@@ -64,13 +65,23 @@ class SpeedReader extends Component {
       return word;
     });
 
+    //"."|| "?”" || ".”" || "?" || "!" || "!”"
+
     this.setState({ allWords: words });
     this.setState({ wordIndex: this.state.wordIndex + 1 });
     this.setState({ word: words[this.state.wordIndex] });
 
-    if (this.state.word.endsWith("." || ".”" || "?" || "?”" || "!" || "!”")) {
+    if (
+      this.state.word.endsWith(".") ||
+      this.state.word.endsWith("?”") ||
+      this.state.word.endsWith(".”") ||
+      this.state.word.endsWith("?") ||
+      this.state.word.endsWith("!") ||
+      this.state.word.endsWith("!”") ||
+      this.state.word.endsWith(",")
+    ) {
       clearInterval(this.state.interval);
-      this.setState({ multiplier: 3 }, this.restartInterval);
+      this.setState({ multiplier: 2 }, this.restartInterval);
     } else if (this.state.multiplier !== 1) {
       clearInterval(this.state.interval);
       this.setState({ multiplier: 1 }, this.restartInterval);
@@ -81,25 +92,21 @@ class SpeedReader extends Component {
 
     switch (((splitWord, splitLength), true)) {
       case splitLength < 2:
-        splitWord;
         this.setState({ splitWordBegin: [] });
         this.setState({ splitWordMiddle: splitWord.slice() });
         this.setState({ splitWordEnd: [] });
         break;
       case splitLength < 6:
-        splitWord;
         this.setState({ splitWordBegin: splitWord.slice(0, 1) });
         this.setState({ splitWordMiddle: splitWord.slice(1, 2) });
         this.setState({ splitWordEnd: splitWord.slice(2) });
         break;
       case splitLength < 9:
-        splitWord;
         this.setState({ splitWordBegin: splitWord.slice(0, 2) });
         this.setState({ splitWordMiddle: splitWord.slice(2, 3) });
         this.setState({ splitWordEnd: splitWord.slice(3) });
         break;
       case splitLength < 13:
-        splitWord;
         this.setState({ splitWordBegin: splitWord.slice(0, 3) });
         this.setState({ splitWordMiddle: splitWord.slice(3, 4) });
         this.setState({
@@ -107,17 +114,19 @@ class SpeedReader extends Component {
         });
         break;
       case splitLength < 18:
-        splitWord;
         this.setState({ splitWordBegin: splitWord.slice(0, 4) });
         this.setState({ splitWordMiddle: splitWord.slice(4, 5) });
         this.setState({ splitWordEnd: splitWord.slice(5) });
         break;
       case splitLength < 30:
-        splitWord;
         this.setState({ splitWordBegin: splitWord.slice(0, 4) });
         this.setState({ splitWordMiddle: splitWord.slice(4, 5) });
         this.setState({ splitWordEnd: splitWord.slice(5) });
         break;
+      default:
+        this.setState({ splitWordBegin: splitWord.slice(0, 3) });
+        this.setState({ splitWordMiddle: splitWord.slice(3, 4) });
+        this.setState({ splitWordEnd: splitWord.slice(4) });
     }
 
     this.setState({
@@ -248,5 +257,11 @@ class SpeedReader extends Component {
     );
   }
 }
+SpeedReader.propTypes = {
+  classes: PropTypes.object,
+  wordBegin: PropTypes.string,
+  wordEnd: PropTypes.string,
+  wordMiddle: PropTypes.string
+};
 
 export default withStyles(styles)(SpeedReader);

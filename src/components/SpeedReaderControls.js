@@ -87,7 +87,16 @@ class SpeedReaderControls extends Component {
 }
 
 SpeedReaderControls.propTypes = {
-  display: PropTypes.array
+  changeWpm: PropTypes.func,
+  classes: PropTypes.object,
+  pause: PropTypes.func,
+  play: PropTypes.func,
+  playing: PropTypes.bool,
+  resetWords: PropTypes.func,
+  skipNext: PropTypes.func,
+  skipPrevious: PropTypes.func,
+  wpm: PropTypes.number,
+  wpmOptions: PropTypes.array
 };
 
 export default withStyles(styles)(SpeedReaderControls);

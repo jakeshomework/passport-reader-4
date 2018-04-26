@@ -136,7 +136,8 @@ class ImageGallery extends Component {
             <div key={this.state.imageIndex}>
               <Button
                 onClick={() =>
-                  this.openGallery(galleryIndex, this.state.imageIndex)}
+                  this.openGallery(galleryIndex, this.state.imageIndex)
+                }
               >
                 <img src={thumbnailSrc} className={classes.thumbnail} alt="" />
               </Button>
@@ -150,11 +151,9 @@ class ImageGallery extends Component {
                     <div
                       key={dotIndex}
                       style={
-                        dotIndex === this.state.imageIndex ? (
-                          activeDot
-                        ) : (
-                          inactiveDot
-                        )
+                        dotIndex === this.state.imageIndex
+                          ? activeDot
+                          : inactiveDot
                       }
                     >
                       ●
@@ -180,9 +179,9 @@ class ImageGallery extends Component {
 
   render() {
     const { galleries, classes, bookName } = this.props;
-    const imageSrc = `book-${bookName}/${galleries[this.state.galleryIndex][
-      this.state.imageIndex
-    ].src}`;
+    const imageSrc = `book-${bookName}/${
+      galleries[this.state.galleryIndex][this.state.imageIndex].src
+    }`;
     const imageCaption =
       galleries[this.state.galleryIndex][this.state.imageIndex].caption;
 
@@ -236,11 +235,9 @@ class ImageGallery extends Component {
                     alt={image.caption}
                     className={classes.miniThumbnail}
                     style={
-                      imageIndex === this.state.imageIndex ? (
-                        activeStyle
-                      ) : (
-                        inactiveStyle
-                      )
+                      imageIndex === this.state.imageIndex
+                        ? activeStyle
+                        : inactiveStyle
                     }
                   />
                 </Button>
@@ -264,6 +261,9 @@ class ImageGallery extends Component {
 }
 
 ImageGallery.propTypes = {
+  bookName: PropTypes.string,
+  classes: PropTypes.object,
+  focusMode: PropTypes.bool,
   galleries: PropTypes.array
 };
 

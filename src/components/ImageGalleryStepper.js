@@ -45,10 +45,13 @@ const ImageGalleryStepper = ({
 };
 
 ImageGalleryStepper.propTypes = {
+  className: PropTypes.string,
+  classes: PropTypes.object,
+  closeGallery: PropTypes.func,
   handleBack: PropTypes.func,
   handleNext: PropTypes.func,
-  position: PropTypes.number,
-  length: PropTypes.number
+  length: PropTypes.number,
+  position: PropTypes.number
 };
 
 export default withStyles(styles)(ImageGalleryStepper);

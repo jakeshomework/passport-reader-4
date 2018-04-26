@@ -97,11 +97,9 @@ class ColorSelector extends Component {
               value={color}
               icon={<LabelIcon className={classes.icon} />}
               style={
-                current === color ? (
-                  { color: colorLabels[color].active, ...activeStyles }
-                ) : (
-                  { color: colorLabels[color].inactive, ...inActiveStyles }
-                )
+                current === color
+                  ? { color: colorLabels[color].active, ...activeStyles }
+                  : { color: colorLabels[color].inactive, ...inActiveStyles }
               }
               onClick={() => {
                 handleClick(color);

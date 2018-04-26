@@ -95,7 +95,11 @@ class FlashCardStepper extends React.Component {
 }
 
 FlashCardStepper.propTypes = {
-  classes: PropTypes.object.isRequired
+  activeStep: PropTypes.number,
+  classes: PropTypes.object,
+  handleBack: PropTypes.func,
+  handleNext: PropTypes.func,
+  length: PropTypes.number
 };
 
 export default withStyles(styles)(FlashCardStepper);

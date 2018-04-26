@@ -80,6 +80,7 @@ function NavigationMenu(props) {
 }
 
 NavigationMenu.propTypes = {
+  audioControls: PropTypes.object,
   classes: PropTypes.object.isRequired,
   view: PropTypes.number,
   changeSlideView: PropTypes.func

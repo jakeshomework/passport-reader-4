@@ -59,7 +59,10 @@ class SettingsSelector extends Component {
 }
 
 SettingsSelector.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object,
+  currentSelection: PropTypes.number,
+  handleChangeSettings: PropTypes.func,
+  options: PropTypes.array
 };
 
 export default withStyles(styles)(SettingsSelector);

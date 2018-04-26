@@ -115,7 +115,9 @@ class FlashCard extends React.Component {
               y: spring(
                 cardContent.position === "right"
                   ? 200
-                  : cardContent.position === "left" ? -200 : 0,
+                  : cardContent.position === "left"
+                    ? -200
+                    : 0,
                 presets.gentle
               ),
               z: spring(this.state.isFlipped ? -100 : 0)
@@ -190,7 +192,10 @@ class FlashCard extends React.Component {
                           {cardContent.backSecondary}
                         </Typography>
                       </div>
-                      <Button onClick={this.handleFlip} className={classes.flipButton}>
+                      <Button
+                        onClick={this.handleFlip}
+                        className={classes.flipButton}
+                      >
                         {cardContent.buttonText}
                         <FlipToFront />
                       </Button>
@@ -207,7 +212,8 @@ class FlashCard extends React.Component {
 }
 
 FlashCard.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  data: PropTypes.object
 };
 
 export default withStyles(styles)(FlashCard);

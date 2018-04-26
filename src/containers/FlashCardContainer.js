@@ -100,7 +100,9 @@ class FlashCardContainer extends React.Component {
           cardContent.position =
             i < this.state.activeStep
               ? "left"
-              : i > this.state.activeStep ? "right" : "center";
+              : i > this.state.activeStep
+                ? "right"
+                : "center";
         }
 
         return (
@@ -164,11 +166,9 @@ class FlashCardContainer extends React.Component {
             handleNext={this.handleNext}
             activeStep={this.state.activeStep}
             length={
-              this.props.studyObject ? (
-                Object.keys(this.props.studyObject).length
-              ) : (
-                0
-              )
+              this.props.studyObject
+                ? Object.keys(this.props.studyObject).length
+                : 0
             }
             className={classes.stepperStyles}
           />
@@ -179,7 +179,8 @@ class FlashCardContainer extends React.Component {
 }
 
 FlashCardContainer.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  studyObject: PropTypes.object
 };
 
 export default withStyles(styles)(FlashCardContainer);

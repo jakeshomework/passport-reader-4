@@ -79,7 +79,10 @@ const SpeedReaderSingle = ({ wordBegin, wordMiddle, wordEnd, classes }) => {
 };
 
 SpeedReaderSingle.propTypes = {
-  word: PropTypes.string
+  classes: PropTypes.object,
+  wordBegin: PropTypes.string,
+  wordEnd: PropTypes.string,
+  wordMiddle: PropTypes.string
 };
 
 export default withStyles(styles)(SpeedReaderSingle);

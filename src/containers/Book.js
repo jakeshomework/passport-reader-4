@@ -31,7 +31,7 @@ import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
 const styles = theme => ({
   root: {
     padding: theme.spacing.unit * 2,
-    marginBottom: 100,
+    marginBottom: 200,
     fontSize: theme.typography.fontSize,
     fontFamily: theme.typography.fontFamily,
     Overflow: "hidden"
@@ -230,9 +230,9 @@ class Book extends Component {
           audioControls={this.props.audioControls}
           audio={audio}
         />
-        <Grid container spacing={24}>
-          <Grid item xs sm={2} />
-          <Grid item xs sm={8}>
+        <Grid container spacing={12}>
+          <Grid item xs sm={1} md={2} />
+          <Grid item xs={12} sm={10} md={8}>
             {/* <div>{this.state.selection.content}</div> */}
             {this.state.event}
             {this.state.showTooltip ? (
@@ -287,7 +287,7 @@ class Book extends Component {
               focusMode={settings.focusMode}
             />
           </Grid>
-          <Grid item xs sm={2} />
+          <Grid item xs sm={1} md={2} />
         </Grid>
       </div>
     );
@@ -295,7 +295,19 @@ class Book extends Component {
 }
 
 Book.propTypes = {
-  book: PropTypes.object
+  annotationModalControl: PropTypes.object,
+  audio: PropTypes.object,
+  audioControls: PropTypes.object,
+  book: PropTypes.object,
+  bookDisplayWithHighlights: PropTypes.object,
+  classes: PropTypes.object,
+  glossary: PropTypes.object,
+  highlights: PropTypes.object,
+  highlightsControl: PropTypes.object,
+  settings: PropTypes.object,
+  style: PropTypes.object,
+  transcription: PropTypes.array
+
   // bookDisplayWithHighlights={addHighlightsToBook(
   //   this.state.book.bookDisplay,
   //   highlightsToRender
@@ -303,7 +315,7 @@ Book.propTypes = {
   // highlights={this.state.highlights}
   // settings={this.state.settings}
   // style={Object.assign({}, styles.slide, styles.slide2)}
-  // annotationModalControl={this.annotationModalControl}
+  // annotationModalControl: PropTupe
   // highlightsControl={this.highlightsControl}
   // glossary={this.state.glossary}
   // audioControls={this.audioControls}

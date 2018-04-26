@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 /* ----- UTILITY IMPORTS ----- */
 import { buildArrayOfDisplayIds } from "../utils/buildArrayOfDisplayIds";
@@ -28,12 +28,11 @@ const speedObjects = [
   { value: 1.0, display: "1.0x" },
   { value: 1.25, display: "1.25x" },
   { value: 1.5, display: "1.5x" },
-  { value: 0.75, display: "0.75" },
   { value: 1.75, display: "1.75x" },
   { value: 2.0, display: "2.0x" }
 ];
 
-const speeds = [0.75, 1.0, 1.25, 1.75, 2.0];
+//const speeds = [0.75, 1.0, 1.25, 1.75, 2.0];
 
 /*---undefined---*/
 const styles = {
@@ -223,7 +222,8 @@ class AudioContainer extends Component {
           open={audio.isMenuOpen}
           style={{
             marginLeft: "100vw",
-            marginBottom: "55px"
+            marginBottom: "55px",
+            width: "100%"
           }}
           anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           message={
@@ -312,9 +312,11 @@ class AudioContainer extends Component {
 }
 
 AudioContainer.propTypes = {
-  // transcription: PropTypes.Object,
-  // audioControls: PropTypes.Object,
-  // audio: PropTypes.Object
+  transcription: PropTypes.array,
+  audioControls: PropTypes.object,
+  audio: PropTypes.object,
+  classes: PropTypes.object,
+  bookName: PropTypes.string
 };
 
 export default withStyles(styles)(AudioContainer);

@@ -14,13 +14,8 @@ import Typography from "material-ui/Typography";
 import Badge from "material-ui/Badge";
 import NoteIcon from "material-ui-icons/Note";
 import MicIcon from "material-ui-icons/Mic";
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow
-} from "material-ui/Table";
 import { Avatar } from "material-ui";
+import Card, { CardHeader, CardContent } from "material-ui/Card";
 
 /* ----- ICON IMPORTS ----- */
 import VideocamIcon from "material-ui-icons/Videocam";
@@ -29,22 +24,9 @@ import VideocamIcon from "material-ui-icons/Videocam";
 import { colorLabels } from "../config/colorLabels";
 import grey from "material-ui/colors/grey";
 
-/* ----- TABLE STYLES ----- */
-const CustomTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.common,
-    color: theme.palette.common.white
-  },
-  body: {
-    fontSize: theme.typography.fontSize
-  }
-}))(TableCell);
-
 /*--- CUSTOM STYLES ---*/
 const styles = theme => ({
-  root: {
-    padding: theme.spacing.unit * 2
-  },
+  root: { paddingBottom: 50 },
   checkbox: {
     marginRight: 10,
     marginBottom: 10
@@ -58,23 +40,21 @@ const styles = theme => ({
   },
   checkBoxes: {
     float: "left",
-    paddingBottom: theme.spacing.unit * 4
-  },
-  table: {
-    fontSize: theme.typography.fontSize,
-    fontFamily: theme.typography.fontFamily
-  },
-  row: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.background.default
-    }
+    margin: theme.spacing.unit
   },
   badge: {
-    marginRight: "20px"
+    marginRight: 10,
+    display: "inherit",
+    paddingRight: 3,
+    marginTop: 20
   },
-  tableHead: {
-    backgroundColor: grey["700"],
-    color: "black"
+  card: {
+    width: "96%",
+    margin: theme.spacing.unit,
+    minHeight: 170
+  },
+  cardList: {
+    paddingTop: 100
   }
 });
 
@@ -184,94 +164,62 @@ class HighlightsList extends Component {
             label="All"
           />
         </div>
-        <div>
-          <Grid container spacing={24}>
-            <Grid item xs />
-            <Grid item xs={12}>
-              <Table>
-                <TableHead className={classes.tableHead}>
-                  <TableRow className={classes.tableRow}>
-                    <CustomTableCell className={classes.tableCellHead}>
-                      User
-                    </CustomTableCell>
-                    <CustomTableCell className={classes.tableCellHead}>
-                      Highlighted Text
-                    </CustomTableCell>
+        <div className={classes.cardList}>
+          <Grid container spacing={12}>
+            {filteredListArray.map((highlightId, i) => {
+              const {
+                userId,
+                color,
+                highlightedText,
+                updatedAt,
+                annotations
+              } = filteredList[highlightId];
 
-                    <CustomTableCell
-                      hidden={{ xsDown: true }}
-                      className={classes.tableCellDate}
-                    >
-                      <Grid hidden={{ xsDown: true }}>Date</Grid>
-                    </CustomTableCell>
+              const user = users[userId];
 
-                    <CustomTableCell className={classes.tableCellHead}>
-                      Annotations
-                    </CustomTableCell>
-                  </TableRow>
-                </TableHead>
+              const initials =
+                user.firstName.charAt(0) + user.lastName.charAt(0);
 
-                <TableBody className={classes.tableBody}>
-                  {filteredListArray.map((highlightId, i) => {
-                    const {
-                      userId,
-                      color,
-                      highlightedText,
-                      updatedAt,
-                      annotations
-                    } = filteredList[highlightId];
+              let noteTotal = 0,
+                audioTotal = 0,
+                videoTotal = 0;
 
-                    const user = users[userId];
+              annotations.forEach(annotation => {
+                if (annotation.type === "note") {
+                  noteTotal++;
+                }
+                if (annotation.type === "audio") {
+                  audioTotal++;
+                }
+                if (annotation.type === "video") {
+                  videoTotal++;
+                }
+              });
 
-                    const initials =
-                      user.firstName.charAt(0) + user.lastName.charAt(0);
-
-                    let noteTotal = 0,
-                      audioTotal = 0,
-                      videoTotal = 0;
-
-                    annotations.forEach(annotation => {
-                      if (annotation.type === "note") {
-                        noteTotal++;
-                      }
-                      if (annotation.type === "audio") {
-                        audioTotal++;
-                      }
-                      if (annotation.type === "video") {
-                        videoTotal++;
-                      }
-                    });
-
-                    return this.state[color] ? (
-                      <TableRow
-                        onClick={() =>
-                          this.props.annotationModalControl.open([highlightId])}
-                        key={i}
-                        value={color}
-                      >
-                        <CustomTableCell className={classes.tableCellBody}>
-                          <Avatar
-                            style={{
-                              backgroundColor: colorLabels[color].active
-                            }}
-                          >
-                            {initials}
-                          </Avatar>
-                        </CustomTableCell>
-
-                        <CustomTableCell className={classes.tableCellBody}>
-                          <Typography>{renderHTML(highlightedText)}</Typography>
-                        </CustomTableCell>
-
-                        <CustomTableCell className={classes.tableCellDate}>
-                          <Grid hidden={{ xsDown: true }}>
-                            {moment(updatedAt).fromNow()}
-                          </Grid>
-                        </CustomTableCell>
-
-                        <CustomTableCell
-                          className={classes.tableCellAnnotations}
+              return this.state[color] ? (
+                <Grid item xs={12} sm={4}>
+                  <Card
+                    className={classes.card}
+                    onClick={() =>
+                      this.props.annotationModalControl.open([highlightId])
+                    }
+                    key={i}
+                    value={color}
+                  >
+                    <CardHeader
+                      avatar={
+                        <Avatar
+                          style={{
+                            backgroundColor: colorLabels[color].active
+                          }}
                         >
+                          {initials}
+                        </Avatar>
+                      }
+                      title="Last Updated"
+                      subheader={moment(updatedAt).fromNow()}
+                      action={
+                        <span>
                           <Badge
                             className={classes.badge}
                             badgeContent={noteTotal}
@@ -293,15 +241,17 @@ class HighlightsList extends Component {
                           >
                             <VideocamIcon />
                           </Badge>
-                        </CustomTableCell>
-                      </TableRow>
-                    ) : null;
-                  })}
-                </TableBody>
-              </Table>
-            </Grid>
+                        </span>
+                      }
+                    />
+                    <CardContent>
+                      <Typography>{renderHTML(highlightedText)}</Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ) : null;
+            })}
           </Grid>
-          <Grid item xs />
         </div>
       </div>
     );
@@ -309,10 +259,10 @@ class HighlightsList extends Component {
 }
 
 HighlightsList.propTypes = {
-  highlights: PropTypes.object
-  // style={Object.assign({}, styles.slide, styles.highlightsSlide)}
-  // annotationModalControl={this.annotationModalControl}
-  // users={UsersDemo}
+  annotationModalControl: PropTypes.object,
+  classes: PropTypes.object,
+  filteredList: PropTypes.object,
+  users: PropTypes.object
 };
 
 export default withStyles(styles)(HighlightsList);
