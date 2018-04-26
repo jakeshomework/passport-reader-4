@@ -155,7 +155,6 @@ class AnnotationEditorVideo extends React.Component {
                 style={{ backgroundColor: this.state.recording ? "red" : null }}
               >
                 <video
-                  autoPlay
                   loop
                   controls={this.state.videoSrc ? true : false}
                   src={this.state.videoSrc}

@@ -38,7 +38,7 @@ const styles = theme => ({
     width: "100%"
   },
   chip: {
-    width: "100%",
+    width: "96%",
     justifyContent: "flex-start",
     fontSize: theme.typography.fontSize - 4,
     padding: "10px"
@@ -53,7 +53,7 @@ function AnnotationMulti({
   classes
 }) {
   const handleOpenSingle = highlightId => {
-    annotationModalControl.open([highlightId]);
+    annotationModalControl.openFromMulti([highlightId]);
   };
   const handleClose = () => {
     annotationModalControl.close();

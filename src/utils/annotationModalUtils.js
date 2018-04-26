@@ -18,6 +18,17 @@ export const openModal = (prevState, highlightsIdArray) => {
   };
 };
 
+export const openModalFromMulti = (prevState, highlightsIdArray) => {
+  // console.log("highlightsIdArray", highlightsIdArray);
+  return {
+    annotationModal: {
+      ...prevState.annotationModal,
+      open: true,
+      highlightsIdArray: highlightsIdArray
+    }
+  };
+};
+
 export const updateModal = (prevState, content) => {
   return {
     annotationModal: {

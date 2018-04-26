@@ -28,6 +28,7 @@ import NavigationMenu from "./containers/NavigationMenu";
 import { formatBookString } from "./utils/formatBookString";
 import {
   openModal,
+  openModalFromMulti,
   closeModal,
   updateModal
 } from "./utils/annotationModalUtils.js";
@@ -70,6 +71,7 @@ import FoghornTranscription from "./data/foghorn/transcription.json";
 import { TymString } from "./data/tym/content1Unformatted.js";
 import { TymHighlights } from "./data/tym/highlights.js";
 import { TymGlossary } from "./data/tym/glossary.js";
+// import "./styles/default.css";
 
 const defaultBook = "foghorn";
 const defaultUser = UsersDemo.user333;
@@ -101,6 +103,7 @@ class App extends Component {
       annotationModal: {
         open: false,
         highlightsIdArray: [],
+        multiHighlightIds: [],
         content: {}
       },
       permissions: {
@@ -197,6 +200,11 @@ class App extends Component {
     close: () => this.setState(prevState => closeModal(prevState)),
     open: highlightsIdArray => {
       this.setState(prevState => openModal(prevState, highlightsIdArray));
+    },
+    openFromMulti: highlightsIdArray => {
+      this.setState(prevState =>
+        openModalFromMulti(prevState, highlightsIdArray)
+      );
     },
     update: content =>
       this.setState(prevState => updateModal(prevState, content))
