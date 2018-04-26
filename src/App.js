@@ -28,7 +28,8 @@ import NavigationMenu from "./containers/NavigationMenu";
 import { formatBookString } from "./utils/formatBookString";
 import {
   openModal,
-  openModalFromMulti,
+  openSingleFromMulti,
+  backToMultiModal,
   closeModal,
   updateModal
 } from "./utils/annotationModalUtils.js";
@@ -203,9 +204,22 @@ class App extends Component {
     },
     openFromMulti: highlightsIdArray => {
       this.setState(prevState =>
-        openModalFromMulti(prevState, highlightsIdArray)
+        openSingleFromMulti(prevState, highlightsIdArray)
       );
     },
+    backToMultiModal: highlightsIdArray => {
+      this.setState(prevState =>
+        backToMultiModal(prevState, highlightsIdArray)
+      );
+    },
+    // backToMultiModal: highlightsIdArray => {
+    //   this.setState(
+    //     prevState => closeModal(prevState),
+    //     this.setState(prevState =>
+    //       backToMultiModal(prevState, highlightsIdArray)
+    //     )
+    //   );
+    // },
     update: content =>
       this.setState(prevState => updateModal(prevState, content))
   };
@@ -284,6 +298,7 @@ class App extends Component {
         <AnnotationModal
           open={this.state.annotationModal.open}
           highlightsIdArray={this.state.annotationModal.highlightsIdArray}
+          multiHighlightIds={this.state.annotationModal.multiHighlightIds}
           highlights={this.state.highlights}
           annotationModalControl={this.annotationModalControl}
           users={UsersDemo}

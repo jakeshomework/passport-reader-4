@@ -18,13 +18,26 @@ export const openModal = (prevState, highlightsIdArray) => {
   };
 };
 
-export const openModalFromMulti = (prevState, highlightsIdArray) => {
+export const openSingleFromMulti = (prevState, highlightsIdArray) => {
   // console.log("highlightsIdArray", highlightsIdArray);
   return {
     annotationModal: {
       ...prevState.annotationModal,
       open: true,
-      highlightsIdArray: highlightsIdArray
+      highlightsIdArray: highlightsIdArray,
+      multiHighlightIds: prevState.annotationModal.highlightsIdArray
+    }
+  };
+};
+
+export const backToMultiModal = (prevState, highlightsIdArray) => {
+  // console.log("highlightsIdArray", highlightsIdArray);
+  return {
+    annotationModal: {
+      ...prevState.annotationModal,
+      open: true,
+      highlightsIdArray: highlightsIdArray,
+      multiHighlightIds: []
     }
   };
 };

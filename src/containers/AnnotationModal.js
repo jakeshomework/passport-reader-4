@@ -12,6 +12,8 @@ import Typography from "material-ui/Typography";
 import Paper from "material-ui/Paper";
 import { withStyles } from "material-ui/styles";
 import grey from "material-ui/colors/grey";
+import BackIcon from "material-ui-icons/KeyboardBackspace";
+import Button from "material-ui/Button";
 
 /* ----- CONFIG IMPORTS ----- */
 import { colorLabels } from "../config/colorLabels";
@@ -51,9 +53,20 @@ class AnnotationModal extends Component {
     this.props.annotationModalControl.close();
   };
 
+  handleBackClick = () => {
+    this.props.annotationModalControl.backToMultiModal(
+      this.props.multiHighlightIds
+    );
+  };
+
   generateTitleStyle = () => {
     const { highlightsIdArray, highlights } = this.props;
     const { darkMode } = this.props.settings;
+    console.log("Mr Meeseeks", highlights);
+    console.log("Mr Meeseekssssss", highlightsIdArray[0]);
+    console.log("Mr length", highlightsIdArray.length);
+    console.log("Mr FUCKy YOU", highlightsIdArray[0]);
+    console.log("Mr FUCK YOU", highlights[highlightsIdArray[0]]);
     return {
       backgroundColor: darkMode ? grey[700] : grey[200],
       borderColor:
@@ -67,6 +80,7 @@ class AnnotationModal extends Component {
     const {
       open,
       highlightsIdArray,
+      multiHighlightIds,
       highlights,
       annotationModalControl,
       highlightsControl,
@@ -83,6 +97,11 @@ class AnnotationModal extends Component {
         classes={{ paper: classes.modalRoot }}
       >
         <Paper>
+          {multiHighlightIds.length > 0 ? (
+            <Button onClick={this.handleBackClick}>
+              <BackIcon />
+            </Button>
+          ) : null}
           <Typography>
             <div
               className={classes.titleStyle}
