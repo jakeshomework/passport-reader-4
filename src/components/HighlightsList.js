@@ -165,7 +165,7 @@ class HighlightsList extends Component {
           />
         </div>
         <div className={classes.cardList}>
-          <Grid container spacing={12}>
+          <Grid container spacing={24}>
             {filteredListArray.map((highlightId, i) => {
               const {
                 userId,

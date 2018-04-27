@@ -230,7 +230,7 @@ class Book extends Component {
           audioControls={this.props.audioControls}
           audio={audio}
         />
-        <Grid container spacing={12}>
+        <Grid container spacing={24}>
           <Grid item xs sm={1} md={2} />
           <Grid item xs={12} sm={10} md={8}>
             {/* <div>{this.state.selection.content}</div> */}

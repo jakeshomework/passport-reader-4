@@ -129,7 +129,7 @@ class Settings extends Component {
 
     return (
       <div>
-        <Grid container spacing={12} className={classes.root}>
+        <Grid container spacing={24} className={classes.root}>
           <Grid item sm={2} />
           <Grid item sm={8} className={classes.gridContent}>
             <List
