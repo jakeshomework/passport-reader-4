@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "EMC eReader",
+  "name": "EMC eReader Demo",
   "icons": [
     {
       "src": "favicon.ico",

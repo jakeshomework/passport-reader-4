@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 /* ----- CUSTOM COMPONENTS  ----- */
-import SettingsSelector from "../components/SettingsSelector";
-import SettingsSwitch from "../components/SettingsSwitch";
+import SettingsSelector from '../components/SettingsSelector';
+import SettingsSwitch from '../components/SettingsSwitch';
 
 /* ----- MATERIAL-UI COMPONENTS ----- */
-import { withStyles } from "material-ui/styles";
+import { withStyles } from 'material-ui/styles';
 
 import List, {
   ListItem,
@@ -14,19 +14,19 @@ import List, {
   ListItemSecondaryAction,
   ListItemText,
   ListSubheader
-} from "material-ui/List";
-import Grid from "material-ui/Grid";
+} from 'material-ui/List';
+import Grid from 'material-ui/Grid';
 
 /*===== MATERIAL-UI ICONS =====*/
-import CenterFocusStrong from "material-ui-icons/CenterFocusStrong";
-import InvertColors from "material-ui-icons/InvertColors";
-import FontDownload from "material-ui-icons/FontDownload";
-import TextFields from "material-ui-icons/TextFields";
-import People from "material-ui-icons/People";
-import GroupIcon from "material-ui-icons/GroupWork";
-import BookIcon from "material-ui-icons/Book";
-import PersonIcon from "material-ui-icons/Person";
-import Typography from "material-ui/Typography";
+import CenterFocusStrong from 'material-ui-icons/CenterFocusStrong';
+import InvertColors from 'material-ui-icons/InvertColors';
+import FontDownload from 'material-ui-icons/FontDownload';
+import TextFields from 'material-ui-icons/TextFields';
+import People from 'material-ui-icons/People';
+import GroupIcon from 'material-ui-icons/GroupWork';
+import BookIcon from 'material-ui-icons/Book';
+import PersonIcon from 'material-ui-icons/Person';
+import Typography from 'material-ui/Typography';
 
 /*---In a side drawer, Settings contains the user control over the content.---*/
 const styles = theme => ({
@@ -35,7 +35,7 @@ const styles = theme => ({
     marginBottom: 100
   },
   list: {
-    borderBottom: "1px solid #ccc"
+    borderBottom: '1px solid #ccc'
   },
   ListItemText: {
     fontSize: theme.typography.fontSize - 2
@@ -44,10 +44,10 @@ const styles = theme => ({
     fontSize: theme.typography.fontSize
   },
   gridContent: {
-    width: "100%"
+    width: '100%'
   },
   subHeader: {
-    position: "relative"
+    position: 'relative'
   }
 });
 
@@ -124,8 +124,8 @@ class Settings extends Component {
 
     const { classes, user } = this.props;
 
-    const bookOptions = ["tym", "foghorn"];
-    const userOptions = ["user111", "user222", "user333"];
+    const bookOptions = ['tym', 'foghorn', 'names'];
+    const userOptions = ['user111', 'user222', 'user333'];
 
     return (
       <div>
@@ -180,7 +180,7 @@ class Settings extends Component {
             </List>
 
             {/* --- Only visible if user role is 'teacher' --- */}
-            {this.props.user.role === "teacher" ? (
+            {this.props.user.role === 'teacher' ? (
               <List
                 subheader={<ListSubheader>Teacher Settings</ListSubheader>}
                 className={classes.list}

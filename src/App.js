@@ -1,39 +1,39 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 /* ----- IMPORT LIBRARIES ----- */
-import SwipeableViews from "react-swipeable-views";
+import SwipeableViews from 'react-swipeable-views';
 
 /* ----- IMPORT FONTS ----- */
-import "typeface-roboto";
-import "typeface-open-sans";
-import "typeface-playfair-display";
-import "typeface-montserrat";
-import "typeface-lobster";
-import "typeface-vt323";
+import 'typeface-roboto';
+import 'typeface-open-sans';
+import 'typeface-playfair-display';
+import 'typeface-montserrat';
+import 'typeface-lobster';
+import 'typeface-vt323';
 
 /* ----- MATERIAL-UI IMPORTS ----- */
-import Paper from "material-ui/Paper";
-import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
-import { withStyles } from "material-ui/styles";
+import Paper from 'material-ui/Paper';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 /* ----- IMPORT CONTAINERS ----- */
-import Settings from "./containers/Settings";
-import Book from "./containers/Book";
-import Highlights from "./containers/Highlights";
-import SpeedReader from "./containers/SpeedReader";
-import AnnotationModal from "./containers/AnnotationModal";
-import NavigationMenu from "./containers/NavigationMenu";
+import Settings from './containers/Settings';
+import Book from './containers/Book';
+import Highlights from './containers/Highlights';
+import SpeedReader from './containers/SpeedReader';
+import AnnotationModal from './containers/AnnotationModal';
+import NavigationMenu from './containers/NavigationMenu';
 
 /* ----- IMPORT UTILITIES ----- */
-import { formatBookString } from "./utils/formatBookString";
+import { formatBookString } from './utils/formatBookString';
 import {
   openModal,
   openSingleFromMulti,
   backToMultiModal,
   closeModal,
   updateModal
-} from "./utils/annotationModalUtils.js";
-import { updateSettings, updatePermissions } from "./utils/settingsUtils";
+} from './utils/annotationModalUtils.js';
+import { updateSettings, updatePermissions } from './utils/settingsUtils';
 import {
   addHighlight,
   updateHighlight,
@@ -41,7 +41,7 @@ import {
   updateAnnotation,
   deleteAnnotation,
   newHighlightOpenModal
-} from "./utils/highlightsUtils";
+} from './utils/highlightsUtils';
 import {
   toggleAudioMenu,
   openAudioMenu,
@@ -52,34 +52,41 @@ import {
   setAudioSpeed,
   seekAudio,
   setHighlights
-} from "./utils/audioUtils";
-import { addHighlightsToBook } from "./utils/addHighlightsToBook";
+} from './utils/audioUtils';
+import { addHighlightsToBook } from './utils/addHighlightsToBook';
 
 /* ----- IMPORT USER DATA ----- */
-import { UsersDemo } from "./data/users.js";
+import { UsersDemo } from './data/users.js';
 
 /* ----- IMPORT STYLES ----- */
-import { AppStyles } from "./styles/AppStyles.js";
-import "./App.css";
+import { AppStyles } from './styles/AppStyles.js';
+import './App.css';
 
 /* ----- BOOK IMPORT (FOGHORN) ----- */
-import { FoghornString } from "./data/foghorn/content1Unformatted.js";
-import { FoghornHighlights } from "./data/foghorn/highlights.js";
-import { FoghornGlossary } from "./data/foghorn/glossary.js";
-import FoghornTranscription from "./data/foghorn/transcription.json";
+import { FoghornString } from './data/foghorn/content1Unformatted.js';
+import { FoghornHighlights } from './data/foghorn/highlights.js';
+import { FoghornGlossary } from './data/foghorn/glossary.js';
+import FoghornTranscription from './data/foghorn/transcription.json';
 
 /* ----- BOOK IMPORT (THANK YOU MA'AM IMPORT) ----- */
-import { TymString } from "./data/tym/content1Unformatted.js";
-import { TymHighlights } from "./data/tym/highlights.js";
-import { TymGlossary } from "./data/tym/glossary.js";
+import { TymString } from './data/tym/content1Unformatted.js';
+import { TymHighlights } from './data/tym/highlights.js';
+import { TymGlossary } from './data/tym/glossary.js';
+
+/* ----- BOOK IMPORT (THANK YOU MA'AM IMPORT) ----- */
+import { NamesString } from './data/names/content1Unformatted.js';
+import { NamesHighlights } from './data/names/highlights.js';
+import { NamesGlossary } from './data/names/glossary.js';
+
 // import "./styles/default.css";
 
-const defaultBook = "foghorn";
+const defaultBook = 'names';
 const defaultUser = UsersDemo.user333;
 
 /* --- break book into object --- */
 const formattedTym = formatBookString(TymString);
 const formattedFoghorn = formatBookString(FoghornString);
+const formattedNames = formatBookString(NamesString);
 
 const transcription = JSON.parse(JSON.stringify(FoghornTranscription));
 
@@ -90,10 +97,10 @@ class App extends Component {
     super(props);
     this.state = {
       user: defaultUser,
-      book: formattedTym,
+      book: formattedNames,
       transcription: transcription,
-      highlights: TymHighlights,
-      glossary: TymGlossary,
+      highlights: NamesHighlights,
+      glossary: NamesGlossary,
       speedReader: { wpm: 250, isPlaying: false, position: 0 },
       audio: {
         isPlaying: false,
@@ -112,9 +119,9 @@ class App extends Component {
         allowSocialAnnotations: false
       },
       settings: {
-        bookId: "123",
+        bookId: '123',
         bookName: defaultBook,
-        selectedFontFamily: "Helvetica",
+        selectedFontFamily: 'Helvetica',
         selectedFontSize: 16,
         classView: false,
         focusMode: false,
@@ -122,14 +129,14 @@ class App extends Component {
         darkMode: false,
         fontSize: [14, 16, 18, 20, 28],
         fontFamily: [
-          "Helvetica",
-          "Roboto",
-          "Times",
-          "Open Sans",
-          "Playfair Display",
-          "Montserrat",
-          "Lobster",
-          "vt323"
+          'Helvetica',
+          'Roboto',
+          'Times',
+          'Open Sans',
+          'Playfair Display',
+          'Montserrat',
+          'Lobster',
+          'vt323'
         ]
       },
       slide: 1
@@ -143,17 +150,23 @@ class App extends Component {
     changePermissions: updateObject =>
       this.setState(prevState => updatePermissions(prevState, updateObject)),
     changeBook: bookNameObject => {
-      if (bookNameObject.bookName === "tym") {
+      if (bookNameObject.bookName === 'tym') {
         this.setState({
           book: formatBookString(TymString),
           highlights: TymHighlights,
           glossary: TymGlossary
         });
-      } else if (bookNameObject.bookName === "foghorn") {
+      } else if (bookNameObject.bookName === 'foghorn') {
         this.setState({
           book: formatBookString(FoghornString),
           highlights: FoghornHighlights,
           glossary: FoghornGlossary
+        });
+      } else if (bookNameObject.bookName === 'names') {
+        this.setState({
+          book: formatBookString(NamesString),
+          highlights: NamesHighlights,
+          glossary: NamesGlossary
         });
       }
       this.settingsControl.update(bookNameObject);
@@ -192,7 +205,7 @@ class App extends Component {
       this.setState(prevState => updateAnnotation(prevState, annotationObject));
     },
     deleteAnnotation: annotationObject => {
-      console.log("delete buddy", annotationObject);
+      console.log('delete buddy', annotationObject);
       this.setState(prevState => deleteAnnotation(prevState, annotationObject));
     }
   };
@@ -234,17 +247,23 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.state.settings.bookName === "tym"
+    this.state.settings.bookName === 'tym'
       ? this.setState({
           book: formattedTym,
           highlights: TymHighlights,
           glossary: TymGlossary
         })
-      : this.setState({
-          book: formattedFoghorn,
-          highlights: FoghornHighlights,
-          glossary: FoghornGlossary
-        });
+      : this.state.settings.bookName === 'foghorn'
+        ? this.setState({
+            book: formattedFoghorn,
+            highlights: FoghornHighlights,
+            glossary: FoghornGlossary
+          })
+        : this.setState({
+            book: formattedNames,
+            highlights: NamesHighlights,
+            glossary: NamesGlossary
+          });
   }
 
   /* --- control bottom navigation menu --- */
@@ -273,12 +292,12 @@ class App extends Component {
             fontSize: selectedFontSize
           },
           palette: {
-            type: this.state.settings.darkMode ? "dark" : "light",
+            type: this.state.settings.darkMode ? 'dark' : 'light',
             primary: {
-              main: "#4695ec"
+              main: '#4695ec'
             },
             secondary: {
-              main: "#eeab46"
+              main: '#eeab46'
             }
           },
           typography: {
