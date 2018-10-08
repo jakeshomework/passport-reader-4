@@ -41,6 +41,10 @@ const styles = theme => ({
 });
 
 class AnnotationModal extends Component {
+
+  state = {
+    hasMultipleHighlights: false
+  }
   // state = {
   //   highlightEdit: {}
   // };
@@ -71,6 +75,12 @@ class AnnotationModal extends Component {
           : grey[700]
     };
   };
+  componentDidMount() {
+    if (this.props.multiHighlightIds.length >= 1) {
+      this.setState({ hasMultipleHighlights: true })
+    } else this.setState({ hasMultipleHighlights: false })
+  }
+
 
   render() {
     const {
@@ -85,15 +95,19 @@ class AnnotationModal extends Component {
       userId,
       classes
     } = this.props;
+    console.log(this.state);
+    console.log("props: ", this.props);
+
 
     return (
+
       <Dialog
         open={open}
         onClose={this.handleClose}
         classes={{ paper: classes.modalRoot }}
       >
         <Paper>
-          {multiHighlightIds.length > 0 ? (
+          {multiHighlightIds != undefined && multiHighlightIds.length > 0 ? (
             <Button onClick={this.handleBackClick}>
               <BackIcon />
             </Button>
@@ -114,12 +128,12 @@ class AnnotationModal extends Component {
                   </Typography>
                 </DialogTitle>
               ) : (
-                <DialogTitle>
-                  <Typography className={classes.titleFontStyle}>
-                    -- multiple highlights selected --
+                  <DialogTitle>
+                    <Typography className={classes.titleFontStyle}>
+                      -- multiple highlights selected --
                   </Typography>
-                </DialogTitle>
-              )}
+                  </DialogTitle>
+                )}
             </div>
 
             {highlightsIdArray.length > 0 ? (
@@ -132,16 +146,16 @@ class AnnotationModal extends Component {
                   className={classes.fontStyle}
                 />
               ) : (
-                <AnnotationSingle
-                  users={users}
-                  userId={userId}
-                  permissions={permissions}
-                  highlight={highlights[highlightsIdArray[0]]}
-                  annotationModalControl={annotationModalControl}
-                  highlightsControl={highlightsControl}
-                  className={classes.fontStyle}
-                />
-              )
+                  <AnnotationSingle
+                    users={users}
+                    userId={userId}
+                    permissions={permissions}
+                    highlight={highlights[highlightsIdArray[0]]}
+                    annotationModalControl={annotationModalControl}
+                    highlightsControl={highlightsControl}
+                    className={classes.fontStyle}
+                  />
+                )
             ) : null}
           </Typography>
         </Paper>

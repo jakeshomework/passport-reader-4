@@ -70,20 +70,20 @@ class Book extends Component {
       /* --- check if <p> tag is selected anchorNode (start of selection) --- */
       const anchor = select.anchorNode.id
         ? /* --- assign id from the last element of previous <p> tag ---*/
-          select.anchorNode.previousSibling.childNodes[
-            select.anchorNode.previousSibling.childNodes.length - 1
-          ].id
+        select.anchorNode.previousSibling.childNodes[
+          select.anchorNode.previousSibling.childNodes.length - 1
+        ].id
         : /* --- assign id from parentNode that was selected (typical) ---*/
-          select.anchorNode.parentNode.id;
+        select.anchorNode.parentNode.id;
 
       /* --- check if <p> tag is selected in focusNode (end of selection) --- */
       const focus = select.focusNode.id
         ? /* --- assign id from the last element of previous <p> tag ---*/
-          select.focusNode.previousSibling.childNodes[
-            select.focusNode.previousSibling.childNodes.length - 1
-          ].id
+        select.focusNode.previousSibling.childNodes[
+          select.focusNode.previousSibling.childNodes.length - 1
+        ].id
         : /* --- assign id from parentNode that was selected (typical) ---*/
-          select.focusNode.parentNode.id;
+        select.focusNode.parentNode.id;
 
       /* --- swap values if user highlighted content in reverse --- */
       const startId =
@@ -171,15 +171,15 @@ class Book extends Component {
   };
 
   /*---Update highlights array using ADD_HIGHLIGHT api.---*/
-  saveAnnotation = () => {};
+  saveAnnotation = () => { };
   /*---Update highlights array using UPDATE_HIGHLIGHT api.---*/
-  updateHighlight = () => {};
+  updateHighlight = () => { };
   /*---Open ImageGallery with image information.---*/
-  openGallery = () => {};
+  openGallery = () => { };
   /*---Add one to gallery position.---*/
-  handleNext = () => {};
+  handleNext = () => { };
   /*---Subtract one from gallery position---*/
-  handleBack = () => {};
+  handleBack = () => { };
 
   render() {
     /* --- Move HighlightToolTip to the right position --- */
@@ -220,7 +220,7 @@ class Book extends Component {
             className={classes.avatar}
             style={{ backgroundColor: teal[500] }}
           >
-            SL
+            AH
           </Avatar>
         </div>
 

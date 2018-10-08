@@ -28,7 +28,7 @@ export const FoghornHighlights = {
         userId: "user333",
         type: "video",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
-        content: "demo-annotation-media/thumbs-up.webm"
+        content: "demo-annotation-media/vey-crop.mp4"
       }
     ]
   },
@@ -60,7 +60,7 @@ export const FoghornHighlights = {
         userId: "user222",
         type: "video",
         createdAt: "Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)",
-        content: "demo-annotation-media/thumbs-up.webm"
+        content: "demo-annotation-media/vey-crop.mp4"
       }
     ]
   },

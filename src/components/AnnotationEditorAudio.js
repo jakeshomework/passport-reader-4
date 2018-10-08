@@ -73,7 +73,7 @@ class AnnotationEditorAudio extends Component {
               className="sound-wave"
               onStop={this.onStop}
               strokeColor="#000000"
-              backgroundColor="#FF4081"
+              backgroundColor="#ccc"
               width={width}
             />
           )}

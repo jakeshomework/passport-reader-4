@@ -57,13 +57,13 @@ class AnnotationEditorVideo extends React.Component {
     /* --- save in Open Modal --- */
     this.props.modalActions.updateAnnotation({
       annotationIndex: this.props.annotationIndex,
-      content: "demo-annotation-media/thumbs-up.webm"
+      content: "demo-annotation-media/vey-crop.mp4"
     });
     /* --- save in App --- */
     this.props.highlightsControl.updateAnnotation({
       highlightId: this.props.highlightId,
       annotationIndex: this.props.annotationIndex,
-      newContent: "demo-annotation-media/thumbs-up.webm",
+      newContent: "demo-annotation-media/vey-crop.mp4",
       type: this.props.modifiedAnnotation.type
     });
   };

@@ -13,8 +13,8 @@ export const UsersDemo = {
   },
   user333: {
     userId: "user333",
-    firstName: "Stan",
-    lastName: "Lee",
+    firstName: "Anavey",
+    lastName: "Hosack",
     role: "teacher"
   }
 };

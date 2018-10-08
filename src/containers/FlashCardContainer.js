@@ -44,14 +44,21 @@ function Transition(props) {
 }
 
 class FlashCardContainer extends React.Component {
-  state = {
-    open: false,
-    activeStep: 0,
-    reverse: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      activeStep: 0,
+      reverse: false
+    };
+
+  }
+
 
   handleClickOpen = () => {
+    console.log("fire");
     this.setState({ open: true });
+
   };
 
   handleRequestClose = () => {
@@ -76,8 +83,8 @@ class FlashCardContainer extends React.Component {
     randomStep === this.state.activeStep
       ? this.handleShuffle()
       : this.setState({
-          activeStep: randomStep
-        });
+        activeStep: randomStep
+      });
   };
 
   displayFlashcards = () => {
@@ -126,7 +133,9 @@ class FlashCardContainer extends React.Component {
 
     return (
       <div>
-        <Button raised onClick={this.handleClickOpen}>
+        <Button raised onClick={function (e) {
+          this.handleClickOpen(); //can pass arguments this.btnTapped(foo, bar);          
+        }}>
           <div style={{ color: "white" }}>Open Study Mode</div>
         </Button>
         <Dialog
