@@ -214,13 +214,13 @@ class Book extends Component {
             className={classes.avatar}
             style={{ backgroundColor: lightGreen[500] }}
           >
-            PP
+            AH
           </Avatar>
           <Avatar
             className={classes.avatar}
             style={{ backgroundColor: teal[500] }}
           >
-            AH
+            JK
           </Avatar>
         </div>
 

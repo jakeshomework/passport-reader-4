@@ -53,7 +53,7 @@ export const NamesHighlights = {
         content: 'someplace/highlightId.mp3'
       },
       {
-        userId: 'user333',
+        userId: 'user222',
         type: 'video',
         createdAt: 'Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)',
         updatedAt: 'Wed Mar 14 2018 13:23:19 GMT-0500 (CDT)',

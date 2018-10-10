@@ -72,6 +72,22 @@ class HighlightsList extends Component {
     this.setState({ [prop]: checked });
   };
 
+  filter1 = prop => (event, checked) => {
+    this.setState({ [prop]: checked });
+  }
+  filter2 = prop => (event, checked) => {
+    this.setState({ [prop]: checked });
+  }
+  filter3 = prop => (event, checked) => {
+    this.setState({ [prop]: checked });
+  }
+  filter4 = prop => (event, checked) => {
+    this.setState({ [prop]: checked });
+  }
+  filter5 = prop => (event, checked) => {
+    this.setState({ [prop]: checked });
+  }
+
   toggleSelectAll = (event, checked) => {
     this.setState({
       selectAll: checked,
@@ -92,13 +108,14 @@ class HighlightsList extends Component {
     const { hlc1, hlc2, hlc3, hlc4, hlc5, selectAll } = this.state;
 
     const filteredListArray = Object.keys(filteredList);
+    console.log("filtered list: ", filteredList)
 
     return (
       <div className={classes.root}>
         <div className={classes.checkBoxes}>
           <Checkbox
             checked={hlc1}
-            onChange={this.toggleHighlight("hlc1")}
+            onChange={this.filter1("hlc1")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -109,7 +126,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc2}
-            onChange={this.toggleHighlight("hlc2")}
+            onChange={this.filter2("hlc2")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -120,7 +137,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc3}
-            onChange={this.toggleHighlight("hlc3")}
+            onChange={this.filter3("hlc3")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -131,7 +148,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc4}
-            onChange={this.toggleHighlight("hlc4")}
+            onChange={this.filter4("hlc4")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -142,7 +159,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc5}
-            onChange={this.toggleHighlight("hlc5")}
+            onChange={this.filter5("hlc5")}
             value="checked"
             className={classes.checkbox}
             disableRipple

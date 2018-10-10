@@ -7,14 +7,14 @@ export const UsersDemo = {
   },
   user222: {
     userId: "user222",
-    firstName: "Pepper",
-    lastName: "Pots",
+    firstName: "Anavey",
+    lastName: "Hosack",
     role: "student"
   },
   user333: {
     userId: "user333",
-    firstName: "Anavey",
-    lastName: "Hosack",
+    firstName: "Jennifer",
+    lastName: "Kilmore",
     role: "teacher"
   }
 };

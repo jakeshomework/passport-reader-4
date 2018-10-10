@@ -20,12 +20,35 @@ const styles = theme => ({
   },
   button: {
     margin: theme.spacing.unit,
-    float: "right"
+    float: "right",
+    // padding: "8px 16px",
+    minWidth: "88px",
+    fontSize: "1rem",
+    boxSizing: "border-box",
+    minHeight: "36px",
+    transition: "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+    lineHeight: "1.4em",
+    fontWight: "500",
+    borderRadius: "2px",
+    textTransform: "uppercase",
+    backgroundColor: "#4695ec",
+    boxShadow: "0px 1px 5px 0px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 3px 1px -2px rgba(0, 0, 0, 0.12)",
   },
   buttonFull: {
     margin: theme.spacing.unit,
     width: "96%",
-    float: "right"
+    float: "right",
+    minWidth: "88px",
+    fontSize: "1rem",
+    boxSizing: "border-box",
+    minHeight: "36px",
+    transition: "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+    lineHeight: "1.4em",
+    fontWight: "500",
+    borderRadius: "2px",
+    textTransform: "uppercase",
+    backgroundColor: "#4695ec",
+    boxShadow: "0px 1px 5px 0px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 3px 1px -2px rgba(0, 0, 0, 0.12)",
   },
   input: {
     display: "none"
@@ -33,6 +56,7 @@ const styles = theme => ({
 });
 
 class Highlights extends Component {
+
   render() {
     const { classes } = this.props;
     return (
@@ -43,22 +67,19 @@ class Highlights extends Component {
           </Hidden>
           <Grid item xs={12} sm={10}>
             <Hidden smUp>
-              <Button
-                variant="raised"
+              <div
                 className={classes.buttonFull}
-                color="primary"
               >
                 <FlashCardContainer studyObject={this.props.highlights} />
-              </Button>
+              </div>
             </Hidden>
             <Hidden only="xs">
-              <Button
-                variant="raised"
+
+              <div
                 className={classes.button}
-                color="primary"
               >
                 <FlashCardContainer studyObject={this.props.highlights} />
-              </Button>
+              </div>
             </Hidden>
 
             <HighlightsList

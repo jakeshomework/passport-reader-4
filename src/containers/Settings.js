@@ -108,7 +108,7 @@ class Settings extends Component {
   };
 
   /*---Available for teachers only, this allows students to use the toggleView method.---*/
-  toggleViewPermissions = () => {};
+  toggleViewPermissions = () => { };
 
   render() {
     const {
@@ -132,52 +132,55 @@ class Settings extends Component {
         <Grid container spacing={24} className={classes.root}>
           <Grid item sm={2} />
           <Grid item sm={8} className={classes.gridContent}>
-            <List
-              subheader={
-                <ListSubheader className={classes.subHeader}>
-                  Demo Controls
+            {this.props.showDemoControls === true ? (
+              <List
+                subheader={
+                  <ListSubheader className={classes.subHeader}>
+                    Demo Controls
                 </ListSubheader>
-              }
-            >
-              <ListItem>
-                <ListItemIcon>
-                  <BookIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary={
-                    <Typography className={classes.ListItemText}>
-                      Change Book
+                }
+              >
+
+
+                <ListItem>
+                  <ListItemIcon>
+                    <BookIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Typography className={classes.ListItemText}>
+                        Change Book
                     </Typography>
-                  }
-                />
-                <ListItemSecondaryAction>
-                  <SettingsSelector
-                    options={bookOptions}
-                    handleChangeSettings={this.changeBook}
-                    currentSelection={bookName}
+                    }
                   />
-                </ListItemSecondaryAction>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <PersonIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary={
-                    <Typography className={classes.ListItemText}>
-                      Change User
+                  <ListItemSecondaryAction>
+                    <SettingsSelector
+                      options={bookOptions}
+                      handleChangeSettings={this.changeBook}
+                      currentSelection={bookName}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <PersonIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Typography className={classes.ListItemText}>
+                        Change User
                     </Typography>
-                  }
-                />
-                <ListItemSecondaryAction>
-                  <SettingsSelector
-                    options={userOptions}
-                    handleChangeSettings={this.changeUser}
-                    currentSelection={user.userId}
+                    }
                   />
-                </ListItemSecondaryAction>
-              </ListItem>
-            </List>
+                  <ListItemSecondaryAction>
+                    <SettingsSelector
+                      options={userOptions}
+                      handleChangeSettings={this.changeUser}
+                      currentSelection={user.userId}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+              </List>) : null}
 
             {/* --- Only visible if user role is 'teacher' --- */}
             {this.props.user.role === 'teacher' ? (

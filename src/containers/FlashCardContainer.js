@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 /* ----- MATERIAL-UI IMPORTS ----- */
 import { withStyles } from "material-ui/styles";
@@ -43,7 +43,7 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-class FlashCardContainer extends React.Component {
+class FlashCardContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,10 +55,9 @@ class FlashCardContainer extends React.Component {
   }
 
 
-  handleClickOpen = () => {
-    console.log("fire");
+  handleClick = () => {
     this.setState({ open: true });
-
+    console.log("did it work?")
   };
 
   handleRequestClose = () => {
@@ -76,6 +75,7 @@ class FlashCardContainer extends React.Component {
       activeStep: this.state.activeStep - 1
     });
   };
+
 
   handleShuffle = () => {
     let random = Math.random();
@@ -132,11 +132,21 @@ class FlashCardContainer extends React.Component {
     /*** BUILD THE CARDCONTENT (FROM STUDYSET) HERE ***/
 
     return (
-      <div>
-        <Button raised onClick={function (e) {
-          this.handleClickOpen(); //can pass arguments this.btnTapped(foo, bar);          
+      <div >
+
+        <Button raised onClick={this.handleClick} style={{
+          minWidth: "88px",
+          fontSize: "1rem",
+          boxSizing: "border-box",
+          minHeight: "36px",
+          lineHeight: "1.4em",
+          padding: "15px 16px"
+
         }}>
-          <div style={{ color: "white" }}>Open Study Mode</div>
+          <div style={{
+            color: "white",
+
+          }} >Open Study Mode</div>
         </Button>
         <Dialog
           fullScreen
@@ -182,7 +192,7 @@ class FlashCardContainer extends React.Component {
             className={classes.stepperStyles}
           />
         </Dialog>
-      </div>
+      </div >
     );
   }
 }

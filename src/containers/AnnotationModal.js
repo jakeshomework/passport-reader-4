@@ -95,8 +95,7 @@ class AnnotationModal extends Component {
       userId,
       classes
     } = this.props;
-    console.log(this.state);
-    console.log("props: ", this.props);
+
 
 
     return (
@@ -107,7 +106,7 @@ class AnnotationModal extends Component {
         classes={{ paper: classes.modalRoot }}
       >
         <Paper>
-          {multiHighlightIds != undefined && multiHighlightIds.length > 0 ? (
+          {multiHighlightIds !== undefined && multiHighlightIds.length > 0 ? (
             <Button onClick={this.handleBackClick}>
               <BackIcon />
             </Button>

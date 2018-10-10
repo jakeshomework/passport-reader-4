@@ -8,6 +8,7 @@ import { withStyles } from "material-ui/styles";
 import MediaCapturer from "react-multimedia-capture";
 /* ----- COMPONENT IMPORTS ----- */
 import AnnotationSaveButtons from "./AnnotationSaveButtons";
+import AudioExample from "./AudioSample";
 
 const styles = {
   root: {
@@ -53,92 +54,108 @@ class AnnotationEditorVideo extends React.Component {
     this.setState({ videoSrc: this.props.modifiedAnnotation.content });
   };
 
-  handleSave = () => {
-    /* --- save in Open Modal --- */
-    this.props.modalActions.updateAnnotation({
-      annotationIndex: this.props.annotationIndex,
-      content: "demo-annotation-media/vey-crop.mp4"
-    });
-    /* --- save in App --- */
-    this.props.highlightsControl.updateAnnotation({
-      highlightId: this.props.highlightId,
-      annotationIndex: this.props.annotationIndex,
-      newContent: "demo-annotation-media/vey-crop.mp4",
-      type: this.props.modifiedAnnotation.type
-    });
-  };
+  // handleSave = () => {
+  //   /* --- save in Open Modal --- */
+  //   this.props.modalActions.updateAnnotation({
+  //     annotationIndex: this.props.annotationIndex,
+  //     content: "demo-annotation-media/vey-crop.mp4"
+  //   });
+  //   /* --- save in App --- */
+  //   this.props.highlightsControl.updateAnnotation({
+  //     highlightId: this.props.highlightId,
+  //     annotationIndex: this.props.annotationIndex,
+  //     newContent: "demo-annotation-media/vey-crop.mp4",
+  //     type: this.props.modifiedAnnotation.type
+  //   });
+  // };
 
-  handleDelete = () => {
-    this.props.modalActions.deleteAnnotation(this.props.annotationIndex);
-  };
+  // handleDelete = () => {
+  //   this.props.modalActions.deleteAnnotation(this.props.annotationIndex);
+  // };
 
-  handleGranted = () => {
-    this.setState({ granted: true });
-    // console.log("Permission Granted!");
-  };
-  handleDenied = err => {
-    this.setState({ rejectedReason: err.name });
-    // console.log("Permission Denied!", err);
-  };
-  handleStart = stream => {
-    if (this.props.canAnnotate && this.props.isOwner) {
-      this.setState({
-        recording: true
-      });
+  // handleGranted = () => {
+  //   this.setState({ granted: true });
+  //   // console.log("Permission Granted!");
+  // };
+  // handleDenied = err => {
+  //   this.setState({ rejectedReason: err.name });
+  //   // console.log("Permission Denied!", err);
+  // };
+  // handleStart = () => {
+  //   if (this.props.canAnnotate && this.props.isOwner) {
+  //     this.setState({
+  //       recording: true
+  //     });
 
-      this.setStreamToVideo(stream);
-      // console.log("Recording Started.");
-    }
-  };
-  handleStop = blob => {
-    this.setState({
-      recording: false
-    });
+  //     //this.setStreamToVideo(stream);
+  //     // console.log("Recording Started.");
+  //   }
+  // };
+  // handleStop = blob => {
+  //   // this.setState({
+  //   //   recording: false
+  //   // });
 
-    this.releaseStreamFromVideo();
+  //   // this.releaseStreamFromVideo();
 
-    // console.log("Recording Stopped.");
-    this.downloadVideo(blob);
-  };
-  handlePause = () => {
-    this.releaseStreamFromVideo();
+  //   console.log("Recording Stopped.");
+  //   //this.downloadVideo(blob);
+  // };
+  // handlePause = () => {
+  //   //this.releaseStreamFromVideo();
 
-    this.setState({
-      paused: true
-    });
-  };
-  handleResume = stream => {
-    this.setStreamToVideo(stream);
+  //   this.setState({
+  //     paused: true
+  //   });
+  // };
+  // handleResume = stream => {
+  //   // this.setStreamToVideo(stream);
 
-    this.setState({
-      paused: false
-    });
-  };
-  handleError = err => {
-    console.log(err);
-  };
-  setStreamToVideo = stream => {
-    let video = this.refs.app.querySelector("video");
+  //   this.setState({
+  //     paused: false
+  //   });
+  // };
+  // handleError = err => {
+  //   console.log(err);
+  // };
+  // setStreamToVideo = stream => {
+  //   let video = this.refs.app.querySelector("video");
 
-    if (window.URL) {
-      video.src = window.URL.createObjectURL(stream);
-    } else {
-      video.src = stream;
-    }
-  };
-  releaseStreamFromVideo = () => {
-    this.refs.app.querySelector("video").src = "";
-  };
-  downloadVideo = blob => {
-    let url = URL.createObjectURL(blob);
-    this.setState({ videoSrc: url });
-  };
+  //   console.log("debug", video)
+  //   if (window.URL) {
+  //     video.src = window.URL.createObjectURL(stream);
+  //   } else {
+  //     video.src = stream;
+  //   }
+  // };
+  // releaseStreamFromVideo = () => {
+  //   this.refs.app.querySelector("video").src = "";
+  // };
+  // downloadVideo = blob => {
+  //   let url = URL.createObjectURL(blob);
+  //   this.setState({ videoSrc: url });
+  // };
   render() {
     const { classes, isAnnotationSaved } = this.props;
 
     return (
       <div ref="app" className={classes.root}>
-        <MediaCapturer
+
+        <video src={this.state.videoSrc}
+          className={classes.videoPlayer} controls></video>
+        <AnnotationSaveButtons
+          //handleSave={this.handleSave}
+          //handleDelete={this.handleDelete}
+          //isSaved={isAnnotationSaved}
+          mediaControl={true}
+          //isRecording={this.state.recording}
+          //start={start}
+          //stop={stop}
+          //canAnnotate={this.props.canAnnotate}
+          isOwner={this.props.isOwner}
+        />
+        {/* <AudioExample video={this.state.videoSrc} /> */}
+        {/* <MediaCapturer
           constraints={{ audio: true, video: true }}
           timeSlice={10}
           onGranted={this.handleGranted}
@@ -149,8 +166,9 @@ class AnnotationEditorVideo extends React.Component {
           onResume={this.handleResume}
           onError={this.handleError}
           render={({ start, stop, pause, resume }) => (
-            <div>
-              <Card
+            <div> */}
+        {/* !=========  old stuff =========== */}
+        {/* <Card
                 className={classes.videoContainer}
                 style={{ backgroundColor: this.state.recording ? "red" : null }}
               >
@@ -161,6 +179,7 @@ class AnnotationEditorVideo extends React.Component {
                   className={classes.videoPlayer}
                 />
               </Card>
+              <button onClick={stop}>Stop</button>
               <AnnotationSaveButtons
                 handleSave={this.handleSave}
                 handleDelete={this.handleDelete}
@@ -171,10 +190,23 @@ class AnnotationEditorVideo extends React.Component {
                 stop={stop}
                 canAnnotate={this.props.canAnnotate}
                 isOwner={this.props.isOwner}
-              />
-            </div>
+             /> */}
+
+        {/* !=========  new stuff =========== */}
+        {/* <Card
+                className={classes.videoContainer}
+                style={{ backgroundColor: this.state.recording ? "red" : null }}
+              >
+                <video src={this.state.videoSrc}
+                  className={classes.videoPlayer}></video>
+                <button onClick={start}>Start</button>
+                <button onClick={stop}>Stop</button>
+                <button onClick={pause}>Pause</button>
+                <button onClick={resume}>Resume</button>
+              </Card> */}
+        {/* </div>
           )}
-        />
+        /> */}
       </div>
     );
   }

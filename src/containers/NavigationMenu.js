@@ -49,13 +49,11 @@ function NavigationMenu(props) {
       onChange={handleChange}
       className={classes.root}
     >
-      {props.accessSettings === true ? <BottomNavigationAction
+      <BottomNavigationAction
         label="Settings"
         value={0}
         icon={<Settings className={classes.icon} />}
-      /> : null
-
-      }
+      />
 
       <BottomNavigationAction
         label="Book"

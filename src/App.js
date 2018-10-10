@@ -100,7 +100,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      accessSettings: false,
+      showDemoControls: false,
       user: defaultUser,
       book: formattedNames,
       transcription: transcription,
@@ -237,7 +237,16 @@ class App extends Component {
   audioControls = {
     toggleAudioMenu: () =>
       this.setState(prevState => toggleAudioMenu(prevState)),
-    closeAudioMenu: () => this.setState(prevState => closeAudioMenu(prevState)),
+    closeAudioMenu: () => {
+      this.setState(prevState => closeAudioMenu(prevState))
+
+      // pause audio
+      this.setState(prevState => pauseAudio(prevState))
+
+      // stop reader
+      this.setState(prevState => toggleShowAudioHighlights(prevState))
+
+    },
     openAudioMenu: () => this.setState(prevState => openAudioMenu(prevState)),
     toggleShowAudioHighlights: () =>
       this.setState(prevState => toggleShowAudioHighlights(prevState)),
@@ -272,8 +281,8 @@ class App extends Component {
 
     // check to see if url contains "demo" and unhide settings option
     if (window.location.href.indexOf("demo") > -1) {
-      this.setState({ accessSettings: true })
-    } else this.setState({ accessSettings: false })
+      this.setState({ showDemoControls: true })
+    } else this.setState({ showDemoControls: false })
   }
 
   /* --- control bottom navigation menu --- */
@@ -348,6 +357,8 @@ class App extends Component {
               permissions={this.state.permissions}
               settingsControl={this.settingsControl}
               user={this.state.user}
+              showDemoControls={this.state.showDemoControls}
+
             />
 
             <Book
@@ -391,7 +402,6 @@ class App extends Component {
           changeSlideView={this.changeSlideView}
           view={this.state.slide}
           audioControls={this.audioControls}
-          accessSettings={this.state.accessSettings}
         />
       </MuiThemeProvider>
     );

@@ -27,12 +27,21 @@ class AnnotationEditorAudio extends Component {
   }
 
   handleSave = () => {
-    this.props.highlightsControl.updateAnnotation({
-      highlightId: this.props.highlightId,
-      annotationIndex: this.props.annotationIndex,
-      newContent: this.state.savedAudioFile,
-      type: this.props.modifiedAnnotation.type
-    });
+    if (this.props.highlightsControl !== undefined) {
+      this.props.highlightsControl.updateAnnotation({
+        highlightId: this.props.highlightId,
+        annotationIndex: this.props.annotationIndex,
+        newContent: this.state.savedAudioFile,
+        type: this.props.modifiedAnnotation.type
+      });
+    } else console.log("error")
+
+    // this.props.highlightsControl.updateAnnotation({
+    //   highlightId: this.props.highlightId,
+    //   annotationIndex: this.props.annotationIndex,
+    //   newContent: this.state.savedAudioFile,
+    //   type: this.props.modifiedAnnotation.type
+    // });
   };
 
   handleDelete = () => {
