@@ -59,34 +59,74 @@ const styles = theme => ({
 });
 
 class HighlightsList extends Component {
-  state = {
-    hlc1: true,
-    hlc2: true,
-    hlc3: true,
-    hlc4: true,
-    hlc5: true,
-    selectAll: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      hlc1: true,
+      hlc2: true,
+      hlc3: true,
+      hlc4: true,
+      hlc5: true,
+      selectAll: false,
+      activeHighlights: ["hlc1", "hlc2", "hlc3", "hlc4", "hlc5"]
+    }
+  }
+
+
+
+
 
   toggleHighlight = prop => (event, checked) => {
     this.setState({ [prop]: checked });
-  };
 
-  filter1 = prop => (event, checked) => {
-    this.setState({ [prop]: checked });
+    let activeHighlights = this.state.activeHighlights;
+    if (checked && activeHighlights.indexOf(prop) === -1) {
+      activeHighlights.push(prop);
+    }
+    //console.log((!checked && activeHighlights.indexOf(prop) > -1))
+    if ((!checked && activeHighlights.indexOf(prop) > -1)) {
+
+      activeHighlights.slice(activeHighlights.indexOf(prop), 1)
+      console.log("inactive : ", activeHighlights.indexOf(prop))
+    }
+    console.log({ activeHighlights });
+    this.setState({ activeHighlights: activeHighlights })
+
+    // let allHighlights = this.props.allHighlights;
+    // let clickedColor = prop;
+    // let filteredHighlights = [];
+
+    // let filterByColor = Object.keys(allHighlights).filter((highlight) => {
+    //   let highlightObject = allHighlights[highlight];
+
+    //   // is this this.state.[clickedColor] true and is 
+
+    //   if (this.state) {
+    //     filteredHighlights.push(highlightObject);
+    //     this.setState({ filteredHighlights: filteredHighlights })
+
+    //   }
+    // });
+
   }
+
   filter2 = prop => (event, checked) => {
     this.setState({ [prop]: checked });
+    let allHighlights = this.props.allHighlights;
+    let clickedColor = prop;
+    let filteredObjectsArray = []
+    Object.keys(allHighlights).forEach((highlight, index) => {
+      let highlightObject = allHighlights[highlight];
+
+      if (highlightObject.color !== clickedColor) {
+        filteredObjectsArray.push(highlightObject);
+        this.setState({ filteredHighlights: filteredObjectsArray })
+      } else console.log("not true")
+
+    });
+
   }
-  filter3 = prop => (event, checked) => {
-    this.setState({ [prop]: checked });
-  }
-  filter4 = prop => (event, checked) => {
-    this.setState({ [prop]: checked });
-  }
-  filter5 = prop => (event, checked) => {
-    this.setState({ [prop]: checked });
-  }
+
 
   toggleSelectAll = (event, checked) => {
     this.setState({
@@ -95,7 +135,7 @@ class HighlightsList extends Component {
       hlc2: checked,
       hlc3: checked,
       hlc4: checked,
-      hlc5: checked
+      hlc5: checked,
     });
   };
 
@@ -103,19 +143,21 @@ class HighlightsList extends Component {
     this.props.annotationModalControl.open([highlightId]);
   };
 
+
+
   render() {
-    const { classes, filteredList, users } = this.props;
+    const { classes, allHighlights, users } = this.props;
     const { hlc1, hlc2, hlc3, hlc4, hlc5, selectAll } = this.state;
 
-    const filteredListArray = Object.keys(filteredList);
-    console.log("filtered list: ", filteredList)
+    const allHighlightsArray = Object.keys(allHighlights);
+
 
     return (
       <div className={classes.root}>
         <div className={classes.checkBoxes}>
           <Checkbox
             checked={hlc1}
-            onChange={this.filter1("hlc1")}
+            onChange={this.toggleHighlight("hlc1")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -126,7 +168,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc2}
-            onChange={this.filter2("hlc2")}
+            onChange={this.toggleHighlight("hlc2")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -137,7 +179,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc3}
-            onChange={this.filter3("hlc3")}
+            onChange={this.toggleHighlight("hlc3")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -148,7 +190,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc4}
-            onChange={this.filter4("hlc4")}
+            onChange={this.toggleHighlight("hlc4")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -159,7 +201,7 @@ class HighlightsList extends Component {
           />
           <Checkbox
             checked={hlc5}
-            onChange={this.filter5("hlc5")}
+            onChange={this.toggleHighlight("hlc5")}
             value="checked"
             className={classes.checkbox}
             disableRipple
@@ -183,19 +225,23 @@ class HighlightsList extends Component {
         </div>
         <div className={classes.cardList}>
           <Grid container spacing={24}>
-            {filteredListArray.map((highlightId, i) => {
+            {allHighlightsArray.map((highlightId, i) => {
               const {
                 userId,
                 color,
                 highlightedText,
                 updatedAt,
                 annotations
-              } = filteredList[highlightId];
+              } = allHighlights[highlightId];
 
               const user = users[userId];
 
               const initials =
                 user.firstName.charAt(0) + user.lastName.charAt(0);
+
+
+
+
 
               let noteTotal = 0,
                 audioTotal = 0,
@@ -211,7 +257,9 @@ class HighlightsList extends Component {
                 if (annotation.type === "video") {
                   videoTotal++;
                 }
+
               });
+
 
               return this.state[color] ? (
                 <Grid item xs={12} sm={4}>

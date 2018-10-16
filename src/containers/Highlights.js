@@ -11,6 +11,10 @@ import Button from "material-ui/Button";
 import Grid from "material-ui/Grid";
 import Hidden from "material-ui/Hidden";
 
+
+
+
+
 /*---Hold selection filters in state while rendering the list.---*/
 const styles = theme => ({
   root: {
@@ -56,6 +60,18 @@ const styles = theme => ({
 });
 
 class Highlights extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filteredHighlights: []
+    }
+  }
+  filterHighlights = (filteredHighlights) => {
+
+    console.log("filter: ", filteredHighlights)
+  }
+
+
 
   render() {
     const { classes } = this.props;
@@ -83,10 +99,11 @@ class Highlights extends Component {
             </Hidden>
 
             <HighlightsList
-              filteredList={this.props.highlights}
+              allHighlights={this.props.highlights}
               toggleFilter={this.toggleFilter}
               annotationModalControl={this.props.annotationModalControl}
               users={this.props.users}
+              filteredHighlights={this.filterHighlights}
             />
           </Grid>
           <Hidden xsDown>
