@@ -88,41 +88,17 @@ class HighlightsList extends Component {
       activeHighlights.push(prop);
     }
 
-    console.log("thisState: ", this.state.activeHighlights);
-
     let allHighlights = this.props.allHighlights;
-    let newArray = []
+    let filteredHighlights = []
     let filteredObjects = Object.keys(allHighlights).filter((highlight) => {
       let highlightObject = allHighlights[highlight];
       if (this.state.activeHighlights.includes(highlightObject.color)) {
-        console.log({ highlightObject })
-        newArray.push(highlightObject)
-
+        filteredHighlights.push(highlightObject)
       }
-
     })
-    this.setState({ filteredObjects: newArray })
-    this.props.filterHighlights(newArray);
+    this.props.filterHighlights(filteredHighlights);
 
   }
-
-  filter2 = prop => (event, checked) => {
-    this.setState({ [prop]: checked });
-    let allHighlights = this.props.allHighlights;
-    let clickedColor = prop;
-    let filteredObjectsArray = []
-    Object.keys(allHighlights).forEach((highlight, index) => {
-      let highlightObject = allHighlights[highlight];
-
-      if (highlightObject.color !== clickedColor) {
-        filteredObjectsArray.push(highlightObject);
-        this.setState({ filteredHighlights: filteredObjectsArray })
-      } else console.log("not true")
-
-    });
-
-  }
-
 
   toggleSelectAll = (event, checked) => {
     this.setState({
