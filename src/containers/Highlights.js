@@ -69,6 +69,7 @@ class Highlights extends Component {
   filterHighlights = (filteredHighlights) => {
 
     console.log("filter: ", filteredHighlights)
+    this.setState({ filteredHighlights: filteredHighlights })
   }
 
 
@@ -86,7 +87,7 @@ class Highlights extends Component {
               <div
                 className={classes.buttonFull}
               >
-                <FlashCardContainer studyObject={this.props.highlights} />
+                <FlashCardContainer studyObject={this.state.filteredHighlights} />
               </div>
             </Hidden>
             <Hidden only="xs">
@@ -94,7 +95,7 @@ class Highlights extends Component {
               <div
                 className={classes.button}
               >
-                <FlashCardContainer studyObject={this.props.highlights} />
+                <FlashCardContainer studyObject={this.state.filteredHighlights} />
               </div>
             </Hidden>
 
@@ -103,7 +104,7 @@ class Highlights extends Component {
               toggleFilter={this.toggleFilter}
               annotationModalControl={this.props.annotationModalControl}
               users={this.props.users}
-              filteredHighlights={this.filterHighlights}
+              filterHighlights={this.filterHighlights}
             />
           </Grid>
           <Hidden xsDown>

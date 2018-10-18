@@ -102,6 +102,7 @@ class HighlightsList extends Component {
 
     })
     this.setState({ filteredObjects: newArray })
+    this.props.filterHighlights(newArray);
 
   }
 
