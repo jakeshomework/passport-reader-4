@@ -63,7 +63,7 @@ class Highlights extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filteredHighlights: []
+      filteredHighlights: this.props.highlights
     }
   }
   filterHighlights = (filteredHighlights) => {
