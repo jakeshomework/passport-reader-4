@@ -80,21 +80,15 @@ class HighlightsList extends Component {
     this.setState({ [prop]: checked });
 
     let activeHighlights = this.state.activeHighlights;
-    if (checked && activeHighlights.indexOf(prop) === -1) {
+
+    if (!checked && activeHighlights.indexOf(prop) > -1) {
+      activeHighlights.splice(activeHighlights.indexOf(prop), 1)
+      this.setState({ activeHighlights: activeHighlights })
+    } else if (checked && activeHighlights.indexOf(prop) === -1) {
       activeHighlights.push(prop);
     }
-    //console.log((!checked && activeHighlights.indexOf(prop) > -1))
-    if ((!checked && activeHighlights.indexOf(prop) > -1)) {
 
-      activeHighlights.slice(activeHighlights.indexOf(prop), 1)
-      console.log("inactive : ", activeHighlights.indexOf(prop))
-    }
-    console.log({ activeHighlights });
-    this.setState({ activeHighlights: activeHighlights })
-
-    // let allHighlights = this.props.allHighlights;
-    // let clickedColor = prop;
-    // let filteredHighlights = [];
+    console.log("thisState: ", this.state.activeHighlights);
 
     // let filterByColor = Object.keys(allHighlights).filter((highlight) => {
     //   let highlightObject = allHighlights[highlight];
