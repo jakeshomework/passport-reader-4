@@ -120,14 +120,14 @@ class AudioContainer extends Component {
     console.log("currentIndex", currentIndex);
   };
 
-  handleSeekToPrevius = () => {
+  handleSeekToPrevious = () => {
     let currentIndex = this.findCurrentTranscriptionIndex(
       this.state.playedSeconds
     );
     if (currentIndex !== 0) {
       let oneOrZero =
         this.state.playedSeconds - 2 <
-        this.props.transcription[currentIndex].startTime
+          this.props.transcription[currentIndex].startTime
           ? 1
           : 0;
       const prevTranscription = this.props.transcription[
@@ -243,16 +243,16 @@ class AudioContainer extends Component {
                     <Pause />
                   </IconButton>
                 ) : (
-                  <IconButton
-                    className={classes.pausePlayButton}
-                    onClick={audioControls.play}
-                    variant="raised"
-                  >
-                    <Play />
-                  </IconButton>
-                )}
+                    <IconButton
+                      className={classes.pausePlayButton}
+                      onClick={audioControls.play}
+                      variant="raised"
+                    >
+                      <Play />
+                    </IconButton>
+                  )}
                 <div className={classes.forwardBackwardButtons}>
-                  <IconButton onClick={this.handleSeekToPrevius}>
+                  <IconButton onClick={this.handleSeekToPrevious}>
                     <Backward />
                   </IconButton>
                   <IconButton onClick={this.handleSeekToNext}>

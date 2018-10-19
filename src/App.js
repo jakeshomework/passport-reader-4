@@ -246,11 +246,12 @@ class App extends Component {
       // stop reader
       this.setState(prevState => toggleShowAudioHighlights(prevState))
 
+
     },
     openAudioMenu: () => this.setState(prevState => openAudioMenu(prevState)),
     toggleShowAudioHighlights: () =>
       this.setState(prevState => toggleShowAudioHighlights(prevState)),
-    play: () => this.setState(prevState => playAudio(prevState)),
+    play: () => { this.setState(prevState => playAudio(prevState)), this.setState(prevState => toggleShowAudioHighlights(prevState)) },
     pause: () => this.setState(prevState => pauseAudio(prevState)),
     setSpeed: speed =>
       this.setState(prevState => setAudioSpeed(prevState, speed)),
