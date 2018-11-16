@@ -2,34 +2,45 @@ a span.c1 span,
 a span.c2 span {
   border-bottom: 2px solid rgba(170, 201, 241, 0.7) !important;
 }
+
 #root {
   overflow: hidden;
 }
+
 #mediawidget-1,
 #p2,
 .aside-tag {
   display: none;
 }
+
 #p1 {
   font-size: 2.5rem;
   text-align: center;
 }
+
 #p3 {
   font-size: 2rem;
   text-align: center;
 }
+
 #p0 {
   max-width: 50%;
   margin: auto;
 }
+
 #p0 img {
   max-width: 100%;
   height: auto;
   width: 70%;
   margin-left: 15%;
 }
+
 .ImageGallery-thumbnail-171 {
   margin: 10px;
   max-width: 100% !important;
   height: auto !important;
+}
+
+.ImageGallery-gallery-180 {
+  padding: 10px
 }

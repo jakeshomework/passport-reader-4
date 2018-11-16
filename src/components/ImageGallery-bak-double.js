@@ -22,7 +22,7 @@ const styles = {
   },
   modalStyle: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   gallery: {
     display: "flex",
@@ -36,7 +36,8 @@ const styles = {
   thumbnail: {
     maxHeight: 240,
     maxWidth: 240,
-    margin: 10
+    margin: 10,
+
   }
 };
 
